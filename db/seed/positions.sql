@@ -1,0 +1,30 @@
+INSERT INTO positions (name, description, category) VALUES
+-- Standard Positions
+('Blitzer', 'Used to break through opposing lines and target key players.', 'Standard'),
+('Blocker', 'Physical defensive players who protect the team.', 'Standard'),
+('Catcher', 'Fast players tasked with catching passes.', 'Standard'),
+('Lineman', 'Backbone of most teams; basic players.', 'Standard'),
+('Runner', 'Speedy players used instead of Throwers or Catchers.', 'Standard'),
+('Thrower', 'Responsible for throwing passes and calling plays.', 'Standard'),
+
+-- Special Players by race / category
+('Assassin', 'Agile and stealthy special player, usually Dark Elf.', 'Special'),
+('Big Guy', 'Large, powerful players like Ogres and Minotaurs.', 'Special'),
+('Chaos Warrior', 'Brutal frontline fighter of Chaos teams.', 'Special'),
+('Daemon of Khorne', 'Fierce, bloodthirsty daemon player.', 'Special'),
+('Deathroller', 'Tomb Kings’ powerful heavy blocker.', 'Special'),
+('Ghoul', 'Fast and aggressive undead player.', 'Special'),
+('Giant', 'Huge player with massive strength.', 'Special'),
+('Goblin', 'Tricky and sneaky small player.', 'Special'),
+('Gutter Runner', 'Skaven’s fast, elusive player.', 'Special'),
+('Khemri Tomb Guardian', 'Strong undead special player.', 'Special'),
+('Minotaur', 'Powerful, hard-hitting player.', 'Special'),
+('Nurgle Rotter', 'Disease-infested and resilient player.', 'Special'),
+('Ogre', 'Huge, tough, and slow but strong.', 'Special'),
+('Pestigor', 'Nurgle’s quick and sneaky player.', 'Special'),
+('Rat Ogre', 'Large, powerful, but less controlled Skaven player.', 'Special'),
+('Ripper', 'Fast and tricky Skaven player.', 'Special'),
+('Throw Team-Mate', 'Mutation allowing throwing a teammate.', 'Special'),
+('Troll', 'Very strong and tough, but slow.', 'Special'),
+('Witch Elf', 'Fast and dangerous Dark Elf special.', 'Special'),
+('Zombie', 'Slow but tough undead player.', 'Special');

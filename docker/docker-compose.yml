@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: block_n_scroll_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword   # change to a strong password
+      MYSQL_DATABASE: blocknscroll
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpassword       # change as you like
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql:/docker-entrypoint-initdb.d
