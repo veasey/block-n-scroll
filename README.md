@@ -9,4 +9,5 @@ Things this will do that others do not:
 
 ### Run Up (Locally)
 
-`docker-compose -f docker/docker-compose.yml up -d`
+Bring Up: `docker-compose -f docker/docker-compose.yml up -d`
+Bring Down / Restart: `docker-compose -f docker\docker-compose.yml down -v`
