@@ -1,5 +1,6 @@
 services:
   db:
+    container_name: blocknscroll-db
     image: mysql:8.0
     volumes:
       - ./docker/mysql/init-import.sh:/docker-entrypoint-initdb.d/init-import.sh
