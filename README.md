@@ -9,5 +9,5 @@ Things this will do that others do not:
 
 ### Run Up (Locally)
 
-Bring Up: `docker-compose -f docker/docker-compose.yml up -d`
-Bring Down / Restart: `docker-compose -f docker\docker-compose.yml down -v`
+Bring Up: `docker-compose -f docker-compose.yml up --build -d`
+Bring Down / Restart: `docker compose down -v` (as schema only builds on initial build of container)
