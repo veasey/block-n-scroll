@@ -10,6 +10,8 @@ CREATE TABLE races (
 CREATE TABLE player_positions (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
+    description TEXT,
+    category ENUM('standard', 'special', 'star') DEFAULT 'standard',
     race_id INT,
     ma INT,
     st INT,

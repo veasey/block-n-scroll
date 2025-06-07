@@ -8,18 +8,11 @@ CREATE TABLE coaches (
     role ENUM('coach', 'moderator', 'admin') DEFAULT 'coach'
 );
 
-CREATE TABLE players (
+CREATE TABLE leagues (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    position_id INT,
-    team_id INT,
-    coach_id INT,
-    current_value INT,
-    spp INT DEFAULT 0,
-    injuries TEXT,
-    FOREIGN KEY (position_id) REFERENCES player_positions(id),
-    FOREIGN KEY (team_id) REFERENCES teams(id),
-    FOREIGN KEY (coach_id) REFERENCES coaches(id)
+    name VARCHAR(100),
+    season INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE teams (
@@ -32,11 +25,4 @@ CREATE TABLE teams (
     apothecary BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (race_id) REFERENCES races(id),
     FOREIGN KEY (league_id) REFERENCES leagues(id)
-);
-
-CREATE TABLE leagues (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100),
-    season INT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

@@ -13,7 +13,7 @@ CREATE TABLE players (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (team_id) REFERENCES teams(id),
     FOREIGN KEY (race_id) REFERENCES races(id),
-    FOREIGN KEY (position_id) REFERENCES positions(id)
+    FOREIGN KEY (position_id) REFERENCES player_positions(id)
 );
 
 CREATE TABLE player_stats (
@@ -54,4 +54,19 @@ CREATE TABLE player_injuries (
     date_incurred DATE NOT NULL,       -- When the injury was incurred
     recovery_time INT DEFAULT 0,       -- Estimated recovery time in days
     FOREIGN KEY (player_id) REFERENCES players(id) ON DELETE CASCADE
+);
+
+CREATE TABLE player_match_stats (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    match_id INT,
+    player_id INT,
+    touchdowns INT DEFAULT 0,
+    casualties INT DEFAULT 0,
+    completions INT DEFAULT 0,
+    interceptions INT DEFAULT 0,
+    mvps INT DEFAULT 0,
+    spp_earned INT DEFAULT 0,
+    injuries_sustained TEXT,
+    FOREIGN KEY (match_id) REFERENCES matches(id),
+    FOREIGN KEY (player_id) REFERENCES players(id)
 );

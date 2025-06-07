@@ -25,7 +25,7 @@ Next week just focus on schema and data.
 ---
 07 06 2025
 sql files and script in container now.
-script run.
+script run, schema and seeding works
 
 just need to actually make it work, so it builds the schema and seeds it next
 then check over schema and add missing data in seed files

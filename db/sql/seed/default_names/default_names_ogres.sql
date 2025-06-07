@@ -1,11 +1,11 @@
-INSERT INTO default_player_names (race, position, name) VALUES
-('Ogres', 'Big Guy', 'Grog'),
-('Ogres', 'Big Guy', 'Throg'),
-('Ogres', 'Big Guy', 'Brak'),
-('Ogres', 'Big Guy', 'Krug'),
-('Ogres', 'Big Guy', 'Snag'),
-('Ogres', 'Big Guy', 'Blarg'),
-('Ogres', 'Big Guy', 'Rug'),
-('Ogres', 'Big Guy', 'Skag'),
-('Ogres', 'Big Guy', 'Gruk'),
-('Ogres', 'Big Guy', 'Zog');
+INSERT INTO default_player_names (race_id, position, name) VALUES
+(35, 'Big Guy', 'Grog'),
+(35, 'Big Guy', 'Throg'),
+(35, 'Big Guy', 'Brak'),
+(35, 'Big Guy', 'Krug'),
+(35, 'Big Guy', 'Snag'),
+(35, 'Big Guy', 'Blarg'),
+(35, 'Big Guy', 'Rug'),
+(35, 'Big Guy', 'Skag'),
+(35, 'Big Guy', 'Gruk'),
+(35, 'Big Guy', 'Zog');

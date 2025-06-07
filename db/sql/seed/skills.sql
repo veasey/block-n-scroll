@@ -1,4 +1,4 @@
-INSERT INTO skills (name, description, type, attribute_category) VALUES
+INSERT INTO skills (name, description, type, category) VALUES
 -- Strength (STR) Skills
 ('Block', 'Allows a player to not be knocked down on a successful block.', 'normal', 'STR'),
 ('Mighty Blow', 'Knocks down the opponent on a successful block.', 'normal', 'STR'),
@@ -52,7 +52,7 @@ INSERT INTO skills (name, description, type, attribute_category) VALUES
 ('Shadowing', 'Follows an opponent closely to shadow them.', 'normal', 'INT'),
 ('Dump-Off', 'Allows passing to a teammate if tackled.', 'normal', 'INT'),
 ('Block & Tackle', 'Combined effects of Block and Tackle skills.', 'double', 'INT'),
-('Kick-Off Specialist', 'Better at kicking off the ball.', 'normal', 'INT')
+('Kick-Off Specialist', 'Better at kicking off the ball.', 'normal', 'INT'),
 
 -- Traits (mostly mutations or special abilities)
 ('Regeneration', 'Automatically heals injuries at the start of the turn.', 'trait', 'MUT'),

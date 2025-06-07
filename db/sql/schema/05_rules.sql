@@ -3,6 +3,8 @@
 CREATE TABLE skills (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
+    type ENUM('normal', 'double', 'trait') NOT NULL,
+    -- 'normal' for regular skills, 'double' for double skills, 'trait' for special abilities
     category VARCHAR(50),
     description TEXT
 );

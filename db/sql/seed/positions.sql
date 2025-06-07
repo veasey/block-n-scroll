@@ -1,4 +1,4 @@
-INSERT INTO positions (name, description, category) VALUES
+INSERT INTO player_positions (name, description, category) VALUES
 -- Standard Positions
 ('Blitzer', 'Used to break through opposing lines and target key players.', 'Standard'),
 ('Blocker', 'Physical defensive players who protect the team.', 'Standard'),
