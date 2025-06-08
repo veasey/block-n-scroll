@@ -29,3 +29,8 @@ script run, schema and seeding works
 
 just need to actually make it work, so it builds the schema and seeds it next
 then check over schema and add missing data in seed files
+
+---
+08 06 2025
+Data OK. Added some extra names.
+Begin on backend code.

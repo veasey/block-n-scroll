@@ -37,6 +37,5 @@ INSERT INTO races (name, description, tier) VALUES
 ('Goblins', 'Cheap and tricky players.', 3), -- id 31
 ('Halflings', 'Small and sneaky, hard to injure.', 3), -- id 32
 ('Khemri', 'Ancient undead with mummies and constructs.', 3), -- id 33
-('Nobles', 'Elite humans, skilled but less durable.', 3), -- id 34
-('Ogres', 'Massive, tough and slow brutes.', 3), -- id 35
-('Snotlings', 'Small, numerous, chaotic, and fragile.', 3); -- id 36
+('Ogres', 'Massive, tough and slow brutes.', 3), -- id 34
+('Snotlings', 'Small, numerous, chaotic, and fragile.', 3); -- id 35

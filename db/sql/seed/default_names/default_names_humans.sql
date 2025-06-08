@@ -1,5 +1,6 @@
 INSERT INTO default_player_names (name, race_id, position) VALUES
 ('John Smith', 10, 'Lineman'),
+('Clint Veasey', 10, 'Lineman'),
 ('Mike Johnson', 10, 'Lineman'),
 ('Robert Brown', 10, 'Lineman'),
 ('James Williams', 10, 'Lineman'),
