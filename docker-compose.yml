@@ -14,4 +14,14 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE:-blocknscroll}
     volumes:
       - ./db/sql:/docker-entrypoint-initdb.d/sql
-  
+  api:
+    container_name: block-n-scroll-api
+    build:
+      context: ./api
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:80"
+    environment:
+      DATABASE_URL: mysql+pymysql://${MYSQL_USER:-bnsuser}:${MYSQL_PASSWORD:-password1}@db/${MYSQL_DATABASE:-blocknscroll}
+    depends_on:
+      - db
