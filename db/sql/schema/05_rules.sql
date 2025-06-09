@@ -9,6 +9,27 @@ CREATE TABLE skills (
     description TEXT
 );
 
+/* linker table for skills aquired by players */
+CREATE TABLE player_developed_skills (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    player_id INT NOT NULL,
+    skill_id INT NOT NULL,
+    acquired_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (player_id) REFERENCES players(id),
+    FOREIGN KEY (skill_id) REFERENCES skills(id),
+    UNIQUE(player_id, skill_id)  -- prevent duplicate skill assignments
+);
+
+/* linker table for starting skills of players positions */
+CREATE TABLE player_starting_skills (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    player_position_id INT NOT NULL,
+    skill_id INT NOT NULL,
+    FOREIGN KEY (player_id) REFERENCES players(id),
+    FOREIGN KEY (skill_id) REFERENCES skills(id),
+    UNIQUE(player_id, skill_id)  -- prevent duplicate starting skills
+);
+
 CREATE TABLE injury_casualty_table (
     roll_start INT NOT NULL,
     roll_end INT NOT NULL,

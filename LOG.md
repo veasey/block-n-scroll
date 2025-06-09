@@ -34,3 +34,9 @@ then check over schema and add missing data in seed files
 08 06 2025
 Data OK. Added some extra names.
 Begin on backend code.
+
+---
+09 06 2025
+Revising schema, found some missing data.
+Fleshing out the seed files.
+- [ ] Chaos dwarfs fin, check previous as skill IDs changed.

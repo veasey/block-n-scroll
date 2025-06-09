@@ -25,4 +25,10 @@ for sql_file in /docker-entrypoint-initdb.d/sql/seed/default_names/*.sql; do
   mysql -u "$MYSQL_ROOT_USER" -p"$MYSQL_ROOT_PASSWORD" "$MYSQL_DATABASE" < "$sql_file"
 done
 
+echo "Importing default race positions seeds in alphabetical order..."
+for sql_file in /docker-entrypoint-initdb.d/sql/seed/players/*.sql; do
+  echo "Importing $sql_file..."
+  mysql -u "$MYSQL_ROOT_USER" -p"$MYSQL_ROOT_PASSWORD" "$MYSQL_DATABASE" < "$sql_file"
+done
+
 echo "All imports completed."
