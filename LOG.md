@@ -40,3 +40,7 @@ Begin on backend code.
 Revising schema, found some missing data.
 Fleshing out the seed files.
 - [ ] Chaos dwarfs fin, check previous as skill IDs changed.
+
+---
+10 11 2025
+- Considering building a team and rules reference, deliverable as HTML pages or JSON api to test data.
