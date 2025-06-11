@@ -4,10 +4,15 @@
 The database schema, seeded DATA
 
 ### Phase 2
-Query database via authorised API requests
+Deliver rules from DB as HTML or JSON
 
 ### Phase 3
-Frontend to make the API all clicky, present the info in a readable way
+Basic team builder and tracker.
+Can join league
+
+### Phase 4
+Track matches
+Connect Team trackers to match events.
 
 # Log
 
@@ -39,8 +44,10 @@ Begin on backend code.
 09 06 2025
 Revising schema, found some missing data.
 Fleshing out the seed files.
-- [ ] Chaos dwarfs fin, check previous as skill IDs changed.
 
 ---
-10 11 2025
-- Considering building a team and rules reference, deliverable as HTML pages or JSON api to test data.
+10 06 2025
+Basic monolith framework. Routing to deliver flat results as HTML or JSON (for API requests).
+
+--
+11 06 2025
