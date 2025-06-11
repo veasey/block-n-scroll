@@ -14,11 +14,10 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE:-blocknscroll}
     volumes:
       - ./db/sql:/docker-entrypoint-initdb.d/sql
-  api:
+  web:
     container_name: block-n-scroll-web
     build:
-      context: ./web
-      dockerfile: docker/Dockerfile
+      dockerfile: web/docker/Dockerfile
     ports:
       - "8000:80"
     environment:

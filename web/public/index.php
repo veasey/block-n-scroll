@@ -13,7 +13,7 @@ $twig = Twig::create(__DIR__ . '/../templates', ['cache' => false]);
 $app->add(TwigMiddleware::create($app, $twig));
 
 // Load DB
-require __DIR__ . '/../bootstrap.php';
+require __DIR__ . '/../src/bootstrap.php';
 
 // Load routes
 require __DIR__ . '/../src/Routes/web.php';
