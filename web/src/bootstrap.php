@@ -12,10 +12,10 @@ $capsule = new Capsule;
 
 $capsule->addConnection([
     'driver'    => 'mysql',
-    'host'      => $_ENV['DB_HOST'],
-    'database'  => $_ENV['DB_DATABASE'],
-    'username'  => $_ENV['DB_USERNAME'],
-    'password'  => $_ENV['DB_PASSWORD'],
+    'host'      => $_ENV['MYSQL_HOST'],
+    'database'  => $_ENV['MYSQL_DATABASE'],
+    'username'  => $_ENV['MYSQL_USER'],
+    'password'  => $_ENV['MYSQL_PASSWORD'],
     'charset'   => 'utf8',
     'collation' => 'utf8_unicode_ci',
     'prefix'    => '',

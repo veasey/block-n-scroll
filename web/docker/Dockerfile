@@ -13,7 +13,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 
 COPY web/ /var/www/html
-COPY .env /var/www/html/
+COPY .env /var/www/html/.env
 
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 

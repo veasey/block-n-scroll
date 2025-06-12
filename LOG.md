@@ -53,3 +53,9 @@ Basic monolith framework. Routing to deliver flat results as HTML or JSON (for A
 11 06 2025
 Working on just displaying some data on a page, from DB data through to presenting to client.
 why is .env not copied into /var/www/html?
+
+---
+12 06 2025
+Env variables now read.
+Shown a template.
+Look into routing next, then hopefuly pulling and presented data.

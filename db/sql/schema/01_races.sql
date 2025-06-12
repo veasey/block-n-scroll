@@ -6,7 +6,7 @@ CREATE TABLE races (
     description TEXT,
     tier INT,
     race_special_rules_id INT DEFAULT NULL,  -- FK to team_special
-    regional_special_rules_id INT DEFAULT NULL,  -- FK to regional_special
+    regional_special_rules_id INT DEFAULT NULL  -- FK to regional_special
 );
 
 CREATE TABLE race_special_rules (
