@@ -1,0 +1,28 @@
+.rules-intro {
+    font-size: 1.1em;
+    margin-bottom: 1em;
+    color: #333;
+}
+
+.rules-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7em;
+    margin-bottom: 2em;
+}
+
+.rules-link {
+    display: inline-block;
+    padding: 0.6em 1.2em;
+    background: #f0f4fa;
+    color: #0074d9;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+}
+
+.rules-link:hover {
+    background: #0074d9;
+    color: #fff;
+}

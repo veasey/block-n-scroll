@@ -1,0 +1,23 @@
+{# filepath: c:\Users\Clint\Documents\Repos\block-n-scroll\web\templates\partials\header.twig #}
+<header class="bns-header">
+    <div class="bns-header-container">
+        <div class="bns-header-title">
+            <a href="/">Block &amp; Scroll</a> 🏉🐦
+        </div>
+        <div class="bns-header-login">
+            <button id="loginDropdownBtn" class="bns-login-btn">
+                Login ▼
+            </button>
+            <div id="loginDropdown" class="bns-login-dropdown">
+                <form class="bns-login-form">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password">
+                    <button type="submit" class="bns-login-submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<script src="/js/login-dropdown.js"></script>

@@ -8,6 +8,10 @@ $app->get('/', function (Request $request, Response $response) use ($app) {
     return Twig::fromRequest($request)->render($response, 'home.twig');
 });
 
+$app->get('/rules', function (Request $request, Response $response) use ($app) {
+    return Twig::fromRequest($request)->render($response, 'rules.twig');
+});
+
 $app->get('/lookup/teams[.{format}]', function (Request $request, Response $response, array $args) use ($app) {
     $format = $args['format'] ?? 'html';
     $teams = Race::get();

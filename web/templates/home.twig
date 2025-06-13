@@ -1,26 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Block & Scroll - Home</title>
-    <link rel="stylesheet" href="css/01_core_style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Welcome to Block & Scroll</h1>
-        <nav>
-            <a href="/rules">Rules & Stats</a>
-            <a href="/teams">Team Manager</a>
-            <a href="/leagues">League Tracker</a>
-        </nav>
-        <div class="news">
-            <h2>Latest News</h2>
-            <ul>
-                <li>Welcome to the new Block & Scroll platform! Stay tuned for updates.</li>
-                <li>Team Manager and League Tracker modules are now live.</li>
-                <li>Check out the updated Rules & Stats section for the latest changes.</li>
-            </ul>
-        </div>
+{% extends "base.twig" %}
+
+{% block title %}Block & Scroll - Home{% endblock %}
+
+{% block content %}
+    <h3>Look up rules, track your team and run your leagues!</h3>
+    <nav>
+        <a href="/rules">Rules & Stats</a>
+        <a href="/teams">Team Manager</a>
+        <a href="/leagues">League Tracker</a>
+    </nav>
+    <div class="news">
+        <h2>Latest News</h2>
+        <ul>
+            <li><strong>12 June 2025:</strong> Block & Scroll is now live! Explore the new platform and its features.</li>
+            <li><strong>11 June 2025:</strong> You can now manage your teams and track your leagues with our easy-to-use tools.</li>
+            <li><strong>10 June 2025:</strong> The Rules & Stats section has been refreshed—take a look for the latest info.</li>
+        </ul>
     </div>
-</body>
-</html>
+{% endblock %}
