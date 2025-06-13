@@ -17,7 +17,8 @@ services:
   web:
     container_name: block-n-scroll-web
     build:
-      dockerfile: web/docker/Dockerfile
+      context: .
+      dockerfile: ./web/docker/Dockerfile
     ports:
       - "8000:80"
     environment:
@@ -26,3 +27,9 @@ services:
       - .env
     depends_on:
       - db
+    volumes:
+      - ./web:/var/www/html
+      - vendor-data:/var/www/html/vendor
+      - ./.env:/var/www/html/.env # mount .env separately
+volumes:
+  vendor-data:

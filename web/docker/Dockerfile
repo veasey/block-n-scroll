@@ -12,13 +12,13 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
-COPY web/ /var/www/html
-COPY .env /var/www/html/.env
+# Don't COPY web/ here – it's mounted as a volume
 
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+# Run composer install separately on build context (optional)
+COPY web/composer.json web/composer.lock ./
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader || true
 
+# Set correct DocumentRoot
 RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
-
-RUN chown -R www-data:www-data /var/www/html
 
 EXPOSE 80

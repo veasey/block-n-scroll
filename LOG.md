@@ -59,3 +59,8 @@ why is .env not copied into /var/www/html?
 Env variables now read.
 Shown a template.
 Look into routing next, then hopefuly pulling and presented data.
+
+---
+13 06 2025
+Basic homepage, thinking about main navigation and initial information displayed.
+Changed how web container is built, as would like a mounted volume (instead of copied files) for source, so I can make updates to source and templates without having to rebuild containers each time.
