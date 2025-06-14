@@ -10,7 +10,7 @@ CREATE TABLE races (
 );
 
 CREATE TABLE race_special_rules (
-    id INT AUTO_INCREMENT PRIMARY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     description TEXT
 );
