@@ -74,3 +74,4 @@ Is having issues connecting to the DB container from the web container.
 15 06 2025
 Race table was empty as seed had errors in it.
 Simplified some player tables and debugged schema building and seeding tables.
+Can now see data from DB in a template.
