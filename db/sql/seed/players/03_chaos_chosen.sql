@@ -1,4 +1,4 @@
-INSERT INTO player_positions
+INSERT INTO player_position
 (id, name, description, category, race_id, regional_special_rules_id, ma, st, ag, pa, av, primary_skills, secondary_skills, cost, max_count, exclusive_group_id)
 VALUES
 (7, 'Chosen Blocker', 'Core strength-focused warrior', 'standard', 3, NULL, 5, 4, 3, '-', 10, 'Strength', 'General, Mutations', 100, 12, NULL),

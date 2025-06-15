@@ -1,3 +1,5 @@
+DELETE FROM player_position;
+
 INSERT INTO player_position
 (id, name, description, category, race_id, regional_special_rules_id, ma, st, ag, pa, av, primary_skills, secondary_skills, cost, max_count)
 VALUES

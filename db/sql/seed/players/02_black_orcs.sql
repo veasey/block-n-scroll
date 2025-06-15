@@ -1,4 +1,4 @@
-INSERT INTO player_positions
+INSERT INTO player_position
 (id, name, description, category, race_id, regional_special_rules_id, ma, st, ag, pa, av, primary_skills, secondary_skills, cost, max_count)
 VALUES
 (4, 'Black Orc', 'Tough and strong standard player', 'standard', 1, 1, 5, 5, 2, 2, 9, 'Strength', 'General', 140, 6),
@@ -20,8 +20,8 @@ VALUES
 (5, 2),  -- Mighty Blow
 (5, 12); -- Pass
 
-INSERT INTO player_positions
-(id, ame, description, category, race_id, regional_special_rules_id, ma, st, ag, pa, av, primary_skills, secondary_skills, cost, max_count)
+INSERT INTO player_position
+(id, name, description, category, race_id, regional_special_rules_id, ma, st, ag, pa, av, primary_skills, secondary_skills, cost, max_count)
 VALUES
 (6, 'Goblin', 'Nimble but fragile support players', 'standard', 1, 1, 6, 2, 3, 4, 7, 'Agility', 'General', 40, 12);
 

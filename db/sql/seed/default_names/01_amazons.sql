@@ -1,3 +1,5 @@
+DELETE FROM default_player_names;
+
 INSERT INTO default_player_names (race_id, position, name) VALUES
 (1, 'Blitzer', 'Aria'),
 (1, 'Blitzer', 'Selene'),

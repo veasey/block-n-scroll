@@ -1,18 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head><title>Teams</title></head>
-<body>
-  <h1>Teams</h1>
-  <ul>
-    {% for team in teams %}
-        <li>
-            <a href="/lookup/teams/{{team.id}}
-                {{ team.name }} 
-            </a> 
-            {{ team.description }}
-            Tier {{ team.tier }}
-        </li>
-    {% endfor %}
-  </ul>
-</body>
-</html>
+{% extends "base.twig" %}
+
+{% block title %}Block & Scroll - Rules - Teams{% endblock %}
+
+{% block content %}
+
+        <p><a href="/rules">Rules</a> - Teams</p>
+
+        <p class="rules-intro">All teams currently playable:</p>
+
+        <ul>
+          {% for team in teams %}
+              <li>
+                  <a href="/lookup/teams/{{team.id}}
+                      {{ team.name }} 
+                  </a> 
+                  {{ team.description }}
+                  Tier {{ team.tier }}
+              </li>
+          {% endfor %}
+        </ul>
+        
+{% endblock %}

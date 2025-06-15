@@ -1,3 +1,5 @@
+DELETE FROM skills;
+
 INSERT INTO skills (id, name, description, type, category) VALUES
 -- Strength (STR) Skills
 (1, 'Block', 'The player is not knocked down on a Both Down result.', 'normal', 'STR'),

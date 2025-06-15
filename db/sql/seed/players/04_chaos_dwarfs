@@ -1,5 +1,5 @@
 -- Hobgoblin Linemen
-INSERT INTO player_positions
+INSERT INTO player_position
 (id, name, description, category, race_id, regional_special_rules_id, ma, st, ag, pa, av, primary_skills, secondary_skills, cost, max_count, exclusive_group_id)
 VALUES
 (12, 'Hobgoblin Lineman', 'Basic Hobgoblin player', 'standard', 5, NULL, 6, 3, 3, '-', 8, 'General', 'Agility, Strength', 40, 16, NULL),

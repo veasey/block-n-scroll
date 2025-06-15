@@ -1,3 +1,6 @@
+DELETE FROM injury_casualty_table;
+DELETE FROM lasting_injury_table;
+
 INSERT INTO injury_casualty_table (roll_start, roll_end, description, effect, permanent) VALUES
 (1, 6, 'Injury Table (d6 roll)', 'Refer to detailed injury table', FALSE),
 (7, 9, 'Miss Next Game (2-7 games)', 'Player misses next 2-7 games', FALSE),

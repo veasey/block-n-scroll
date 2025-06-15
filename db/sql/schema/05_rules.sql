@@ -25,9 +25,7 @@ CREATE TABLE player_starting_skills (
     id INT AUTO_INCREMENT PRIMARY KEY,
     player_position_id INT NOT NULL,
     skill_id INT NOT NULL,
-    FOREIGN KEY (player_id) REFERENCES players(id),
-    FOREIGN KEY (skill_id) REFERENCES skills(id),
-    UNIQUE(player_id, skill_id)  -- prevent duplicate starting skills
+    FOREIGN KEY (skill_id) REFERENCES skills(id)
 );
 
 CREATE TABLE injury_casualty_table (

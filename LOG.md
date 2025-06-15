@@ -69,3 +69,8 @@ Changed how web container is built, as would like a mounted volume (instead of c
 14 06 2025
 Debugging route that gets all team data via DB.
 Is having issues connecting to the DB container from the web container.
+
+---
+15 06 2025
+Race table was empty as seed had errors in it.
+Simplified some player tables and debugged schema building and seeding tables.
