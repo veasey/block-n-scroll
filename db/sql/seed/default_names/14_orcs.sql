@@ -1,4 +1,4 @@
-INSERT INTO default_player_names (name, race_id, position) VALUES
+INSERT INTO default_player_name (name, base_team_id, position) VALUES
 ('Grog Smashface', 14, 'Lineman'),
 ('Zog Bloodfist', 14, 'Lineman'),
 ('Brak Ironjaw', 14, 'Lineman'),

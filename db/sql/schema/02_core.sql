@@ -1,6 +1,6 @@
 # coaches, leagues, teams
 
-CREATE TABLE coaches (
+CREATE TABLE coach (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     email VARCHAR(255) UNIQUE,
@@ -8,21 +8,23 @@ CREATE TABLE coaches (
     role ENUM('coach', 'moderator', 'admin') DEFAULT 'coach'
 );
 
-CREATE TABLE leagues (
+CREATE TABLE league (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
     season INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE teams (
+CREATE TABLE team (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    race_id INT,
+    description TEXT,
+    coach_id INT,
+    base_team_id INT,
     league_id INT,
     treasury INT DEFAULT 1000000,
     rerolls INT DEFAULT 0,
     apothecary BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY (race_id) REFERENCES races(id),
-    FOREIGN KEY (league_id) REFERENCES leagues(id)
+    FOREIGN KEY (base_team_id) REFERENCES base_team(id),
+    FOREIGN KEY (league_id) REFERENCES league(id)
 );

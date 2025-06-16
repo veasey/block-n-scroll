@@ -1,5 +1,5 @@
 <?php
-use App\Models\Race;
+use App\Models\Base\BaseTeam;
 use Slim\Views\Twig;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -10,7 +10,7 @@ $app->get('/rules', function (Request $request, Response $response) use ($app) {
 
 $app->get('/rules/teams[.{format}]', function (Request $request, Response $response, array $args) use ($app) {
     $format = $args['format'] ?? 'html';
-    $teams = Race::all();
+    $teams = BaseTeam::all();
 
     if ($format === 'json') {
         $response->getBody()->write($teams->toJson());
@@ -23,14 +23,15 @@ $app->get('/rules/teams[.{format}]', function (Request $request, Response $respo
 $app->get('/rules/teams/{team_id}[.{format}]', function (Request $request, Response $response, array $args) use ($app) {
     $format = $args['format'] ?? 'html';
 
-    $team = Race::findById($args['team_id']);
+    $teamModel = new BaseTeam();
+    $team = $teamModel->findById($args['team_id']);
     if (!$team || $team->is_hidden) {
         return $response->withStatus(404)->write('Team not found');
     }
     
     $data = [
         'team' => $team,
-        'positions' => $team->positions,
+        'players' => $team->players,
         'special_rules' => $team->special_rules,
         'regional_rules' => $team->regional_rules
     ];

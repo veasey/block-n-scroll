@@ -1,4 +1,4 @@
-INSERT INTO default_player_names (name, race_id, position) VALUES
+INSERT INTO default_player_name (name, base_team_id, position) VALUES
 ('John Smith', 9, 'Lineman'),
 ('Clint Veasey', 9, 'Lineman'),
 ('Mike Johnson', 9, 'Lineman'),

@@ -1,6 +1,6 @@
-DELETE FROM skills;
+DELETE FROM skill;
 
-INSERT INTO skills (id, name, description, type, category) VALUES
+INSERT INTO skill (id, name, description, type, category) VALUES
 -- Strength (STR) Skills
 (1, 'Block', 'The player is not knocked down on a Both Down result.', 'normal', 'STR'),
 (2, 'Mighty Blow', 'Adds +1 to either the Armour or Injury roll when the player knocks down an opponent.', 'normal', 'STR'),
@@ -59,7 +59,7 @@ INSERT INTO skills (id, name, description, type, category) VALUES
 (47, 'Blood Lust', 'Roll 2+ or must bite a Thrall or lose turn.', 'trait', 'MUT'),
 (48, 'Nurgle’s Rot', 'Permanently adds a Rotter to your roster if opponent dies.', 'trait', 'MUT');
 
-INSERT INTO skills (id, name, description, type, category) VALUES
+INSERT INTO skill (id, name, description, type, category) VALUES
 (49, 'Always Hungry', 'May eat the teammate being thrown if throwing a team-mate.', 'trait', 'EXT'),
 (50, 'Animosity', 'May refuse to act with certain teammates.', 'trait', 'EXT'),
 (51, 'Ball and Chain', 'Forced random movement; auto-pass Dodge.', 'trait', 'EXT'),

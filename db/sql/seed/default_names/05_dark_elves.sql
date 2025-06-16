@@ -1,4 +1,4 @@
-INSERT INTO default_player_names (race_id, position, name) VALUES
+INSERT INTO default_player_name (base_team_id, position, name) VALUES
 (5, 'Blitzer', 'Vhalar'),
 (5, 'Blitzer', 'Thalor'),
 (5, 'Blitzer', 'Zharis'),

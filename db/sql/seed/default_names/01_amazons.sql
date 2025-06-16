@@ -1,6 +1,6 @@
-DELETE FROM default_player_names;
+DELETE FROM default_player_name;
 
-INSERT INTO default_player_names (race_id, position, name) VALUES
+INSERT INTO default_player_name (base_team_id, position, name) VALUES
 (1, 'Blitzer', 'Aria'),
 (1, 'Blitzer', 'Selene'),
 (1, 'Blitzer', 'Kara'),

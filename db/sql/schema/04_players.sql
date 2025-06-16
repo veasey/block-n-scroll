@@ -1,11 +1,11 @@
 # players
 
-CREATE TABLE players (
+CREATE TABLE player (
     id INT AUTO_INCREMENT PRIMARY KEY,
     
     team_id INT NOT NULL,          -- FK to teams table
-    race_id INT NOT NULL,          -- FK to races table
-    position_id INT NOT NULL,      -- FK to positions table
+    base_team_id INT NOT NULL,          -- FK to races table
+    base_team_player_id INT NOT NULL,      -- FK to positions table
     name VARCHAR(100) NOT NULL,
     number INT,                    -- jersey number, optional
     spp INT DEFAULT 0,             -- experience points
@@ -34,7 +34,7 @@ CREATE TABLE players (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
-    FOREIGN KEY (team_id) REFERENCES teams(id),
-    FOREIGN KEY (race_id) REFERENCES races(id),
-    FOREIGN KEY (position_id) REFERENCES player_position(id)
+    FOREIGN KEY (team_id) REFERENCES team(id),
+    FOREIGN KEY (base_team_id) REFERENCES base_team(id),
+    FOREIGN KEY (base_team_player_id) REFERENCES base_team_player(id)
 );

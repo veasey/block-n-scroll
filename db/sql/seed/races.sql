@@ -1,6 +1,6 @@
-DELETE FROM races;
+DELETE FROM base_team;
 
-INSERT INTO races (id, name, description, tier, race_special_rules_id, regional_special_rules_id) VALUES
+INSERT INTO base_team (id, name, description, tier, category_race_special_rule_id, category_regional_special_rule_id) VALUES
 (1, 'Amazons', 'Strong female warriors.', 1, NULL, 4),
 (2, 'Black Orc', 'Elite orc warriors with heavy armor and brute strength.', 2, NULL, 1),
 (3, 'Chaos Chosen', 'Brutal and aggressive elite Chaos warriors.', 2, 4, NULL),
@@ -20,7 +20,7 @@ INSERT INTO races (id, name, description, tier, race_special_rules_id, regional_
 (17, 'Wood Elf', 'Agile forest dwellers with great speed and precision.', 1, NULL, 2);
 
 -- Tier 2 (Strong niche teams)
-INSERT INTO races (id, name, description, tier, race_special_rules_id, regional_special_rules_id) VALUES
+INSERT INTO base_team (id, name, description, tier, category_race_special_rule_id, category_regional_special_rule_id) VALUES
 (18, 'Bretonnian Knights', 'Noble knights with strong armor and melee skills.', 2, NULL, 5),
 (19, 'Chaos Chosen', 'Elite warriors of Chaos, strong and aggressive.', 2, 4, NULL),
 (20, 'Chaos Renegade', 'Disciples of Chaos with diverse skillsets.', 2, 4, NULL),
@@ -35,9 +35,12 @@ INSERT INTO races (id, name, description, tier, race_special_rules_id, regional_
 (29, 'Vampires', 'Bloodthirsty undead with powerful abilities.', 2, 3, 6);
 
 -- Tier 3 (Fun / Underdog teams)
-INSERT INTO races (id, name, description, tier, race_special_rules_id, regional_special_rules_id) VALUES
+INSERT INTO base_team (id, name, description, tier, category_race_special_rule_id, category_regional_special_rule_id) VALUES
 (30, 'Goblins', 'Cheap and tricky players.', 3, 2, 1),
 (31, 'Halflings', 'Small and sneaky, hard to injure.', 3, 2, 3),
 (32, 'Khemri', 'Ancient undead with mummies and constructs.', 3, 3, 6),
 (33, 'Ogres', 'Massive, tough and slow brutes.', 3, 2, 1),
 (34, 'Snotlings', 'Small, numerous, chaotic, and fragile.', 3, 2, 7);
+
+/* max rerolls */
+UPDATE base_team SET max_rerolls = 6 WHERE name = 'Dwarf';

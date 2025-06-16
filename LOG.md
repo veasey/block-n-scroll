@@ -75,3 +75,8 @@ Is having issues connecting to the DB container from the web container.
 Race table was empty as seed had errors in it.
 Simplified some player tables and debugged schema building and seeding tables.
 Can now see data from DB in a template.
+
+---
+16 06 2025
+Standardised schema to make it clearer what are "base" stats, as opposed to user tracking stats.
+Make Base namespace in Models, so I can have Base data, User data etc

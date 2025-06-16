@@ -1,8 +1,8 @@
-CREATE TABLE default_player_names (
+CREATE TABLE default_player_name (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    race_id INT,
+    base_team_id INT,
     name VARCHAR(100),
     position VARCHAR(50) NOT NULL,
-    FOREIGN KEY (race_id) REFERENCES races(id)
+    FOREIGN KEY (base_team_id) REFERENCES base_team(id)
 );
 

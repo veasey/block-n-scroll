@@ -1,13 +1,13 @@
-DELETE FROM race_special_rules;
-DELETE FROM regional_special_rules;
+DELETE FROM category_race_special_rule;
+DELETE FROM category_regional_special_rule;
 
-INSERT INTO race_special_rules (id, name, description) VALUES
+INSERT INTO category_race_special_rule (id, name, description) VALUES
  (1, 'Bribery and Corruption', 'Allows roll to Argue the Call via bribes'),
  (2, 'Low Cost Linemen', 'Linemen cost 0 TV when calculating team value'),
  (3, 'Master of Undeath', 'Undead may reanimate a dead player'),
  (4, 'Favoured of...', 'Blessings of Chaos gods');
 
-INSERT INTO regional_special_rules (id, name, description) VALUES
+INSERT INTO category_regional_special_rule (id, name, description) VALUES
  (1, 'Badlands Brawl', 'Brutal league favoured by Greenskin and Ogre teams'),
  (2, 'Elven Kingdoms League', 'One of the oldest leagues in the known world, the Elven KingdomsLeague prides itself on upholding the traditions of classically-correct Blood Bowl. Many find it dull but, in terms of elegance and expertise, it is second to none.'),
  (3, 'Halfling Thimble Cup', 'Traditionally, Halflings have been associated more closely with the culinary arts than the world of professional sport. In recent years this has changed greatly, and the Thimble Cup has become a main stay on the Blood Bowl calendar.'),
