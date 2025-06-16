@@ -17,5 +17,6 @@ require __DIR__ . '/../src/bootstrap.php';
 
 // Load routes
 require __DIR__ . '/../src/Routes/web.php';
+require __DIR__ . '/../src/Routes/rules.php';
 
 $app->run();

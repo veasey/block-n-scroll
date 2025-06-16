@@ -8,16 +8,27 @@
 
         <p class="rules-intro">All teams currently playable:</p>
 
-        <ul>
-          {% for team in teams %}
-              <li>
-                  <a href="/lookup/teams/{{team.id}}
-                      {{ team.name }} 
-                  </a> 
-                  {{ team.description }}
-                  Tier {{ team.tier }}
-              </li>
-          {% endfor %}
-        </ul>
-        
+        <table id="sortable-table">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">Name &#x25B2;&#x25BC;</th>
+                    <th onclick="sortTable(1)">Description &#x25B2;&#x25BC;</th>
+                    <th onclick="sortTable(2)">Tier &#x25B2;&#x25BC;</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for team in teams %}
+                <tr>
+                    <td>
+                        <a href="/rules/teams/{{ team.id }}">
+                            {{ team.name }}
+                        </a>
+                    </td>
+                    <td>{{ team.description }}</td>
+                    <td>{{ team.tier }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <script src="/js/sortable-table.js"></script>        
 {% endblock %}

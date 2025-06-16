@@ -73,3 +73,25 @@ nav a:hover { text-decoration: underline; }
 /* HOME PAGE STYLES */
 .news { background: #f0f4fa; padding: 1em; border-radius: 6px; margin-top: 2em; }
 .news h2 { margin-top: 0; }
+
+/* SORTABLE TABLES */
+#sortable-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+#sortable-table th {
+    background: #f0f4fa;
+    cursor: pointer;
+    padding: 8px;
+    border-bottom: 2px solid #ccc;
+    transition: background 0.2s;
+}
+#sortable-table th:hover {
+    background: #e0e8f0;
+}
+#sortable-table td {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+#sortable-table tr:nth-child(even) {
+    background:
