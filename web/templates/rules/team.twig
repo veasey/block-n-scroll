@@ -35,7 +35,7 @@
                     <td>{{ pos.name }}</td>
                     <td>
                         {% for skill in pos.skills %}
-                            <a href="/rules/skills/{{ skill.id }}">
+                            <a href="/rules/skill/{{ skill.id }}">
                                 {{ skill.name }}{% if not loop.last %}, {% endif %}
                             </a>
                         {% endfor %}
