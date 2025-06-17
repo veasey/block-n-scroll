@@ -24,16 +24,16 @@ $app->get('/rules/teams/{team_id}[.{format}]', function (Request $request, Respo
     $format = $args['format'] ?? 'html';
 
     $teamModel = new BaseTeam();
-    $team = $teamModel->findById($args['team_id']);
+    $team = $teamModel->find($args['team_id']);
     if (!$team || $team->is_hidden) {
         return $response->withStatus(404)->write('Team not found');
     }
     
     $data = [
         'team' => $team,
-        'players' => $team->players,
-        'special_rules' => $team->special_rules,
-        'regional_rules' => $team->regional_rules
+        'positions' => $team->players,
+        'special_rule' => $team->special_rule,
+        'regional_rule' => $team->regional_rule
     ];
 
     if ($format === 'json') {

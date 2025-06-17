@@ -5,30 +5,25 @@ namespace App\Models\Base;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Base\BaseTeamPlayer;
-use App\Models\Base\CategorySpecialRaceRule as SpecialRule;
-use App\Models\Base\CategorySpecialRegionalRule as RegionalRule;
+use App\Models\Base\CategoryRaceSpecialRule as SpecialRule;
+use App\Models\Base\CategoryRegionalSpecialRule as RegionalRule;
 
 class BaseTeam extends Model
 {
     protected $table = 'base_team';
-
-    public function findById($id)
-    {
-        return self::where('base_team_id', $id)->first();
-    }
-
+    
     public function players()
     {
         return $this->hasMany(BaseTeamPlayer::class, 'base_team_id');
     }
 
-    public function special_rules()
+    public function special_rule()
     {
-        return $this->hasOne(SpecialRule::class, 'base_team_id');
+        return $this->hasOne(SpecialRule::class, 'id', 'category_race_special_rule_id');
     }
 
-    public function regional_rules()
+    public function regional_rule()
     {
-        return $this->hasOne(RegionalRule::class, 'base_team_id');
+        return $this->hasOne(RegionalRule::class, 'id', 'category_regional_special_rule_id');
     }
 }

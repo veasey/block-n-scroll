@@ -75,23 +75,37 @@ nav a:hover { text-decoration: underline; }
 .news h2 { margin-top: 0; }
 
 /* SORTABLE TABLES */
-#sortable-table {
+table {
     width: 100%;
     border-collapse: collapse;
 }
-#sortable-table th {
+table th {
     background: #f0f4fa;
     cursor: pointer;
     padding: 8px;
     border-bottom: 2px solid #ccc;
     transition: background 0.2s;
 }
-#sortable-table th:hover {
+table th:hover {
     background: #e0e8f0;
 }
-#sortable-table td {
+table td {
     padding: 8px;
     border-bottom: 1px solid #eee;
 }
-#sortable-table tr:nth-child(even) {
-    background:
+table tr:nth-child(even) {
+    background: #fafbfc;
+}
+
+/* button styles */
+button {
+    padding: 10px 20px;
+    background: #2d6cdf;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background: #1a4fa0;
+}

@@ -80,3 +80,11 @@ Can now see data from DB in a template.
 16 06 2025
 Standardised schema to make it clearer what are "base" stats, as opposed to user tracking stats.
 Make Base namespace in Models, so I can have Base data, User data etc
+
+---
+17 06 2025
+Team page and relations to populate date done.
+Todo: 
+- [ ] Need draft team to go to team manager page.
+- [ ] Seed rest of positional data
+- [ ] modal popup for skills on click, or at least go to skill page...

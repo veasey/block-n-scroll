@@ -4,6 +4,63 @@
 
 {% block content %}
 
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/teams">Teams</a> -
+        <a href="/rules/teams/{{ team.id }}">{{ team.name }}</a>
+    </p>
 
+    <h2>{{ team.name }}</h2>
+    <p>{{ team.description }}</p>
+    <p>Tier: {{ team.tier }}</p>
+
+    <h3>Positional Players</h3>
+    <p>Each team has a set of positional players, each with their own skills and costs. The maximum number of each position you can have is listed below.</p>
+
+    {% if positions|length == 0 %}
+        <p><strong>⚠️ No positional player data available for this team. Please contact admin</strong></p>
+    {% else %}
+        <table id="positions-table">
+            <thead>
+                <tr>
+                    <th>Position</th>
+                    <th>Skills</th>
+                    <th>Cost</th>
+                    <th>Max</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pos in positions %}
+                <tr>
+                    <td>{{ pos.name }}</td>
+                    <td>
+                        {% for skill in pos.skills %}
+                            <a href="/rules/skills/{{ skill.id }}">
+                                {{ skill.name }}{% if not loop.last %}, {% endif %}
+                            </a>
+                        {% endfor %}
+                    </td>
+                    <td>{{ pos.cost }}k</td>
+                    <td>{{ pos.max_count == 0 ? 'Unlimited' : pos.max_count }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <p>
+            <center>
+                <button onclick="window.location.href='/draft?team_id={{ team.id }}'">Draft your own team</button>
+            </center>
+        </p>
+
+    {% endif %}
+
+    {% if special_rule %}
+        <p><b>{{ special_rule.name }}</b>: {{ special_rule.description }}</p>
+    {% endif %}
+
+    {% if regional_rule %}
+        <p><b>{{ regional_rule.name }}</b>: {{ regional_rule.description }}</p>
+    {% endif %}
 
 {% endblock %}
