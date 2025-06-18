@@ -83,8 +83,8 @@ CREATE TABLE base_team_player_skill_category (
     id INT AUTO_INCREMENT PRIMARY KEY,
     base_team_player_id INT NOT NULL,
     skill_category_id INT NOT NULL,
-    `primary` TINYINT(1) DEFAULT 0,  -- Is this a primary skill category?
-    `secondary` TINYINT(1) DEFAULT 0,  -- Is this a secondary skill category?
+    is_primary TINYINT(1) DEFAULT 0,  -- Is this a primary skill category?
+    is_secondary TINYINT(1) DEFAULT 0,  -- Is this a secondary skill category?
     FOREIGN KEY (base_team_player_id) REFERENCES base_team_player(id),
     FOREIGN KEY (skill_category_id) REFERENCES skill_category(id),
     UNIQUE(base_team_player_id, skill_category_id)  -- prevent duplicate skill assignments

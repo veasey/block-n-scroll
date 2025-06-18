@@ -25,6 +25,8 @@
                 <tr>
                     <th>Position</th>
                     <th>Skills</th>
+                    <th>Primary Skills</th>
+                    <th>Secondary Skills</th>
                     <th>Cost</th>
                     <th>Max</th>
                 </tr>
@@ -40,6 +42,8 @@
                             </a>
                         {% endfor %}
                     </td>
+                    <td>{{ pos.primarySkills }}</td>
+                    <td>{{ pos.secondarySkills }}</td>
                     <td>{{ pos.cost }}k</td>
                     <td>{{ pos.max_count == 0 ? 'Unlimited' : pos.max_count }}</td>
                 </tr>

@@ -11,6 +11,30 @@ class BaseTeamPlayer extends Model
         'base_team_player_id'
     ];
 
+    public function primarySkills()
+    {
+        return $this->belongsToMany(
+            SkillCategory::class,
+            'base_team_player_skill_category',
+            'base_team_player_id',
+            'skill_category_id'
+        )->wherePivot('is_primary', 1)
+         ->map(fn($cat) => strtoupper(substr($cat->name, 0, 1)))
+         ->implode('');
+    }
+
+    public function secondarySkill()
+    {
+        return $this->belongsToMany(
+            SkillCategory::class,
+            'base_team_player_skill_category',
+            'base_team_player_id',
+            'skill_category_id'
+        )->wherePivot('is_secondary', 1)
+         ->map(fn($cat) => strtoupper(substr($cat->name, 0, 1)))
+         ->implode('');
+    }
+
     public function skills()
     {
         return $this->belongsToMany(

@@ -11,7 +11,7 @@ VALUES
 (4, 'Jaguar Warrior Blockers', 'Tough players who protect the team', 'special', 1, 6, 4, 3, 5, 9, 110, 4);
 
 -- Amazon Linewoman starting skills
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, primary, secondary) VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (1, 1, 1, 0),  -- General
 (1, 2, 0, 1),  -- Agility (Secondary)
 (1, 3, 0, 1);  -- Strength (Secondary)
@@ -20,7 +20,7 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (1, 11);  -- Dodge
 
 -- Amazon Thrower starting skills
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, primary, secondary) VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (2, 1, 1, 0),  -- General
 (2, 4, 0, 1),  -- Passing
 (2, 2, 0, 1),  -- Agility (Secondary)
@@ -33,7 +33,7 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (2, 37);   -- Safe Throw (Safe Pass)
 
 -- Amazon Blitzer starting skills
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, primary, secondary) VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (3, 2, 1, 0),  -- Agility (Primary)
 (3, 1, 1, 0),  -- General (Secondary)
 (3, 3, 0, 1);  -- Strength (Secondary)
@@ -44,7 +44,7 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (3, 17);   -- Jump Up
 
 -- Amazon Blocker starting skills
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, primary, secondary) VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (4, 1, 1, 0),  -- General (Primary)
 (4, 3, 1, 0),  -- Strength (Primary)
 (4, 2, 0, 1);  -- Agility (Secondary)
