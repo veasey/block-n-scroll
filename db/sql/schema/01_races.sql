@@ -5,8 +5,6 @@ CREATE TABLE base_team (
     name VARCHAR(100),
     description TEXT,
     tier INT,
-    category_race_special_rule_id INT DEFAULT NULL,  -- FK to team_special
-    category_regional_special_rule_id INT DEFAULT NULL,  -- FK to regional_special
     reroll_cost INT DEFAULT 0,  -- Cost of a team reroll
     max_rerolls INT DEFAULT 8,  -- Maximum number of rerolls a team can have
     is_hidden BOOLEAN DEFAULT FALSE,  -- Whether the team is hidden
