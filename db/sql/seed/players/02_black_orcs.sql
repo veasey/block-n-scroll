@@ -1,8 +1,8 @@
 -- Goblin Bruiser
 INSERT INTO base_team_player
-(id, name, description, category, base_team_id, category_regional_special_rule_id, ma, st, ag, pa, av, cost, max_count)
+(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count)
 VALUES
-(20, 'Goblin Bruiser', 'Agile goblin with thick skull', 'standard', 2, 1, 6, 2, 3, 4, 8, 45, 12);
+(20, 'Goblin Bruiser', 'Agile goblin with thick skull', 'standard', 2, 6, 2, 3, 4, 8, 45, 12);
 
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, primary, secondary) VALUES
 (20, 2, 1, 0),  -- Agility (Primary)
@@ -18,9 +18,9 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 
 -- Black Orc
 INSERT INTO base_team_player
-(id, name, description, category, base_team_id, category_regional_special_rule_id, ma, st, ag, pa, av, cost, max_count)
+(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count)
 VALUES
-(21, 'Black Orc', 'Strong and tough orc', 'standard', 2, 1, 4, 4, 4, 5, 10, 90, 6);
+(21, 'Black Orc', 'Strong and tough orc', 'standard', 2, 4, 4, 4, 5, 10, 90, 6);
 
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, primary, secondary) VALUES
 (21, 1, 1, 0),  -- General (Primary)
@@ -34,9 +34,9 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 
 -- Trained Troll
 INSERT INTO base_team_player
-(id, name, description, category, base_team_id, category_regional_special_rule_id, ma, st, ag, pa, av, cost, max_count)
+(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count)
 VALUES
-(22, 'Trained Troll', 'Big guy with multiple traits', 'special', 2, 1, 4, 5, 5, 5, 10, 115, 1);
+(22, 'Trained Troll', 'Big guy with multiple traits', 'special', 2, 4, 5, 5, 5, 10, 115, 1);
 
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, primary, secondary) VALUES
 (22, 3, 1, 0),  -- Strength (Primary)

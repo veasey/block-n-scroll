@@ -1,11 +1,11 @@
 INSERT INTO base_team_player
-(id, name, description, category, base_team_id, category_regional_special_rule_id, ma, st, ag, pa, av, cost, max_count, exclusive_group_id)
+(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count, exclusive_group_id)
 VALUES
-(30, 'Chosen Blocker', 'Core strength-focused warrior', 'standard', 3, NULL, 5, 4, 3, 5, 10, 100, 4, NULL),
-(31, 'Chaos Beastman', 'Versatile player with horns', 'standard', 3, NULL, 6, 3, 3, 4, 9, 60, 16, NULL),
-(32, 'Chaos Minotaur', 'Ferocious big guy with Frenzy', 'special', 3, NULL, 5, 5, 4, NULL, 9, 150, 1, 1), 
-(33, 'Chaos Troll', 'Massive, regenerating brute with Really Stupid', 'special', 3, NULL, 4, 5, 5, 5, 10, 115, 1, 1),
-(34, 'Chaos Ogre', 'Big guy with Bone Head and solid armour', 'special', 3, NULL, 5, 5, 4, 5, 10, 140, 1, 1);
+(30, 'Chosen Blocker', 'Core strength-focused warrior', 'standard', 3, 5, 4, 3, 5, 10, 100, 4, NULL),
+(31, 'Chaos Beastman', 'Versatile player with horns', 'standard', 3, 6, 3, 3, 4, 9, 60, 16, NULL),
+(32, 'Chaos Minotaur', 'Ferocious big guy with Frenzy', 'special', 3, 5, 5, 4, NULL, 9, 150, 1, 1), 
+(33, 'Chaos Troll', 'Massive, regenerating brute with Really Stupid', 'special', 3, 4, 5, 5, 5, 10, 115, 1, 1),
+(34, 'Chaos Ogre', 'Big guy with Bone Head and solid armour', 'special', 3, 5, 5, 4, 5, 10, 140, 1, 1);
 
 INSERT INTO base_team_player_exclusive_group
 (id, name, description)

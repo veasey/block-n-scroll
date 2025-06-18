@@ -2,13 +2,13 @@
 UPDATE base_team SET max_rerolls = 6 WHERE name = 'Dwarf';
 
 INSERT INTO base_team_player
-(id, name, description, category, base_team_id, category_regional_special_rule_id, ma, st, ag, pa, av, cost, max_count, exclusive_group_id)
+(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count, exclusive_group_id)
 VALUES
-(60, 'Lineman', 'Basic sturdy Dwarf player with Block, Tackle, Thick Skull', 'standard', 6, NULL, 4, 3, 4, 5, 10, 70000, 12, NULL),
-(61, 'Runner', 'Fast Dwarf with Sure Hands and Thick Skull', 'standard', 6, NULL, 6, 3, 4, 4, 9, 85000, 2, NULL),
-(62, 'Blitzer', 'Powerful Dwarf with Block and Thick Skull', 'standard', 6, NULL, 5, 3, 4, 4, 10, 80000, 2, NULL),
-(63, 'Troll Slayer', 'Frenzied, dauntless warrior with Block and Thick Skull', 'special', 6, NULL, 5, 3, 4, NULL, 9, 95000, 2, NULL),
-(64, 'Deathroller', 'Legendary rolling war machine with multiple special traits', 'special', 6, NULL, 4, 7, 3, NULL, 11, 170000, 1, 5);
+(60, 'Lineman', 'Basic sturdy Dwarf player with Block, Tackle, Thick Skull', 'standard', 6, 4, 3, 4, 5, 10, 70000, 12, NULL),
+(61, 'Runner', 'Fast Dwarf with Sure Hands and Thick Skull', 'standard', 6, 6, 3, 4, 4, 9, 85000, 2, NULL),
+(62, 'Blitzer', 'Powerful Dwarf with Block and Thick Skull', 'standard', 6, 5, 3, 4, 4, 10, 80000, 2, NULL),
+(63, 'Troll Slayer', 'Frenzied, dauntless warrior with Block and Thick Skull', 'special', 6, 5, 3, 4, NULL, 9, 95000, 2, NULL),
+(64, 'Deathroller', 'Legendary rolling war machine with multiple special traits', 'special', 6, 4, 7, 3, NULL, 11, 170000, 1, 5);
 
 -- Lineman
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type) VALUES

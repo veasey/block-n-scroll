@@ -7,27 +7,27 @@ INSERT INTO base_team_special_rule (base_team_id, special_rule_id) VALUES
 
 -- Hobgoblin: ID 40
 INSERT INTO base_team_player
-(id, name, description, category, base_team_id, category_regional_special_rule_id, ma, st, ag, pa, av, cost, max_count, exclusive_group_id)
+(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count, exclusive_group_id)
 VALUES
-(40, 'Hobgoblin', 'Sneaky and expendable slaves for the Chaos Dwarfs.', 'standard', 4, NULL, 6, 3, 3, 4, 8, 40000, 16, NULL);
+(40, 'Hobgoblin', 'Sneaky and expendable slaves for the Chaos Dwarfs.', 'standard', 4, 6, 3, 3, 4, 8, 40000, 16, NULL);
 
 -- Chaos Dwarf Blocker: ID 41
 INSERT INTO base_team_player
-(id, name, description, category, base_team_id, category_regional_special_rule_id, ma, st, ag, pa, av, cost, max_count, exclusive_group_id)
+(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count, exclusive_group_id)
 VALUES
-(41, 'Chaos Dwarf Blocker', 'Stubborn and tough core of the team.', 'standard', 4, NULL, 4, 3, 4, 6, 10, 70000, 6, NULL);
+(41, 'Chaos Dwarf Blocker', 'Stubborn and tough core of the team.', 'standard', 4, 4, 3, 4, 6, 10, 70000, 6, NULL);
 
 -- Bull Centaur: ID 42
 INSERT INTO base_team_player
-(id, name, description, category, base_team_id, category_regional_special_rule_id, ma, st, ag, pa, av, cost, max_count, exclusive_group_id)
+(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count, exclusive_group_id)
 VALUES
-(42, 'Bull Centaur', 'Fast, powerful and resilient hybrid.', 'special', 4, NULL, 6, 4, 4, 6, 10, 130000, 2, NULL);
+(42, 'Bull Centaur', 'Fast, powerful and resilient hybrid.', 'special', 4, 6, 4, 4, 6, 10, 130000, 2, NULL);
 
 -- Enslaved Minotaur: ID 43
 INSERT INTO base_team_player
-(id, name, description, category, base_team_id, category_regional_special_rule_id, ma, st, ag, pa, av, cost, max_count, exclusive_group_id)
+(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count, exclusive_group_id)
 VALUES
-(43, 'Enslaved Minotaur', 'Feral big guy under Chaos Dwarf control.', 'special', 4, NULL, 5, 5, 4, NULL, 9, 150000, 1, 2);
+(43, 'Enslaved Minotaur', 'Feral big guy under Chaos Dwarf control.', 'special', 4, 5, 5, 4, NULL, 9, 150000, 1, 2);
 
 -- Hobgoblin (ID 40)
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type) VALUES
