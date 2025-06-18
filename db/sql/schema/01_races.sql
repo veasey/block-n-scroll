@@ -12,6 +12,18 @@ CREATE TABLE base_team (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+CREATE TABLE race_special_rule (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT
+);
+
+CREATE TABLE regional_special_rule (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT
+);
+
 CREATE TABLE base_team_special_rule (
     id INT AUTO_INCREMENT PRIMARY KEY,
     base_team_id INT NOT NULL,
@@ -31,19 +43,6 @@ CREATE TABLE base_team_regional_rule (
     name VARCHAR(100) NOT NULL,
     description TEXT
 );
-
-CREATE TABLE race_special_rule (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    description TEXT
-);
-
-CREATE TABLE regional_special_rule (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    description TEXT
-);
-
 
 CREATE TABLE base_team_player (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -84,8 +83,8 @@ CREATE TABLE base_team_player_skill_category (
     id INT AUTO_INCREMENT PRIMARY KEY,
     base_team_player_id INT NOT NULL,
     skill_category_id INT NOT NULL,
-    primary TINYINT(1) DEFAULT 0,  -- Is this a primary skill category?
-    secondary TINYINT(1) DEFAULT 0,  -- Is this a secondary skill category?
+    `primary` TINYINT(1) DEFAULT 0,  -- Is this a primary skill category?
+    `secondary` TINYINT(1) DEFAULT 0,  -- Is this a secondary skill category?
     FOREIGN KEY (base_team_player_id) REFERENCES base_team_player(id),
     FOREIGN KEY (skill_category_id) REFERENCES skill_category(id),
     UNIQUE(base_team_player_id, skill_category_id)  -- prevent duplicate skill assignments
