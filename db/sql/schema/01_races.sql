@@ -57,7 +57,7 @@ CREATE TABLE base_team_player (
     pa INT,
     av INT,
     cost INT,
-    category_regional_special_rule_id INT DEFAULT NULL,  -- FK to regional_special_rule, added for star players
+    regional_special_rule_id INT DEFAULT NULL,  -- FK to regional_special_rule, added for star players
     max_count INT DEFAULT 0,  -- 0 means unlimited
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (base_team_id) REFERENCES base_team(id)
