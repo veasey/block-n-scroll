@@ -1,4 +1,12 @@
 DELETE FROM skill;
+DELETE FROM skill_category;
+
+INSERT INTO skill_category (id, name, description) VALUES
+(1, 'General', 'General skills and intelligence-based actions.'),
+(2, 'Agility', 'Skills that improve dodging, catching, and movement agility.'),
+(3, 'Strength', 'Skills that enhance physical strength and blocking capabilities.'),
+(4, 'Passing', 'Skills that improve passing and ball handling.'),
+(5, 'Mutations', 'Special skills related to mutations and unique traits.');
 
 INSERT INTO skill (id, name, description, type, category) VALUES
 -- Strength (STR) Skills
@@ -81,4 +89,6 @@ INSERT INTO skill (id, name, description, type, category) VALUES
 (67, 'Stunty', '+1 Dodge, fragile, ignore tackle zones.', 'trait', 'EXT'),
 (68, 'Timmm‑ber!', '+1 to stand‑up roll if MA≤2.', 'trait', 'EXT'),
 (69, 'Unchanneled Fury', 'May lose activation on Block if roll low.', 'trait', 'EXT'),
-(70, 'Wild Animal', 'May roar and lose activation if roll low.', 'trait', 'EXT');
+(70, 'Wild Animal', 'May roar and lose activation if roll low.', 'trait', 'EXT'),
+(71, 'Defensive', 'Cancels Guard skill on opponents during your turn.', 'normal', 'GEN'),
+(72, 'On The Ball', 'May move up to 3 squares when a pass or kick is declared by the opponent.', 'normal', 'GEN');

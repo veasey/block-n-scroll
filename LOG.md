@@ -88,3 +88,9 @@ Todo:
 - [ ] Need draft team to go to team manager page.
 - [ ] Seed rest of positional data
 - [ ] modal popup for skills on click, or at least go to skill page...
+
+---
+18 06 2025
+Made primary skills, secondary skills, regional rules and race rules a hasMany join.
+Fixed existing team seeds.
+Mended some duff gen in the positional seeds and skills.

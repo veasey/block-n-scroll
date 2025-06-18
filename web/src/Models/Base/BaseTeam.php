@@ -5,8 +5,8 @@ namespace App\Models\Base;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Base\BaseTeamPlayer;
-use App\Models\Base\CategoryRaceSpecialRule as SpecialRule;
-use App\Models\Base\CategoryRegionalSpecialRule as RegionalRule;
+use App\Models\Base\RaceSpecialRule as SpecialRule;
+use App\Models\Base\RegionalSpecialRule as RegionalRule;
 
 class BaseTeam extends Model
 {
@@ -17,13 +17,23 @@ class BaseTeam extends Model
         return $this->hasMany(BaseTeamPlayer::class, 'base_team_id');
     }
 
-    public function special_rule()
+    public function special_rules()
     {
-        return $this->hasOne(SpecialRule::class, 'id', 'category_race_special_rule_id');
+        return $this->belongsToMany(
+            SpecialRule::class,
+            'base_team_special_rule',    // Pivot table name
+            'base_team_id',       // Foreign key on pivot table for this model
+            'special_rule_id'                   // Foreign key on pivot table for Skill
+        );
     }
 
-    public function regional_rule()
+    public function regional_rules()
     {
-        return $this->hasOne(RegionalRule::class, 'id', 'category_regional_special_rule_id');
+        return $this->belongsToMany(
+            RegionalRule::class,
+            'base_team_regional_rule',    // Pivot table name
+            'base_team_id',       // Foreign key on pivot table for this model
+            'regional_rule_id'                   // Foreign key on pivot table for Skill
+        );
     }
 }

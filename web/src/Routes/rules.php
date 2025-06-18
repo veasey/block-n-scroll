@@ -33,8 +33,8 @@ $app->get('/rules/teams/{team_id}[.{format}]', function (Request $request, Respo
     $data = [
         'team' => $team,
         'positions' => $team->players,
-        'special_rule' => $team->special_rule,
-        'regional_rule' => $team->regional_rule
+        'special_rules' => $team->special_rules,
+        'regional_rules' => $team->regional_rules
     ];
 
     if ($format === 'json') {

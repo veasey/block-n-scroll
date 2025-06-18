@@ -1,49 +1,91 @@
 INSERT INTO base_team_player
-(id, name, description, category, base_team_id, category_regional_special_rule_id, ma, st, ag, pa, av, primary_skills, secondary_skills, secondary_skills_additional, cost, max_count, exclusive_group_id)
+(id, name, description, category, base_team_id, category_regional_special_rule_id, ma, st, ag, pa, av, cost, max_count, exclusive_group_id)
 VALUES
-(8, 'Chosen Blocker', 'Core strength-focused warrior', 'standard', 3, NULL, 5, 4, 3, NULL, 10, 'Strength', 'General', 'Mutations', 100, 12, NULL),
-(9, 'Chaos Beastman', 'Versatile player with horns', 'standard', 3, NULL, 6, 3, 3, NULL, 9, 'General', 'Strength', 'Mutations', 60, 16, NULL),
-(10, 'Chaos Minotaur', 'Ferocious big guy with Frenzy', 'special', 3, NULL, 5, 5, 4, NULL, 9, 'Strength', 'Mutations', NULL, 150, 1, 1), 
-(11, 'Chaos Troll', 'Massive, regenerating brute with really stupid', 'special', 3, NULL, 4, 5, 5, NULL, 10, 'Strength', 'Mutations', NULL, 115, 1, 1),
-(12, 'Chaos Ogre', 'Big guy with bone head and solid armour', 'special', 3, NULL, 5, 5, 4, NULL, 10, 'Strength', 'Mutations', NULL, 140, 1, 1);
+(30, 'Chosen Blocker', 'Core strength-focused warrior', 'standard', 3, NULL, 5, 4, 3, 5, 10, 100, 4, NULL),
+(31, 'Chaos Beastman', 'Versatile player with horns', 'standard', 3, NULL, 6, 3, 3, 4, 9, 60, 16, NULL),
+(32, 'Chaos Minotaur', 'Ferocious big guy with Frenzy', 'special', 3, NULL, 5, 5, 4, NULL, 9, 150, 1, 1), 
+(33, 'Chaos Troll', 'Massive, regenerating brute with Really Stupid', 'special', 3, NULL, 4, 5, 5, 5, 10, 115, 1, 1),
+(34, 'Chaos Ogre', 'Big guy with Bone Head and solid armour', 'special', 3, NULL, 5, 5, 4, 5, 10, 140, 1, 1);
 
 INSERT INTO base_team_player_exclusive_group
 (id, name, description)
 VALUES
 (1, 'Chaos Big Guys', 'Group for Chaos big guys like Minotaur, Troll, and Ogre');
 
--- Chosen Blocker starting skills (typically none, but optional mutation available)
--- No default skills
+-- Chosen Blocker skill categories
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type)
+VALUES 
+(30, 2, 'primary'),  -- Strength
+(30, 1, 'secondary'), -- General
+(30, 3, 'secondary'); -- Agility
 
--- Chaos Beastman starting skills
+-- Chaos Beastman skill categories
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type)
+VALUES 
+(31, 1, 'primary'),  -- General
+(31, 2, 'secondary'), -- Strength
+(31, 3, 'secondary'), -- Agility
+(31, 4, 'secondary'); -- Passing
+
+-- Chaos Minotaur skill categories
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type)
+VALUES 
+(32, 2, 'primary'),  -- Strength
+(32, 5, 'secondary'), -- Mutations
+(32, 3, 'secondary'), -- Agility
+(32, 1, 'secondary'); -- General
+
+-- Chaos Troll skill categories
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type)
+VALUES 
+(33, 2, 'primary'),  -- Strength
+(33, 5, 'secondary'), -- Mutations
+(33, 3, 'secondary'), -- Agility
+(33, 1, 'secondary'); -- General
+
+-- Chaos Ogre skill categories
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type)
+VALUES 
+(34, 2, 'primary'),  -- Strength
+(34, 5, 'secondary'), -- Mutations
+(34, 3, 'secondary'), -- Agility
+(34, 1, 'secondary'); -- General
+
+-- Beastman starting skills
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id)
 VALUES
-(8, 14);  -- Horns
+(31, 14);  -- Horns
 
--- Chaos Minotaur starting skills
+-- Minotaur starting skills
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id)
 VALUES
-(9, 5),   -- Frenzy
-(9, 2),   -- Mighty Blow
-(9, 6),   -- Thick Skull
-(9, 33),  -- Loner (Big Guy trait, if used)
-(9, 14);  -- Horns
+(32, 5),   -- Frenzy
+(32, 2),   -- Mighty Blow
+(32, 6),   -- Thick Skull
+(32, 33),  -- Loner
+(32, 14),  -- Horns
+(32, 46);  -- Unchannelled Fury
 
-
--- Chaos Troll
+-- Troll starting skills
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id)
 VALUES
-(10, 3),   -- Regeneration
-(10, 2),   -- Mighty Blow
-(10, 6),   -- Thick Skull
-(10, 33),  -- Loner
+(33, 3),   -- Regeneration
+(33, 2),   -- Mighty Blow
+(33, 6),   -- Thick Skull
+(33, 33),  -- Loner
+(33, 42),  -- Really Stupid
+(33, 40),  -- Always Hungry
+(33, 41);  -- Projectile Vomit
 
-(10, 42);  -- Really Stupid
-
--- Chaos Ogre
+-- Ogre starting skills
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id)
 VALUES
-(11, 2),   -- Mighty Blow
-(11, 6),   -- Thick Skull
-(11, 33),  -- Loner
-(11, 43);  -- Bone Head
+(34, 2),   -- Mighty Blow
+(34, 6),   -- Thick Skull
+(34, 33),  -- Loner
+(34, 43),  -- Bone Head
+(34, 41);  -- Throw Team Mate
+
+-- Add Team Special Rules
+INSERT INTO base_team_special_rule (base_team_id, special_rule_id) VALUES
+(3, 4);

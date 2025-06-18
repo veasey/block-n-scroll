@@ -1,32 +1,62 @@
+-- Goblin Bruiser
 INSERT INTO base_team_player
-(id, name, description, category, base_team_id, category_regional_special_rule_id, ma, st, ag, pa, av, primary_skills, secondary_skills, cost, max_count)
+(id, name, description, category, base_team_id, category_regional_special_rule_id, ma, st, ag, pa, av, cost, max_count)
 VALUES
-(4, 'Black Orc', 'Tough and strong standard player', 'standard', 2, 1, 5, 5, 2, 2, 9, 'Strength', 'General', 140, 6),
-(5, 'Black Orc Thrower', 'Specialized thrower with strength', 'special', 2, 1, 5, 5, 2, 4, 9, 'Passing', 'Strength', 170, 1),
-(6, 'Black Orc Blitzer', 'Blitz-focused Black Orc', 'special', 2, 1, 5, 6, 2, 2, 10, 'Strength', 'General', 180, 2);
+(20, 'Goblin Bruiser', 'Agile goblin with thick skull', 'standard', 2, 1, 6, 2, 3, 4, 8, 45, 12);
 
--- Assuming IDs assigned as 1, 2, 3 for Black Orc, Thrower, Blitzer respectively:
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, primary, secondary) VALUES
+(20, 2, 1, 0),  -- Agility (Primary)
+(20, 1, 0, 1),  -- General (Secondary)
+(20, 4, 0, 1),  -- Passing (Secondary)
+(20, 3, 0, 1);  -- Strength (Secondary)
 
--- Black Orc starting skills
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(4, 1),  -- Block
-(4, 2),  -- Mighty Blow
-(4, 4);  -- Tackle
+(20, 11),  -- Dodge
+(20, 20),  -- Right Stuff
+(20, 67),  -- Stunty
+(20, 9);   -- Thick Skull
 
--- Black Orc Thrower starting skills
-INSERT INTO base_team_player_skill (base_team_player_id, skill_id)
-VALUES
-(5, 1),  -- Block
-(5, 2),  -- Mighty Blow
-(5, 12); -- Pass
-
+-- Black Orc
 INSERT INTO base_team_player
-(id, name, description, category, base_team_id, category_regional_special_rule_id, ma, st, ag, pa, av, primary_skills, secondary_skills, cost, max_count)
+(id, name, description, category, base_team_id, category_regional_special_rule_id, ma, st, ag, pa, av, cost, max_count)
 VALUES
-(7, 'Goblin', 'Nimble but fragile support players', 'standard', 2, 1, 6, 2, 3, 4, 7, 'Agility', 'General', 40, 12);
+(21, 'Black Orc', 'Strong and tough orc', 'standard', 2, 1, 4, 4, 4, 5, 10, 90, 6);
 
--- Assuming this is the 4th inserted position (ID = 4):
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, primary, secondary) VALUES
+(21, 1, 1, 0),  -- General (Primary)
+(21, 3, 1, 0),  -- Strength (Primary)
+(21, 2, 0, 1),  -- Agility (Secondary)
+(21, 4, 0, 1);  -- Passing (Secondary)
+
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(6, 11),  -- Dodge
-(6, 20),  -- Right Stuff
-(6, 44);  -- Stunty
+(21, 54),  -- Brawler
+(21, 3);   -- Grab
+
+-- Trained Troll
+INSERT INTO base_team_player
+(id, name, description, category, base_team_id, category_regional_special_rule_id, ma, st, ag, pa, av, cost, max_count)
+VALUES
+(22, 'Trained Troll', 'Big guy with multiple traits', 'special', 2, 1, 4, 5, 5, 5, 10, 115, 1);
+
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, primary, secondary) VALUES
+(22, 3, 1, 0),  -- Strength (Primary)
+(22, 2, 0, 1),  -- Agility (Secondary)
+(22, 1, 0, 1),  -- General (Secondary)
+(22, 4, 0, 1);  -- Passing (Secondary)
+
+INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
+(22, 49),  -- Always Hungry
+(22, 42),  -- Loner (3+)
+(22, 2),   -- Mighty Blow (+1)
+(22, 63),  -- Projectile Vomit
+(22, 43),  -- Really Stupid
+(22, 41),  -- Regeneration
+(22, 46);  -- Throw Team-Mate
+
+-- Add Team to Region
+INSERT INTO base_team_regional_rule (base_team_id, special_rule_id) VALUES
+(2, 1);
+
+-- Add Team Special Rules
+INSERT INTO base_team_special_rule (base_team_id, special_rule_id) VALUES
+(2, 1);
