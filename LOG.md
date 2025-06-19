@@ -94,3 +94,7 @@ Todo:
 Made primary skills, secondary skills, regional rules and race rules a hasMany join.
 Fixed existing team seeds.
 Mended some duff gen in the positional seeds and skills.
+
+---
+19 06 2025
+Continue putting in positional data.

@@ -91,4 +91,6 @@ INSERT INTO skill (id, name, description, type, category) VALUES
 (69, 'Unchanneled Fury', 'May lose activation on Block if roll low.', 'trait', 'EXT'),
 (70, 'Wild Animal', 'May roar and lose activation if roll low.', 'trait', 'EXT'),
 (71, 'Defensive', 'Cancels Guard skill on opponents during your turn.', 'normal', 'GEN'),
-(72, 'On The Ball', 'May move up to 3 squares when a pass or kick is declared by the opponent.', 'normal', 'GEN');
+(72, 'On The Ball', 'May move up to 3 squares when a pass or kick is declared by the opponent.', 'normal', 'GEN'),
+(73, 'Safe Pass', 'If a Pass Action fumbles, the ball is not dropped and remains in the thrower’s possession.', 'normal', 'PAS'),
+(74, 'Cloud Burster', 'Adds -1 modifier to the opposing player’s Interception roll for this player’s Pass Action.', 'normal', 'PAS');
