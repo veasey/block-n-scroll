@@ -36,10 +36,10 @@ INSERT INTO skill (id, name, description, type, category) VALUES
 -- Mutation (MUT) Skills
 (21, 'Tentacles', 'Opponent must make a Strength test to dodge away from the player.', 'normal', 'MUT'),
 (22, 'Extra Arms', '+1 to pick up, catch, or intercept the ball.', 'normal', 'MUT'),
-(23, 'Prehensile Tail', '-1 to opponents’ dodge rolls when moving away.', 'normal', 'MUT'),
+(23, 'Prehensile Tail', "-1 to opponents' dodge rolls when moving away.", 'normal', 'MUT'),
 (24, 'Two Heads', '+1 to Dodge rolls.', 'normal', 'MUT'),
 (25, 'Disturbing Presence', '-1 to pass, catch, or intercept rolls within 3 squares.', 'normal', 'MUT'),
-(26, 'Hypnotic Gaze', 'AG test to remove opponent’s tackle zones for a turn.', 'normal', 'MUT'),
+(26, 'Hypnotic Gaze', "AG test to remove opponent's tackle zones for a turn.", 'normal', 'MUT'),
 (27, 'Foul Appearance', 'Opponent must roll 2+ to block this player.', 'normal', 'MUT'),
 (28, 'Big Hand', 'Ignore tackle zones when picking up the ball.', 'normal', 'MUT'),
 (29, 'Very Long Legs', '+2 to Intercept rolls and +1 to Jump over players.', 'normal', 'MUT'),
@@ -64,8 +64,7 @@ INSERT INTO skill (id, name, description, type, category) VALUES
 (44, 'Stunty', '+1 to dodge, but more vulnerable to injury and no tackle zone negation.', 'trait', 'MUT'),
 (45, 'No Hands', 'Cannot pick up, catch, or intercept the ball.', 'trait', 'MUT'),
 (46, 'Throw Team-Mate', 'Can throw players with Right Stuff.', 'trait', 'MUT'),
-(47, 'Blood Lust', 'Roll 2+ or must bite a Thrall or lose turn.', 'trait', 'MUT'),
-(48, 'Nurgle’s Rot', 'Permanently adds a Rotter to your roster if opponent dies.', 'trait', 'MUT');
+(47, 'Blood Lust', 'Roll 2+ or must bite a Thrall or lose turn.', 'trait', 'MUT');
 
 INSERT INTO skill (id, name, description, type, category) VALUES
 (49, 'Always Hungry', 'May eat the teammate being thrown if throwing a team-mate.', 'trait', 'EXT'),
@@ -79,8 +78,8 @@ INSERT INTO skill (id, name, description, type, category) VALUES
 (57, 'Drunkard', '–1 penalty when rushing.', 'trait', 'EXT'),
 (58, 'Fan Favourite', 'Boosts kick‑off result.', 'trait', 'EXT'),
 (59, 'Hit and Run', 'May move one square after Block, ignoring Tackle Zones.', 'trait', 'EXT'),
-(60, 'Hypnotic Gaze', 'Remove opponent’s tackle zones after an agility test.', 'trait', 'EXT'),
-(61, 'Nurgle׳s Rot', 'Summon a Rotter when an opponent dies.', 'trait', 'EXT'),
+(60, 'Hypnotic Gaze', "Remove opponent's tackle zones after an agility test.", 'trait', 'EXT'),
+(61, "Nurgle's Rot", 'Summon a Rotter when an opponent dies.', 'trait', 'EXT'),
 (62, 'Pick‑Me‑Up', 'Prone teammates may stand at end of opponent turn on a 5+ roll.', 'trait', 'EXT'),
 (63, 'Projectile Vomit', 'Acid spit special action instead of Block.', 'trait', 'EXT'),
 (64, 'Secret Weapon', 'Sent‑off at end of drive.', 'trait', 'EXT'),
@@ -92,5 +91,7 @@ INSERT INTO skill (id, name, description, type, category) VALUES
 (70, 'Wild Animal', 'May roar and lose activation if roll low.', 'trait', 'EXT'),
 (71, 'Defensive', 'Cancels Guard skill on opponents during your turn.', 'normal', 'GEN'),
 (72, 'On The Ball', 'May move up to 3 squares when a pass or kick is declared by the opponent.', 'normal', 'GEN'),
-(73, 'Safe Pass', 'If a Pass Action fumbles, the ball is not dropped and remains in the thrower’s possession.', 'normal', 'PAS'),
-(74, 'Cloud Burster', 'Adds -1 modifier to the opposing player’s Interception roll for this player’s Pass Action.', 'normal', 'PAS');
+(73, 'Safe Pass', "If a Pass Action fumbles, the ball is not dropped and remains in the thrower's possession.", 'normal', 'PAS'),
+(74, 'Cloud Burster', "Adds -1 modifier to the opposing player's Interception roll for this player's Pass Action.", 'normal', 'PAS'),
+(75, 'Pass', 'Allows the player to reroll failed Pass actions.', 'normal', 'PAS'),
+(76, 'Accurate', '+1 modifier to passing rolls.', 'normal', 'PAS');
