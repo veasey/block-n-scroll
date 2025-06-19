@@ -11,34 +11,34 @@ VALUES
 (64, 'Deathroller', 'Legendary rolling war machine with multiple special traits', 'special', 6, 4, 7, 3, NULL, 11, 170000, 1, 5);
 
 -- Lineman
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type) VALUES
-(60, 2, 'primary'), -- Strength (S)
-(60, 4, 'primary'), -- General (G)
-(60, 1, 'secondary'); -- Passing (A)
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
+(60, 2, 1, 0), -- Strength (S)
+(60, 4, 1, 0), -- General (G)
+(60, 1, 0, 1); -- Passing (A)
 
 -- Runner
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type) VALUES
-(61, 3, 'primary'), -- Agility (AG)
-(61, 4, 'primary'), -- General (G)
-(61, 1, 'secondary'); -- Passing (P)
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
+(61, 3, 1, 0), -- Agility (AG)
+(61, 4, 1, 0), -- General (G)
+(61, 1, 0, 1); -- Passing (P)
 
 -- Blitzer
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type) VALUES
-(62, 2, 'primary'), -- Strength (S)
-(62, 4, 'primary'), -- General (G)
-(62, 1, 'secondary'); -- Passing (P)
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
+(62, 2, 1, 0), -- Strength (S)
+(62, 4, 1, 0), -- General (G)
+(62, 1, 0, 1); -- Passing (P)
 
 -- Troll Slayer
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type) VALUES
-(63, 2, 'primary'), -- Strength (S)
-(63, 4, 'primary'), -- General (G)
-(63, 1, 'secondary'); -- Passing (P)
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
+(63, 2, 1, 0), -- Strength (S)
+(63, 4, 1, 0), -- General (G)
+(63, 1, 0, 1); -- Passing (P)
 
 -- Deathroller
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type) VALUES
-(64, 4, 'primary'), -- General (G)
-(64, 3, 'secondary'), -- Agility (AG)
-(64, 1, 'secondary'); -- Passing (P)
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
+(64, 4, 1, 0), -- General (G)
+(64, 3, 0, 1), -- Agility (AG)
+(64, 1, 0, 1); -- Passing (P)
 
 
 -- Lineman (ID 60)
@@ -76,6 +76,6 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (64, 33); -- Stand Firm
 
 -- Add Team to Region
-INSERT INTO base_team_regional_rule (base_team_id, special_rule_id) VALUES
+INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES
 (6, 5), -- Old World Classic
 (6, 8); -- Worlds Edge Superleague 

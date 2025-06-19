@@ -30,30 +30,30 @@ VALUES
 (43, 'Enslaved Minotaur', 'Feral big guy under Chaos Dwarf control.', 'special', 4, 5, 5, 4, NULL, 9, 150000, 1, 2);
 
 -- Hobgoblin (ID 40)
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type) VALUES
-(40, 1, 'primary'),  -- General
-(40, 2, 'secondary'), -- Strength
-(40, 3, 'secondary'); -- Agility
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
+(40, 1, 1, 0),  -- General
+(40, 2, 0, 1), -- Strength
+(40, 3, 0, 1); -- Agility
 
 -- Chaos Dwarf Blocker (ID 41)
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type) VALUES
-(41, 1, 'primary'),  -- General
-(41, 2, 'primary'),  -- Strength
-(41, 3, 'secondary'), -- Agility
-(41, 5, 'secondary'); -- Mutations
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
+(41, 1, 1, 0),  -- General
+(41, 2, 1, 0),  -- Strength
+(41, 3, 0, 1), -- Agility
+(41, 5, 0, 1); -- Mutations
 
 -- Bull Centaur (ID 42)
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type) VALUES
-(42, 1, 'primary'),  -- General
-(42, 2, 'primary'),  -- Strength
-(42, 3, 'secondary'); -- Agility
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
+(42, 1, 1, 0),  -- General
+(42, 2, 1, 0),  -- Strength
+(42, 3, 0, 1); -- Agility
 
 -- Enslaved Minotaur (ID 43)
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type) VALUES
-(43, 2, 'primary'),  -- Strength
-(43, 1, 'secondary'), -- General
-(43, 3, 'secondary'), -- Agility
-(43, 5, 'secondary'); -- Mutations
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
+(43, 2, 1, 0),  -- Strength
+(43, 1, 0, 1), -- General
+(43, 3, 0, 1), -- Agility
+(43, 5, 0, 1); -- Mutations
 
 -- Hobgoblin: No starting skills
 
@@ -79,7 +79,7 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (43, 3);  -- Thick Skull
 
 -- Add Team to Region
-INSERT INTO base_team_regional_rule (base_team_id, special_rule_id) VALUES
+INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES
 (4, 1), -- badlands brawl
 (4, 8); -- world's edge
 

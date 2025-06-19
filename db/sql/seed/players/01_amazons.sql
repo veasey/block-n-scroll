@@ -54,5 +54,5 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (4, 71);   -- Defensive
 
 -- Add Team to Region
-INSERT INTO base_team_regional_rule (base_team_id, special_rule_id) VALUES
+INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES
 (1, 4);

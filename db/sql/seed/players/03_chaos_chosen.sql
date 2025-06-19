@@ -13,43 +13,43 @@ VALUES
 (1, 'Chaos Big Guys', 'Group for Chaos big guys like Minotaur, Troll, and Ogre');
 
 -- Chosen Blocker skill categories
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type)
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
-(30, 2, 'primary'),  -- Strength
-(30, 1, 'secondary'), -- General
-(30, 3, 'secondary'); -- Agility
+(30, 2, 1, 0),  -- Strength
+(30, 1, 0, 1), -- General
+(30, 3, 0, 1); -- Agility
 
 -- Chaos Beastman skill categories
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type)
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
-(31, 1, 'primary'),  -- General
-(31, 2, 'secondary'), -- Strength
-(31, 3, 'secondary'), -- Agility
-(31, 4, 'secondary'); -- Passing
+(31, 1, 1, 0),  -- General
+(31, 2, 0, 1), -- Strength
+(31, 3, 0, 1), -- Agility
+(31, 4, 0, 1); -- Passing
 
 -- Chaos Minotaur skill categories
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type)
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
-(32, 2, 'primary'),  -- Strength
-(32, 5, 'secondary'), -- Mutations
-(32, 3, 'secondary'), -- Agility
-(32, 1, 'secondary'); -- General
+(32, 2, 1, 0),  -- Strength
+(32, 5, 0, 1), -- Mutations
+(32, 3, 0, 1), -- Agility
+(32, 1, 0, 1); -- General
 
 -- Chaos Troll skill categories
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type)
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
-(33, 2, 'primary'),  -- Strength
-(33, 5, 'secondary'), -- Mutations
-(33, 3, 'secondary'), -- Agility
-(33, 1, 'secondary'); -- General
+(33, 2, 1, 0),  -- Strength
+(33, 5, 0, 1), -- Mutations
+(33, 3, 0, 1), -- Agility
+(33, 1, 0, 1); -- General
 
 -- Chaos Ogre skill categories
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type)
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
-(34, 2, 'primary'),  -- Strength
-(34, 5, 'secondary'), -- Mutations
-(34, 3, 'secondary'), -- Agility
-(34, 1, 'secondary'); -- General
+(34, 2, 1, 0),  -- Strength
+(34, 5, 0, 1), -- Mutations
+(34, 3, 0, 1), -- Agility
+(34, 1, 0, 1); -- General
 
 -- Beastman starting skills
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id)

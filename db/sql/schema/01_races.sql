@@ -29,9 +29,7 @@ CREATE TABLE base_team_special_rule (
     base_team_id INT NOT NULL,
     special_rule_id INT NOT NULL,
     FOREIGN KEY (base_team_id) REFERENCES base_team(id),
-    FOREIGN KEY (special_rule_id) REFERENCES race_special_rule(id),
-    name VARCHAR(100) NOT NULL,
-    description TEXT
+    FOREIGN KEY (special_rule_id) REFERENCES race_special_rule(id)
 );
 
 CREATE TABLE base_team_regional_rule (
@@ -39,9 +37,7 @@ CREATE TABLE base_team_regional_rule (
     base_team_id INT NOT NULL,
     regional_rule_id INT NOT NULL,
     FOREIGN KEY (base_team_id) REFERENCES base_team(id),
-    FOREIGN KEY (regional_rule_id) REFERENCES regional_special_rule(id),
-    name VARCHAR(100) NOT NULL,
-    description TEXT
+    FOREIGN KEY (regional_rule_id) REFERENCES regional_special_rule(id)
 );
 
 CREATE TABLE base_team_player (

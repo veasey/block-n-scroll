@@ -7,25 +7,25 @@ VALUES
 (73, 'Blitzer', 'Powerful, with Block and Side Step', 'standard', 7, 7, 3, 2, 3, 9, 115000, 2);
 
 -- Linemen
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type) VALUES
-(70, 3, 'primary'),  -- AG
-(70, 2, 'secondary'); -- S
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
+(70, 3, 1, 0),  -- AG
+(70, 2, 0, 1); -- S
 
 -- Thrower
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type) VALUES
-(71, 3, 'primary'),  -- AG
-(71, 1, 'primary'),  -- P
-(71, 2, 'secondary'); -- S
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
+(71, 3, 1, 0),  -- AG
+(71, 1, 1, 0),  -- P
+(71, 2, 0, 1); -- S
 
 -- Catcher
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type) VALUES
-(72, 3, 'primary'),  -- AG
-(72, 2, 'secondary'); -- S
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
+(72, 3, 1, 0),  -- AG
+(72, 2, 0, 1); -- S
 
 -- Blitzer
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type) VALUES
-(73, 3, 'primary'),  -- AG
-(73, 2, 'secondary'); -- S
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
+(73, 3, 1, 0),  -- AG
+(73, 2, 0, 1); -- S
 
 -- Thrower (Pass)
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
@@ -42,5 +42,5 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (73, 104); -- Side Step
 
 -- Add Team to Region
-INSERT INTO base_team_regional_rule (base_team_id, special_rule_id) VALUES
+INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES
 (7, 2); -- elven kingdom

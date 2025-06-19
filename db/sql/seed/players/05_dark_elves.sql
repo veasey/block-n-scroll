@@ -8,33 +8,33 @@ VALUES
 (54, 'Witch Elf', 'Agile and deadly with Dodge, Frenzy, Jump Up', 'special', 5, 7, 3, 5, 5, 8, 110000, 2, 4);
 
 -- Lineman
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type) VALUES
-(50, 3, 'primary'), -- Agility (AG)
-(50, 2, 'secondary'); -- Strength (S)
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
+(50, 3, 1, 0), -- Agility (AG)
+(50, 2, 0, 1); -- Strength (S)
 
 -- Runner
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type) VALUES
-(51, 3, 'primary'), -- Agility (AG)
-(51, 1, 'primary'), -- Passing (P)
-(51, 2, 'secondary'); -- Strength (S)
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
+(51, 3, 1, 0), -- Agility (AG)
+(51, 1, 1, 0), -- Passing (P)
+(51, 2, 0, 1); -- Strength (S)
 
 -- Blitzer
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type) VALUES
-(52, 3, 'primary'), -- Agility (AG)
-(52, 2, 'primary'), -- Strength (S)
-(52, 1, 'secondary'); -- Passing (P)
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
+(52, 3, 1, 0), -- Agility (AG)
+(52, 2, 1, 0), -- Strength (S)
+(52, 1, 0, 1); -- Passing (P)
 
 -- Assassin
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type) VALUES
-(53, 3, 'primary'), -- Agility (AG)
-(53, 2, 'primary'), -- Strength (S)
-(53, 1, 'secondary'); -- Passing (P)
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
+(53, 3, 1, 0), -- Agility (AG)
+(53, 2, 1, 0), -- Strength (S)
+(53, 1, 0, 1); -- Passing (P)
 
 -- Witch Elf
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, skill_category_type) VALUES
-(54, 3, 'primary'), -- Agility (AG)
-(54, 2, 'primary'), -- Strength (S)
-(54, 1, 'secondary'); -- Passing (P)
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
+(54, 3, 1, 0), -- Agility (AG)
+(54, 2, 1, 0), -- Strength (S)
+(54, 1, 0, 1); -- Passing (P)
 
 
 -- Lineman (ID 50) - no starting skills by default
@@ -59,5 +59,5 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (54, 24); -- Jump Up
 
 -- Add Team to Region
-INSERT INTO base_team_regional_rule (base_team_id, special_rule_id) VALUES
+INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES
 (5, 2); -- elven kingdom
