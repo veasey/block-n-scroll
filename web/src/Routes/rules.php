@@ -1,4 +1,5 @@
 <?php
+use App\Controllers\Rules\TeamController;
 use App\Models\Base\BaseTeam;
 use App\Models\Base\Skill;
 use Slim\Views\Twig;
@@ -21,29 +22,7 @@ $app->get('/rules/teams[.{format}]', function (Request $request, Response $respo
     return Twig::fromRequest($request)->render($response, 'rules/teams.twig', ['teams' => $teams]);
 });
 
-$app->get('/rules/teams/{team_id}[.{format}]', function (Request $request, Response $response, array $args) use ($app) {
-    $format = $args['format'] ?? 'html';
-
-    $teamModel = new BaseTeam();
-    $team = $teamModel->find($args['team_id']);
-    if (!$team || $team->is_hidden) {
-        return $response->withStatus(404)->write('Team not found');
-    }
-    
-    $data = [
-        'team' => $team,
-        'positions' => $team->players,
-        'special_rules' => $team->special_rules,
-        'regional_rules' => $team->regional_rules
-    ];
-
-    if ($format === 'json') {
-        $response->getBody()->write(json_encode($data));
-        return $response->withHeader('Content-Type', 'application/json');
-    }
-
-    return Twig::fromRequest($request)->render($response, 'rules/team.twig', $data);
-});
+$app->get('/rules/teams/{team_id}[.{format}]', TeamController::class . ':getTeam');
 
 $app->get('/rules/skills[.{format}]', function (Request $request, Response $response, array $args) use ($app) {
     $format = $args['format'] ?? 'html';

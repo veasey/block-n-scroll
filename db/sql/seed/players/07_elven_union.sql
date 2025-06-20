@@ -29,17 +29,17 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 
 -- Thrower (Pass)
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(71, 101);  -- Pass
+(71, 75);  -- Pass
 
 -- Catcher (Catch, Nerves of Steel)
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(72, 102),  -- Catch
-(72, 103);  -- Nerves of Steel
+(72, 12),  -- Catch
+(72, 38);  -- Nerves of Steel
 
 -- Blitzer (Block, Side Step)
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (73, 1),  -- Block
-(73, 104); -- Side Step
+(73, 18); -- Side Step
 
 -- Add Team to Region
 INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES

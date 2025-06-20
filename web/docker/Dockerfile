@@ -15,8 +15,8 @@ WORKDIR /var/www/html
 # Don't COPY web/ here – it's mounted as a volume
 
 # Run composer install separately on build context (optional)
-COPY web/composer.json web/composer.lock ./
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader || true
+COPY web/composer.json composer.json
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
 # Set correct DocumentRoot
 RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|g' /etc/apache2/sites-available/000-default.conf

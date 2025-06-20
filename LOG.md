@@ -98,3 +98,11 @@ Mended some duff gen in the positional seeds and skills.
 ---
 19 06 2025
 Continue putting in positional data.
+
+---
+20 06 2025
+Added Rules Team Controller to seperate data presentation logic, and add on its own layer in controller.
+Added helper for formatting logic.
+Had to add TWIG to container, to allow creation of controllers (removing logic from routes file)
+Added reroll to amazon team as I realised I had forgotten to add rerolls to teams.
+- [ ] add reroll cost to existing teams, and continue adding positional data.

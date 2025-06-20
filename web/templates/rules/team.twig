@@ -34,18 +34,18 @@
             <tbody>
                 {% for pos in positions %}
                 <tr>
-                    <td>{{ pos.name }}</td>
+                    <td>{{ pos.player.name }}</td>
                     <td>
-                        {% for skill in pos.skills %}
+                        {% for skill in pos.player.skills %}
                             <a href="/rules/skill/{{ skill.id }}">
                                 {{ skill.name }}{% if not loop.last %}, {% endif %}
                             </a>
                         {% endfor %}
                     </td>
-                    <td>{{ pos.primarySkills }}</td>
-                    <td>{{ pos.secondarySkills }}</td>
-                    <td>{{ pos.cost }}k</td>
-                    <td>{{ pos.max_count == 0 ? 'Unlimited' : pos.max_count }}</td>
+                    <td>{{ pos.primary_skill_initials }}</td>
+                    <td>{{ pos.secondary_skill_initials }}</td>
+                    <td>{{ pos.player.cost }}k</td>
+                    <td>{{ pos.player.max_count == 0 ? 'Unlimited' : pos.player.max_count }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
