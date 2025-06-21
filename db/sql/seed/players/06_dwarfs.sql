@@ -1,5 +1,7 @@
 /* max rerolls */
 UPDATE base_team SET max_rerolls = 6 WHERE name = 'Dwarf';
+/* reroll cost */
+UPDATE base_team SET reroll_cost = 50 WHERE id = 6;
 
 INSERT INTO base_team_player
 (id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count, exclusive_group_id)

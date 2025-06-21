@@ -1,3 +1,6 @@
+/* reroll cost */
+UPDATE base_team SET reroll_cost = 50 WHERE id = 8;
+
 INSERT INTO base_team_player
 (id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count)
 VALUES
@@ -6,38 +9,38 @@ VALUES
 (82, 'Catcher', 'Fast receiver with Catch', 'standard', 8, 8, 3, 2, 5, 8, 90000, 4),
 (83, 'Blitzer', 'Block specialist with good movement', 'standard', 8, 7, 3, 2, 4, 9, 100000, 2);
 
--- Lineman
+-- Lineman skill access
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (80, 3, 1, 0),  -- AG
 (80, 2, 0, 1); -- S
 
--- Thrower
+-- Thrower skill access
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (81, 3, 1, 0),  -- AG
 (81, 1, 1, 0),  -- P
 (81, 2, 0, 1); -- S
 
--- Catcher
+-- Catcher skill access
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (82, 3, 1, 0),  -- AG
 (82, 2, 0, 1); -- S
 
--- Blitzer
+-- Blitzer skill access
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (83, 3, 1, 0),  -- AG
 (83, 2, 0, 1); -- S
 
--- Thrower (Cloud Burster, Pass, Safe Pass)
+-- Thrower starting skills
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(81, 105),  -- Cloud Burster
-(81, 101),  -- Pass
-(81, 106);  -- Safe Pass
+(81, 74),  -- Cloud Burster
+(81, 30),  -- Pass
+(81, 37);  -- Safe Throw
 
--- Catcher (Catch)
+-- Catcher starting skills
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(82, 102);  -- Catch
+(82, 12);  -- Catch
 
--- Blitzer (Block)
+-- Blitzer starting skills
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (83, 1);  -- Block
 

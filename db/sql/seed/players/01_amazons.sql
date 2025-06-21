@@ -2,9 +2,6 @@ DELETE FROM base_team_player;
 DELETE FROM base_team_player_skill;
 DELETE FROM base_team_player_skill_category;
 
-/* reroll cost */
-UPDATE base_team SET reroll_cost = 60 WHERE id = 1;
-
 INSERT INTO base_team_player
 (id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count)
 VALUES

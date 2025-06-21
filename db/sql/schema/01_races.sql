@@ -5,7 +5,7 @@ CREATE TABLE base_team (
     name VARCHAR(100),
     description TEXT,
     tier INT,
-    reroll_cost INT DEFAULT 0,  -- Cost of a team reroll
+    reroll_cost INT DEFAULT 60,  -- Cost of a team reroll
     max_rerolls INT DEFAULT 8,  -- Maximum number of rerolls a team can have
     is_hidden BOOLEAN DEFAULT FALSE,  -- Whether the team is hidden
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

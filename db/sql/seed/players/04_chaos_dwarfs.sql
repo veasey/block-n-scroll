@@ -1,9 +1,5 @@
-/*
-INSERT INTO base_team_special_rule (base_team_id, special_rule_id) VALUES 
-(4, 1),  -- Badlands Brawl
-(4, 2),  -- Favoured Of
-(4, 3);  -- Worlds Edge Superleague
-*/
+/* reroll cost */
+UPDATE base_team SET reroll_cost = 70 WHERE id = 4;
 
 -- Hobgoblin: ID 40
 INSERT INTO base_team_player
