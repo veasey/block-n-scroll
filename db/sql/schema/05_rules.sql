@@ -3,8 +3,6 @@
 CREATE TABLE skill (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
-    type ENUM('normal', 'double', 'trait') NOT NULL,
-    -- 'normal' for regular skills, 'double' for double skills, 'trait' for special abilities
     category VARCHAR(50),
     description TEXT
 );
@@ -43,4 +41,15 @@ CREATE TABLE player_skill (
     FOREIGN KEY (player_id) REFERENCES player(id),
     FOREIGN KEY (skill_id) REFERENCES skill(id),
     UNIQUE(player_id, skill_id)  -- prevent duplicate skill assignments
+);
+
+CREATE TABLE skill_random_selection (
+    id SERIAL PRIMARY KEY,
+    first_d6 INT NOT NULL,
+    second_d6 INT NOT NULL,
+    agility_skill VARCHAR(255),
+    general_skill VARCHAR(255),
+    mutations_skill VARCHAR(255),
+    passing_skill VARCHAR(255),
+    strength_skill VARCHAR(255)
 );
