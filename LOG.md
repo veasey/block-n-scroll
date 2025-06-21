@@ -112,3 +112,7 @@ Added reroll to amazon team as I realised I had forgotten to add rerolls to team
 Added humans and imperial nobility.
 Railway trial expired, possibly will look into hosting on AWS.
 - [ ] Double check all skills, tidy up file, possible revisit existing race positional seed scripts if I change IDs round (or maybe go off skill name instead)
+
+Skills missing traits, such as Stunty and Swarming.
+Player Seeds need updating and cross referencing before adding any more.
+Potentially schema needs changing so random rolls are included for when randomising skills.
