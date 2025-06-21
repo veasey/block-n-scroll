@@ -105,4 +105,9 @@ Added Rules Team Controller to seperate data presentation logic, and add on its 
 Added helper for formatting logic.
 Had to add TWIG to container, to allow creation of controllers (removing logic from routes file)
 Added reroll to amazon team as I realised I had forgotten to add rerolls to teams.
-- [ ] add reroll cost to existing teams, and continue adding positional data.
+- [x] add reroll cost to existing teams, and continue adding positional data.
+
+---
+21 06 2025
+Added humans and imperial nobility.
+Railway trial expired, possibly will look into hosting on AWS.
