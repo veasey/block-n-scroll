@@ -56,15 +56,24 @@ INSERT INTO skill (id, name, description, type, category) VALUES
 (38, 'Nerves of Steel', 'Ignore tackle zones on catch, pass, or intercept rolls.', 'normal', 'GEN'),
 (39, 'Shadowing', 'Opponent must beat your MA on 2d6 to escape after dodging away.', 'normal', 'GEN'),
 (40, 'Dump-Off', 'Attempt a quick pass if blocked.', 'normal', 'GEN'),
+(71, 'Defensive', 'Cancels Guard skill on opponents during your turn.', 'normal', 'GEN'),
+(72, 'On The Ball', 'May move up to 3 squares when a pass or kick is declared by the opponent.', 'normal', 'GEN'),
+
+-- Passing Skills
+(73, 'Safe Pass', "If a Pass Action fumbles, the ball is not dropped and remains in the thrower's possession.", 'normal', 'PAS'),
+(74, 'Cloud Burster', "Adds -1 modifier to the opposing player's Interception roll for this player's Pass Action.", 'normal', 'PAS'),
+(75, 'Pass', 'Allows the player to reroll failed Pass actions.', 'normal', 'PAS'),
+(76, 'Accurate', '+1 modifier to passing rolls.', 'normal', 'PAS'),
+(77, 'Running Pass', 'If this player performs a Quick Pass action, their activation does not have to end once the pass is resolved. If you wish and if this player has not used their full Movement Allowance, they may continue to move after resolving the pass.', 'normal', 'PAS'),
 
 -- Traits
-(41, 'Regeneration', 'On a 4+, recover instead of being removed from game.', 'trait', 'MUT'),
-(42, 'Loner', 'Must roll 4+ to use a team reroll.', 'trait', 'GEN'),
-(43, 'Really Stupid', 'Roll 4+ to act, 2+ if adjacent to team-mate.', 'trait', 'MUT'),
-(44, 'Stunty', '+1 to dodge, but more vulnerable to injury and no tackle zone negation.', 'trait', 'MUT'),
-(45, 'No Hands', 'Cannot pick up, catch, or intercept the ball.', 'trait', 'MUT'),
-(46, 'Throw Team-Mate', 'Can throw players with Right Stuff.', 'trait', 'MUT'),
-(47, 'Blood Lust', 'Roll 2+ or must bite a Thrall or lose turn.', 'trait', 'MUT');
+(41, 'Regeneration', 'On a 4+, recover instead of being removed from game.', 'trait', 'TRAIT'),
+(42, 'Loner', 'Must roll 4+ to use a team reroll.', 'trait', 'TRAIT'),
+(43, 'Really Stupid', 'Roll 4+ to act, 2+ if adjacent to team-mate.', 'trait', 'TRAIT'),
+(44, 'Stunty', '+1 to dodge, but more vulnerable to injury and no tackle zone negation.', 'trait', 'TRAIT'),
+(45, 'No Hands', 'Cannot pick up, catch, or intercept the ball.', 'trait', 'TRAIT'),
+(46, 'Throw Team-Mate', 'Can throw players with Right Stuff.', 'trait', 'TRAIT'),
+(47, 'Blood Lust', 'Roll 2+ or must bite a Thrall or lose turn.', 'trait', 'TRAIT');
 
 INSERT INTO skill (id, name, description, type, category) VALUES
 (49, 'Always Hungry', 'May eat the teammate being thrown if throwing a team-mate.', 'trait', 'EXT'),
@@ -88,13 +97,4 @@ INSERT INTO skill (id, name, description, type, category) VALUES
 (67, 'Stunty', '+1 Dodge, fragile, ignore tackle zones.', 'trait', 'EXT'),
 (68, 'Timmm‑ber!', '+1 to stand‑up roll if MA≤2.', 'trait', 'EXT'),
 (69, 'Unchanneled Fury', 'May lose activation on Block if roll low.', 'trait', 'EXT'),
-(70, 'Wild Animal', 'May roar and lose activation if roll low.', 'trait', 'EXT'),
-(71, 'Defensive', 'Cancels Guard skill on opponents during your turn.', 'normal', 'GEN'),
-(72, 'On The Ball', 'May move up to 3 squares when a pass or kick is declared by the opponent.', 'normal', 'GEN'),
-
-
-(73, 'Safe Pass', "If a Pass Action fumbles, the ball is not dropped and remains in the thrower's possession.", 'normal', 'PAS'),
-(74, 'Cloud Burster', "Adds -1 modifier to the opposing player's Interception roll for this player's Pass Action.", 'normal', 'PAS'),
-(75, 'Pass', 'Allows the player to reroll failed Pass actions.', 'normal', 'PAS'),
-(76, 'Accurate', '+1 modifier to passing rolls.', 'normal', 'PAS'),
-(77, 'Running Pass', 'If this player performs a Quick Pass action, their activation does not have to end once the pass is resolved. If you wish and if this player has not used their full Movement Allowance, they may continue to move after resolving the pass.', 'normal', 'PAS');
+(70, 'Wild Animal', 'May roar and lose activation if roll low.', 'trait', 'EXT');
