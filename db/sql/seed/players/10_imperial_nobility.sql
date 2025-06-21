@@ -43,30 +43,30 @@ INSERT INTO base_team_player_skill_category  (base_team_player_id, skill_categor
 
 /* Imperial Retainer Lineman (Fend) */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(100, 21);  -- Fend
+(100, 16);  -- Fend
 
 /* Imperial Thrower (Pass, Running Pass) */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(101, 101),  -- Pass
-(101, 107);  -- Running Pass
+(101, 75),  -- Pass
+(101, 77);  -- Running Pass
 
 /* Imperial Noble Blitzer (Block, Catch) */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (102, 1),  -- Block
-(102, 102);  -- Catch
+(102, 12);  -- Catch
 
 /* Imperial Bodyguard (Stand Firm, Wrestle) */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(103, 47),  -- Stand Firm
-(103, 13);  -- Wrestle
+(103, 7),  -- Stand Firm
+(103, 10);  -- Wrestle
 
 /* Ogre (Bone Head, Loner (4+), Mighty Blow (+1), Thick Skull, Throw Team Mate) */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(104, 63),  -- Bone Head
-(104, 95),  -- Loner (4+)
-(104, 17),  -- Mighty Blow (+1)
-(104, 37),  -- Thick Skull
-(104, 56);  -- Throw Team Mate
+(104, 53),  -- Bone Head
+(104, 42),  -- Loner (4+)
+(104, 2),  -- Mighty Blow (+1)
+(104, 9),  -- Thick Skull
+(104, 46);  -- Throw Team Mate
 
 /* Regional Rule */
 INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES

@@ -91,7 +91,10 @@ INSERT INTO skill (id, name, description, type, category) VALUES
 (70, 'Wild Animal', 'May roar and lose activation if roll low.', 'trait', 'EXT'),
 (71, 'Defensive', 'Cancels Guard skill on opponents during your turn.', 'normal', 'GEN'),
 (72, 'On The Ball', 'May move up to 3 squares when a pass or kick is declared by the opponent.', 'normal', 'GEN'),
+
+
 (73, 'Safe Pass', "If a Pass Action fumbles, the ball is not dropped and remains in the thrower's possession.", 'normal', 'PAS'),
 (74, 'Cloud Burster', "Adds -1 modifier to the opposing player's Interception roll for this player's Pass Action.", 'normal', 'PAS'),
 (75, 'Pass', 'Allows the player to reroll failed Pass actions.', 'normal', 'PAS'),
-(76, 'Accurate', '+1 modifier to passing rolls.', 'normal', 'PAS');
+(76, 'Accurate', '+1 modifier to passing rolls.', 'normal', 'PAS'),
+(77, 'Running Pass', 'If this player performs a Quick Pass action, their activation does not have to end once the pass is resolved. If you wish and if this player has not used their full Movement Allowance, they may continue to move after resolving the pass.', 'normal', 'PAS');
