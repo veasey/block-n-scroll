@@ -174,7 +174,9 @@
 </details>
 
 <summary><strong>22 June 2025</strong></summary>
-- Skill Seed SQL fettling  
+- Changed back slashed apostrophes in skill.sql to double apostrophes
+- Checked SKILLS on skills template.
+- updated Amazon and Black Orc Player seed files with new skill IDs.
 </details>
 
 
