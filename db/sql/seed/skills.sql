@@ -88,7 +88,7 @@ INSERT INTO skill (id, name, category, description) VALUES
 (76, 'Decay', 'Extraordinary', 'Causes injury on opponent knockdowns.'),
 (77, 'Drunkard', 'Extraordinary', 'May reroll failed Block dice but suffers penalties elsewhere.'),
 (78, 'Fan Favorite', 'Extraordinary', 'Can use re-rolls on any dice rolls during the game.'),
-(79, 'Hit and Run', 'Extraordinary', 'May make multiple Blitzes or Blocks per turn.'),
+(79, 'Hit and Run', 'Extraordinary', 'After a player with this Trait performs a Block action, they may immediately move one free square ignoring Tackle Zones so long as they are still Standing. They must ensure that after this free move, they are not Marked by or Marking any opposition players.'),
 (80, 'Hypnotic Gaze', 'Extraordinary', 'Replaces Block with Agility test to remove opponent tackle zones.'),
 (81, 'Kick Team-mate', 'Extraordinary', 'May kick a team-mate to move them instead of the ball.'),
 (82, 'Loner', 'Extraordinary', 'Must roll 4+ to use team rerolls.'),
@@ -114,3 +114,24 @@ INSERT INTO skill (id, name, category, description) VALUES
 (102, 'Trickster', 'Extraordinary', 'Can reroll opponent''s successful dice rolls once per turn.'),
 (103, 'Unchannelled Fury', 'Extraordinary', 'Must always Block an opponent when able.');
 
+INSERT INTO skill_category (id, name, description) VALUES
+(1, 'General', 'General skills and intelligence-based actions.'),
+(2, 'Agility', 'Skills that improve dodging, catching, and movement agility.'),
+(3, 'Strength', 'Skills that enhance physical strength and blocking capabilities.'),
+(4, 'Passing', 'Skills that improve passing and ball handling.'),
+(5, 'Mutations', 'Special skills related to mutations and unique traits.');
+
+INSERT INTO skill_random_selection
+(first_d6, second_d6, agility_skill, general_skill, mutations_skill, passing_skill, strength_skill) VALUES
+(1, 1, 'Catch', 'Block', 'Big Hand', 'Accurate', 'Arm Bar'),
+(1, 2, 'Diving Catch', 'Dauntless', 'Claws', 'Cannoneer', 'Brawler'),
+(1, 3, 'Diving Tackle', 'Dirty Player (+1)', 'Disturbing Presence*', 'Cloud Burster', 'Break Tackle'),
+(1, 4, 'Dodge', 'Fend', 'Extra Arms', 'Dump-off', 'Grab'),
+(1, 5, 'Defensive', 'Frenzy*', 'Foul Appearance*', 'Fumblerooskie', 'Guard'),
+(1, 6, 'Jump Up', 'Kick', 'Horns', 'Hail Mary Pass', 'Juggernaut'),
+(2, 1, 'Leap', 'Pro', 'Iron Hard Skin', 'Leader', 'Mighty Blow (+1)'),
+(2, 2, 'Safe Pair of Hands', 'Shadowing', 'Monstrous Mouth', 'Nerves of Steel', 'Multiple Block'),
+(2, 3, 'Sidestep', 'Strip Ball', 'Prehensile Tail', 'On the Ball', 'Pile Driver'),
+(2, 4, 'Sneaky Git', 'Sure Hands', 'Tentacles', 'Pass', 'Stand Firm'),
+(2, 5, 'Sprint', 'Tackle', 'Two Heads', 'Running Pass', 'Strong Arm'),
+(2, 6, 'Sure Feet', 'Wrestle', 'Very Long Legs', 'Safe Pass', 'Thick Skull');

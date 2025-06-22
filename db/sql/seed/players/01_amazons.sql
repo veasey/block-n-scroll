@@ -38,25 +38,25 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 
 -- Linewomen (ID 1)
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(1, 20);  -- Dodge
+(1, 19);  -- Dodge
 
 -- Throwers (ID 2)
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(2, 20),   -- Dodge
-(2, 72),   -- On The Ball
-(2, 36),   -- Pass
-(2, 37);   -- Safe Throw
+(2, 19),   -- Dodge
+(2, 36),   -- On The Ball
+(2, 37),   -- Pass
+(2, 40);   -- Safe Throw
 
 -- Blitzers (ID 3)
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(3, 20),   -- Dodge
-(3, 59),   -- Hit and Run (added to skills import)
-(3, 26);   -- Jump Up
+(3, 19),   -- Dodge
+(3, 79),   -- Hit and Run (added to skills import)
+(3, 20);   -- Jump Up
 
 -- Blockers (ID 4)
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(4, 11),   -- Guard
-(4, 71);   -- Defensive
+(4, 46),   -- Guard
+(4, 16);   -- Defensive
 
 -- Add Team to Region
 INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES
