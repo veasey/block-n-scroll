@@ -1,4 +1,4 @@
-INSERT INTO skills (id, name, type, description) VALUES
+INSERT INTO skill (id, name, type, description) VALUES
 -- GENERAL
 (1, 'Block', 'General', 'This player does not get Knocked Down when blocking.'),
 (2, 'Dauntless', 'General', 'When blocking a stronger opponent, roll D6 + own Strength; if equal or higher, use own Strength for Block.'),
@@ -19,7 +19,7 @@ INSERT INTO skills (id, name, type, description) VALUES
 (15, 'Catch', 'Agility', 'Allows rerolling failed Catch rolls from accurate passes.'),
 (16, 'Defensive', 'Agility', 'Improves ability to intercept or catch in defense.'),
 (17, 'Diving Catch', 'Agility', 'Can catch the ball from adjacent squares and gains +1 to Catch rolls for accurate passes.'),
-(18, 'Diving Tackle', 'Agility', 'May go prone to apply -2 to adjacent opponent\'s Dodge roll when they attempt to dodge away.'),
+(18, 'Diving Tackle', 'Agility', 'May go prone to apply -2 to adjacent opponent''s Dodge roll when they attempt to dodge away.'),
 (19, 'Dodge', 'Agility', 'Allows rerolling failed Dodge rolls.'),
 (20, 'Jump Up', 'Agility', 'Can stand up for free and block immediately without using movement.'),
 (21, 'Leap', 'Agility', 'Leaps into adjacent squares ignoring tackle zones, applying -1 per opposing tackle zone entered.'),
@@ -34,7 +34,7 @@ INSERT INTO skills (id, name, type, description) VALUES
 (28, 'Cannoneer', 'Passing', '+1 to Passing Ability tests for Long and Long Bomb passes.'),
 (29, 'Cloud Burster', 'Passing', '-1 to opponent Intercept rolls for Long Bomb passes.'),
 (30, 'Dump-Off', 'Passing', 'Allows a quick pass to a nearby teammate after a Block action.'),
-(31, 'Fumblerooskie', 'Passing', 'If Pass action fails, ball stays in the passer\'s square instead of turning over.'),
+(31, 'Fumblerooskie', 'Passing', 'If Pass action fails, ball stays in the passer''s square instead of turning over.'),
 (32, 'Give and Go', 'Passing', 'After passing, allows moving again for a short distance.'),
 (33, 'Hail Mary Pass', 'Passing', 'Declares a pass that automatically misses, but may target any square on the pitch.'),
 (34, 'Leader', 'Passing', 'Grants one additional team reroll per half.'),
@@ -51,7 +51,7 @@ INSERT INTO skills (id, name, type, description) VALUES
 (43, 'Brawler', 'Strength', 'May reroll one Both Down result when blocking during own activation.'),
 (44, 'Break Tackle', 'Strength', 'Once per activation, may use Strength instead of Agility for Dodge.'),
 (45, 'Grab', 'Strength', 'May push opponents into any adjacent square, negating Side Step.'),
-(46, 'Guard', 'Strength', 'Can assist Blocks regardless of being in opponent\'s tackle zone.'),
+(46, 'Guard', 'Strength', 'Can assist Blocks regardless of being in opponent''s tackle zone.'),
 (47, 'Juggernaut', 'Strength', 'During Blitz, treats Both Down results as Push; negates Stand Firm and Wrestle.'),
 (48, 'Mighty Blow', 'Strength', '+1 to Armour or Injury roll after Block.'),
 (49, 'Multiple Block', 'Strength', 'Blocks two adjacent opponents simultaneously with separate dice pools.'),
@@ -63,8 +63,8 @@ INSERT INTO skills (id, name, type, description) VALUES
 
 -- MUTATION
 (55, 'Big Hand', 'Mutation', 'Ignores tackle zones when picking up the ball.'),
-(56, 'Claws', 'Mutation', 'Armour breaks on 8+ regardless of target\'s Armour Value.'),
-(57, 'Disturbing Presence', 'Mutation', '-1 to opponents’ Passing, Catch, or Intercept tests within 3 squares.'),
+(56, 'Claws', 'Mutation', 'Armour breaks on 8+ regardless of target''s Armour Value.'),
+(57, 'Disturbing Presence', 'Mutation', '-1 to opponents'' Passing, Catch, or Intercept tests within 3 squares.'),
 (58, 'Extra Arms', 'Mutation', '+1 to Pick-up, Intercept, and Catch rolls.'),
 (59, 'Foul Appearance', 'Mutation', 'Opponent rolls D6 before Block; on 1, the Block automatically fails.'),
 (60, 'Horns', 'Mutation', '+1 Strength when Blitzing.'),
@@ -111,6 +111,6 @@ INSERT INTO skills (id, name, type, description) VALUES
 (99, 'Throw Team-Mate', 'Extraordinary', 'May throw teammates to other squares.'),
 (100, 'Timmm-ber!', 'Extraordinary', 'May chop down opponents blocking movement.'),
 (101, 'Titchy', 'Extraordinary', 'Small stature; harder to hit with Blocks.'),
-(102, 'Trickster', 'Extraordinary', 'Can reroll opponent’s successful dice rolls once per turn.'),
+(102, 'Trickster', 'Extraordinary', 'Can reroll opponent''s successful dice rolls once per turn.'),
 (103, 'Unchannelled Fury', 'Extraordinary', 'Must always Block an opponent when able.');
 
