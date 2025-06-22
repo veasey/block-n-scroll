@@ -1,4 +1,4 @@
-INSERT INTO skill (id, name, type, description) VALUES
+INSERT INTO skill (id, name, category, description) VALUES
 -- GENERAL
 (1, 'Block', 'General', 'This player does not get Knocked Down when blocking.'),
 (2, 'Dauntless', 'General', 'When blocking a stronger opponent, roll D6 + own Strength; if equal or higher, use own Strength for Block.'),
