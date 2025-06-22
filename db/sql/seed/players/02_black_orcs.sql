@@ -11,10 +11,10 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 (20, 3, 0, 1);  -- Strength (Secondary)
 
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(20, 11),  -- Dodge
-(20, 20),  -- Right Stuff
-(20, 67),  -- Stunty
-(20, 9);   -- Thick Skull
+(20, 19),  -- Dodge
+(20, 91),  -- Right Stuff
+(20, 95),  -- Stunty
+(20, 54);   -- Thick Skull
 
 -- Black Orc
 INSERT INTO base_team_player
@@ -29,8 +29,8 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 (21, 4, 0, 1);  -- Passing (Secondary)
 
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(21, 54),  -- Brawler
-(21, 3);   -- Grab
+(21, 43),  -- Brawler
+(21, 45);   -- Grab
 
 -- Trained Troll
 INSERT INTO base_team_player
@@ -45,13 +45,13 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 (22, 4, 0, 1);  -- Passing (Secondary)
 
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(22, 49),  -- Always Hungry
+(22, 67),  -- Always Hungry
 (22, 42),  -- Loner (3+)
-(22, 2),   -- Mighty Blow (+1)
-(22, 63),  -- Projectile Vomit
-(22, 43),  -- Really Stupid
-(22, 41),  -- Regeneration
-(22, 46);  -- Throw Team-Mate
+(22, 48),   -- Mighty Blow (+1)
+(22, 88),  -- Projectile Vomit
+(22, 89),  -- Really Stupid
+(22, 90),  -- Regeneration
+(22, 99);  -- Throw Team-Mate
 
 -- Add Team to Region
 INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES
