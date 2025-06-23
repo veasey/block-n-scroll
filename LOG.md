@@ -183,5 +183,7 @@
 - Continue to update now incorrect skill IDs in team position seed data. Added Lizardmen
 - **To do:**  
   - [ ] Investigate why DB container falls over after initial seeding and needs bumping.
+  - [ ] Continue adding team positional data.
+     - [ ] Remaining Tier 1 Teams.
 </details>
 
