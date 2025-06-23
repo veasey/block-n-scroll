@@ -44,7 +44,7 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 
 -- Runner (ID 51)
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(51, 21); -- Dump-Off
+(51, 30); -- Dump-Off
 
 -- Blitzer (ID 52)
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
@@ -52,14 +52,14 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 
 -- Assassin (ID 53)
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(53, 22), -- Shadowing
-(53, 23); -- Stab
+(53, 10), -- Shadowing
+(53, 93); -- Stab
 
 -- Witch Elf (ID 54)
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(54, 11), -- Dodge
-(54, 14), -- Frenzy
-(54, 24); -- Jump Up
+(54, 19), -- Dodge
+(54, 5), -- Frenzy
+(54, 20); -- Jump Up
 
 -- Add Team to Region
 INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES

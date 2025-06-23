@@ -156,7 +156,7 @@
 - **Done:**  
   - [x] Added reroll cost to existing teams  
 - **In progress:**  
-  - [ ] Continue seeding positional data  
+  - [x] Continue seeding positional data  
 </details>
 
 <details>
@@ -165,9 +165,9 @@
 - Added humans and imperial nobility factions  
 - Railway trial expired; considering AWS hosting options  
 - **To do:**  
-  - [ ] Double-check all skills and tidy seed files  
-  - [ ] Revisit existing race and positional seed scripts (consider switching from ID-based to skill name-based referencing)  
-  - [ ] Update player seeds and cross-reference before further additions  
+  - [x] Double-check all skills and tidy seed files  
+  - [x] Revisit existing race and positional seed scripts (consider switching from ID-based to skill name-based referencing)  
+  - [x] Update player seeds and cross-reference before further additions  
 - **Done:**  
   - [x] Added missing skill traits (e.g., Stunty, Swarming)  
   - [x] Reviewed schema to include random roll mechanics for skill randomization  
@@ -179,4 +179,9 @@
 - updated Amazon and Black Orc Player seed files with new skill IDs.
 </details>
 
+<summary><strong>23 June 2025</strong></summary>
+- Continue to update now incorrect skill IDs in team position seed data. Added Lizardmen
+- **To do:**  
+  - [ ] Investigate why DB container falls over after initial seeding and needs bumping.
+</details>
 

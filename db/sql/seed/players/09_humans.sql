@@ -53,13 +53,13 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 
 /* Thrower Starting Skills (Pass, Sure Hands) */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(91, 30), -- Sure Hands
+(91, 12), -- Sure Hands
 (91, 37); -- Pass
 
 /* Catcher Starting Skills (Catch, Dodge) */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(92, 12), -- Catch
-(92, 11); -- Dodge
+(92, 16), -- Catch
+(92, 19); -- Dodge
 
 /* Blitzer Starting Skills (Block) */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
@@ -67,17 +67,17 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 
 /* Halfling Starting Skills (Dodge, Right Stuff, Stunty) */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(94, 11), -- Dodge
-(94, 20), -- Right Stuff
-(94, 44); -- Stunty
+(94, 19), -- Dodge
+(94, 91), -- Right Stuff
+(94, 95); -- Stunty
 
 /* Ogre Starting Skills (Bone Head, Loner 4+, Mighty Blow +1, Thick Skull, Throw Team Mate) */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(95, 53), -- Bone Head
-(95, 42), -- Loner (4+)
-(95, 2),  -- Mighty Blow (+1)
-(95, 9),  -- Thick Skull
-(95, 46); -- Throw Team Mate
+(95, 73), -- Bone Head
+(95, 82), -- Loner (4+)
+(95, 48),  -- Mighty Blow (+1)
+(95, 54),  -- Thick Skull
+(95, 99); -- Throw Team Mate
 
 /* Add Team to Region */
 INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES

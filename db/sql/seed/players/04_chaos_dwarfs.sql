@@ -55,24 +55,24 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 
 -- Chaos Dwarf Blocker (ID 41)
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(41, 1),  -- Block
-(41, 2),  -- Tackle
-(41, 3);  -- Thick Skull
+(41, 1),    -- Block
+(41, 13),   -- Tackle
+(41, 54);   -- Thick Skull
 
 -- Bull Centaur (ID 42)
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(42, 4),  -- Sprint
-(42, 5),  -- Sure Feet
-(42, 3);  -- Thick Skull
+(42, 25),   -- Sprint
+(42, 26),   -- Sure Feet
+(42, 54);   -- Thick Skull
 
 -- Enslaved Minotaur (ID 43)
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(43, 6),  -- Animal Savagery
-(43, 7),  -- Frenzy
-(43, 8),  -- Horns
-(43, 9),  -- Loner (4+)
-(43, 10), -- Mighty Blow (+1)
-(43, 3);  -- Thick Skull
+(43, 68),   -- Animal Savagery
+(43, 5),    -- Frenzy
+(43, 60),   -- Horns
+(43, 82),   -- Loner (4+)
+(43, 48),   -- Mighty Blow (+1)
+(43, 54);   -- Thick Skull
 
 -- Add Team to Region
 INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES

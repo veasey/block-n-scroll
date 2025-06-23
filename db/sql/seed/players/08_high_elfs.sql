@@ -32,13 +32,13 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 
 -- Thrower starting skills
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(81, 74),  -- Cloud Burster
-(81, 30),  -- Pass
-(81, 37);  -- Safe Throw
+(81, 29),  -- Cloud Burster
+(81, 37),  -- Pass
+(81, 40);  -- Safe Pass
 
 -- Catcher starting skills
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(82, 12);  -- Catch
+(82, 15);  -- Catch
 
 -- Blitzer starting skills
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES

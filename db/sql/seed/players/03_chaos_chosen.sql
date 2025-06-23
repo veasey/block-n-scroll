@@ -54,37 +54,37 @@ VALUES
 -- Beastman starting skills
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id)
 VALUES
-(31, 14);  -- Horns
+(31, 60);  -- Horns
 
 -- Minotaur starting skills
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id)
 VALUES
-(32, 5),   -- Frenzy
-(32, 2),   -- Mighty Blow
-(32, 6),   -- Thick Skull
-(32, 33),  -- Loner
-(32, 14),  -- Horns
-(32, 46);  -- Unchannelled Fury
+(32, 5),    -- Frenzy
+(32, 48),   -- Mighty Blow
+(32, 54),   -- Thick Skull
+(32, 82),   -- Loner
+(32, 60),   -- Horns
+(32, 103);  -- Unchannelled Fury
 
 -- Troll starting skills
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id)
 VALUES
-(33, 3),   -- Regeneration
-(33, 2),   -- Mighty Blow
-(33, 6),   -- Thick Skull
-(33, 33),  -- Loner
-(33, 42),  -- Really Stupid
-(33, 40),  -- Always Hungry
-(33, 41);  -- Projectile Vomit
+(33, 90),   -- Regeneration
+(33, 48),   -- Mighty Blow
+(33, 54),   -- Thick Skull
+(33, 82),   -- Loner
+(33, 89),   -- Really Stupid
+(33, 67),   -- Always Hungry
+(33, 88);   -- Projectile Vomit
 
 -- Ogre starting skills
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id)
 VALUES
-(34, 2),   -- Mighty Blow
-(34, 6),   -- Thick Skull
-(34, 33),  -- Loner
-(34, 43),  -- Bone Head
-(34, 41);  -- Throw Team Mate
+(34, 48),   -- Mighty Blow
+(34, 54),   -- Thick Skull
+(34, 82),   -- Loner
+(34, 73),   -- Bone Head
+(34, 99);   -- Throw Team-Mate
 
 -- Add Team Special Rules
 INSERT INTO base_team_special_rule (base_team_id, special_rule_id) VALUES

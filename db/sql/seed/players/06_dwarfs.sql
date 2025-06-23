@@ -62,20 +62,20 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 -- Troll Slayer (ID 63)
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (63, 1),  -- Block
-(63, 14), -- Dauntless
-(63, 11), -- Frenzy
-(63, 6);  -- Thick Skull
+(63, 2), -- Dauntless
+(63, 5), -- Frenzy
+(63, 54);  -- Thick Skull
 
 -- Deathroller (ID 64)
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(64, 27), -- Break Tackle
-(64, 28), -- Dirty Player (+2)
-(64, 29), -- Juggernaut
-(64, 30), -- Loner (5+)
-(64, 2),  -- Mighty Blow (+1)
-(64, 31), -- No Hands
-(64, 32), -- Secret Weapon
-(64, 33); -- Stand Firm
+(64, 44), -- Break Tackle
+(64, 3), -- Dirty Player (+2)
+(64, 47), -- Juggernaut
+(64, 82), -- Loner (5+)
+(64, 48),  -- Mighty Blow (+1)
+(64, 84), -- No Hands
+(64, 92), -- Secret Weapon
+(64, 52); -- Stand Firm
 
 -- Add Team to Region
 INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES
