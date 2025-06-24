@@ -181,9 +181,13 @@
 
 <summary><strong>23 June 2025</strong></summary>
 - Continue to update now incorrect skill IDs in team position seed data. Added Lizardmen
-- **To do:**  
-  - [ ] Investigate why DB container falls over after initial seeding and needs bumping.
-  - [ ] Continue adding team positional data.
-     - [ ] Remaining Tier 1 Teams.
 </details>
 
+<summary><strong>24 June 2025</strong></summary>
+- Added necromantic, norse and orcs.
+- **To do:**  
+  - [ ] Investigate why DB container falls over after initial seeding and needs bumping. Seems to be something to do with it wanting to use ROOT to shut down temp container...?
+  - [ ] Continue adding team positional data.
+     - [ ] Remaining Tier 1 Teams.
+  - [ ] Revise Skill Descriptions, as some are just wrong.
+</details>
