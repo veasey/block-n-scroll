@@ -78,10 +78,10 @@ INSERT INTO skill (id, name, category, description) VALUES
 -- EXTRAORDINARY
 (67, 'Always Hungry', 'Extraordinary', 'Roll D6 when attempting Throw Team-mate; on 1, team-mate may be eaten.'),
 (68, 'Animal Savagery', 'Extraordinary', 'On activation, roll D6; on 1-3, must Block adjacent team-mate or lose activation.'),
-(69, 'Animosity', 'Extraordinary', 'Must Block adjacent teammates or opponent, losing activation if unable.'),
+(69, 'Animosity', 'Extraordinary', 'This player is jealous of and dislikes certain other players of their team, as shown in brackets after the name of the Skill on this player’s profile.'),
 (70, 'Ball & Chain', 'Extraordinary', 'Causes a -1 to Dodge rolls against this player.'),
 (71, 'Bloodlust', 'Extraordinary', 'Must attempt to Block each turn, losing activation if unable.'),
-(72, 'Bombardier', 'Extraordinary', 'May throw bombs during Blitz actions.'),
+(72, 'Bombardier', 'Extraordinary', 'May throw bombs instead of moving.'),
 (73, 'Bone Head', 'Extraordinary', 'Roll D6 on activation; on 1, lose Tackle Zones and end activation.'),
 (74, 'Breathe Fire', 'Extraordinary', 'May perform a fiery breath attack instead of a Block.'),
 (75, 'Chainsaw', 'Extraordinary', 'Adds +3 to Armour rolls when Blocking or Fouling; knocked down if turnover occurs.'),
