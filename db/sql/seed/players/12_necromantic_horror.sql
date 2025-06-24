@@ -4,15 +4,15 @@ UPDATE base_team SET reroll_cost = 70 WHERE id = 12;
 INSERT INTO base_team_player
 (id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count)
 VALUES
-(120, 'Zombie', 'Stunty with dodge', 'standard', 
+(120, 'Zombie', 'Slow with poor ball handling', 'standard', 
 12, 4, 3, 4, NULL, 9, 40000, 16),
-(121, 'Ghoul Runners', 'Stunty to scoop up the loose ball', 'standard', 
+(121, 'Ghoul Runners', 'Fast ball carrier', 'standard', 
 12, 7, 3, 3, 4, 8, 75000, 2),
-(122, 'Wraith', 'Strength 4 blocker', 'standard', 
+(122, 'Wraith', 'A no hands blitzer', 'standard', 
 12, 6, 3, 3, NULL, 9, 95000, 2),
-(123, 'Werewolf', 'A big guy that you cannot dodge away from', 'standard', 
+(123, 'Werewolf', 'Good allrounder with claws', 'standard', 
 12, 8, 3, 3, 4, 9, 125000, 2),
-(124, 'Flesh Golem', 'A big guy that you cannot dodge away from', 'special', 
+(124, 'Flesh Golem', 'Reliable strength on the LOS', 'special', 
 12, 4, 4, 4, NULL, 10, 115000, 2);
 
 /* Zombie - Pri & Sec */
