@@ -51,7 +51,7 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 (145, 2, 1, 0),  -- S
 (145, 1, 0, 1),  -- A
 (145, 3, 0, 1),  -- G
-(145, 1, 0, 1);  -- P
+(145, 4, 0, 1);  -- P
 
 /* Orc Linemen - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
