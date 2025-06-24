@@ -13,7 +13,7 @@ INSERT INTO base_team (id, name, description, tier) VALUES
 (10, 'Imperial Nobility', 'Elite human teams with skill and speed.', 1),
 (11, 'Lizardmen', 'Strong and ancient reptilian warriors.', 1),
 (12, 'Necromantic Horror', 'Undead team with speed and agility options.', 1),
-(13, 'Norses', 'Fierce and hardy northern warriors.', 1),
+(13, 'Norse', 'Fierce and hardy northern warriors.', 1),
 (14, 'Orc', 'Strong and tough with powerful blitzers.', 1),
 (15, 'Shambling Undead', 'Hard to kill undead with special skills.', 1),
 (16, 'Skavens', 'Fast and tricky, but fragile.', 1),
