@@ -92,7 +92,7 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 
 /* Race Rule */
 INSERT INTO base_team_special_rule (base_team_id, special_rule_id) VALUES
-(13, 4) -- Favoured Of (but only khorne or undivided)
+(13, 4); -- Favoured Of (but only khorne or undivided)
 
 /* Regional Rule */
 INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES
