@@ -16,7 +16,7 @@ INSERT INTO base_team (id, name, description, tier) VALUES
 (13, 'Norse', 'Fierce and hardy northern warriors.', 1),
 (14, 'Orc', 'Strong and tough with powerful blitzers.', 1),
 (15, 'Shambling Undead', 'Hard to kill undead with special skills.', 1),
-(16, 'Skavens', 'Fast and tricky, but fragile.', 1),
+(16, 'Skaven', 'Fast and tricky, but fragile.', 1),
 (17, 'Wood Elf', 'Agile forest dwellers with great speed and precision.', 1);
 
 -- Tier 2 (Strong niche teams)
