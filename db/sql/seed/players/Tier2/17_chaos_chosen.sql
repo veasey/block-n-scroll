@@ -1,11 +1,11 @@
 INSERT INTO base_team_player
 (id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count, exclusive_group_id)
 VALUES
-(170, 'Chosen Blocker', 'Core strength-focused warrior', 'standard', 17, 5, 4, 3, 5, 10, 100, 4, NULL),
-(171, 'Chaos Beastman', 'Versatile player with horns', 'standard', 17, 6, 3, 3, 4, 9, 60, 16, NULL),
-(172, 'Chaos Minotaur', 'Ferocious big guy with Frenzy', 'special', 17, 5, 5, 4, NULL, 9, 150, 1, 1), 
-(173, 'Chaos Troll', 'Massive, regenerating brute with Really Stupid', 'special', 17, 4, 5, 5, 5, 10, 115, 1, 1),
-(174, 'Chaos Ogre', 'Big guy with Bone Head and solid armour', 'special', 17, 5, 5, 4, 5, 10, 140, 1, 1);
+(170, 'Chosen Blocker', 'Core strength-focused warrior', 'standard', 17, 5, 4, 3, 5, 10, 100000, 4, NULL),
+(171, 'Chaos Beastman', 'Versatile player with horns', 'standard', 17, 6, 3, 3, 4, 9, 60000, 16, NULL),
+(172, 'Chaos Minotaur', 'Ferocious big guy with Frenzy', 'special', 17, 5, 5, 4, NULL, 9, 150000, 1, 1), 
+(173, 'Chaos Troll', 'Massive, regenerating brute with Really Stupid', 'special', 17, 4, 5, 5, 5, 10, 115000, 1, 1),
+(174, 'Chaos Ogre', 'Big guy with Bone Head and solid armour', 'special', 17, 5, 5, 4, 5, 10, 140000, 1, 1);
 
 INSERT INTO base_team_player_exclusive_group
 (id, name, description)

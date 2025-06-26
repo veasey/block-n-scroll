@@ -187,13 +187,20 @@
 - Added necromantic, norse and orcs.
 </details>
 
-<summary><strong>24 June 2025</strong></summary>
+<summary><strong>25 June 2025</strong></summary>
 - Added Shambling undead, Skaven and wood elf.
 - Created tier folders for player positional seed data
 - removed duplicate race, and updated IDs across files
+</details>
+
+<summary><strong>26 June 2025</strong></summary>
+- Added Chaos Renegades
+- Altered exclusive group to accomodate Renegades as you can choose 3 of 4 big guys.
+- Normalised costs in player position data, as some costs where in k and some where in full amounts.
 - **To do:**  
   - [ ] Investigate why DB container falls over after initial seeding and needs bumping. Seems to be something to do with it wanting to use ROOT to shut down temp container...?
   - [ ] Continue adding team positional data.
      - [ ] Remaining Tier 1 Teams.
   - [ ] Revise Skill Descriptions, as some are just wrong.
 </details>
+

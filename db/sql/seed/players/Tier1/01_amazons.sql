@@ -5,10 +5,10 @@ DELETE FROM base_team_player_skill_category;
 INSERT INTO base_team_player
 (id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count)
 VALUES
-(1, 'Eagle Warrior Linewomen', 'Basic agile female warriors', 'standard', 1, 6, 3, 3, 4, 8, 70, 16),
-(2, 'Python Warrior Throwers', 'Specialist who throws the ball', 'special', 1, 6, 3, 3, 3, 8, 90, 2),
-(3, 'Piranha Warrior Blitzers', 'Stronger player skilled in blitzing', 'special', 1, 7, 3, 3, 5, 8, 110, 4),
-(4, 'Jaguar Warrior Blockers', 'Tough players who protect the team', 'special', 1, 6, 4, 3, 5, 9, 110, 4);
+(1, 'Eagle Warrior Linewomen', 'Basic agile female warriors', 'standard', 1, 6, 3, 3, 4, 8, 70000, 16),
+(2, 'Python Warrior Throwers', 'Specialist who throws the ball', 'special', 1, 6, 3, 3, 3, 8, 90000, 2),
+(3, 'Piranha Warrior Blitzers', 'Stronger player skilled in blitzing', 'special', 1, 7, 3, 3, 5, 8, 110000, 4),
+(4, 'Jaguar Warrior Blockers', 'Tough players who protect the team', 'special', 1, 6, 4, 3, 5, 9, 110000, 4);
 
 -- Amazon Linewoman starting skills
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES

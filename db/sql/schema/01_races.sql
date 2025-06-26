@@ -66,7 +66,8 @@ CREATE TABLE base_team_player (
 CREATE TABLE base_team_player_exclusive_group (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    description TEXT
+    description TEXT,
+    max_allowed INT DEFAULT 1
 );
 
 CREATE TABLE skill_category (
