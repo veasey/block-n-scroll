@@ -10,57 +10,58 @@ VALUES
 (43, 'Assassin', 'Stealthy player with Shadowing and Stab', 'special', 4, 7, 3, 5, 5, 8, 85000, 2, 4),
 (44, 'Witch Elf', 'Agile and deadly with Dodge, Frenzy, Jump Up', 'special', 4, 7, 3, 5, 5, 8, 110000, 2, 4);
 
--- Lineman
+/* Lineman - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (40, 3, 1, 0), -- Agility (AG)
 (40, 2, 0, 1); -- Strength (S)
 
--- Runner
+/* Runner - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (41, 3, 1, 0), -- Agility (AG)
 (41, 1, 1, 0), -- Passing (P)
 (41, 2, 0, 1); -- Strength (S)
 
--- Blitzer
+/* Blitzer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (42, 3, 1, 0), -- Agility (AG)
 (42, 2, 1, 0), -- Strength (S)
 (42, 1, 0, 1); -- Passing (P)
 
--- Assassin
+/* Assassin - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (43, 3, 1, 0), -- Agility (AG)
 (43, 2, 1, 0), -- Strength (S)
 (43, 1, 0, 1); -- Passing (P)
 
--- Witch Elf
+/* Witch Elf - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (44, 3, 1, 0), -- Agility (AG)
 (44, 2, 1, 0), -- Strength (S)
 (44, 1, 0, 1); -- Passing (P)
 
 
--- Lineman (ID 50) - no starting skills by default
+/* Lineman - Starting Skills */
+/* No starting skills for Lineman */
 
--- Runner (ID 51)
+/* Runner - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (41, 30); -- Dump-Off
 
--- Blitzer (ID 52)
+/* Blitzer - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (42, 1); -- Block
 
--- Assassin (ID 53)
+/* Assassin - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (43, 10), -- Shadowing
 (43, 93); -- Stab
 
--- Witch Elf (ID 54)
+/* Witch Elf - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (44, 19), -- Dodge
-(44, 5), -- Frenzy
+(44, 5),  -- Frenzy
 (44, 20); -- Jump Up
 
--- Add Team to Region
+/* Regional Rules */
 INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES
 (4, 2); -- elven kingdom

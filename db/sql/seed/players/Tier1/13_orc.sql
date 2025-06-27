@@ -1,52 +1,46 @@
 INSERT INTO base_team_player
 (id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count)
 VALUES
-(130, 'Orc Linemen', 'Cheap and high armour linemen', 'standard', 
-13, 5, 3, 3, 4, 10, 50000, 16),
-(131, 'Orc Thrower', 'Vulnerable Orc who can pick up the ball', 'standard', 
-13, 5, 3, 3, 3, 9, 65000, 2),
-(132, 'Orc Blitzer', 'Blitzer', 'standard', 
-13, 6, 3, 3, 4, 10, 80000, 4),
-(133, 'Orc Big Un', 'Strength 4 Blocker', 'standard', 
-13, 5, 4, 4, NULL, 10, 90000, 4),
-(134, 'Goblin', 'Stunty', 'standard', 
-13, 6, 2, 3, 4, 8, 40000, 4),
-(135, 'Untrained Troll', 'Big Guy', 'standard', 
-13, 4, 5, 5, 5, 10, 115000, 1);
+(130, 'Orc Linemen', 'Cheap and high armour linemen', 'standard', 13, 5, 3, 3, 4, 10, 50000, 16),
+(131, 'Orc Thrower', 'Vulnerable Orc who can pick up the ball', 'standard', 13, 5, 3, 3, 3, 9, 65000, 2),
+(132, 'Orc Blitzer', 'Blitzer', 'standard', 13, 6, 3, 3, 4, 10, 80000, 4),
+(133, 'Orc Big Un', 'Strength 4 Blocker', 'standard', 13, 5, 4, 4, NULL, 10, 90000, 4),
+(134, 'Goblin', 'Stunty', 'standard', 13, 6, 2, 3, 4, 8, 40000, 4),
+(135, 'Untrained Troll', 'Big Guy', 'standard', 13, 4, 5, 5, 5, 10, 115000, 1);
 
-/* Orc Linemen - Pri & Sec */
+/* Orc Linemen - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (130, 3, 1, 1),  -- G
 (130, 4, 0, 1),  -- A
 (130, 2, 0, 1);  -- S
 
-/* Orc Thrower - Pri & Sec */
+/* Orc Thrower - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (131, 3, 1, 0),  -- G
 (131, 1, 1, 0),  -- P
 (131, 4, 0, 1),  -- A
 (131, 2, 0, 1);  -- S
 
-/* 	Orc Blitzer - Pri & Sec */
+/* 	Orc Blitzer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
 (132, 3, 1, 0),  -- G
 (132, 2, 1, 0),  -- S
 (132, 4, 0, 1),  -- A
 (132, 1, 0, 1);  -- P
 
-/* Orc Big Un - Pri & Sec */
+/* Orc Big Un - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (133, 3, 1, 0),  -- G
 (133, 2, 1, 0),  -- S
 (133, 1, 0, 1);  -- A
 
-/* Goblin - Pri & Sec */
+/* Goblin - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
 (134, 1, 0, 1),  -- A
 (134, 3, 1, 0),  -- G
 (134, 2, 1, 0);  -- S
 
-/*	Untrained Troll - Pri & Sec */
+/*	Untrained Troll - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
 (135, 2, 1, 0),  -- S
 (135, 1, 0, 1),  -- A

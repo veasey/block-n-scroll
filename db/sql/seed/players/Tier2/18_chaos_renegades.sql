@@ -18,7 +18,7 @@ VALUES
 INSERT INTO base_team_player_exclusive_group (id, name, description, max_allowed)
 VALUES (2, 'Chaos Renegade Big Guys', 'You can have up to 3 of these 4 big guys', 3);
 
-/* Renegade Human Linemen -- Pri & Sec */
+/* Renegade Human Linemen - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
 (180, 1, 1, 0), -- General
@@ -26,7 +26,7 @@ VALUES
 (180, 3, 0, 1), -- Agility
 (180, 2, 0, 1); -- Strength
 
-/* Renegade Human Thrower -- Pri & Sec */
+/* Renegade Human Thrower - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
 (181, 1, 1, 0), -- General
@@ -35,7 +35,7 @@ VALUES
 (181, 3, 0, 1), -- Agility
 (181, 2, 0, 1); -- Strength
 
-/* Renegade Goblin -- Pri & Sec */
+/* Renegade Goblin - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
 (182, 3, 1, 0), -- Agility
@@ -43,7 +43,7 @@ VALUES
 (182, 1, 0, 1), -- General
 (182, 4, 0, 1); -- Passing
 
-/* Renegade Orc -- Pri & Sec */
+/* Renegade Orc - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
 (183, 1, 1, 0), -- General
@@ -51,7 +51,7 @@ VALUES
 (183, 3, 0, 1), -- Agility
 (183, 2, 0, 1); -- Strength
 
-/* Renegade Skaven -- Pri & Sec */
+/* Renegade Skaven - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
 (184, 1, 1, 0), -- General
@@ -59,7 +59,7 @@ VALUES
 (184, 3, 0, 1), -- Agility
 (184, 2, 0, 1); -- Strength
 
-/* Renegade Dark Elf -- Pri & Sec */
+/* Renegade Dark Elf - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
 (185, 3, 1, 0), -- Agility
@@ -68,7 +68,7 @@ VALUES
 (185, 4, 0, 1), -- Passing
 (185, 2, 0, 1); -- Strength
 
-/* Renegade Troll -- Pri & Sec */
+/* Renegade Troll - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
 (186, 2, 1, 0), -- Strength
@@ -76,7 +76,7 @@ VALUES
 (186, 1, 1, 0), -- General
 (186, 5, 1, 0); -- Mutations
 
-/* Renegade Ogre -- Pri & Sec */
+/* Renegade Ogre - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
 (187, 2, 1, 0), -- Strength
@@ -84,7 +84,7 @@ VALUES
 (187, 1, 1, 0), -- General
 (187, 5, 1, 0); -- Mutations
 
-/* Renegade Minotaur -- Pri & Sec */
+/* Renegade Minotaur - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
 (188, 2, 1, 0), -- Strength
@@ -92,7 +92,7 @@ VALUES
 (188, 1, 1, 0), -- General
 (188, 5, 1, 0); -- Mutations
 
-/* Renegade Rat Ogre -- Pri & Sec */
+/* Renegade Rat Ogre - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
 (189, 2, 1, 0), -- Strength

@@ -4,44 +4,39 @@ UPDATE base_team SET reroll_cost = 70 WHERE id = 11;
 INSERT INTO base_team_player
 (id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count)
 VALUES
-(110, 'Zombie', 'Slow with poor ball handling', 'standard', 
-11, 4, 3, 4, NULL, 9, 40000, 16),
-(111, 'Ghoul Runners', 'Fast ball carrier', 'standard', 
-11, 7, 3, 3, 4, 8, 75000, 2),
-(112, 'Wraith', 'A no hands blitzer', 'standard', 
-11, 6, 3, 3, NULL, 9, 95000, 2),
-(113, 'Werewolf', 'Good allrounder with claws', 'standard', 
-11, 8, 3, 3, 4, 9, 125000, 2),
-(114, 'Flesh Golem', 'Reliable strength on the LOS', 'special', 
-11, 4, 4, 4, NULL, 10, 115000, 2);
+(110, 'Zombie', 'Slow with poor ball handling', 'standard', 11, 4, 3, 4, NULL, 9, 40000, 16),
+(111, 'Ghoul Runners', 'Fast ball carrier', 'standard', 11, 7, 3, 3, 4, 8, 75000, 2),
+(112, 'Wraith', 'A no hands blitzer', 'standard', 11, 6, 3, 3, NULL, 9, 95000, 2),
+(113, 'Werewolf', 'Good allrounder with claws', 'standard', 11, 8, 3, 3, 4, 9, 125000, 2),
+(114, 'Flesh Golem', 'Reliable strength on the LOS', 'special', 11, 4, 4, 4, NULL, 10, 115000, 2);
 
-/* Zombie - Pri & Sec */
+/* Zombie - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (110, 3, 1, 0),  -- G
 (110, 4, 0, 1),  -- A
 (110, 2, 0, 1);  -- S
 
-/* Ghoul Runners - Pri & Sec */
+/* Ghoul Runners - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (111, 4, 1, 0),  -- A
 (111, 3, 0, 1),  -- G
 (111, 1, 0, 1),  -- P
 (111, 2, 0, 1);  -- S
 
-/* Wraith - Pri & Sec */
+/* Wraith - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
 (112, 3, 1, 0),  -- G
 (112, 2, 1, 0),  -- S
 (112, 1, 0, 1);  -- A
 
-/* Werewolf - Pri & Sec */
+/* Werewolf - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (113, 4, 1, 0),  -- A
 (113, 3, 1, 0),  -- G
 (113, 1, 0, 1),  -- P
 (113, 2, 0, 1);  -- S
 
-/* Flesh Goldem - Pri & Sec */
+/* Flesh Goldem - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
 (114, 3, 1, 0),  -- G
 (114, 2, 1, 0),  -- S

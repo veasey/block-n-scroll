@@ -4,25 +4,20 @@ UPDATE base_team SET reroll_cost = 50 WHERE id = 15;
 INSERT INTO base_team_player
 (id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count)
 VALUES
-(150, 'Skaven Lineman', 'Cheap, fast, weak', 'standard', 
-15, 7, 3, 3, 4, 8, 50000, 16),
-(151, 'Skaven Thrower', 'Sometimes brought to throw to handoff to gutter runner', 'standard', 
-15, 7, 3, 4, 2, 8, 85000, 2),
-(152, 'Skaven Gutter Runner', 'Touchdown Scorer', 'standard', 
-15, 9, 2, 2, 4, 8, 85000, 4),
-(153, 'Skaven Blitzer', 'Blitzer', 'standard', 
-15, 7, 3, 3, 5, 9, 90000, 2),
-(154, 'Rat Ogre', 'Big Guy', 'standard', 
-15, 6, 5, 4, NULL, 9, 150000, 1);
+(150, 'Skaven Lineman', 'Cheap, fast, weak', 'standard', 15, 7, 3, 3, 4, 8, 50000, 16),
+(151, 'Skaven Thrower', 'Sometimes brought to throw to handoff to gutter runner', 'standard', 15, 7, 3, 4, 2, 8, 85000, 2),
+(152, 'Skaven Gutter Runner', 'Touchdown Scorer', 'standard', 15, 9, 2, 2, 4, 8, 85000, 4),
+(153, 'Skaven Blitzer', 'Blitzer', 'standard', 15, 7, 3, 3, 5, 9, 90000, 2),
+(154, 'Rat Ogre', 'Big Guy', 'standard', 15, 6, 5, 4, NULL, 9, 150000, 1);
 
-/* Skaven Linemen - Pri & Sec */
+/* Skaven Linemen - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (150, 3, 1, 0),  -- G
 (150, 4, 0, 1),  -- A
 (150, 5, 0, 1),  -- M
 (150, 2, 0, 1);  -- S
 
-/* Skaven Thrower - Pri & Sec */
+/* Skaven Thrower - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (151, 3, 1, 0),  -- G
 (151, 1, 1, 0),  -- P
@@ -30,7 +25,7 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 (151, 5, 0, 1),  -- M
 (151, 2, 0, 1);  -- S
 
-/* Skaven Gutter Runner - Pri & Sec */
+/* Skaven Gutter Runner - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (152, 4, 1, 0),  -- A
 (152, 3, 1, 0),  -- G
@@ -38,7 +33,7 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 (152, 5, 0, 1),  -- M
 (152, 2, 0, 1);  -- S
 
-/* 	Skaven Blitzer - Pri & Sec */
+/* 	Skaven Blitzer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
 (153, 3, 1, 0),  -- G
 (153, 2, 1, 0),  -- S
@@ -46,7 +41,7 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 (153, 5, 0, 1),  -- M
 (153, 1, 0, 1);  -- P
 
-/*	Rat Ogre - Pri & Sec */
+/*	Rat Ogre - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
 (154, 2, 1, 0),  -- S
 (154, 1, 0, 1),  -- A

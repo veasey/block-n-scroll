@@ -1,51 +1,45 @@
 INSERT INTO base_team_player
 (id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count)
 VALUES
-(120, 'Norse Raider Linemen', 'Lineman that hit hard', 'standard', 
-12, 6, 3, 3, 4, 8, 50000, 16),
-(121, 'Beer Boars', 'Very cheap weak stunty, helps prone team-mates', 'special', 
-12, 5, 1, 3, NULL, 6, 20000, 2),
-(122, 'Norse Berserker', 'Blitzer', 'standard', 
-12, 6, 3, 3, 5, 8, 90000, 2),
-(123, 'Valkyrie', 'Ball handler and cage breaker', 'standard', 
-12, 7, 3, 3, 3, 8, 95000, 2),
-(124, 'Ulfwerener', 'Strength 4 blocker', 'standard', 
-12, 6, 4, 4, NULL, 9, 105000, 2),
-(125, 'Yhetee / Snow Troll', 'Big Guy', 'standard', 
-12, 5, 5, 4, NULL, 9, 140000, 1);
+(120, 'Norse Raider Linemen', 'Lineman that hit hard', 'standard', 12, 6, 3, 3, 4, 8, 50000, 16),
+(121, 'Beer Boars', 'Very cheap weak stunty, helps prone team-mates', 'special', 12, 5, 1, 3, NULL, 6, 20000, 2),
+(122, 'Norse Berserker', 'Blitzer', 'standard', 12, 6, 3, 3, 5, 8, 90000, 2),
+(123, 'Valkyrie', 'Ball handler and cage breaker', 'standard', 12, 7, 3, 3, 3, 8, 95000, 2),
+(124, 'Ulfwerener', 'Strength 4 blocker', 'standard', 12, 6, 4, 4, NULL, 9, 105000, 2),
+(125, 'Yhetee / Snow Troll', 'Big Guy', 'standard', 12, 5, 5, 4, NULL, 9, 140000, 1);
 
-/* Norse Raider Linemen - Pri & Sec */
+/* Norse Raider Linemen - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (120, 3, 1, 1),  -- G
 (120, 4, 0, 1),  -- A
 (120, 1, 0, 1),  -- P
 (120, 2, 0, 1);  -- S
 
-/* Beer Boars - Pri & Sec */
+/* Beer Boars - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (121, 4, 0, 1);  -- A
 
-/* 	Norse Berserker - Pri & Sec */
+/* 	Norse Berserker - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
 (122, 3, 1, 0),  -- G
 (122, 2, 1, 0),  -- S
 (122, 4, 0, 1),  -- A
 (122, 1, 0, 1);  -- P
 
-/* Valkyrie - Pri & Sec */
+/* Valkyrie - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (123, 4, 1, 0),  -- A
 (123, 3, 1, 0),  -- G
 (123, 1, 1, 0),  -- P
 (123, 2, 0, 1);  -- S
 
-/* Ulfwerener - Pri & Sec */
+/* Ulfwerener - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
 (124, 3, 1, 0),  -- G
 (124, 2, 1, 0),  -- S
 (124, 1, 0, 1);  -- A
 
-/* 	Yhetee / Snow Troll - Pri & Sec */
+/* 	Yhetee / Snow Troll - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
 (125, 2, 1, 0),  -- S
 (125, 1, 0, 1),  -- A

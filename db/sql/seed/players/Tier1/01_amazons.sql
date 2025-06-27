@@ -10,54 +10,53 @@ VALUES
 (3, 'Piranha Warrior Blitzers', 'Stronger player skilled in blitzing', 'special', 1, 7, 3, 3, 5, 8, 110000, 4),
 (4, 'Jaguar Warrior Blockers', 'Tough players who protect the team', 'special', 1, 6, 4, 3, 5, 9, 110000, 4);
 
--- Amazon Linewoman starting skills
+/* Amazon Linewoman - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (1, 1, 1, 0),  -- General
 (1, 2, 0, 1),  -- Agility (Secondary)
 (1, 3, 0, 1);  -- Strength (Secondary)
 
-
--- Amazon Thrower starting skills
+/* Amazon Thrower - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (2, 1, 1, 0),  -- General
 (2, 4, 0, 1),  -- Passing
 (2, 2, 0, 1),  -- Agility (Secondary)
 (2, 3, 0, 1);  -- Strength (Secondary)
 
--- Amazon Blitzer starting skills
+/* Amazon Blitzer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (3, 2, 1, 0),  -- Agility (Primary)
 (3, 1, 1, 0),  -- General (Secondary)
 (3, 3, 0, 1);  -- Strength (Secondary)
 
--- Amazon Blocker starting skills
+/* Amazon Blocker - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (4, 1, 1, 0),  -- General (Primary)
 (4, 3, 1, 0),  -- Strength (Primary)
 (4, 2, 0, 1);  -- Agility (Secondary)
 
--- Linewomen (ID 1)
+/* Amazon Linewoman - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (1, 19);  -- Dodge
 
--- Throwers (ID 2)
+/* Amazon Thrower - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (2, 19),   -- Dodge
 (2, 36),   -- On The Ball
 (2, 37),   -- Pass
 (2, 40);   -- Safe Throw
 
--- Blitzers (ID 3)
+/* Amazon Blitzer - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (3, 19),   -- Dodge
 (3, 79),   -- Hit and Run (added to skills import)
 (3, 20);   -- Jump Up
 
--- Blockers (ID 4)
+/* Amazon Blocker - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (4, 46),   -- Guard
 (4, 16);   -- Defensive
 
--- Add Team to Region
+/* Add Team to Region */
 INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES
 (1, 4);

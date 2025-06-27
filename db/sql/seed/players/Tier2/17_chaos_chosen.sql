@@ -12,30 +12,30 @@ INSERT INTO base_team_player_exclusive_group
 VALUES
 (1, 'Chaos Big Guys', 'Group for Chaos big guys like Minotaur, Troll, and Ogre');
 
--- Chosen Blocker skill categories
+/* Chaos Chosen Blocker - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
-(170, 2, 1, 0),  -- Strength
+(170, 2, 1, 0), -- Strength
 (170, 1, 0, 1), -- General
 (170, 3, 0, 1); -- Agility
 
--- Chaos Beastman skill categories
+/* Chaos Beastman - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
-(171, 1, 1, 0),  -- General
+(171, 1, 1, 0), -- General
 (171, 2, 0, 1), -- Strength
 (171, 3, 0, 1), -- Agility
 (171, 4, 0, 1); -- Passing
 
--- Chaos Minotaur skill categories
+/* Chaos Minotaur - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
-(172, 2, 1, 0),  -- Strength
+(172, 2, 1, 0), -- Strength
 (172, 5, 0, 1), -- Mutations
 (172, 3, 0, 1), -- Agility
 (172, 1, 0, 1); -- General
 
--- Chaos Troll skill categories
+/* Chaos Troll - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
 (173, 2, 1, 0),  -- Strength
@@ -43,7 +43,7 @@ VALUES
 (173, 3, 0, 1), -- Agility
 (173, 1, 0, 1); -- General
 
--- Chaos Ogre skill categories
+/* Chaos Ogre - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
 (174, 2, 1, 0),  -- Strength
@@ -51,12 +51,15 @@ VALUES
 (174, 3, 0, 1), -- Agility
 (174, 1, 0, 1); -- General
 
--- Beastman starting skills
+/* Chaos Chosen Blocker - Starting Skills */
+/* No starting skills for Chosen Blocker */
+
+/* Chaos Beastman - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id)
 VALUES
 (171, 60);  -- Horns
 
--- Minotaur starting skills
+/* Chaos Minotaur - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id)
 VALUES
 (172, 5),    -- Frenzy
@@ -66,7 +69,7 @@ VALUES
 (172, 60),   -- Horns
 (172, 103);  -- Unchannelled Fury
 
--- Troll starting skills
+/* Chaos Troll - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id)
 VALUES
 (173, 90),   -- Regeneration
@@ -77,7 +80,7 @@ VALUES
 (173, 67),   -- Always Hungry
 (173, 88);   -- Projectile Vomit
 
--- Ogre starting skills
+/* Chaos Ogre - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id)
 VALUES
 (174, 48),   -- Mighty Blow
@@ -86,6 +89,6 @@ VALUES
 (174, 73),   -- Bone Head
 (174, 99);   -- Throw Team-Mate
 
--- Add Team Special Rules
+/* Chaos Team Special Rule */
 INSERT INTO base_team_special_rule (base_team_id, special_rule_id) VALUES
 (17, 4);

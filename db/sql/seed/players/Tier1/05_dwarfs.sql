@@ -12,61 +12,60 @@ VALUES
 (53, 'Troll Slayer', 'Frenzied, dauntless warrior with Block and Thick Skull', 'special', 5, 5, 3, 4, NULL, 9, 95000, 2, NULL),
 (54, 'Deathroller', 'Legendary rolling war machine with multiple special traits', 'special', 5, 4, 7, 3, NULL, 11, 170000, 1, 5);
 
--- Lineman
+/* Lineman - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (50, 2, 1, 0), -- Strength (S)
 (50, 4, 1, 0), -- General (G)
 (50, 1, 0, 1); -- Passing (A)
 
--- Runner
+/* Runner - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (51, 3, 1, 0), -- Agility (AG)
 (51, 4, 1, 0), -- General (G)
 (51, 1, 0, 1); -- Passing (P)
 
--- Blitzer
+/* Blitzer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (52, 2, 1, 0), -- Strength (S)
 (52, 4, 1, 0), -- General (G)
 (52, 1, 0, 1); -- Passing (P)
 
--- Troll Slayer
+/* Troll Slayer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (53, 2, 1, 0), -- Strength (S)
 (53, 4, 1, 0), -- General (G)
 (53, 1, 0, 1); -- Passing (P)
 
--- Deathroller
+/* Deathroller - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (54, 4, 1, 0), -- General (G)
 (54, 3, 0, 1), -- Agility (AG)
 (54, 1, 0, 1); -- Passing (P)
 
-
--- Lineman (ID 60)
+/* Lineman - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (50, 1), -- Block
 (50, 4), -- Tackle
 (50, 6); -- Thick Skull
 
--- Runner (ID 61)
+/* Runner - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (51, 25), -- Sure Hands
 (51, 6);  -- Thick Skull
 
--- Blitzer (ID 62)
+/* Blitzer - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (52, 1), -- Block
 (52, 6); -- Thick Skull
 
--- Troll Slayer (ID 63)
+/* Troll Slayer - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (53, 1),  -- Block
 (53, 2), -- Dauntless
 (53, 5), -- Frenzy
 (53, 54);  -- Thick Skull
 
--- Deathroller (ID 64)
+/* Deathroller - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (54, 44), -- Break Tackle
 (54, 3), -- Dirty Player (+2)
@@ -77,7 +76,7 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (54, 92), -- Secret Weapon
 (54, 52); -- Stand Firm
 
--- Add Team to Region
+/* Regional Rules */
 INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES
 (5, 5), -- Old World Classic
 (5, 8); -- Worlds Edge Superleague 

@@ -9,27 +9,27 @@ VALUES
 (102, 'Saurus Blocker', 'Strength 4 blocker', 'special', 10, 6, 4, 5, 6, 10, 85000, 8),
 (103, 'Kroxigor', 'A big guy that you cannot dodge away from', 'special', 10, 6, 5, 5, NULL, 10, 140000, 1);
 
-/* Skink Linemen - Pri & Sec */
+/* Skink Linemen - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (100, 4, 1, 0),  -- A
 (100, 3, 0, 1),  -- G
 (100, 1, 0, 1),  -- P
 (100, 2, 0, 1);  -- S
 
-/* Chameleon Skink - Pri & Sec */
+/* Chameleon Skink - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (101, 4, 1, 0),  -- A
 (101, 3, 0, 1),  -- G
 (101, 1, 0, 1),  -- P
 (101, 2, 0, 1);  -- S
 
-/* Saurus Blocker - Pri & Sec */
+/* Saurus Blocker - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
 (102, 3, 1, 0),  -- G
 (102, 2, 1, 0),  -- S
 (102, 1, 0, 1);  -- A
 
-/* Kroxigor - Pri & Sec */
+/* Kroxigor - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (103, 2, 1, 0),  -- S
 (103, 4, 0, 1),  -- A
