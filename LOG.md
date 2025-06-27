@@ -3,210 +3,183 @@
 <details>
 <summary><strong>Phase 1</strong></summary>
 
-- Design and implement the database schema  
-- Seed initial data  
+* Design and implement the database schema
+* Seed initial data
+
 </details>
 
 <details>
 <summary><strong>Phase 2</strong></summary>
 
-- Deliver rules from the database as HTML and JSON (API)  
+* Deliver rules from the database as HTML and JSON (API)
+
 </details>
 
 <details>
 <summary><strong>Phase 3</strong></summary>
 
-- Build basic team builder and tracker  
-- Implement league joining functionality  
+* Build basic team builder and tracker
+* Implement league joining functionality
+
 </details>
 
 <details>
 <summary><strong>Phase 4</strong></summary>
 
-- Track matches  
-- Connect team trackers to match events  
+* Track matches
+* Connect team trackers to match events
+
 </details>
 
 ---
 
 # DEVELOPMENT LOG
 
-<details>
-<summary><strong>06 June 2025</strong></summary>
+## 06 June 2025
 
-**Seed and schema data added.**
+* Seed and schema data added.
+* **Next steps:**
 
-**Next steps:**  
-- [ ] Implement partial name lists with fallback logic:  
-  - If faction list exists, use it  
-  - If positional names do not exist, default to linemen  
-  - If no linemen for faction, default to human names list  
-- [ ] Create input method for admins to add names  
-- [ ] Provide functionality for coaches to request additional names  
-- [ ] Fix script that runs schema and seed files  
+  * [ ] Implement partial name lists with fallback logic:
 
-*Focus next week: schema and data refinement*
-</details>
+    * If faction list exists, use it
+    * If positional names do not exist, default to linemen
+    * If no linemen for faction, default to human names list
+  * [ ] Create input method for admins to add names
+  * [ ] Provide functionality for coaches to request additional names
+  * [ ] Fix script that runs schema and seed files
+  * *Focus next week: schema and data refinement*
 
-<details>
-<summary><strong>07 June 2025</strong></summary>
+## 07 June 2025
 
-- SQL files and schema/seed script now containerized  
-- Script runs successfully, schema and seeding working  
-- Next: automate schema build and seeding, review schema, and add missing seed data  
-</details>
+* SQL files and schema/seed script now containerized
+* Script runs successfully; schema and seeding confirmed working
+* Next: automate schema build and seeding, review schema, add missing seed data
 
-<details>
-<summary><strong>08 June 2025</strong></summary>
+## 08 June 2025
 
-- Seed data validated and supplemented with extra names  
-- Started backend development  
-</details>
+* Seed data validated and expanded with additional names
+* Backend development started
 
-<details>
-<summary><strong>09 June 2025</strong></summary>
+## 09 June 2025
 
-- Revised schema, identified missing data points  
-- Expanding seed files accordingly  
-</details>
+* Revised schema, identified missing data points
+* Expanding seed files accordingly
 
-<details>
-<summary><strong>10 June 2025</strong></summary>
+## 10 June 2025
 
-- Created basic monolith framework  
-- Routing setup to deliver flat results as HTML or JSON (for API)  
-</details>
+* Created basic monolith framework
+* Routing set up to deliver flat results as HTML or JSON (API)
 
-<details>
-<summary><strong>11 June 2025</strong></summary>
+## 11 June 2025
 
-- Displaying DB data on pages working  
-- Investigating why `.env` file is not copied into `/var/www/html`  
-</details>
+* DB data display on pages confirmed working
+* Investigating `.env` file copy issue in `/var/www/html`
 
-<details>
-<summary><strong>12 June 2025</strong></summary>
+## 12 June 2025
 
-- Environment variables now loading correctly  
-- Template rendering confirmed  
-- Next: improve routing and data presentation  
-</details>
+* Environment variables now loading correctly
+* Template rendering confirmed working
+* Next: improve routing and data presentation
 
-<details>
-<summary><strong>13 June 2025</strong></summary>
+## 13 June 2025
 
-- Built basic homepage  
-- Planning main navigation and initial content  
-- Modified web container build to use mounted volume for live source/template updates without rebuilding  
-</details>
+* Basic homepage created
+* Planning navigation and initial content
+* Modified web container to use mounted volume for live updates
 
-<details>
-<summary><strong>14 June 2025</strong></summary>
+## 14 June 2025
 
-- Debugging route fetching all team data from DB  
-- Addressing DB connection issues between web and DB containers  
-</details>
+* Debugging route to fetch all team data from DB
+* Addressing DB connection issues between web and DB containers
 
-<details>
-<summary><strong>15 June 2025</strong></summary>
+## 15 June 2025
 
-- Fixed empty race table caused by seed errors  
-- Simplified player tables and debugged schema and seed processes  
-- Can now display DB data in templates successfully  
-</details>
+* Fixed empty race table due to seed errors
+* Simplified player tables, debugged schema and seed processes
+* DB data successfully displaying in templates
 
-<details>
-<summary><strong>16 June 2025</strong></summary>
+## 16 June 2025
 
-- Standardized schema to clearly separate "base" stats from user-tracking stats  
-- Created `Base` namespace in models to distinguish base data from user data  
-</details>
+* Standardized schema to separate base stats from user-tracking stats
+* Introduced `Base` namespace in models for separation
 
-<details>
-<summary><strong>17 June 2025</strong></summary>
+## 17 June 2025
 
-- Completed team page with relational data population  
-- **To do:**  
-  - [ ] Draft team page to link to team manager page  
-  - [ ] Seed remaining positional data  
-  - [ ] Implement modal popup for skills or dedicated skill pages  
-</details>
+* Team page with relational data completed
+* **To do:**
 
-<details>
-<summary><strong>18 June 2025</strong></summary>
+  * [ ] Link team page to manager page
+  * [ ] Seed remaining positional data
+  * [ ] Implement skill modal popup or dedicated skill pages
 
-- Converted primary/secondary skills, regional rules, and race rules to `hasMany` relationships  
-- Fixed broken team seeds  
-- Corrected positional seeds and skill generation errors  
-</details>
+## 18 June 2025
 
-<details>
-<summary><strong>19 June 2025</strong></summary>
+* Converted primary/secondary skills and rules to `hasMany` relationships
+* Fixed broken team seeds and skill generation errors
 
-- Continued adding positional data  
-</details>
+## 19 June 2025
 
-<details>
-<summary><strong>20 June 2025</strong></summary>
+* Continued adding positional data
 
-- Added `RulesTeamController` to separate data presentation logic  
-- Created helper for formatting logic  
-- Added TWIG to container to support controllers and remove logic from route files  
-- Added rerolls to Amazon team (previously missing)  
-- **Done:**  
-  - [x] Added reroll cost to existing teams  
-- **In progress:**  
-  - [x] Continue seeding positional data  
-</details>
+## 20 June 2025
 
-<details>
-<summary><strong>21 June 2025</strong></summary>
+* Added `RulesTeamController` for data presentation logic
+* Created helper for formatting logic
+* Added TWIG for cleaner controllers and removed logic from routes
+* Reroll costs added to Amazon and other teams
+* **In progress:**
 
-- Added humans and imperial nobility factions  
-- Railway trial expired; considering AWS hosting options  
-- **To do:**  
-  - [x] Double-check all skills and tidy seed files  
-  - [x] Revisit existing race and positional seed scripts (consider switching from ID-based to skill name-based referencing)  
-  - [x] Update player seeds and cross-reference before further additions  
-- **Done:**  
-  - [x] Added missing skill traits (e.g., Stunty, Swarming)  
-  - [x] Reviewed schema to include random roll mechanics for skill randomization  
-</details>
+  * [x] Continue seeding positional data
 
-<summary><strong>22 June 2025</strong></summary>
-- Changed back slashed apostrophes in skill.sql to double apostrophes
-- Checked SKILLS on skills template.
-- updated Amazon and Black Orc Player seed files with new skill IDs.
-</details>
+## 21 June 2025
 
-<summary><strong>23 June 2025</strong></summary>
-- Continue to update now incorrect skill IDs in team position seed data. Added Lizardmen
-</details>
+* Added Humans and Imperial Nobility
+* Railway trial expired — exploring AWS hosting
+* **To do:**
 
-<summary><strong>24 June 2025</strong></summary>
-- Added necromantic, norse and orcs.
-</details>
+  * [x] Verify all skills and tidy seed files
+  * [x] Revisit race and positional seed scripts (switch to skill name-based referencing)
+  * [x] Update player seeds and cross-reference
+* **Done:**
 
-<summary><strong>25 June 2025</strong></summary>
-- Added Shambling undead, Skaven and wood elf.
-- Created tier folders for player positional seed data
-- removed duplicate race, and updated IDs across files
-</details>
+  * [x] Added missing skill traits (e.g., Stunty, Swarming)
+  * [x] Added random roll mechanics to schema
 
-<summary><strong>26 June 2025</strong></summary>
-- Added Chaos Renegades
-- Altered exclusive group to accomodate Renegades as you can choose 3 of 4 big guys.
-- Normalised costs in player position data, as some costs where in k and some where in full amounts.
-</details>
+## 22 June 2025
 
+* Replaced backslash apostrophes in `skill.sql` with double apostrophes
+* Verified skills template rendering
+* Updated Amazon and Black Orc player seed files with correct skill IDs
 
-<summary><strong>27 June 2025</strong></summary>
-- Added Daemons of Khorne
-- Tidied up and standardised previous SQL files
-- Fixed some IDs that were out of sync, between defaults name seeds and player positional seeds.
-- **To do:**  
-  - [ ] Investigate why DB container falls over after initial seeding and needs bumping. Seems to be something to do with it wanting to use ROOT to shut down temp container...?
-  - [ ] Continue adding team positional data.
-     - [ ] Remaining Tier 1 Teams.
-  - [ ] Revise Skill Descriptions, as some are just wrong.
-</details>
+## 23 June 2025
+
+* Continued fixing skill IDs in positional seed data
+* Added Lizardmen
+
+## 24 June 2025
+
+* Added Necromantic, Norse, and Orcs
+
+## 25 June 2025
+
+* Added Shambling Undead, Skaven, and Wood Elf
+* Created tier folders for positional seed data
+* Removed duplicate races and updated IDs
+
+## 26 June 2025
+
+* Added Chaos Renegades
+* Adjusted exclusive group logic for Renegades (3 of 4 big guys)
+* Normalized costs in positional data (standardized currency units)
+
+## 27 June 2025
+
+* Added Daemons of Khorne
+* Tidied and standardized SQL files
+* Fixed out-of-sync IDs between default name seeds and positional seeds
+* **To do:**
+
+  * [ ] Investigate why DB container shuts down after initial seeding (possibly root user issue)
+  * [ ] Continue adding team positional data (finish Tier 1 teams)
+  * [ ] Revise and correct skill descriptions
