@@ -34,7 +34,7 @@ for sql_file in /docker-entrypoint-initdb.d/sql/seed/default_names/*.sql; do
 done
 
 echo "Importing default race positions seeds in alphabetical order..."
-for sql_file in /docker-entrypoint-initdb.d/sql/seed/players/*.sql; do
+for sql_file in /docker-entrypoint-initdb.d/sql/seed/players/*/*.sql; do
   echo "Importing $sql_file..."
   mysql "$MYSQL_DATABASE" < "$sql_file"
 done

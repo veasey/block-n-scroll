@@ -30,7 +30,7 @@ VALUES
 (192, 3, 1, 0), -- Agility
 (192, 1, 1, 0), -- General
 (192, 5, 0, 1), -- Mutations
-(191, 2, 0, 1), -- Strength
+(192, 2, 0, 1), -- Strength
 (192, 4, 0, 1); -- Passing
 
 /* Bloodthirster - Skill Access */

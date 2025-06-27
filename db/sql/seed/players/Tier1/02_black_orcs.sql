@@ -3,7 +3,7 @@ INSERT INTO base_team_player
 VALUES
 (20, 'Goblin Bruiser', 'Agile goblin with thick skull', 'standard', 2, 6, 2, 3, 4, 8, 45000, 12),
 (21, 'Black Orc', 'Strong and tough orc', 'standard', 2, 4, 4, 4, 5, 10, 90000, 6),
-(22, 'Trained Troll', 'Big guy with multiple traits', 'special', 2, 4, 5, 5, 5, 10, 115000, 1)
+(22, 'Trained Troll', 'Big guy with multiple traits', 'special', 2, 4, 5, 5, 5, 10, 115000, 1);
 
 /* Goblin Bruiser - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
