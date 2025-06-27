@@ -197,10 +197,16 @@
 - Added Chaos Renegades
 - Altered exclusive group to accomodate Renegades as you can choose 3 of 4 big guys.
 - Normalised costs in player position data, as some costs where in k and some where in full amounts.
+</details>
+
+
+<summary><strong>27 June 2025</strong></summary>
+- Added Daemons of Khorne
+- Tidied up and standardised previous SQL files
+- Fixed some IDs that were out of sync, between defaults name seeds and player positional seeds.
 - **To do:**  
   - [ ] Investigate why DB container falls over after initial seeding and needs bumping. Seems to be something to do with it wanting to use ROOT to shut down temp container...?
   - [ ] Continue adding team positional data.
      - [ ] Remaining Tier 1 Teams.
   - [ ] Revise Skill Descriptions, as some are just wrong.
 </details>
-
