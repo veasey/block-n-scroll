@@ -88,6 +88,6 @@ VALUES
 (214, 99),  -- Throw Team Mate
 (214, 100); -- Timmm-ber!
 
-/* Team Special Rules */
-INSERT INTO base_team_special_rule (base_team_id, special_rule_id) VALUES
-(21, 3); -- Halfling Thimble Cup
+/* Regional Rules */
+INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES
+(21, 3); -- alfling Thimble Cup
