@@ -1,3 +1,6 @@
+/* Hide Team */
+update base_team SET is_hidden = true WHERE id = 19;
+
 /* reroll cost */
 UPDATE base_team SET reroll_cost = 70 WHERE id = 19;
 
