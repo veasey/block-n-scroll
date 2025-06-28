@@ -5,9 +5,9 @@ INSERT INTO base_team_player
 (id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count)
 VALUES
 (190, 'Pit Fighters', 'Human lineman', 'standard', 19, 6, 3, 3, 4, 9, 60000, 16),
-(191, 'Bloodletter', 'Blizter', 'standard', 18, 6, 3, 3, 4, 8, 80000, 4),
-(192, 'Khorne Heralds', 'Blocker', 'special', 18, 5, 3, 4, 5, 9, 90000, 4), 
-(193, 'Bloodthirster', 'Big Guy', 'standard', 18, 6, 5, 5, NULL, 10, 180000, 1);
+(191, 'Bloodletter', 'Blizter', 'standard', 19, 6, 3, 3, 4, 8, 80000, 4),
+(192, 'Khorne Heralds', 'Blocker', 'special', 19, 5, 3, 4, 5, 9, 90000, 4), 
+(193, 'Bloodthirster', 'Big Guy', 'standard', 19, 6, 5, 5, NULL, 10, 180000, 1);
 
 /* Pit Fighters - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
