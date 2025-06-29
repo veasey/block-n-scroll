@@ -71,7 +71,7 @@ INSERT INTO skill (id, name, category, description) VALUES
 (61, 'Iron Hard Skin', 'Mutation', 'Unaffected by Claws skill.'),
 (62, 'Monstrous Mouth', 'Mutation', 'Rerolls failed Catch rolls and immune to Strip Ball effects.'),
 (63, 'Prehensile Tail', 'Mutation', '-1 to Dodge rolls for opponents dodging away from this player.'),
-(64, 'Tentacles', 'Mutation', 'Opposed 2D6 + Strength check to prevent adjacent opponent moving away.'),
+(64, 'Tentacles', 'Mutation', 'This player can use this Skill when an opposition player they are Marking voluntarily moves out of a square within this player’s Tackle Zone. Roll a D6, adding the ST of this player to the roll and then subtracting the ST of the opposition player. If the result is 6 or higher, or if the roll is a natural 6, the opposition player is held firmly in place and their movement comes to an end. If, however, the result is 5 or lower, or if the roll is a natural 1, this Skill has no further effect. A player may use this Skill any number or times per turn, during either team’s turn. If an opposition player is being Marked by more than one player with this Skill, only one player may use it.'),
 (65, 'Two Heads', 'Mutation', '+1 to Dodge rolls.'),
 (66, 'Very Long Legs', 'Mutation', '+2 to Intercept tests and ignores Cloud Burster.'),
 
@@ -95,7 +95,7 @@ INSERT INTO skill (id, name, category, description) VALUES
 (83, 'My Ball', 'Extraordinary', 'Automatically catches the ball from any teammate within 3 squares.'),
 (84, 'No Hands', 'Extraordinary', 'Cannot pick up or catch the ball.'),
 (85, 'Pick-Me-Up', 'Extraordinary', 'Can pick up and throw teammates.'),
-(86, 'Plague Ridden', 'Extraordinary', 'Causes injuries to adjacent opponents at end of their turns.'),
+(86, 'Plague Ridden', 'Extraordinary', 'Once per game, if an opposition player with Strength characteristic of 4 or less that does not have the Decay, Regeneration or Stunty traits suffers a Casualty result of 15-16, DEAD as the result of a Block action performed or a Foul action committed by a player with this Trait that belongs to your team, and if that player cannot be saved by an apothecary, you may choose to use this Trait. If you do, that player does not die; they have instead been infected with a virulent plague! If your team has the ‘Favoured of Nurgle’ special rule, a new ‘Rotter Lineman’ player, drawn from the Nurgle roster, can be placed immediately in the Reserves box of your team’s dugout (this may cause a team to have more than 16 players for the remainder of this game). During step 4 of the post-game sequence, this player may be permanently hired, Exactly as you would a Journeyman player that had played for your team.'),
 (87, 'Pogo Stick', 'Extraordinary', 'May leap over opponents without penalties.'),
 (88, 'Projectile Vomit', 'Extraordinary', 'May perform a ranged vomit attack causing injury.'),
 (89, 'Really Stupid', 'Extraordinary', 'May lose activation randomly.'),

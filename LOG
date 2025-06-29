@@ -32,4 +32,5 @@ P4 – Match tracking + team sync
 26 Jun – Chaos Renegades + big guy logic, normalized costs.
 27 Jun – Khorne added, synced IDs, tidied SQL.
 28 Jun - Added Khorne Followers and Gnomes. Hid Deamons of Khorne.
+29 Jun - Added Nurgle.
 → TODO: DB shutdown bug, finish Tier 2, fix skill text.

@@ -15,14 +15,16 @@ VALUES
 /* Chaos Chosen Blocker - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
+(170, 1, 1, 0), -- General
+(170, 5, 1, 0), -- Mutations
 (170, 2, 1, 0), -- Strength
-(170, 1, 0, 1), -- General
 (170, 3, 0, 1); -- Agility
 
 /* Chaos Beastman - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
 (171, 1, 1, 0), -- General
+(171, 5, 1, 0), -- Mutations
 (171, 2, 0, 1), -- Strength
 (171, 3, 0, 1), -- Agility
 (171, 4, 0, 1); -- Passing
@@ -38,7 +40,7 @@ VALUES
 /* Chaos Troll - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
-(173, 2, 1, 0),  -- Strength
+(173, 2, 1, 0), -- Strength
 (173, 5, 0, 1), -- Mutations
 (173, 3, 0, 1), -- Agility
 (173, 1, 0, 1); -- General
