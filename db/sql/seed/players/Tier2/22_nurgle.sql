@@ -3,10 +3,10 @@ update base_team SET reroll_cost = 70 WHERE id = 22;
 INSERT INTO base_team_player
 (id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count)
 VALUES
-(220, 'Rotter', 'Zombie lineman', 'standard', 21, 5, 3, 4, 6, 9, 35000, 12),
-(221, 'Bloater', 'Blocker', 'standard', 21, 4, 4, 4, 6, 10, 75000, 4),
-(222, 'Pestigor', 'Blitzer and ball handler', 'standard', 21, 6, 3, 3, 4, 9, 115000, 4),
-(223, 'Rotspawn', 'Big Guy, good road block.', 'special', 21, 4, 5, 5, NULL, 10, 140000, 1);
+(220, 'Rotter', 'Zombie lineman', 'standard', 22, 5, 3, 4, 6, 9, 35000, 12),
+(221, 'Bloater', 'Blocker', 'standard', 22, 4, 4, 4, 6, 10, 75000, 4),
+(222, 'Pestigor', 'Blitzer and ball handler', 'standard', 22, 6, 3, 3, 4, 9, 115000, 4),
+(223, 'Rotspawn', 'Big Guy, good road block.', 'special', 22, 4, 5, 5, NULL, 10, 140000, 1);
 
 /* Rotter - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
