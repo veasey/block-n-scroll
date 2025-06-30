@@ -58,7 +58,6 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (103, 63),  -- Prehensile Tail
 (103, 54);  -- Thick Skull
 
-
 /* Regional Rule */
 INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES
-(10, 4);  -- Old World Classic
+(10, 4);  -- Lustrian SuperLeague
