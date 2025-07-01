@@ -80,6 +80,7 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (135, 88),  -- Projectile Vomit
 (135, 89),  -- Really Stupid
 (135, 99);  -- Throw Team Mate
+
 /* Regional Rule */
 INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES
 (13, 1); -- Badlands Brawl

@@ -137,10 +137,10 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (267, 48), -- Mighty Blow
 (267, 63); -- Prehensile Tail
 
-/* Add Team to Region */
-INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES
-(26, 7); -- Underworld Challenge
-
 /* Add Team Special Rules */
 INSERT INTO base_team_special_rule (base_team_id, special_rule_id) VALUES
 (26, 1); -- Bribery and Corruption
+
+/* Add Team to Region */
+INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES
+(26, 7); -- Underworld Challenge
