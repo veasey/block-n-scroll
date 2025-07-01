@@ -6,11 +6,7 @@ P4 – Match tracking + team sync
 
 # DEV LOG
 06 Jun – Schema + seed done.
-→ TODO: fallback name logic, admin/coach input, fix seed script.
-
 07 Jun – Containerized schema + seed.
-→ TODO: auto-build, review schema.
-
 08 Jun – Validated seeds, started backend.
 09 Jun – Schema tweaks, expanding seed data.
 10 Jun – Base framework + routing/API set up.
@@ -34,4 +30,6 @@ P4 – Match tracking + team sync
 28 Jun - Added Khorne Followers and Gnomes. Hid Deamons of Khorne.
 29 Jun - Added Nurgle.
 30 Jun - Added Slannesh, fixed seed bugs. Added Slaan, fixed wrong comments in Lizardmen.
-→ TODO: DB shutdown bug, finish Tier 2, fix skill text.
+01 Jul - Added Underworld, vampires and goblins.
+
+→ TODO: DB shutdown bug, finish Tier 3, fix skill text.
