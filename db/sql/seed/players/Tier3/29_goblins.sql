@@ -128,4 +128,4 @@ INSERT INTO base_team_special_rule (base_team_id, special_rule_id) VALUES
 /* Regional Rule */
 INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES
 (29, 1), -- Badlands Brawl
-(29 7); -- Underworld Challenge
+(29, 7); -- Underworld Challenge
