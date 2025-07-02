@@ -31,11 +31,11 @@ INSERT INTO base_team (id, name, description, tier) VALUES
 (25, 'Slann', 'Frog-like creatures with unique jumping abilities.', 2),
 (26, 'Underworld', 'Mix of Skaven and Goblins, tricky and unpredictable.', 2),
 (27, 'Vampires', 'Bloodthirsty undead with powerful abilities.', 2);
+(28, 'Khemri', 'Ancient undead with mummies and constructs.', 3),
 
 -- Tier 3 (Fun / Underdog teams)
 INSERT INTO base_team (id, name, description, tier) VALUES
-(28, 'Goblins', 'Cheap and tricky players.', 3),
-(29, 'Halflings', 'Small and sneaky, hard to injure.', 3),
-(30, 'Khemri', 'Ancient undead with mummies and constructs.', 3),
+(29, 'Goblins', 'Cheap and tricky players.', 3),
+(30, 'Halflings', 'Small and sneaky, hard to injure.', 3),
 (31, 'Ogres', 'Massive, tough and slow brutes.', 3),
 (32, 'Snotlings', 'Small, numerous, chaotic, and fragile.', 3);

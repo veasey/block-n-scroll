@@ -12,49 +12,49 @@ VALUES
 
 /* Skeleton Linemen - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(140, 3, 1, 1),  -- G
-(140, 4, 0, 1),  -- A
-(140, 2, 0, 1);  -- S
+(140, 3, 1, 0), -- General
+(140, 4, 0, 1), -- Agility
+(140, 2, 0, 1); -- Strenth
 
 /* Zombie Linemen - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(141, 3, 1, 1),  -- G
-(141, 4, 0, 1),  -- A
-(141, 2, 0, 1);  -- S
+(141, 3, 1, 0), -- General
+(141, 4, 0, 1), -- Agility
+(141, 2, 0, 1); -- Strength
 
 
 /* Ghoul Runner - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(142, 4, 1, 0),  -- A
-(142, 3, 1, 0),  -- G
-(142, 1, 0, 1),  -- P
-(142, 2, 0, 1);  -- S
+(142, 4, 1, 0), -- Agility
+(142, 3, 1, 0), -- General
+(142, 1, 0, 1), -- Passing
+(142, 2, 0, 1); -- Strength
 
 /* 	Weight Blitzer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
-(143, 3, 1, 0),  -- G
-(143, 2, 1, 0),  -- S
-(143, 4, 0, 1),  -- A
-(143, 1, 0, 1);  -- P
+(143, 3, 1, 0), -- General
+(143, 2, 1, 0), -- Strength
+(143, 4, 0, 1), -- Agility
+(143, 1, 0, 1); -- Passing
 
 /*	Mummies - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
-(144, 2, 1, 0),  -- S
-(144, 1, 0, 1),  -- A
-(144, 3, 0, 1);  -- G
+(144, 2, 1, 0), -- Strength
+(144, 1, 0, 1), -- Agility
+(144, 3, 0, 1); -- General
 
 /* Skeleton Linemen - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(140, 90),  -- Regeneration
-(140, 54);  -- Thick Skull
+(140, 90), -- Regeneration
+(140, 54); -- Thick Skull
 
 /* Zombie Linemen - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(141, 90);  -- Regeneration
+(141, 90); -- Regeneration
 
 /* Ghoul Runner - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(142, 19);
+(142, 19); -- Dodge
 
 /* Weight Blitzer - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
@@ -63,8 +63,8 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 
 /* Mummies - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(144, 48),  -- Mighty Blow
-(144, 90);  -- Regeneration
+(144, 48), -- Mighty Blow
+(144, 90); -- Regeneration
 
 /* Race Rule */
 INSERT INTO base_team_special_rule (base_team_id, special_rule_id) VALUES
