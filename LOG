@@ -31,10 +31,9 @@ P4 – Match tracking + team sync
 29 Jun - Added Nurgle.
 30 Jun - Added Slannesh, fixed seed bugs. Added Slaan, fixed wrong comments in Lizardmen.
 01 Jul - Added Underworld, vampires and goblins.
-02 Jul - Added Halfings, Tomb Kings and Ogres.
+02 Jul - Added Halfings, Tomb Kings, Ogres and Snotlings.
 
 → TODO: 
 →→ DB shutdown bug
-→→ finish Tier 3
 →→ fix skill text.
 →→→ check for twig for skill body text, before getting from DB (so complicated skills can have a dedicated page.)
