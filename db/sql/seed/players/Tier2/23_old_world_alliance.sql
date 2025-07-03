@@ -148,7 +148,7 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id)
 VALUES
 (237, 1),  -- Block
 (237, 2),  -- Dauntless
-(237, 5,)  -- Frenzy
+(237, 5)   -- Frenzy
 (237, 82), -- Loner
 (237, 54); -- Thick Skull
 
