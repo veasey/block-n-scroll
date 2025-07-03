@@ -38,7 +38,7 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 VALUES 
 (223, 2, 1, 0), -- Strength
 (223, 3, 0, 1), -- Agility
-(223, 1, 0, 1); -- General
+(223, 1, 0, 1), -- General
 (223, 5, 0, 1); -- Mutations
 
 /* Rotter - Starting Skills */
@@ -70,7 +70,7 @@ VALUES
 (223, 57), -- Disturbing Presence
 (223, 82), -- Loner
 (223, 89), -- Really Stupid
-(223, 59); -- Foul Appearance
+(223, 59), -- Foul Appearance
 (223, 86), -- Plague Ridden
 (223, 64); -- Tentacles
 

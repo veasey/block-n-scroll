@@ -118,7 +118,7 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (297, 48), -- Mighty Blow
 (297, 88), -- Projectile Vomit
 (297, 89), -- Really Stupid
-(297, 90); -- Regeneration
+(297, 90), -- Regeneration
 (297, 99); -- Throw Team Mate
 
 /* Add Team Special Rules */

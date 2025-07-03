@@ -181,4 +181,4 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 
 /* Regional Rules */
 INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES
-(23, 5), -- Old World Classic
+(23, 5); -- Old World Classic

@@ -40,7 +40,7 @@ VALUES
 /* Vargheist - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
-(274, 2, 1, 0); -- Strengths
+(274, 2, 1, 0), -- Strengths
 (274, 1, 0, 1), -- General
 (274, 3, 0, 1); -- Agility
 
