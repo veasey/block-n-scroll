@@ -40,21 +40,28 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 
 /* Vampire Thrower - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(271, 71), -- Bloodlust
+(271, 71), -- Bloodlust (2)
 (271, 80), -- Hypnotic Gaze
 (271, 90), -- Regeneration
 (271, 37); -- Pass
 
 /* Vampire Blitzer - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(271, 71), -- Bloodlust
-(271, 80), -- Hypnotic Gaze
-(271, 90), -- Regeneration
-(271, 47); -- Juggernaut
+(272, 71), -- Bloodlust (3)
+(272, 80), -- Hypnotic Gaze
+(272, 90), -- Regeneration
+(272, 47); -- Juggernaut
+
+/* Vampire Runner - Starting Skills */
+INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
+(273, 71), -- Bloodlust (2)
+(273, 80), -- Hypnotic Gaze
+(273, 90), -- Regeneration
+(273, 47); -- Juggernaut
 
 /* Vargheist - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(274, 71), -- Bloodlust
+(274, 71), -- Bloodlust (3)
 (274, 5),  -- Frenzy
 (274, 56), -- Claws
 (274, 82), -- Loner

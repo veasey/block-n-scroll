@@ -38,6 +38,7 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (300, 91); -- Right Stuff
 
 /* Hefty - Starting Skills */
+INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (301, 19), -- Dodge
 (301, 95), -- Stunty
 (301, 4);  -- Fend

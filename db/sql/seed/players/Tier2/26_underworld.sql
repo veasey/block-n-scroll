@@ -64,7 +64,7 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (266, 5, 1, 0), -- Mutations
 (266, 2, 1, 0), -- Strength
-(265, 4, 0, 1), -- Agility
+(266, 4, 0, 1), -- Agility
 (266, 3, 0, 1), -- General
 (266, 1, 0, 1); -- Passing
 
@@ -116,7 +116,7 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (266, 48), -- Mighty Blow
 (266, 88), -- Projectile Vomit
 (266, 89), -- Really Stupid
-(266, 90); -- Regeneration
+(266, 90), -- Regeneration
 (266, 99); -- Throw Team Mate
 
 /* Mutant Rat Ogre - Starting Skills */

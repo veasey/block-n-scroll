@@ -35,7 +35,7 @@ P4 – Match tracking + team sync
 03 Jul - Went over General Skills, creating expanded pages where neccessary. Added skill template routing, for longer descs. Checked team SEEDs.
 
 → TODO: 
+→→ revise skill text.
+→→→ Agility, Passing, Strength, Mutations, Extraordinary
+→→ What to do for Bloodlust, Loner etc where there is an X. Maybe have an X join on [position, skill]?
 →→ DB shutdown bug
-→→ fix skill text.
-→→→ check for twig for skill body text, before getting from DB (so complicated skills can have a dedicated page.)
-→→ On hover on skill, display short skill desc in tooltip.

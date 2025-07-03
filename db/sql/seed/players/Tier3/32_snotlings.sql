@@ -36,10 +36,10 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 
 /* Trained Troll - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(323, 2, 1, 0), -- Strength
-(323, 1, 0, 1), -- Agility
-(323, 3, 0, 1), -- General
-(321, 4, 0, 1); -- Passing
+(325, 2, 1, 0), -- Strength
+(325, 1, 0, 1), -- Agility
+(325, 3, 0, 1), -- General
+(325, 4, 0, 1); -- Passing
 
 /* Snotling - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
@@ -52,7 +52,7 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 
 /* Fungus Flinga - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES   
-(321, 72); -- Bombardier
+(321, 72), -- Bombardier
 (321, 19), -- Dodge
 (321, 91), -- Right Stuff
 (321, 92), -- Secret Weapon

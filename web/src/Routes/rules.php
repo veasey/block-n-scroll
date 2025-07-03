@@ -51,10 +51,10 @@ $app->get('/rules/skill/{skill_id}[.{format}]', function (Request $request, Resp
     }
 
     // Look for a custom Twig template like "templates/rules/skills/1_block.twig"
-    $templateDir = __DIR__ . '/../templates/rules/skills';
     $matchingTemplate = null;
+    $templateDir = __DIR__ . '/../../templates/rules/skills'; // adjust as needed based on this PHP file location
 
-    foreach (glob("$templateDir/{$skillId}_*.twig") as $filePath) {
+    foreach (glob($templateDir . "/{$skillId}_*.twig") as $filePath) {
         $basename = basename($filePath);
         $matchingTemplate = "rules/skills/$basename";
         break;

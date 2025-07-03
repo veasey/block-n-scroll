@@ -50,7 +50,7 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 /* Skaven Thrower - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (151, 37), -- Passingass
-(151, 12); -- Strengthure Hands
+(151, 12); -- Sure Hands
 
 /* Skaven Gutter Runner - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
@@ -66,7 +66,7 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (154, 5),  -- Frenzy
 (154, 82), -- Loner
 (154, 48), -- Mutationighty Blow
-(154, 63); -- Passingrehensile Tail
+(154, 63); -- Prehensile Tail
 
 /* Regional Rule */
 INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES

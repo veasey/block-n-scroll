@@ -18,7 +18,7 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (61, 2, 1, 0), -- Agility
 (61, 1, 1, 0), -- General
-(61, 4, 1, 0); -- Passing
+(61, 4, 1, 0), -- Passing
 (61, 3, 0, 1); -- Strength
 
 /* Catcher - Skill Access */
@@ -31,7 +31,7 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (63, 2, 1, 0), -- Agility
 (63, 1, 1, 0), -- General
-(63, 4, 0, 1); -- Passing
+(63, 4, 0, 1), -- Passing
 (63, 3, 0, 1); -- Strength
 
 /* Thrower - Starting Skills */
