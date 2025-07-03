@@ -30,8 +30,8 @@ INSERT INTO base_team (id, name, description, tier) VALUES
 (24, 'Slaanesh', 'Followers of the Chaos god Slaanesh, fast and seductive.', 2),
 (25, 'Slann', 'Frog-like creatures with unique jumping abilities.', 2),
 (26, 'Underworld', 'Mix of Skaven and Goblins, tricky and unpredictable.', 2),
-(27, 'Vampires', 'Bloodthirsty undead with powerful abilities.', 2);
-(28, 'Khemri', 'Ancient undead with mummies and constructs.', 3),
+(27, 'Vampires', 'Bloodthirsty undead with powerful abilities.', 2),
+(28, 'Khemri', 'Ancient undead with mummies and constructs.', 3);
 
 -- Tier 3 (Fun / Underdog teams)
 INSERT INTO base_team (id, name, description, tier) VALUES
