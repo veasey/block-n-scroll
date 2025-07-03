@@ -2,8 +2,7 @@
 UPDATE base_team SET reroll_cost = 70 WHERE id = 14;
 
 INSERT INTO base_team_player
-(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count)
-VALUES
+(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count) VALUES
 (140, 'Skeleton Linemen', 'Cheap, resilient but a bit slow', 'standard', 14, 5, 3, 4, 6, 8, 40000, 12),
 (141, 'Zombie Linemen', 'Bit tougher, bit slower linemen', 'standard', 14, 4, 3, 4, NULL, 9, 40000, 2),
 (142, 'Ghoul Runner', 'Ball Handler', 'standard', 14, 7, 3, 3, 4, 8, 75000, 4),
@@ -21,7 +20,6 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 (141, 3, 1, 0), -- General
 (141, 4, 0, 1), -- Agility
 (141, 2, 0, 1); -- Strength
-
 
 /* Ghoul Runner - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES

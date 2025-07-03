@@ -1,30 +1,29 @@
 INSERT INTO base_team_player
-(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count)
-VALUES
+(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count) VALUES
 (20, 'Goblin Bruiser', 'Agile goblin with thick skull', 'standard', 2, 6, 2, 3, 4, 8, 45000, 12),
 (21, 'Black Orc', 'Strong and tough orc', 'standard', 2, 4, 4, 4, 5, 10, 90000, 6),
 (22, 'Trained Troll', 'Big guy with multiple traits', 'special', 2, 4, 5, 5, 5, 10, 115000, 1);
 
 /* Goblin Bruiser - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(20, 2, 1, 0),  -- Agility (Primary)
-(20, 1, 0, 1),  -- General (Secondary)
-(20, 4, 0, 1),  -- Passing (Secondary)
-(20, 3, 0, 1);  -- Strength (Secondary)
+(20, 2, 1, 0),  -- Agility
+(20, 1, 0, 1),  -- General
+(20, 4, 0, 1),  -- Passing
+(20, 3, 0, 1);  -- Strength
 
 /* Black Orc - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(21, 1, 1, 0),  -- General (Primary)
-(21, 3, 1, 0),  -- Strength (Primary)
-(21, 2, 0, 1),  -- Agility (Secondary)
-(21, 4, 0, 1);  -- Passing (Secondary)
+(21, 1, 1, 0),  -- General
+(21, 3, 1, 0),  -- Strength
+(21, 2, 0, 1),  -- Agility
+(21, 4, 0, 1);  -- Passing
 
 /* Trained Troll - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(22, 3, 1, 0),  -- Strength (Primary)
-(22, 2, 0, 1),  -- Agility (Secondary)
-(22, 1, 0, 1),  -- General (Secondary)
-(22, 4, 0, 1);  -- Passing (Secondary)
+(22, 3, 1, 0),  -- Strength
+(22, 2, 0, 1),  -- Agility
+(22, 1, 0, 1),  -- General
+(22, 4, 0, 1);  -- Passing
 
 /* Goblin Bruiser - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES

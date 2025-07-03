@@ -1,6 +1,5 @@
 INSERT INTO base_team_player
-(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count)
-VALUES
+(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count) VALUES
 (320, 'Snotling', 'Stunty lineman', 'standard', 32, 5, 1, 3, 5, 6, 15000, 16),
 (321, 'Fungus Flinga', 'Bomber', 'special', 32, 5, 1, 3, 4, 6, 30000, 2),
 (322, 'Fun-hoppa', 'Runner', 'special', 32, 6, 1, 3, 5, 6, 20000, 2),
@@ -9,40 +8,34 @@ VALUES
 (325, 'Trained Troll', 'Big Guy', 'standard', 32, 4, 5, 5, 5, 10, 115000, 2);
 
 /* Snotling - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (320, 1, 1, 0), -- Agility
 (320, 3, 0, 1); -- General
 
 /* Fungus Flinga - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (321, 1, 1, 0), -- Agility
 (321, 4, 1, 0), -- Passing
 (321, 3, 0, 1); -- General
 
 /* Fun-hoppa - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (322, 1, 1, 0), -- Agility
 (322, 3, 0, 1); -- General
 
 /* Stilty Runna - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (323, 1, 1, 0), -- Agility
 (323, 3, 0, 1); -- General
 
 /* Pump Wagon - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (324, 2, 1, 0), -- Strength
 (324, 1, 0, 1), -- Agility
 (324, 3, 0, 1); -- General
 
 /* Trained Troll - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (323, 2, 1, 0), -- Strength
 (323, 1, 0, 1), -- Agility
 (323, 3, 0, 1), -- General

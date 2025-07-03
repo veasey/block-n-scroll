@@ -2,8 +2,7 @@
 UPDATE base_team SET reroll_cost = 50 WHERE id = 4;
 
 INSERT INTO base_team_player
-(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count, exclusive_group_id)
-VALUES
+(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count, exclusive_group_id) VALUES
 (40, 'Lineman', 'Basic but agile team member', 'standard', 4, 6, 3, 5, 4, 9, 70000, 12, NULL),
 (41, 'Runner', 'Fast player with Dump-Off skill', 'standard', 4, 7, 3, 5, 3, 8, 80000, 2, NULL),
 (42, 'Blitzer', 'Powerful player with Block skill', 'standard', 4, 7, 3, 5, 4, 9, 100000, 4, NULL),
@@ -12,36 +11,32 @@ VALUES
 
 /* Lineman - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(40, 3, 1, 0), -- Agility (AG)
-(40, 2, 0, 1); -- Strength (S)
+(40, 3, 1, 0), -- Agility
+(40, 2, 0, 1); -- Strength
 
 /* Runner - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(41, 3, 1, 0), -- Agility (AG)
-(41, 1, 1, 0), -- Passing (P)
-(41, 2, 0, 1); -- Strength (S)
+(41, 3, 1, 0), -- Agility
+(41, 1, 1, 0), -- Passing
+(41, 2, 0, 1); -- Strength
 
 /* Blitzer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(42, 3, 1, 0), -- Agility (AG)
-(42, 2, 1, 0), -- Strength (S)
-(42, 1, 0, 1); -- Passing (P)
+(42, 3, 1, 0), -- Agility
+(42, 2, 1, 0), -- Strength
+(42, 1, 0, 1); -- Passing
 
 /* Assassin - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(43, 3, 1, 0), -- Agility (AG)
-(43, 2, 1, 0), -- Strength (S)
-(43, 1, 0, 1); -- Passing (P)
+(43, 3, 1, 0), -- Agility
+(43, 2, 1, 0), -- Strength
+(43, 1, 0, 1); -- Passing
 
 /* Witch Elf - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(44, 3, 1, 0), -- Agility (AG)
-(44, 2, 1, 0), -- Strength (S)
-(44, 1, 0, 1); -- Passing (P)
-
-
-/* Lineman - Starting Skills */
-/* No starting skills for Lineman */
+(44, 3, 1, 0), -- Agility
+(44, 2, 1, 0), -- Strength
+(44, 1, 0, 1); -- Passing
 
 /* Runner - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES

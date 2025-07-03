@@ -12,43 +12,43 @@ VALUES
 
 /* Imperial Retainer Lineman (G primary, AS secondary) */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(90, 3, 1, 0),  -- G (General)
-(90, 2, 0, 1),  -- S (Strength)
-(90, 4, 0, 1);  -- A (Agility)
+(90, 3, 1, 0), -- General
+(90, 2, 0, 1), -- Strength
+(90, 4, 0, 1); -- Agility
 
 /* Imperial Thrower (GP primary, AS secondary) */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(91, 3, 1, 0),  -- G
-(91, 1, 1, 0),  -- P (Passing)
-(91, 2, 0, 1),  -- S
-(91, 4, 0, 1);  -- A
+(91, 3, 1, 0), -- General
+(91, 1, 1, 0), -- Passing
+(91, 2, 0, 1), -- Strength
+(91, 4, 0, 1); -- Agility
 
 /* Imperial Noble Blitzer (AG primary, PS secondary) */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
-(92, 4, 1, 0),  -- A (Agility)
-(92, 3, 1, 0),  -- G (General)
-(92, 2, 0, 1),  -- S
-(92, 1, 0, 1);  -- P
+(92, 4, 1, 0), -- Agility
+(92, 3, 1, 0), -- General
+(92, 2, 0, 1), -- Strength
+(92, 1, 0, 1); -- Passing
 
 /* Imperial Bodyguard (GS primary, A secondary) */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(93, 3, 1, 0),  -- G
-(93, 2, 1, 0),  -- S
-(93, 4, 0, 1);  -- A
+(93, 3, 1, 0), -- General
+(93, 2, 1, 0), -- Strength
+(93, 4, 0, 1); -- Agility
 
 /* Ogre (S primary, A secondary) */
 INSERT INTO base_team_player_skill_category  (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(94, 2, 1, 0),  -- S
-(94, 4, 0, 1);  -- A
+(94, 2, 1, 0), -- Strength
+(94, 4, 0, 1); -- Agility
 
 /* Imperial Retainer Lineman (Fend) */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(90, 4);  -- Fend
+(90, 4); -- Fend
 
 /* Imperial Thrower (Pass, Running Pass) */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(91, 37),  -- Pass
-(91, 39);  -- Running Pass
+(91, 37), -- Passingass
+(91, 39); -- Running Pass
 
 /* Imperial Noble Blitzer (Block, Catch) */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
@@ -57,16 +57,16 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 
 /* Imperial Bodyguard (Stand Firm, Wrestle) */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(93, 52),  -- Stand Firm
+(93, 52), -- Strengthtand Firm
 (93, 14); -- Wrestle
 
 /* Ogre (Bone Head, Loner (4+), Mighty Blow (+1), Thick Skull, Throw Team Mate) */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
-(94, 73),  -- Bone Head
-(94, 82),  -- Loner (4+)
-(94, 48),  -- Mighty Blow (+1)
-(94, 54),  -- Thick Skull
-(94, 99);  -- Throw Team Mate
+(94, 73), -- Bone Head
+(94, 82), -- Loner (4+)
+(94, 48), -- Mighty Blow (+1)
+(94, 54), -- Thick Skull
+(94, 99); -- Throw Team Mate
 
 /* Regional Rule */
 INSERT INTO base_team_regional_rule (base_team_id, regional_rule_id) VALUES

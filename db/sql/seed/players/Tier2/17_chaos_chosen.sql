@@ -1,28 +1,23 @@
 INSERT INTO base_team_player
-(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count, exclusive_group_id)
-VALUES
+(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count, exclusive_group_id) VALUES
 (170, 'Chosen Blocker', 'Core strength-focused warrior', 'standard', 17, 5, 4, 3, 5, 10, 100000, 4, NULL),
 (171, 'Chaos Beastman', 'Versatile player with horns', 'standard', 17, 6, 3, 3, 4, 9, 60000, 16, NULL),
 (172, 'Chaos Minotaur', 'Ferocious big guy with Frenzy', 'special', 17, 5, 5, 4, NULL, 9, 150000, 1, 1), 
 (173, 'Chaos Troll', 'Massive, regenerating brute with Really Stupid', 'special', 17, 4, 5, 5, 5, 10, 115000, 1, 1),
 (174, 'Chaos Ogre', 'Big guy with Bone Head and solid armour', 'special', 17, 5, 5, 4, 5, 10, 140000, 1, 1);
 
-INSERT INTO base_team_player_exclusive_group
-(id, name, description)
-VALUES
+INSERT INTO base_team_player_exclusive_group (id, name, description) VALUES
 (1, 'Chaos Big Guys', 'Group for Chaos big guys like Minotaur, Troll, and Ogre');
 
 /* Chaos Chosen Blocker - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES 
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (170, 1, 1, 0), -- General
 (170, 5, 1, 0), -- Mutations
 (170, 2, 1, 0), -- Strength
 (170, 3, 0, 1); -- Agility
 
 /* Chaos Beastman - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES 
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (171, 1, 1, 0), -- General
 (171, 5, 1, 0), -- Mutations
 (171, 2, 0, 1), -- Strength
@@ -30,40 +25,32 @@ VALUES
 (171, 4, 0, 1); -- Passing
 
 /* Chaos Minotaur - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES 
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (172, 2, 1, 0), -- Strength
 (172, 5, 0, 1), -- Mutations
 (172, 3, 0, 1), -- Agility
 (172, 1, 0, 1); -- General
 
 /* Chaos Troll - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES 
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (173, 2, 1, 0), -- Strength
 (173, 5, 0, 1), -- Mutations
 (173, 3, 0, 1), -- Agility
 (173, 1, 0, 1); -- General
 
 /* Chaos Ogre - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES 
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (174, 2, 1, 0),  -- Strength
 (174, 5, 0, 1), -- Mutations
 (174, 3, 0, 1), -- Agility
 (174, 1, 0, 1); -- General
 
-/* Chaos Chosen Blocker - Starting Skills */
-/* No starting skills for Chosen Blocker */
-
 /* Chaos Beastman - Starting Skills */
-INSERT INTO base_team_player_skill (base_team_player_id, skill_id)
-VALUES
+INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (171, 60);  -- Horns
 
 /* Chaos Minotaur - Starting Skills */
-INSERT INTO base_team_player_skill (base_team_player_id, skill_id)
-VALUES
+INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (172, 5),    -- Frenzy
 (172, 48),   -- Mighty Blow
 (172, 54),   -- Thick Skull
@@ -72,8 +59,7 @@ VALUES
 (172, 103);  -- Unchannelled Fury
 
 /* Chaos Troll - Starting Skills */
-INSERT INTO base_team_player_skill (base_team_player_id, skill_id)
-VALUES
+INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (173, 90),   -- Regeneration
 (173, 48),   -- Mighty Blow
 (173, 54),   -- Thick Skull
@@ -83,8 +69,7 @@ VALUES
 (173, 88);   -- Projectile Vomit
 
 /* Chaos Ogre - Starting Skills */
-INSERT INTO base_team_player_skill (base_team_player_id, skill_id)
-VALUES
+INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (174, 48),   -- Mighty Blow
 (174, 54),   -- Thick Skull
 (174, 82),   -- Loner
@@ -93,4 +78,4 @@ VALUES
 
 /* Chaos Team Special Rule */
 INSERT INTO base_team_special_rule (base_team_id, special_rule_id) VALUES
-(17, 4);
+(17, 4); -- Favour of the Chaos Gods

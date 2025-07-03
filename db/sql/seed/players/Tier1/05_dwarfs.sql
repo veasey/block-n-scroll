@@ -4,8 +4,7 @@ UPDATE base_team SET max_rerolls = 6 WHERE name = 'Dwarf';
 UPDATE base_team SET reroll_cost = 50 WHERE id = 5;
 
 INSERT INTO base_team_player
-(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count, exclusive_group_id)
-VALUES
+(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count, exclusive_group_id) VALUES
 (50, 'Lineman', 'Basic sturdy Dwarf player with Block, Tackle, Thick Skull', 'standard', 5, 4, 3, 4, 5, 10, 70000, 12, NULL),
 (51, 'Runner', 'Fast Dwarf with Sure Hands and Thick Skull', 'standard', 5, 6, 3, 4, 4, 9, 85000, 2, NULL),
 (52, 'Blitzer', 'Powerful Dwarf with Block and Thick Skull', 'standard', 5, 5, 3, 4, 4, 10, 80000, 2, NULL),
@@ -14,33 +13,33 @@ VALUES
 
 /* Lineman - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(50, 2, 1, 0), -- Strength (S)
-(50, 4, 1, 0), -- General (G)
-(50, 1, 0, 1); -- Passing (A)
+(50, 2, 1, 0), -- Strength
+(50, 4, 1, 0), -- General
+(50, 1, 0, 1); -- Passing
 
 /* Runner - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(51, 3, 1, 0), -- Agility (AG)
-(51, 4, 1, 0), -- General (G)
-(51, 1, 0, 1); -- Passing (P)
+(51, 3, 1, 0), -- Agility
+(51, 4, 1, 0), -- General
+(51, 1, 0, 1); -- Passing
 
 /* Blitzer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(52, 2, 1, 0), -- Strength (S)
-(52, 4, 1, 0), -- General (G)
-(52, 1, 0, 1); -- Passing (P)
+(52, 2, 1, 0), -- Strength
+(52, 4, 1, 0), -- General
+(52, 1, 0, 1); -- Passing
 
 /* Troll Slayer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(53, 2, 1, 0), -- Strength (S)
-(53, 4, 1, 0), -- General (G)
-(53, 1, 0, 1); -- Passing (P)
+(53, 2, 1, 0), -- Strength
+(53, 4, 1, 0), -- General
+(53, 1, 0, 1); -- Passing
 
 /* Deathroller - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(54, 4, 1, 0), -- General (G)
-(54, 3, 0, 1), -- Agility (AG)
-(54, 1, 0, 1); -- Passing (P)
+(54, 4, 1, 0), -- General
+(54, 3, 0, 1), -- Agility
+(54, 1, 0, 1); -- Passing
 
 /* Lineman - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
@@ -61,17 +60,17 @@ INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 /* Troll Slayer - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (53, 1),  -- Block
-(53, 2), -- Dauntless
-(53, 5), -- Frenzy
-(53, 54);  -- Thick Skull
+(53, 2),  -- Dauntless
+(53, 5),  -- Frenzy
+(53, 54); -- Thick Skull
 
 /* Deathroller - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
 (54, 44), -- Break Tackle
-(54, 3), -- Dirty Player (+2)
+(54, 3),  -- Dirty Player (+2)
 (54, 47), -- Juggernaut
 (54, 82), -- Loner (5+)
-(54, 48),  -- Mighty Blow (+1)
+(54, 48), -- Mighty Blow (+1)
 (54, 84), -- No Hands
 (54, 92), -- Secret Weapon
 (54, 52); -- Stand Firm

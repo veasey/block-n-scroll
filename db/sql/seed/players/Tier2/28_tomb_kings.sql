@@ -2,8 +2,7 @@
 UPDATE base_team SET reroll_cost = 70 WHERE id = 28
 
 INSERT INTO base_team_player
-(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count)
-VALUES
+(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count) VALUES
 (280, 'Skeleton Linemen', 'Cheap, resilient but a bit slow', 'standard', 28, 5, 3, 4, 6, 8, 40000, 16),
 (281, 'Anointed Thrower', 'Ball Handler', 'standard', 28, 6, 3, 4, 3, 8, 70000, 2),
 (282, 'Anointed Blitzer', 'Blitzer', 'standard', 28, 6, 3, 4, 6, 9, 90000, 2),

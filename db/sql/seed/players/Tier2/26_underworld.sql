@@ -13,37 +13,31 @@ VALUES
 (266, 'Underworld Troll', 'Big Guy', 'standard', 26, 4, 5, 5, 5, 10, 115000, 1, 4),
 (267, 'Mutant Rat Ogre', 'Big Guy', 'standard', 26, 6, 5, 4, NULL, 9, 150000, 1, 4);
 
-INSERT INTO base_team_player_exclusive_group
-(id, name, description)
-VALUES
+INSERT INTO base_team_player_exclusive_group (id, name, description) VALUES
 (4, 'Underworld', 'Rat Ogre or Troll');
 
 /* Underworld Goblin Linemen - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (260, 1, 0, 1), -- Agility
 (260, 5, 1, 0), -- Mutations
 (260, 3, 1, 0), -- General
 (260, 2, 1, 0); -- Strength
 
 /* Underworld Snotling - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (261, 1, 0, 1), -- Agility
 (261, 5, 1, 0), -- Mutations
 (261, 3, 1, 0); -- General
 
 /* Skaven Clanrat - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (262, 3, 1, 0), -- General
 (262, 5, 1, 0), -- Mutations
 (262, 4, 0, 1), -- Agility
 (262, 2, 0, 1); -- Strength
 
 /* Skaven Thrower - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (263, 3, 1, 0), -- General
 (263, 5, 1, 0), -- Mutations
 (263, 1, 1, 0), -- Passing
@@ -51,8 +45,7 @@ VALUES
 (263, 2, 0, 1); -- Strength
 
 /* Gutter Runner - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES  
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES  
 (264, 4, 1, 0), -- Agility
 (264, 3, 1, 0), -- General
 (264, 5, 1, 0), -- Mutations
@@ -60,8 +53,7 @@ VALUES
 (264, 2, 0, 1); -- Strength
 
 /* Skaven Blitzer - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (265, 3, 1, 0), -- General
 (265, 5, 1, 0), -- Mutations
 (265, 2, 1, 0), -- Strength
@@ -69,8 +61,7 @@ VALUES
 (265, 1, 0, 1); -- Passing
 
 /* Underworld Troll - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (266, 5, 1, 0), -- Mutations
 (266, 2, 1, 0), -- Strength
 (265, 4, 0, 1), -- Agility
@@ -78,8 +69,7 @@ VALUES
 (266, 1, 0, 1); -- Passing
 
 /* Mutant Rat Ogre - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (267, 5, 1, 0), -- Mutations
 (267, 2, 1, 0), -- Strength
 (267, 4, 0, 1), -- Agility

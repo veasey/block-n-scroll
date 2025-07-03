@@ -1,6 +1,5 @@
 INSERT INTO base_team_player
-(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count)
-VALUES
+(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count) VALUES
 (290, 'Goblin', 'Stunty lineman', 'standard', 29, 6, 2, 3, 4, 8, 40000, 12),
 (291, 'Bomma', 'Bomber', 'special', 29, 6, 2, 3, 4, 8, 45000, 1),
 (292, 'Looney', 'Secret Weapon', 'special', 29, 6, 2, 3, NULL, 8, 40000, 1),
@@ -11,62 +10,54 @@ VALUES
 (297, 'Troll', 'Big Guy', 'standard', 29, 4, 5, 5, 5, 10, 115000, 2);
 
 /* Goblin - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (290, 1, 1, 0), -- Agility
 (290, 3, 0, 1), -- General
 (290, 4, 0, 1), -- Passing
 (290, 2, 0, 1); -- Strength
 
 /* Bomma - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (291, 1, 1, 0), -- Agility
 (291, 4, 1, 0), -- Passing
 (291, 3, 0, 1), -- General
 (291, 2, 0, 1); -- Strength
 
 /* Looney - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (292, 1, 1, 0), -- Agility
 (292, 3, 0, 1), -- General
 (292, 2, 0, 1); -- Strength
 
 /* Fanatic - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (293, 2, 1, 0), -- Strength
 (293, 3, 0, 1), -- General
 (293, 1, 0, 1); -- Agility
 
 /* Pogoer - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES  
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (294, 1, 1, 0), -- Agility
 (294, 3, 0, 1), -- General
 (294, 4, 0, 1), -- Passing
 (294, 2, 0, 1); -- Strength
 
 /* Ooligan - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES  
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (295, 1, 1, 0), -- Agility
 (295, 3, 0, 1), -- General
 (295, 4, 0, 1), -- Passing
 (295, 2, 0, 1); -- Strength
 
 /* Doom Diver - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES  
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (296, 1, 1, 0), -- Agility
 (296, 3, 0, 1), -- General
 (296, 4, 0, 1), -- Passing
 (296, 2, 0, 1); -- Strength
 
 /* Troll - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (297, 2, 1, 0), -- Strength
 (297, 3, 0, 1), -- General
 (297, 1, 0, 1), -- Agility

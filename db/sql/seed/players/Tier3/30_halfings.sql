@@ -1,36 +1,31 @@
 INSERT INTO base_team_player
-(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count)
-VALUES
+(id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count) VALUES
 (300, 'Hopeful', 'Stunty lineman', 'standard', 30, 5, 2, 3, 4, 7, 30000, 16),
 (301, 'Hefty', 'Blocker', 'standard', 30, 5, 2, 3, 3, 8, 50000, 2),
 (302, 'Catcher', 'Ball Handler', 'standard', 30, 5, 2, 3, 5, 7, 55000, 2),
 (303, 'Altern Forest Treeman', 'Big Guy', 'standard', 30, 2, 6, 5, 5, 11, 120000, 2);
 
 /* Hopeful - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (300, 1, 1, 0), -- Agility
 (300, 3, 0, 1), -- General
 (300, 2, 0, 1); -- Strength
 
 /* Hefty - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (301, 1, 1, 0), -- Agility
 (301, 4, 1, 0), -- Passing
 (301, 3, 0, 1), -- General
 (301, 2, 0, 1); -- Strength
 
 /* Catcher - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (302, 1, 1, 0), -- Agility
 (302, 3, 0, 1), -- General
 (302, 2, 0, 1); -- Strength
 
 /* Altern Forest Treeman - Skill Access */
-INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
-VALUES
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (303, 2, 1, 0), -- Strength
 (303, 1, 0, 1), -- Agility
 (303, 3, 0, 1), -- General
