@@ -37,7 +37,9 @@
                     <td>{{ pos.player.name }}</td>
                     <td>
                         {% for skill in pos.player.skills %}
-                            <a href="/rules/skill/{{ skill.id }}">
+                            <a href="/rules/skill/{{ skill.id }}"
+                               title="{{ skill.description }}">
+                               
                                 {{ skill.name }}{% if not loop.last %}, {% endif %}
                             </a>
                         {% endfor %}
