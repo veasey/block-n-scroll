@@ -68,7 +68,7 @@ VALUES
 /* Old World Dwarf Blitzer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)
 VALUES 
-(326, 1, 1, 0), -- General
+(226, 1, 1, 0), -- General
 (236, 2, 1, 0), -- Strength
 (236, 3, 0, 1); -- Agility
 
