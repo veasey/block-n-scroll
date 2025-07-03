@@ -1,7 +1,7 @@
 INSERT INTO skill (id, name, category, description) VALUES
 -- GENERAL
-(1, 'Block', 'General', 'This player does not get Knocked Down when blocking.'),
-(2, 'Dauntless', 'General', 'When blocking a stronger opponent, roll D6 + own Strength; if equal or higher, use own Strength for Block.'),
+(1, 'Block', 'General', 'A player with the Block skill is proficient at knocking opponents down. The Block skill, if used, affects the results rolled with the Block dice, as explained in the Blocking rules.'),
+(2, 'Dauntless', 'General', "When blocking a stronger opponent, roll a D6 and add it to the player's Strength. If the total exceeds the opponent's Strength, the player temporarily matches the opponent's Strength for that block. If not, the player uses their normal Strength. This roll happens before assists but after other modifiers."),
 (3, 'Dirty Player', 'General', 'Adds +1 to Armour or Injury rolls when Fouling.'),
 (4, 'Fend', 'General', 'Opponents cannot follow up after pushing this player back.'),
 (5, 'Frenzy', 'General', 'Must follow up and attempt a second Block if the initial Block pushes the opponent back.'),

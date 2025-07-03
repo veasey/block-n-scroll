@@ -1,0 +1,28 @@
+{% extends "base.twig" %}
+
+{% block title %}Block & Scroll - Rules - Skill {{ skill.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/skills">Skills</a> -
+        <a href="/rules/skill/10">Shadowing</a>
+    </p>
+
+    <h2>Shadowing</h2>
+
+    <p>This player can use this Skill when an opposition player they are Marking voluntarily moves out of a square within this player’s Tackle Zone. Roll a D6, adding the MA of this player to the roll and then subtracting the MA of the opposition player. If the result is 6 or higher, or if the roll is a natural 6, this player may immediately move into the square vacated by the opposition player (this player does not need to Dodge to make this move). If, however, the result is 5 or lower, or if the roll is a natural 1, this Skill has no further effect.A player may use this Skill any number of times per turn, during either team’s turn. If an opposition player is being Marked by more than one player with this Skill, only one player may use it.</p>
+
+    <p>Category: General</p>
+
+    <section>
+        <h2>FAQs</h2>
+
+        <div class="faq">
+            <h3>Q:  If a player attempts to Dodge away from a player with the Shadowing skill, which roll happens first: the Dodge roll or the roll for Shadowing? (p.77)</h3>
+            <p><strong>A:</strong> The Dodge roll will happen first, and once the Dodge has been resolved the opposing player may roll for Shadowing if they wish.</p>
+        </div>
+    </section
+
+{% endblock %}

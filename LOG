@@ -32,8 +32,10 @@ P4 – Match tracking + team sync
 30 Jun - Added Slannesh, fixed seed bugs. Added Slaan, fixed wrong comments in Lizardmen.
 01 Jul - Added Underworld, vampires and goblins.
 02 Jul - Added Halfings, Tomb Kings, Ogres and Snotlings.
+03 Jul - Went over General Skills, creating expanded pages where neccessary. Added skill template routing, for longer descs. Checked team SEEDs.
 
 → TODO: 
 →→ DB shutdown bug
 →→ fix skill text.
 →→→ check for twig for skill body text, before getting from DB (so complicated skills can have a dedicated page.)
+→→ On hover on skill, display short skill desc in tooltip.

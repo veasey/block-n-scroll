@@ -1,0 +1,38 @@
+{% extends "base.twig" %}
+
+{% block title %}Block & Scroll - Rules - Skill {{ skill.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/skills">Skills</a> -
+        <a href="/rules/skill/14">Wrestle</a>
+    </p>
+
+    <h2>Wrestle</h2>
+
+    <p>The player is specially trained in grappling techniques. This player may use Wrestle when he blocks or is blocked and a !Both Down’ result on the Block dice is chosen by either coach. Instead of applying the ‘Both Down’ result, both players are wrestled to the ground. Both players are Placed Prone in their respective squares even if one or both have the Block skill. Do not make Armour rolls for either player. Use of this skill does not cause a turnover unless the active player was holding the ball.</p>
+
+    <p>Category: General</p>
+
+    <section>
+        <h2>FAQs</h2>
+
+        <div class="faq">
+            <h3>Q: Can a player affected by the Take Root trait use skills like Pile Driver or Wrestle to fall Prone and remove the Rooted condition?</h3>
+            <p><strong>A:</strong> Yes.</p>
+        </div>
+
+        <div class="faq">
+            <h3>Q: Can a player who is Prone, Stunned, or has lost their Tackle Zone still make use of skills like Dodge, Block, Sidestep, or Wrestle?</h3>
+            <p><strong>A:</strong> No. Players in any of these states cannot use Skills or Traits unless the skill’s description explicitly allows it.</p>
+        </div>
+
+        <div class="faq">
+            <h3>Q: If a player with the Bloodlust (X+) trait fails their roll and is then knocked Prone due to the Wrestle skill during a Block, what happens?</h3>
+            <p><strong>A:</strong> Since the player couldn’t bite a Thrall before being knocked Prone, a Turnover occurs. The Vampire also loses their Tackle Zone until their next activation.</p>
+        </div>
+    </section>
+
+{% endblock %}

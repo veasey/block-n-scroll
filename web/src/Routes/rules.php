@@ -38,8 +38,9 @@ $app->get('/rules/skills[.{format}]', function (Request $request, Response $resp
 
 $app->get('/rules/skill/{skill_id}[.{format}]', function (Request $request, Response $response, array $args) use ($app) {
     $format = $args['format'] ?? 'html';
+    $skillId = $args['skill_id'];
 
-    $skill = Skill::find($args['skill_id']);
+    $skill = Skill::find($skillId);
     if (!$skill) {
         return $response->withStatus(404)->write('Skill not found');
     }
@@ -49,5 +50,17 @@ $app->get('/rules/skill/{skill_id}[.{format}]', function (Request $request, Resp
         return $response->withHeader('Content-Type', 'application/json');
     }
 
-    return Twig::fromRequest($request)->render($response, 'rules/skill.twig', ['skill' => $skill]);
+    // Look for a custom Twig template like "templates/rules/skills/1_block.twig"
+    $templateDir = __DIR__ . '/../templates/rules/skills';
+    $matchingTemplate = null;
+
+    foreach (glob("$templateDir/{$skillId}_*.twig") as $filePath) {
+        $basename = basename($filePath);
+        $matchingTemplate = "rules/skills/$basename";
+        break;
+    }
+
+    $template = $matchingTemplate ?? 'rules/skill.twig';
+
+    return Twig::fromRequest($request)->render($response, $template, ['skill' => $skill]);
 });

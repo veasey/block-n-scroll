@@ -1,0 +1,51 @@
+{% extends "base.twig" %}
+
+{% block title %}Block & Scroll - Rules - Skill {{ skill.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/skills">Skills</a> -
+        <a href="/rules/skill/9">Pro</a>
+    </p>
+
+    <h2>Pro</h2>
+
+    <p>A player with this skill is a hardened veteran. Such players are called professionals or Pros by other Blood Bowl players because they rarely make a mistake. Once per turn, a Pro is allowed to re-roll any one dice roll he has made other than Armour, Injury or Casualty, even if he is Prone or Stunned. However, before the re-roll may be made, his coach must roll a D6.</p>
+
+    <ul>
+        <li>On a roll of 3+ the dice can be re-rolled.</li>
+        <li>On a roll of 1 or 2 , the dice cannot be re-rolled.</li>
+    </ul>
+#
+    <p>Once this player has attempted to use this Skill, they may not use a re-roll from any other source to re-roll this one dice.</p>
+
+    <p>Category: General</p>
+
+    <section>
+        <h2>FAQs</h2>
+
+        <div class="faq">
+            <h3>Q: Can a player with the Pro skill use the re-roll outside of their activation – for example, to Catch or Intercept the ball? (p.77)</h3>
+            <p><strong>A:</strong> No. The Pro skill can only be used during that player’s activation.</p>
+        </div>
+
+        <div class="faq">
+            <h3>Q: If a player has both the Pro and Brawler skills, can they re-roll a single Both Down result for the Brawler skill, and then use the Pro skill to attempt to re-roll another dice from the same dice pool? (p.77 &amp; 80)</h3>
+            <p><strong>A:</strong> Yes, so long as the same dice isn’t re-rolled more than once.</p>
+        </div>
+
+        <div class="faq">
+            <h3>Q: A player with both the Pro skill and Brawler skill performs Block, rolls two Block Dice and rolls Both Down on both dice, can the controlling coach choose to use Brawler on one of the dice, and then subsequently attempt to use Pro on the other dice that has not yet been rerolled? (p.77 &amp; 80)</h3>
+            <p><strong>A:</strong> Yes, so long as the same dice is not re-rolled more than once.</p>
+        </div>
+
+        <div class="faq">
+            <h3>Q: Can the Pro skill be used to re-roll the dice when a player attempts to stand up? (p.44)</h3>
+            <p><strong>A:</strong> No.</p>
+        </div>
+    </section>
+
+
+{% endblock %}
