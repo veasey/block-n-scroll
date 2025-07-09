@@ -1,0 +1,34 @@
+{% extends "base.twig" %}
+
+{% block title %}Block & Scroll - Rules - Skill {{ skill.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/skills">Skills</a> -
+        <a href="/rules/skill/18">Diving Tackle</a>
+    </p>
+
+    <h2>Diving Tackle</h2>
+
+    <p>The player may use this skill after an opposing player attempts to dodge out of any of his tackle zones. The opposing player must subtract 2 from his Dodge roll for leaving the player’s tackle zone. If a player is attempting to leave the tackle zone of several players that have the Diving Tackle skill, then only one of the opposing players may use Diving Tackle. Diving Tackle may be used on a re-rolled dodge if not declared for use on the first Dodge roll. Once the dodge is resolved but before any armour roll for the opponent (if needed), the Diving Tackle Player is Placed Prone in the square vacated by the dodging player but do not make an Armour or Injury roll for the Diving Tackle player.</p>
+
+    <p>Category: Agility</p>
+
+    <section>
+        <h2>FAQs</h2>
+
+        <div class="faq">
+            <h3>Q: If a player attempts to Dodge away from a player with the Diving Tackle skill and fails the original Dodge roll, but then uses a re-roll and succeeds, can the player with Diving Tackle use this Skill on the re-rolled attempt? (p.75)</h3>
+            <p><strong>A:</strong> Yes.</p>
+        </div>
+
+        <div class="faq">
+            <h3>Q: What is the timing of Diving Tackle and Dodge? For example, if the dodging player passes the Agility test, then my player uses a Diving Tackle to make them fail, can they re-roll the test with Dodge? Does the negative apply to the new test? (p.75)</h3>
+            <p><strong>A:</strong>  To dodge, a player moves into the intended square then makes an Agility test. If the test is passed without using the Dodge re-roll and a Marking player uses Diving Tackle, then a Dodge re-roll can be used to re-roll a now failed test. The dodging player must still subtract 2 from the result of the re-rolled Agility test.</p>
+        </div>
+    </section>
+
+
+{% endblock %}

@@ -33,9 +33,11 @@ P4 – Match tracking + team sync
 01 Jul - Added Underworld, vampires and goblins.
 02 Jul - Added Halfings, Tomb Kings, Ogres and Snotlings.
 03 Jul - Went over General Skills, creating expanded pages where neccessary. Added skill template routing, for longer descs. Checked team SEEDs.
+04 Jul - Revise Agility Skills Descriptions.
+09 Jul - Revised Agility Skills Descriptions (not sure what I was doing last time, but still work here). Also Passing Skills.
 
 → TODO: 
 →→ revise skill text.
-→→→ Agility, Passing, Strength, Mutations, Extraordinary
+→→→ Strength, Mutations, Extraordinary
 →→ What to do for Bloodlust, Loner etc where there is an X. Maybe have an X join on [position, skill]?
 →→ DB shutdown bug

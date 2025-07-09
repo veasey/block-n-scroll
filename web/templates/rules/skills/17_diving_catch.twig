@@ -1,0 +1,39 @@
+{% extends "base.twig" %}
+
+{% block title %}Block & Scroll - Rules - Skill {{ skill.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/skills">Skills</a> -
+        <a href="/rules/skill/17">Diving Catch</a>
+    </p>
+
+    <h2>Diving Catch</h2>
+
+    <p>The player is superb at diving to catch balls others cannot reach and jumping to more easily catch perfect passes. The player may add 1 to any catch roll from an accurate pass targeted to his square. In addition, the player can attempt to catch any pass, kick off or crowd throw-in, but not bouncing ball, that would land in an empty square in one of his tackle zones as if it had landed in his own square without leaving his current square. A failed catch will bounce from the Diving Catch player’s square. If there are two or more players attempting to use this skill then they get in each other’s way and neither can use it.</p>
+
+    <p>Category: Agility</p>
+
+    <section>
+        <h2>FAQs</h2>
+
+        <div class="faq">
+            <h3>Q: If multiple players on the same team with Diving Catch are in range when the ball lands, who gets to try and catch it?</h3>
+            <p><strong>A:</strong> Each of those players can attempt the catch, one after the other, in an order chosen by their coach.</p>
+        </div>
+
+        <div class="faq">
+            <h3>Q: What if Diving Catch players from *both* teams are in range when the ball lands?</h3>
+            <p><strong>A:</strong> Both teams’ players can attempt to catch it, with the active coach deciding the order in which they try.</p>
+        </div>
+
+        <div class="faq">
+            <h3>Q: If a player with Diving Catch fails to grab the ball from an adjacent square, where does the ball bounce from?</h3>
+            <p><strong>A:</strong> It bounces from the square where it was originally going to land, not from the player who failed the catch.</p>
+        </div>
+    </section>
+
+
+{% endblock %}

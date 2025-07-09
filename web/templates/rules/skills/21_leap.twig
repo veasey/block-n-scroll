@@ -1,0 +1,21 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Rules - Skill {{ skill.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/skills">Skills</a> -
+        <a href="/rules/skill/21">Leap</a>
+    </p>
+
+    <h2>Leap</h2>
+
+    <p>During their movement, instead of jumping over a single square that is occupied by a Prone or Stunned player, a player with this Skill may choose to Leap over any single adjacent square, including unoccupied squares and squares occupied by Standing players.</p>
+    <p>Additionally, this player may reduce any negative modifier applied to the Agility test when they attempt to Jump over a Prone or Stunned player, or to Leap over an empty square or a square occupied by a Standing player by 1, to a minimum of -1.</p>
+    <p>A player with this Skill cannot also have the Pogo Stick trait.</p>
+
+    <p>Category: Agility</p>
+
+{% endblock %}
