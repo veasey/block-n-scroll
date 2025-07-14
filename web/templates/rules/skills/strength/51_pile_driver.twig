@@ -1,0 +1,24 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Rules - Skill {{ skill.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/skills">Skills</a> -
+        <a href="/rules/skill/51">Pile Driver</a>
+    </p>
+
+    <h2>Pile Driver</h2>
+
+    <p>When an opposition player is Knocked Down by this player as the result of a Block action
+    (on its own or as part of a Blitz action), this player may immediately commit a free Foul 
+    action against the Knocked Down player. To use this Skill, this player must be Standing 
+    after the block dice result has been selected and applied, and must occupy a square adjacent
+    to the Knocked Down player, After using this Skill, this player is Placed Prone and their
+    activation ends immediately.</p>
+
+    <p>Category: Strength</p>
+
+{% endblock %}

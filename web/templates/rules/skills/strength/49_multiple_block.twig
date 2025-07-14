@@ -1,0 +1,23 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Rules - Skill {{ skill.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/skills">Skills</a> -
+        <a href="/rules/skill/49">Multiple Block</a>
+    </p>
+
+    <h2>Multiple Block</h2>
+
+    <p>At the start of a Block Action a player who is adjacent to at least two opponents may choose to 
+    throw blocks against two of them. Make each block in turn as normal except that each defender&amp;s 
+    strength is increased by 2. The player cannot follow up either block when using this skill, so 
+    Multiple Block can be used instead of Frenzy, but both skills cannot be used together. To have 
+    the option to throw the second block the player must still be on his feet after the first block.</p>
+
+    <p>Category: Strength</p>
+
+{% endblock %}

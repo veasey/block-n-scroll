@@ -1,0 +1,23 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Rules - Skill {{ skill.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/skills">Skills</a> -
+        <a href="/rules/skill/66">Very Long Legs</a>
+    </p>
+
+    <h2>Very Long Legs</h2>
+
+    <p>This player may reduce any negative modifier applied to the Agility test when they attempt
+    to Jump over a Prone or Stunned player (or to Leap over an empty square or a square occupied
+    by a Standing player, if this player has the Leap Skill) by 1, to a minimum of -1.
+    Additionally, this player may apply a +2 modifier to any attempts to interfere with a pass
+    they make. Finally this player ignores the Cloud Burster skill.</p>
+
+    <p>Category: Mutation</p>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Rules - Skill Bloodlust{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/skills">Skills</a> - 
+        <a href="/rules/skill/71">Bloodlust</a>
+    </p>
+
+    <h2>Bloodlust</h2>
+
+    <p>To keep control of their wits, Vampires need a supply of fresh blood. Whenever a player with 
+    this Trait is activated, after declaring their action, they must roll a D6. Add 1 to the roll if 
+    the declared action is a Block or a Blitz.</p>
+
+    <p>If the result is equal to or higher than the target number shown in brackets, the player may 
+    activate as normal. If the result is lower than the number shown, or if a natural 1 is rolled,
+    the player may still continue their activation and may change their declared action to a Move
+    action if they wish. However, if the declared action was one that can only be used once per team 
+    turn, such as a Blitz, it still counts as the team's use of that action.</p>
+
+    <p>At the end of their activation, the player may bite a Thrall Lineman teammate who is adjacent,
+    whether they are Standing, Prone, or Stunned. If they do, immediately make an Injury roll for the
+    Thrall, treating any Casualty result as Badly Hurt. This does not cause a Turnover unless the Thrall
+    was holding the ball at the time.</p>
+
+    <p>If the Vampire does not bite a Thrall for any reason, a Turnover is caused. In addition, the player 
+    will lose their Tackle Zone until their next activation, and will immediately drop the ball if they 
+    were holding it. If the player was in the opposing End Zone, no touchdown is scored.</p>
+
+    <p>If a player who failed the Bloodlust roll wants to make a Pass action, Hand-off, or score a
+    touchdown, they must bite a Thrall before doing so.</p>
+
+    <p>Category: Extraordinary</p>
+
+{% endblock %}

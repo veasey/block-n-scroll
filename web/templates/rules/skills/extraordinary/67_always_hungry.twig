@@ -1,0 +1,29 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Rules - Skill {{ skill.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/skills">Skills</a> -
+        <a href="/rules/skill/67">Always Hungry</a>
+    </p>
+
+    <h2>Always Hungry</h2>
+
+    <p>If this player wishes to perform a Throw Team-mate action, roll a D6 after they have finished moving, 
+    but before they throw their team-mate. On a roll of 2+, continue with the throw as normal. On a roll of 1, 
+    this player will attempt to eat their team-mate. Roll another D6:
+        <ul>
+            <li>On a roll of 1, the team-mate has been eaten and is immediately removed from the Team Draft list. 
+            No apothecary can save them and no Regeneration attempts can be made. If the team-mate was in 
+            possession of the ball, it will bounce from the square the player occupies.</li>
+            <li>On a roll of 2+, the team-mate squirms free and the Throw Team-mate action is automatically 
+            fumbled, as described on page 53.</li>
+        </ul>
+    </p>
+
+    <p>Category: Extraordinary</p>
+
+{% endblock %}

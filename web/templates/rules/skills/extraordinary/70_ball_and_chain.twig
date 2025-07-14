@@ -1,0 +1,70 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Rules - Skill {{ skill.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/skills">Skills</a> -
+        <a href="/rules/skill/70">Ball &amp; Chain</a>
+    </p>
+
+    <h2>Ball &amp; Chain</h2>
+
+    <p>When this player is activated, the only action they may perform is a “Ball and Chain Move” special action. There is no 
+    limit to how many players with this Trait may perform this Special action each team turn.
+    When this player performs this Special action:</p>
+
+    <p>Place the Throw-in template over the player, facing towards either End Zone or either sideline as you wish.
+        <ul>
+            <li>Roll a D6 and move the player one square in the direction indicated.</li>
+            <li>A player with Ball and Chain automatically passes any Agility tests they may be required to make in order to
+            Dodge, regardless of any modifiers.</li>
+            <li>If this movement takes the player off the pitch, they risk Injury by the crowd</li>
+            <li>If this movement takes the player into a square in which the ball is placed, the player is considered to have
+            moved involuntary. Therefore, they may not attempt to pick the ball up and the ball will bounce.</li>
+        </ul>
+    </p>
+
+    <p>Repeat this process for each square the player moves. If this player would move into a square that is occupied by a 
+    Standing player from either team, they must perform a Block action against that player, following the normal rules, but 
+    with the following exceptions:</p>
+
+    <p>
+        <ul>
+            <li>A Ball and Chain player ignores the Foul Appearance Skill</li>
+            <li>A Ball and Chain player must follow-up if they push-back another player.</li>
+        </ul>
+    </p>
+
+
+    <p>If this player moves into a square that is occupied by a Prone or Stunned player from either team, for any reason, 
+    that player is immediately pushed back and an Armour Roll is made against them.</p>
+    <p>This player may Rush. Declare that the player will Rush before placing the Throw-in template and rolling the D6 to 
+    determine direction:</p>
+
+    <p>
+        <ul>
+            <li>If this player Rushes into an occupied square, move them as normal and roll a D6:
+                <ul>
+                    <li>On a roll of 2+, this player moves without mishap and will perform a Block action against the 
+                    player occupying the square as described previously.</li>
+                    <li>On a roll of 1 (before or after modification), the player occupying the square is pushed back 
+                    and this player will Fall Over after moving into the vacated square.</li>
+                </ul>
+            </li>
+            <li>If this player Rushes into a square that is occupied by a standing player from either team, roll a D6:
+                <ul>
+                    <li>On a roll of 2+, this player moves without mishap and will perform a Block action against the 
+                    player occupying the square as described previously.</li>
+                    <li>On a roll of 1 (before or after modification), this player will Fall Over after moving into the 
+                    square occupied by the other player.</li>
+                </ul>
+            </li>
+        </ul>
+    </p>
+
+    <p>Category: Extraordinary</p>
+
+{% endblock %}

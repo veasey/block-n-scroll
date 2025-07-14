@@ -1,0 +1,26 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Rules - Skill {{ skill.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/skills">Skills</a> -
+        <a href="/rules/skill/30">Dump Off</a>
+    </p>
+
+    <h2>Dump Off</h2>
+
+    <p>If this player is nominated as the target of a Block action (or a Special action 
+    granted by a Skill or Trait that can be performed instead of a Block action) and if 
+    they are in possession of the ball, they may immediately perform a Quick Pass action, 
+    interrupting the activation of the opposition player performing the Block action 
+    (or Special action) to do so. This Quick Pass action cannot cause a Turnover, but 
+    otherwise all of the normal rules for passing the ball apply. Once the Quick Pass 
+    action is resolved, the active player performs the Block action and their team turn 
+    continues.</p>
+
+    <p>Category: Passing</p>
+
+{% endblock %}

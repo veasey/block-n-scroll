@@ -1,0 +1,26 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Rules - Skill {{ skill.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/skills">Skills</a> -
+        <a href="/rules/skill/64">Tentacles</a>
+    </p>
+
+    <h2>Tentacles</h2>
+
+    <p>This player can use this Skill when an opposition player they are Marking voluntarily 
+    moves out of a square within this player&amp;s Tackle Zone. Roll a D6, adding the ST of this 
+    player to the roll and then subtracting the ST of the opposition player. If the result is 
+    6 or higher, or if the roll is a natural 6, the opposition player is held firmly in place
+    and their movement comes to an end. If, however, the result is 5 or lower, or if the roll
+    is a natural 1, this Skill has no further effect. A player may use this Skill any number
+    or times per turn, during either team&amp;s turn. If an opposition player is being Marked by
+    more than one player with this Skill, only one player may use it.</p>
+
+    <p>Category: Mutation</p>
+
+{% endblock %}

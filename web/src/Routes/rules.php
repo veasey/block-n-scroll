@@ -50,13 +50,14 @@ $app->get('/rules/skill/{skill_id}[.{format}]', function (Request $request, Resp
         return $response->withHeader('Content-Type', 'application/json');
     }
 
-    // Look for a custom Twig template like "templates/rules/skills/1_block.twig"
+    $category = strtolower($skill->category);
     $matchingTemplate = null;
-    $templateDir = __DIR__ . '/../../templates/rules/skills'; // adjust as needed based on this PHP file location
+    $templateDir = __DIR__ . "/../../templates/rules/skills/";
 
-    foreach (glob($templateDir . "/*/{$skillId}_*.twig") as $filePath) {
+    foreach (glob("{$templateDir}/{$category}/{$skillId}_*.twig") as $filePath) {
         $basename = basename($filePath);
-        $matchingTemplate = "rules/skills/$basename";
+
+        $matchingTemplate = "rules/skills/{$category}/$basename";
         break;
     }
 
