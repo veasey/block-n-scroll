@@ -1,0 +1,24 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Rules - Skill {{ skill.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/skills">Skills</a> -
+        <a href="/rules/skill/{{skill.id}}">{{ skill.name }}</a>
+    </p>
+
+    <h2>{{ skill.name }}</h2>
+
+    <p>If this player is thrown by a team-mate, they do not scatter 
+    before landing as they normally would. Instead, you may place the 
+    Throw-in template over the player, facing towards either End Zone 
+    or either sideline as you wish. The player then moves from the 
+    target square D3 squares in a direction determined by rolling a 
+    D6 and referring to the Throw-in template.</p>
+
+    <p>Category: Extraordinary</p>
+
+{% endblock %}

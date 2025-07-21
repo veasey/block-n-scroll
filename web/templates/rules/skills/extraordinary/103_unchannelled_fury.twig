@@ -1,0 +1,37 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Rules - Skill {{ skill.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/skills">Skills</a> -
+        <a href="/rules/skill/{{skill.id}}">{{ skill.name }}</a>
+    </p>
+
+    <h2>{{ skill.name }}</h2>
+
+    <p>When this player is activated, even if they are Prone or have lost their 
+    Tackle Zone, immediately after declaring the action they will perform but before 
+    performing the action, roll a D6, applying a +2 modifier to the dice roll if you
+    declared the player would perform a Block or Blitz action (or a Special action 
+    granted by a Skill or Trait that can be performed instead of a Block action)</p>
+
+    <p>
+        <ul>
+            <li>On a roll of 1-3, this player rages incoherently at others but
+            achieves little else. Their activation ends immediately.</li>
+            <li>On a roll of 4+, this player continues their activation as normal
+            and completes their declared action.</li>
+        </ul>
+    </p>
+
+    <p>If you declared that this player would perform an action which can only be 
+    performed once per team turn and this player&amp;s activation ended before the action 
+    could be completed, the action is considered to have been performed and no other 
+    player on your team may perform the same action this team turn.</p>
+
+    <p>Category: Extraordinary</p>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Rules - Skill {{ skill.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/skills">Skills</a> -
+        <a href="/rules/skill/{{skill.id}}">{{ skill.name }}</a>
+    </p>
+
+    <h2>{{ skill.name }}</h2>
+
+    <p>When this player is activated, even if they are Prone or have lost their
+    Tackle Zone, immediately after declaring the action they will perform but
+    before performing the action, roll a D6, applying a +2 modifier to the dice
+    roll if this player is currently adjacent to one or more Standing team-mates
+    that do not have this Trait:</p>
+
+    <p>
+        <ul>
+            <li>On a roll of 1-3, this player forgets what they are doing and
+            their activation ends immediately. Additionally, this player loses
+            their Tackle Zone until they are next activated.</li>
+            <li>On a roll of 4+, this player continues their activation as
+            normal and completes their declared action.</li>
+        </ul>
+    </p>
+
+    <p>Note that if you declared that this player would perform an action which can
+    only be performed once per team turn and this player&amp;s activation ended before 
+    the action could be completed, the action is considered to have been performed and 
+    no other player on your team may perform the same action this team turn.</p>
+
+    <p>Category: Extraordinary</p>
+
+{% endblock %}

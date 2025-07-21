@@ -1,0 +1,37 @@
+
+
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Rules - Skill {{ skill.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/skills">Skills</a> - 
+        <a href="/rules/skill/74">Breathe Fire</a>
+    </p>
+
+    <h2>Breathe Fire</h2>
+
+    <p>Once per activation, instead of performing a Block action (either on its own or as
+    part of a Blitz action), this player may perform a Breathe Fire Special action. When 
+    a Player makes a Breathe Fire Special action they may choose on Standing opposition
+    Player they are Marking and roll a D6, applying a -1 modifier if the target has a ST
+    of 5 or higher:</p>
+
+    <p>
+        <ul>
+            <li>1, Player performing Breathe Fire is Knocked Down</li>
+            <li>2-3, Nothing happen</li>
+            <li>4+ Opposition Player is Placed Prone</li>
+            <li>6, Opposition Player is Knocked Down</li>
+        </ul>
+    </p>
+
+    <p>After the Breath Fire Special action has been resolved, this player's activation 
+    immediately ends.</p>
+    
+    <p>Category: Extraordinary</p>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Rules - Skill {{ skill.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/skills">Skills</a> - 
+        <a href="/rules/skill/81">Kick Team Mate</a>
+    </p>
+
+    <h2>Kick Team Mate</h2>
+
+    <p>Once per team turn, in addition to another player performing either a
+    Pass or a Throw Team-mate action, a single player with this Traits on
+    the active team can perform a "Kick Team-mate" Special action, follow the
+    rules for Throw Team-mates actions as described on page 52.</p>
+
+    <p>However, if the Kick Team-mate Special action is fumbled, the kicked
+    player is automatically removed from play and an injury roll is made
+    against them, treating a Stunned result as a KO&amp;d result (note that, if
+    the player that performed this action also has the Mighty Blow (+x) skill,
+    the coach of the opposing team may use that Skill on this Injury roll).
+    If the kicked player was in possession of the ball when removed from play,
+    the ball will bounce from the square they occupied.</p>
+    
+    <p>Category: Extraordinary</p>
+
+{% endblock %}

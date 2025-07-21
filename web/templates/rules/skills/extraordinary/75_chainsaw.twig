@@ -1,0 +1,55 @@
+
+
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Rules - Skill {{ skill.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/skills">Skills</a> - 
+        <a href="/rules/skill/75">Chainsaw</a>
+    </p>
+
+    <h2>Chainsaw Attack</h2>
+
+    <p>Instead of performing a Block action (on its own or as part of a Blitz
+    action), this player may perform a “Chainsaw Attack” Special action.
+    Exactly as described for a Block action, nominate a single Standing player
+    to be the target of the Chainsaw Attack Special action, There is no limi
+    to how many players with this Trait may perform this Special action each
+    team turn.</p>
+    
+    <p>To perform a Chainsaw Attack Special action, roll a D6:</p>
+
+    <p>
+        <ul>
+            <li>On a roll of 2+, the nominated target is hit by Chainsaw!</li>
+            <li>On a roll of 1, the Chainsaw will violently ‘kick-back’ and 
+            hit the player wielding it. This will result in a Turnover.</p>
+        </ul>
+    </p>
+    
+    <p>In either case, an Armour roll is made against the player hit by the
+    Chainsaw, adding +3 to the result.</p>
+
+    <p>This player can only use the Chainsaw once per turn (i.e., Chainsaw 
+    cannot be used with Frenzy or Multipe Block) and if used as part of a 
+    Blitz action, this player cannot continue moving after using it.</p>
+
+    <p>If this player Fails Over or is Knocked Down, the opposing coach may 
+    add +3 to the Armour roll made against the player.</p>
+
+    <p>If an opposition player performs a Block action targeting this player
+    and a Player Down! or a POW! result is applied, +3 is added to the Armour 
+    roll. If a Both Down result is applied, +3 is added to both Armour rolls.</p>
+
+    <p>Finally, this player may use their Chainsaw when they perform a Foul 
+    action. Roll a D6 for kick-back as described above. Once again, an Armour 
+    roll is made against the player hit by the Chainsaw. adding +3 to the 
+    score.</p>
+    
+    <p>Category: Extraordinary</p>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Rules - Skill {{ skill.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/skills">Skills</a> -
+        <a href="/rules/skill/88">Projectile Vomit</a>
+    </p>
+
+    <h2>Projectile Vomit</h2>
+
+    <p>Instead of performing a Block action (on its own or as part of a Blitz action),
+    this player may perform a "Projectile Vomit" Special action. Exactly as
+    described for a Block action, nominate a single Standing player to be the
+    target of the Projectile Vomit Special action. There is no limit to how many
+    players with this Trait may perform this Special action each team turn. To
+    perform a Projectile Vomit Special action, roll a D6:</p>
+
+    <p>
+        <ul>
+            <li>On a roll of 2+, this player regurgitates acidic bile onto the 
+            nominated target.</li>
+            <li>On a roll of 1, this player belches and snorts, before covering
+            itself in acid bile.</li>
+            <li>In either case, an armour roll is made against the player hit
+            by the Projectile vomit. This Armour roll cannot be modified in any
+            way.</li>
+            <li>If the armour of the player hit is broken, they become Prone
+            and an Injury roll is made against them. This Injury roll cannot
+            be modified in any way.</li>
+            <li>If the armour of the playerhit is not broken, this Trait
+            has no effect.</li>
+        </ul>
+    </p>
+
+    <p>A player can only perform this Special action once per turn (i.e. 
+    Projectile Vomit cannot be used with Frenzy or Multiple Block).</p>
+
+    <p>Category: Extraordinary</p>
+
+{% endblock %}
