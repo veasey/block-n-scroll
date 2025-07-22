@@ -42,4 +42,5 @@ P4 - Match tracking + team sync
 →→ SKILLS
     →→ What to do for Bloodlust, Loner etc where there is an X. Maybe have an X join on [position, skill]?
     →→ Standardise skill templates, and place repeated parts of template into base template
+    →→ Add special rules lookup.
 →→ DB shutdown bug
