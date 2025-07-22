@@ -1,0 +1,32 @@
+<p><strong>Team</strong></p>
+<table id="team-table">
+    <thead>
+        <tr>
+            <th>Number</th>
+            <th>Position</th>
+            <th>Skills</th>
+            <th>Primary Skills</th>
+            <th>Secondary Skills</th>
+            <th>Cost</th>
+            <th>Max</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for team_member in team %}
+        <tr>
+            <td>{{ team_member.player.number }}</td>
+            <td>
+                <a href="/rules/position/{{ pos.player.id }}.html" title="{{ pos.player.description }}">
+                    {{ team_member.player.name }}
+                </a>
+            </td>
+            <td>{{ team_member.player.cost }}k</td>
+            <td>{{ team_member.player.max_count == 0 ? 'Unlimited' : pos.player.max_count }}</td>
+            <td>
+                <button type="button" class="buy-player-btn" data-position-id="{{ pos.id }}" data-player-id="{{ pos.player.id }}">Buy</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

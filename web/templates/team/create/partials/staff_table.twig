@@ -1,0 +1,78 @@
+<p><strong>Buy Side Staff</strong></p>
+<table id="staff-table">
+    <thead>
+        <tr>
+            <th>Staff Type</th>
+            <th>Cost</th>
+            <th>Bought</th>
+            <th>Max</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <a href="/rules/side-staff/reroll" title="Allows you to reroll a dice roll once per turn">
+                    Re Roll
+                </a>
+            </td>
+            <td>{{ base_team.reroll_cost }}k</td>
+            <td>{{ team.rerolls|length }}</td>
+            <td>{{ base_team.max_rerolls }}</td>
+            <td>
+                <button type="button" class="buy-staff-btn" data-staff-type="reroll">Buy</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="rules/side-staff/apothecary" title="Avoid player death">
+                    Apothecary
+                </a>
+            </td>
+            <td>50k</td>
+            <td>{{ team.apothecaries|length }}</td>
+            <td>1</td>
+            <td>
+                <button type="button" class="buy-staff-btn" data-staff-type="apothecary">Buy</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="" title="+1 to kickoff table event Brilliant Coaching">
+                    Assistant Coach
+                </a>
+            </td>
+            <td>10k</td>
+            <td>{{ team.assistant_coaches|length }}</td>
+            <td>Unlimited</td>
+            <td>
+                <button type="button" class="buy-staff-btn" data-staff-type="assistant_coach">Buy</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="" title="+1 to kickoff table event Cheering Fans">
+                    Cheerleader
+                </a>
+            </td>
+            <td>10k</td>
+            <td>{{ team.cheerleaders|length }}</td>
+            <td>Unlimited</td>
+            <td>
+                <button type="button" class="buy-staff-btn" data-staff-type="cheerleader">Buy</button>
+            </td>   
+        </tr>
+        <tr>
+             <td>
+                <a href="" title="Increases FAME and Winnings">
+                    Dedicated Fans
+                </a>
+            </td>
+            <td>10k</td>
+            <td>{{ team.dedicated_fans|length }}</td>
+            <td>Unlimited</td>
+            <td>
+                <button type="button" class="buy-staff-btn" data-staff-type="dedicated_fans">Buy</button>
+            </td>   
+        </tr>
+</table>

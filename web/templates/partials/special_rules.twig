@@ -1,0 +1,11 @@
+ {% if special_rule %}
+    {% for special_rule in special_rules %}
+        <p><b>{{ special_rule.name }}</b>: {{ special_rule.description }}</p>
+    {% endfor %}
+{% endif %}
+
+{% if regional_rule %}
+    {% for regional_rule in regional_rules %}
+        <p><b>{{ regional_rule.name }}</b>: {{ regional_rule.description }}</p>
+    {% endfor %}
+{% endif %}

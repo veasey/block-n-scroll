@@ -1,5 +1,6 @@
 <?php
 use App\Controllers\Rules\TeamController;
+use App\Controllers\Rules\PositionController;
 use App\Models\Base\BaseTeam;
 use App\Models\Base\Skill;
 use Slim\Views\Twig;
@@ -64,4 +65,12 @@ $app->get('/rules/skill/{skill_id}[.{format}]', function (Request $request, Resp
     $template = $matchingTemplate ?? 'rules/skill.twig';
 
     return Twig::fromRequest($request)->render($response, $template, ['skill' => $skill]);
+});
+
+$app->get('/rules/position/{position_id:\d+}[.{format}]', PositionController::class . ':getPosition');
+
+$app->get('/rules/side-staff/{side_staff_name}[.{format}]', function (Request $request, Response $response, array $args) use ($app) {
+    $format = $args['format'] ?? 'html';
+    $sideStaffName = $args['side_staff_name'];
+    return Twig::fromRequest($request)->render($response, 'rules/side_staff/' . $sideStaffName . '.twig');
 });

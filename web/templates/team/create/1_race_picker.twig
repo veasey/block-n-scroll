@@ -1,4 +1,4 @@
-{% extends "base.twig" %}
+{% extends "team/team_base.twig" %}
 
 {% block title %}Block &amp; Scroll - Team - Create{% endblock %}
 
@@ -13,26 +13,26 @@
     <h1>Choose Race</h1>
     
     <table id="positions-table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th title="The higher the number, the harder to coach.">Tier</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for team in teams %}
-                <tr>
-                    <td>
-                        <a href="/team/create/{{ team.id }}" title="Create a team with the {{ team.name }}">
-                            {{ team.name }}
-                        </a>
-                    </td>
-                    <td>{{ team.description }}</td>
-                    <td>{{ team.tier }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th title="The higher the number, the harder to coach.">Tier</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for team in teams %}
+            <tr>
+                <td>
+                    <a href="/team/create/{{ team.id }}" title="Create a team with the {{ team.name }}">
+                        {{ team.name }}
+                    </a>
+                </td>
+                <td>{{ team.description }}</td>
+                <td>{{ team.tier }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}

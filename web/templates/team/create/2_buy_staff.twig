@@ -1,6 +1,15 @@
-{% extends "base.twig" %}
+{% extends "team/team_base.twig" %}
 
 {% block title %}Block &amp; Scroll - Team - Create{% endblock %}
+{% block scripts %}
+    {{ parent() }}
+    <script src="/js/team/create.js"></script>
+{% endblock %}
+
+{% set max_cost = max_cost|default(1000000) %}
+{% set base_team = base_team|default({}) %}
+{% set special_rules = special_rules|default([]) %}
+{% set regional_rules = regional_rules|default([]) %}
 
 {% block content %}
 
@@ -12,83 +21,42 @@
 
     <h1>Buy Staff</h1>
 
-    <p>{{ team.name }} - {{ team.description }} - Tier: {{ team.tier }}</p>
+    <p>{{ base_team.name }} - {{ base_team.description }} <strong>Tier: {{ base_team.tier }}</strong></p>
+    {% include 'partials/special_rules.twig' with {'special_rules': special_rules, 'regional_rules': regional_rules} %}
 
      <form method="post" action="/team/create/save">
-        <div>
-            <label for="team_name"><strong>Team Name:</strong></label>
-            <input type="text" id="team_name" name="team_name" value="" required>
+        <div class="form-section">
+            <div class="form-group">
+                <label for="team_name"><strong>Team Name:</strong></label>
+                <input type="text" id="team_name" name="team_name" value="" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="team_bio"><strong>Team Bio:</strong></label>
+                <textarea id="team_bio" name="team_bio" rows="3" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="max_cost"><strong>Max Team Value:</strong></label>
+                <input type="number" id="max_cost" name="max_cost" value="{{ max_cost|default(1000000) }}" min="0" step="10000" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="max_cost"><strong>Current Team Value:</strong></label>
+                <input type="number" id="current_team_value" value="{{ current_team_value|default(0) }} name="current_team_value" value="" class="form-control" disabled>
+            </div>
         </div>
-        <div>
-            <label for="team_bio"><strong>Team Bio:</strong></label>
-            <textarea id="team_bio" name="team_bio" rows="3"></textarea>
+   
+        <div class="tables-flex">
+            <div class="table-wrapper">
+                {% include 'team/create/partials/positions_table.twig' with {'positions': positions} %}
+            </div>
+            <div class="table-wrapper">
+                {% include 'team/create/partials/staff_table.twig' with {'base_team': base_team, 'team': team} %}
+            </div>
         </div>
-        <div>
-            <label for="max_cost"><strong>Max Team Cost:</strong></label>
-            <input type="number" id="max_cost" name="max_cost" value="{{ max_cost|default(1000000) }}" min="0" step="10000">
-        </div>
+
+        {% include 'team/create/partials/team_table.twig' with {'team': team} %}
+
         <button type="submit">Save Team</button>
     </form>
-
-    {% if positions|length == 0 %}
-        <p><strong>⚠️ No positional player data available for this team. Please contact admin</strong></p>
-    {% else %}
-        <table id="positions-table">
-            <thead>
-                <tr>
-                    <th>Position</th>
-                    <th>Skills</th>
-                    <th>Primary Skills</th>
-                    <th>Secondary Skills</th>
-                    <th>Cost</th>
-                    <th>Max</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for pos in positions %}
-                <tr>
-                    <td>{{ pos.player.name }}</td>
-                    <td>
-                        {% for skill in pos.player.skills %}
-                            <a href="/rules/skill/{{ skill.id }}"
-                               title="{{ skill.description }}">
-                               
-                                {{ skill.name }}{% if not loop.last %}, {% endif %}
-                            </a>
-                        {% endfor %}
-                    </td>
-                    <td>{{ pos.primary_skill_initials }}</td>
-                    <td>{{ pos.secondary_skill_initials }}</td>
-                    <td>{{ pos.player.cost }}k</td>
-                    <td>{{ pos.player.max_count == 0 ? 'Unlimited' : pos.player.max_count }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-
-        <p><strong>Rerolls</strong></p>
-        <p>Cost: {{ team.reroll_cost }}</p>
-        <p>Max: {{ team.max_rerolls }}</p>
-
-        <p>
-            <center>
-                <button onclick="window.location.href='/draft?team_id={{ team.id }}'">Draft your own team</button>
-            </center>
-        </p>
-
-    {% endif %}
-
-    {% if special_rule %}
-        {% for special_rule in special_rules %}
-            <p><b>{{ special_rule.name }}</b>: {{ special_rule.description }}</p>
-        {% endfor %}
-    {% endif %}
-
-    {% if regional_rule %}
-        {% for regional_rule in regional_rules %}
-            <p><b>{{ regional_rule.name }}</b>: {{ regional_rule.description }}</p>
-        {% endfor %}
-    {% endif %}
 
 
 {% endblock %}

@@ -37,10 +37,21 @@ P4 - Match tracking + team sync
 09 Jul - Revised Agility Skills Descriptions (not sure what I was doing last time, but still work here). Also Passing Skills.
 14 Jul - Revised Strength, Mutation, Passing and Extraordinary Skills Descriptions. Put skill templates in subdirs.
 21 Jul - Finished revising skills text
+22 Jul - Added position lookup, and began work on team create form.
 
-→ TODO: 
+→ TODO & Bugs: 
+
+→→ TEAM CREATE FORM
+→→→ Cost On removing player broken
+→→→ Can exceed MAX
+→→→ Max column does not update with how many added.
+→→→ All the side staff stuff.
+→→→ Saving it, users etc etc.
+
 →→ SKILLS
     →→ What to do for Bloodlust, Loner etc where there is an X. Maybe have an X join on [position, skill]?
     →→ Standardise skill templates, and place repeated parts of template into base template
     →→ Add special rules lookup.
-→→ DB shutdown bug
+→→ DB shutdown bug, after migrate finished
+→→ SideStaff needs to be in schema, with a limited by regional id (for apothacary etc)
+→→ JSON / HTML format does not work. Adding ".json" no longer returns JSON, specifically in controllers

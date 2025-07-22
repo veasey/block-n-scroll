@@ -29,7 +29,7 @@ class CreateTeamController
         // Here is where you can add your data presentation logic
         $data = [
             
-            'team' => $baseTeam,
+            'base_team' => $baseTeam,
             'special_rules' => $baseTeam->special_rules,
             'regional_rules' => $baseTeam->regional_rules,
 

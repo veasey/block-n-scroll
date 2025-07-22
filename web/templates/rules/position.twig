@@ -1,0 +1,35 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Rules - Position - {{ position.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/teams">Teams</a> -
+        <a href="/rules/teams/{{ team.id }}">{{ team.name }}</a>
+    </p>
+
+    <h2>{{ position.name }}</h2>
+    <p>{{ position.description }}</p>
+
+    <p>Cost: {{ position.cost | number_format }} Gold</p>
+    <p>Max Count: {{ position.max_count == 0 ? 'Unlimited' : position.max_count }}</p>
+    <p>Skills:</p>
+    <ul>
+        {% for skill in position.skills %}
+            <li>
+                <a href="/rules/skill/{{ skill.id }}" title="{{ skill.description }}">
+                    {{ skill.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <p>Primary Skills: {{ position.primary_skill_initials }}</p>
+    <p>Secondary Skills: {{ position.secondary_skill_initials }}</p>
+
+    <p>Team: <a href="/rules/teams/{{ team.id }}">{{ team.name }}</a></p>
+    <p>Tier: {{ team.tier }}</p>
+    
+{% endblock %}

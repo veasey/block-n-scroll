@@ -1,0 +1,41 @@
+<p><strong>Buy Staff</strong></p>
+{% if positions|length == 0 %}
+    <p><strong>⚠️ No positional player data available for this team. Please contact admin</strong></p>
+{% else %}
+    <table id="positions-table">
+        <thead>
+            <tr>
+                <th>Position</th>
+                <th>Cost</th>
+                <th>Max</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pos in positions %}
+            <tr>                
+                <td>
+                    <a href="/rules/position/{{ pos.player.id }}.html" title="{{ pos.player.description }}">
+                        {{ pos.player.name }}
+                    </a>
+                </td>
+                <td>{{ pos.player.cost | number_format }}</td>
+                <td>
+                    {%if pos.player.bought_count %}
+                        <span class="bought-count" data-position-id="{{ pos.player.id }}">{{ pos.player.bought_count }}</span>
+                        of
+                    {% endif %}
+                    {{ pos.player.max_count == 0 ? 'Unlimited' : pos.player.max_count }}</td>
+                <td>
+                    <button type="button" class="buy-player-btn"
+                        data-position-id="{{ pos.player.id }}"
+                        data-player-id="{{ pos.player.id }}"
+                        data-max="{{ pos.player.max_count }}">
+                        Buy
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}

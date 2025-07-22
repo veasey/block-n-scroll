@@ -25,6 +25,10 @@ CREATE TABLE team (
     treasury INT DEFAULT 1000000,
     rerolls INT DEFAULT 0,
     apothecary BOOLEAN DEFAULT FALSE,
+    is_fresh BOOLEAN DEFAULT TRUE, -- Team not yet in a league
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (coach_id) REFERENCES coach(id),
     FOREIGN KEY (base_team_id) REFERENCES base_team(id),
     FOREIGN KEY (league_id) REFERENCES league(id)
 );

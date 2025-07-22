@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Block & Scroll{% endblock %}</title>
-    <link rel="stylesheet" href="/css/01_core_style.css">
-    {% block head %}{% endblock %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="/css/01_core_style.css">
+    {% endblock %}
 </head>
 <body>
     {% include 'partials/header.twig' %}
