@@ -1,32 +1,32 @@
 # DEV ROADMAP
-P1 – DB schema + seed
-P2 – Serve rules as HTML/JSON
-P3 – Basic team builder + leagues
-P4 – Match tracking + team sync
+P1 - DB schema + seed
+P2 - Serve rules as HTML/JSON
+P3 - Basic team builder + leagues
+P4 - Match tracking + team sync
 
 # DEV LOG
-06 Jun – Schema + seed done.
-07 Jun – Containerized schema + seed.
-08 Jun – Validated seeds, started backend.
-09 Jun – Schema tweaks, expanding seed data.
-10 Jun – Base framework + routing/API set up.
-11 Jun – DB shows on page, .env bug hunting.
-12 Jun – .env fixed, templates render.
-13 Jun – Basic homepage + live volume added.
-14 Jun – Debugging team fetch, DB connect issues.
-15 Jun – Fixed race table, simplified schema, templates working.
-16 Jun – Split base/user stats, added Base namespace.
-17 Jun – Team page done. link to manager, seed positions, add skill UI.
-18 Jun – Skills + rules as hasMany, fixed seeds.
-19 Jun – More positional seeds.
-20 Jun – Added controller + helper, cleaned routes, TWIG added. seed by name, reroll costs, verify skills.
-21 Jun – Added Humans/Nobility. skill check, clean seeds, name-based ref.
-22 Jun – Fixed apostrophes, updated Amazons/Orcs.
-23 Jun – Fixed skill IDs, added Lizardmen.
-24 Jun – Added Necro, Norse, Orcs.
-25 Jun – Added Undead, Skaven, Wood Elf, cleaned races.
-26 Jun – Chaos Renegades + big guy logic, normalized costs.
-27 Jun – Khorne added, synced IDs, tidied SQL.
+06 Jun - Schema + seed done.
+07 Jun - Containerized schema + seed.
+08 Jun - Validated seeds, started backend.
+09 Jun - Schema tweaks, expanding seed data.
+10 Jun - Base framework + routing/API set up.
+11 Jun - DB shows on page, .env bug hunting.
+12 Jun - .env fixed, templates render.
+13 Jun - Basic homepage + live volume added.
+14 Jun - Debugging team fetch, DB connect issues.
+15 Jun - Fixed race table, simplified schema, templates working.
+16 Jun - Split base/user stats, added Base namespace.
+17 Jun - Team page done. link to manager, seed positions, add skill UI.
+18 Jun - Skills + rules as hasMany, fixed seeds.
+19 Jun - More positional seeds.
+20 Jun - Added controller + helper, cleaned routes, TWIG added. seed by name, reroll costs, verify skills.
+21 Jun - Added Humans/Nobility. skill check, clean seeds, name-based ref.
+22 Jun - Fixed apostrophes, updated Amazons/Orcs.
+23 Jun - Fixed skill IDs, added Lizardmen.
+24 Jun - Added Necro, Norse, Orcs.
+25 Jun - Added Undead, Skaven, Wood Elf, cleaned races.
+26 Jun - Chaos Renegades + big guy logic, normalized costs.
+27 Jun - Khorne added, synced IDs, tidied SQL.
 28 Jun - Added Khorne Followers and Gnomes. Hid Deamons of Khorne.
 29 Jun - Added Nurgle.
 30 Jun - Added Slannesh, fixed seed bugs. Added Slaan, fixed wrong comments in Lizardmen.
