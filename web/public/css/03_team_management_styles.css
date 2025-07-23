@@ -28,7 +28,7 @@
 .tables-flex {
     display: flex;
     gap: 2em;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 2em;
     flex-wrap: wrap;
@@ -43,6 +43,7 @@
 }
 .small-table th, .small-table td {
     padding: 0.3em 0.6em;
+    font-size: 0.8em;
 }
 @media (max-width: 900px) {
     .tables-flex {

@@ -24,7 +24,7 @@
 
     {% include 'partials/special_rules.twig' with {'special_rules': special_rules, 'regional_rules': regional_rules} %}
 
-    <form method="post" action="/team/create/save">
+    <form method="post" action="/team/create/save" id="save-team-form" class="form-horizontal">
 
         <h2>Team Information</h2>
         
@@ -67,7 +67,7 @@
 
         {% include 'team/create/partials/team_table.twig' with {'team': team} %}
 
-        <button type="submit">Save Team</button>
+        <p><center><button type="submit">Save Team</button></center> </p>
     </form>
 
 {% endblock %}

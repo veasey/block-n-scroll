@@ -33,9 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     // create skills
                     const skills = position.skills.map(skill => {
-                        return `<a href="/rules/skill/${skill.id}.html" title="${skill.description}" class="skill-link">
-                            <span class="skill">${skill.name}</span>
-                        </a>`;
+                        return `<a href="/rules/skill/${skill.id}.html" title="${skill.description}" class="skill-link"><span class="skill">${skill.name}</span></a>`;
                     }).join(', ');
 
                     // Create a new row for the team table
@@ -71,4 +69,14 @@ document.addEventListener('DOMContentLoaded', function () {
             resetTeamPlayerNumbers();
         }
     });
+
+    // save team form submission
+    const saveTeamForm = document.querySelector('#save-team-form');
+    if (saveTeamForm) {
+        saveTeamForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            // Here you can add any additional validation or processing before submitting
+            this.submit();
+        });
+    }
 });
