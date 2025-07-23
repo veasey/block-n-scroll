@@ -38,6 +38,7 @@ P4 - Match tracking + team sync
 14 Jul - Revised Strength, Mutation, Passing and Extraordinary Skills Descriptions. Put skill templates in subdirs.
 21 Jul - Finished revising skills text
 22 Jul - Added position lookup, and began work on team create form.
+23 Jul - Finalised Create Team Form, needs submission. Created Login Form, middleware and controller. Need logic adding.
 
 → TODO & Bugs: 
 
