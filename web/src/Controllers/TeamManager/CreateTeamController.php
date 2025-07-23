@@ -45,4 +45,52 @@ class CreateTeamController
 
         return $this->view->render($response, 'team/create/2_buy_staff.twig', $data);
     }
+
+    public function saveTeam(Request $request, Response $response): Response
+    {
+        $data = $request->getParsedBody();
+
+        echo '<pre>'; die(print_r($data, true));
+
+        // Example: validate and collect data
+        $teamName = trim($data['team_name'] ?? '');
+        $race = $data['race'] ?? '';
+        $isNew = true;
+
+        if (!$teamName || !$race) {
+            // Optionally store error in session or flash bag
+            return $response
+                ->withHeader('Location', '/team/create?error=1')
+                ->withStatus(302);
+        }
+
+        $userId = $_SESSION['user_id'] ?? null;
+
+        if (!$userId && empty($_SESSION['guest_id'])) {
+            // Create a guest session ID if not logged in
+            $_SESSION['guest_id'] = bin2hex(random_bytes(8));
+        }
+
+        $ownerId = $userId ?? $_SESSION['guest_id'];
+
+        // Save to DB
+        $stmt = $this->db->prepare('
+            INSERT INTO teams (name, race, owner_id, is_new)
+            VALUES (:name, :race, :owner_id, :is_new)
+        ');
+        $stmt->execute([
+            'name' => $teamName,
+            'race' => $race,
+            'owner_id' => $ownerId,
+            'is_new' => $isNew,
+        ]);
+
+        // Redirect to list or detail view
+        return $response
+            ->withHeader('Location', '/teams')
+            ->withStatus(302);
+
+        // For now, just redirect back to the team creation page
+        return $response->withHeader('Location', '/team/create')->withStatus(302);
+    }
 }

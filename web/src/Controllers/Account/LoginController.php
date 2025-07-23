@@ -66,11 +66,21 @@ class LoginController
 
     private function sendUserBack(Request $request, Response $response): Response
     {
-        $redirectUrl = $request->getServerParams()['HTTP_REFERER'] ?? '/';
+        // Check if there's a redirect URL stored in the session
+        if (!empty($_SESSION['redirect_after_login'])) {
+            $redirectUrl = $_SESSION['redirect_after_login'];
+            unset($_SESSION['redirect_after_login']);
+        } else {
+            // Fallback to HTTP_REFERER or root if not set
+            // This is useful if the user was redirected to login from another page
+            $redirectUrl = $request->getServerParams()['HTTP_REFERER'] ?? '/';
+        }
+
         // Avoid redirecting back to the login page itself
         if (strpos($redirectUrl, '/account/login') !== false) {
             $redirectUrl = '/';
         }
+
         return $response->withHeader('Location', $redirectUrl)->withStatus(302);
     }
 }

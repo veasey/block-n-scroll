@@ -75,7 +75,41 @@ document.addEventListener('DOMContentLoaded', function () {
     if (saveTeamForm) {
         saveTeamForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            // Here you can add any additional validation or processing before submitting
+
+            const teamNameInput = document.querySelector('#team_name');
+            if (!teamNameInput.value.trim()) {
+                alert('Please enter a team name.');
+                return;
+            }
+
+            const teamValueInput = document.querySelector('#current_team_value');
+            if (parseInt(teamValueInput.value, 10) <= 0) {
+                alert('Your team must have a value greater than zero.');
+                return;
+            }
+
+            const maxTeamValue = document.querySelector('#max_team_value');
+            if (parseInt(teamValueInput.value, 10) <= parseInt(maxTeamValue.value, 10)) {
+                alert('Team cannot exceed max team value.');
+                return;
+            }
+
+            // add all players to post
+            const teamPositions = [];
+            document.querySelectorAll('#team-table tbody tr').forEach(function (row) {
+                const positionInput = row.querySelector('input[name="team_positions[]"]');
+                if (positionInput) {
+                    teamPositions.push(positionInput.value);
+                }
+            });
+
+            const teamPositionsInput = document.createElement('input');
+            teamPositionsInput.type = 'hidden';
+            teamPositionsInput.name = 'team_positions';
+            teamPositionsInput.value = JSON.stringify(teamPositions);
+            saveTeamForm.appendChild(teamPositionsInput);
+
+            // Submit the form
             this.submit();
         });
     }
