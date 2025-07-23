@@ -3,13 +3,16 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.buy-player-btn').forEach(function (btn) {
         btn.addEventListener('click', function () {
 
+            const currentPlayerRow = btn.closest('tr');
             const positionId = btn.getAttribute('data-position-id');
             const max = parseInt(btn.getAttribute('data-max'), 10);
             
-            if (exceedingMaxPositionalsAllowed(positionId, max)) {
+            if (exceedingMaxPositionalsAllowed(currentPlayerRow, max)) {
                 alert('You cannot buy more than the maximum allowed for this position.');
                 return;
             }
+            
+            addOrIncrementBoughtCount(positionId, currentPlayerRow);
 
             fetch(`/rules/position/${positionId}.json`)
                 .then(response => response.json())
@@ -60,8 +63,10 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.target.classList.contains('remove-player-btn')) {
 
             const currentPlayerRow = e.target.closest('tr');
-
+            const positionId = currentPlayerRow.querySelector('input[name="team_positions[]"]').value;
+            
             removeTeamPlayerCost(currentPlayerRow);
+            removeTeamPlayerPositionalBoughtCount(positionId);
             currentPlayerRow.remove();
             resetTeamPlayerNumbers();
         }

@@ -21,15 +21,10 @@
                 </td>
                 <td>{{ pos.player.cost | number_format }}</td>
                 <td>
-                    {%if pos.player.bought_count %}
-                        <span class="bought-count" data-position-id="{{ pos.player.id }}">{{ pos.player.bought_count }}</span>
-                        of
-                    {% endif %}
                     {{ pos.player.max_count == 0 ? 'Unlimited' : pos.player.max_count }}</td>
                 <td>
                     <button type="button" class="buy-player-btn"
                         data-position-id="{{ pos.player.id }}"
-                        data-player-id="{{ pos.player.id }}"
                         data-max="{{ pos.player.max_count }}">
                         Buy
                     </button>
