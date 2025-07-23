@@ -17,15 +17,17 @@
     <p class="breadcrumbs">
         <a href="/team">Teams</a> - 
         <a href="/team/create">Create</a> -
-        Buy Staff
+        Hire Staff
     </p>
 
-    <h1>Buy Staff</h1>
+    <h1>Hire Staff</h1>
 
-    <p>{{ base_team.name }} - {{ base_team.description }} <strong>Tier: {{ base_team.tier }}</strong></p>
     {% include 'partials/special_rules.twig' with {'special_rules': special_rules, 'regional_rules': regional_rules} %}
 
-     <form method="post" action="/team/create/save">
+    <form method="post" action="/team/create/save">
+
+        <h2>Team Information</h2>
+        
         <div class="form-section">
             <div class="form-group">
                 <label for="team_name"><strong>Team Name:</strong></label>
@@ -40,11 +42,20 @@
                 <input type="number" id="max_cost" name="max_cost" value="{{ max_cost|default(1000000) }}" min="0" step="10000" class="form-control">
             </div>
             <div class="form-group">
+                <label for="race"><strong>Race:</strong></label>
+                <p>{{ base_team.name }}</p>
+            </div>
+            <div class="form-group">
+                <label for="tier"><strong>Tier:</strong></label>
+                <p>{{ base_team.tier }}</p>
+            </div>
+            <div class="form-group">
                 <label for="max_cost"><strong>Current Team Value:</strong></label>
                 <input type="number" id="current_team_value" value="{{ current_team_value|default(0) }}" name="current_team_value" value="" class="form-control" disabled>
             </div>
         </div>
    
+        <h2>Team Staff</h2>
         <div class="tables-flex">
             <div class="table-wrapper">
                 {% include 'team/create/partials/positions_table.twig' with {'positions': positions} %}
@@ -58,6 +69,5 @@
 
         <button type="submit">Save Team</button>
     </form>
-
 
 {% endblock %}
