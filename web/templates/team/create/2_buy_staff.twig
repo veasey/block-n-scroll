@@ -3,6 +3,7 @@
 {% block title %}Block &amp; Scroll - Team - Create{% endblock %}
 {% block scripts %}
     {{ parent() }}
+    <script src="/js/team/helperFunctions.js"></script>
     <script src="/js/team/create.js"></script>
 {% endblock %}
 
@@ -40,7 +41,7 @@
             </div>
             <div class="form-group">
                 <label for="max_cost"><strong>Current Team Value:</strong></label>
-                <input type="number" id="current_team_value" value="{{ current_team_value|default(0) }} name="current_team_value" value="" class="form-control" disabled>
+                <input type="number" id="current_team_value" value="{{ current_team_value|default(0) }}" name="current_team_value" value="" class="form-control" disabled>
             </div>
         </div>
    
