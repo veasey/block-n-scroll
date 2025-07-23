@@ -41,15 +41,10 @@ class LoginController
         // Check if coach exists and password matches
         if ($coach && password_verify($password, $coach->password_hash)) {
             $_SESSION['user_id'] = $coach->id;
-            $_SESSION['username'] = $coach->name;
+            $_SESSION['user'] = $coach->name;
             $_SESSION['successes'][] = 'Welcome '. $coach->name . '!';           
-            
-            $redirectUrl = $request->getServerParams()['HTTP_REFERER'] ?? '/';
-            // Avoid redirecting back to the login page itself
-            if (strpos($redirectUrl, '/account/login') !== false) {
-                $redirectUrl = '/';
-            }
-            return $response->withHeader('Location', $redirectUrl)->withStatus(302);
+
+            return $this->sendUserBack($request, $response);
         }
 
         // Delay to prevent user enumeration
@@ -65,7 +60,17 @@ class LoginController
     public function logout(Request $request, Response $response): Response
     {
         unset($_SESSION['user_id']);
-        unset($_SESSION['username']);
-        return $response->withHeader('Location', '/account/login')->withStatus(302);
+        unset($_SESSION['user']);
+        return $this->sendUserBack($request, $response);
+    }
+
+    private function sendUserBack(Request $request, Response $response): Response
+    {
+        $redirectUrl = $request->getServerParams()['HTTP_REFERER'] ?? '/';
+        // Avoid redirecting back to the login page itself
+        if (strpos($redirectUrl, '/account/login') !== false) {
+            $redirectUrl = '/';
+        }
+        return $response->withHeader('Location', $redirectUrl)->withStatus(302);
     }
 }

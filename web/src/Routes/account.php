@@ -4,5 +4,6 @@ use App\Controllers\Account\RegisterController;
 
 $app->get('/account/login', LoginController::class . ':showLoginForm');
 $app->post('/account/login', LoginController::class . ':login');
+$app->post('/account/logout', LoginController::class . ':logout');
 $app->get('/account/register', RegisterController::class . ':showRegisterForm');
 $app->post('/account/register', RegisterController::class . ':register');

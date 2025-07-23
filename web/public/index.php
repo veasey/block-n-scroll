@@ -8,6 +8,8 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 
 require __DIR__ . '/../vendor/autoload.php';
 
+session_start();
+
 // Create Container
 $container = new Container();
 AppFactory::setContainer($container);
@@ -18,7 +20,9 @@ $app->addRoutingMiddleware();
 
 // Register Twig in container
 $container->set(Twig::class, function () {
-    return Twig::create(__DIR__ . '/../templates', ['cache' => false]);
+    $twig = Twig::create(__DIR__ . '/../templates', ['cache' => false]);
+    $twig->getEnvironment()->addGlobal('session', $_SESSION);
+    return $twig;
 });
 
 // Add Twig middleware using the container instance
