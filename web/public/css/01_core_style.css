@@ -37,6 +37,14 @@ nav a:hover { text-decoration: underline; }
     border-radius: 4px;
     cursor: pointer;
 }
+.bns-sign-up-btn {
+    background: #28a745;
+    color: #fff;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    cursor: pointer;
+}
 .bns-login-dropdown {
     display: none;
     position: absolute;
