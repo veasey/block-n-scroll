@@ -10,7 +10,7 @@ class AuthMiddleware
     {
         if (empty($_SESSION['user_id'])) {
             return $response
-                ->withHeader('Location', '/login')
+                ->withHeader('Location', '/account/login')
                 ->withStatus(302);
         }
         return $next($request, $response);

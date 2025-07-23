@@ -5,21 +5,29 @@
             <a href="/">Block &amp; Scroll</a> 🏉🐦
         </div>
         <div class="bns-header-login">
-            <button id="loginDropdownBtn" class="bns-login-btn">
-                Login ▼
-            </button>
-            <button id="signUpBtn" class="bns-sign-up-btn">
-                Register
-            </button>
-            <div id="loginDropdown" class="bns-login-dropdown">
-                <form class="bns-login-form">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password">
-                    <button type="submit" class="bns-login-submit">Login</button>
+            {% if session.user_id %}
+                <form method="post" action="/account/logout" style="display:inline;">
+                    <button type="submit" class="bns-login-btn">Sign Out</button>
                 </form>
-            </div>
+            {% else %}
+                <button id="loginDropdownBtn" class="bns-login-btn">
+                    Login ▼
+                </button>
+                <a href="/account/register">
+                    <button id="signUpBtn" class="bns-sign-up-btn">
+                        Register
+                    </button>
+                </a>
+                <div id="loginDropdown" class="bns-login-dropdown">
+                    <form class="bns-login-form" action="/account/login" method="post">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password">
+                        <button type="submit" class="bns-login-submit">Login</button>
+                    </form>
+                </div>
+            {% endif %}
         </div>
        
     </div>

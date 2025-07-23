@@ -35,7 +35,7 @@ $container->set(App\Controllers\Rules\TeamController::class, function ($c) {
 });
 
 // Load all routes
-foreach (['auth', 'web', 'rules', 'teams'] as $routeFile) {
+foreach (['account', 'web', 'rules', 'teams'] as $routeFile) {
     require __DIR__ . "/../src/Routes/{$routeFile}.php";
 }
 

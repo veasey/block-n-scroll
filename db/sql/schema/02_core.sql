@@ -5,6 +5,8 @@ CREATE TABLE coach (
     name VARCHAR(100) NOT NULL,
     email VARCHAR(255) UNIQUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    password_hash VARCHAR(255) NOT NULL,
     role ENUM('coach', 'moderator', 'admin') DEFAULT 'coach'
 );
 
