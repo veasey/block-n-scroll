@@ -1,6 +1,9 @@
 /* reroll cost */
 UPDATE base_team SET reroll_cost = 70 WHERE id = 14;
 
+/* Cannot have an apothecary */
+UPDATE base_team SET apothecary_allowed = false WHERE id = 14;
+
 INSERT INTO base_team_player
 (id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count) VALUES
 (140, 'Skeleton Linemen', 'Cheap, resilient but a bit slow', 'standard', 14, 5, 3, 4, 6, 8, 40000, 12),

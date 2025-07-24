@@ -1,5 +1,10 @@
 // web/public/js/team/create.js
 document.addEventListener('DOMContentLoaded', function () {
+
+    /**
+     * But Player Button Click Handler
+     * Adds a player to the team table and increments the bought count
+     */
     document.querySelectorAll('.buy-player-btn').forEach(function (btn) {
         btn.addEventListener('click', function () {
 
@@ -56,7 +61,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Remove player from team
+    /**
+     * Remove Player Button Click Handler
+     * Removes a player from the team table and decrements the bought count
+     */
     document.addEventListener('click', function (e) {
         if (e.target.classList.contains('remove-player-btn')) {
 
@@ -70,7 +78,81 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // save team form submission
+    /**
+     * Buy Sidebar Staff Button Click Handler
+     * Adds staff to the team and updates the current team value
+     */
+    document.querySelectorAll('.buy-staff-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            const staffType = btn.getAttribute('data-staff-type');
+            const staffCost = parseInt(btn.getAttribute('data-staff-cost'), 10);
+            const maxStaff = parseInt(btn.getAttribute('data-max-staff'), 10);
+            const currentStaffCount = parseInt(btn.getAttribute('data-current-staff'), 10) || 0;
+
+            if (currentStaffCount >= maxStaff) {
+                alert(`You cannot buy more than ${maxStaff} ${staffType.replace('_', ' ')}s.`);
+                return;
+            }
+
+            // Increment the current team value
+            const currentValueInput = document.querySelector('#current_team_value');
+            const currentValue = parseInt(currentValueInput.value, 10) || 0;
+            currentValueInput.value = currentValue + staffCost;
+
+            // Update the staff count
+            btn.setAttribute('data-current-staff', currentStaffCount + 1);
+
+            // Update the UI to reflect the new staff count
+            const staffCountElem = document.querySelector(`.${staffType}-count`);
+            if (staffCountElem) {
+                staffCountElem.textContent = `(${currentStaffCount + 1})`;
+            } else {
+                const newCountElem = document.createElement('span');
+                newCountElem.className = `${staffType}-count`;
+                newCountElem.textContent = `(${currentStaffCount + 1})`;
+                btn.parentElement.appendChild(newCountElem);
+            }
+        });
+    });
+
+    /**
+     * Fire Staff Button Click Handler
+     * Removes staff from the team and updates the current team value
+     */
+    document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('fire-staff-btn')) {
+            const staffType = e.target.getAttribute('data-staff-type');
+            const staffCost = parseInt(e.target.getAttribute('data-staff-cost'), 10);
+            const currentStaffCount = parseInt(e.target.getAttribute('data-current-staff'), 10) || 0;
+
+            if (currentStaffCount <= 0) {
+                alert(`You have no ${staffType.replace('_', ' ')}s to fire.`);
+                return;
+            }
+
+            // Decrement the current team value
+            const currentValueInput = document.querySelector('#current_team_value');
+            const currentValue = parseInt(currentValueInput.value, 10) || 0;
+            currentValueInput.value = currentValue - staffCost;
+
+            // Update the staff count
+            e.target.setAttribute('data-current-staff', currentStaffCount - 1);
+
+            // Update the UI to reflect the new staff count
+            const staffCountElem = document.querySelector(`.${staffType}-count`);
+            if (staffCountElem) {
+                staffCountElem.textContent = `(${currentStaffCount - 1})`;
+                if (currentStaffCount - 1 <= 0) {
+                    staffCountElem.remove();
+                }
+            }
+        }
+    });
+
+    /**
+     * Form Submission Handler
+     * Validates the team name and current team value before submitting
+     */
     const saveTeamForm = document.querySelector('#save-team-form');
     if (saveTeamForm) {
         saveTeamForm.addEventListener('submit', function (e) {

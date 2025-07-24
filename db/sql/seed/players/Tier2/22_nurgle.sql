@@ -1,5 +1,8 @@
 update base_team SET reroll_cost = 70 WHERE id = 22;
 
+/* Cannot have an apothecary */
+UPDATE base_team SET apothecary_allowed = false WHERE id = 22;
+
 INSERT INTO base_team_player
 (id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count) VALUES
 (220, 'Rotter', 'Zombie lineman', 'standard', 22, 5, 3, 4, 6, 9, 35000, 12),

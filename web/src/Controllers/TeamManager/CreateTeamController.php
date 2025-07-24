@@ -4,11 +4,13 @@ namespace App\Controllers\TeamManager;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Helpers\SkillFormatter;
+use App\Helpers\SideStaffPruner;
 use App\Models\Base\BaseTeam;
 use Slim\Views\Twig;
 
 class CreateTeamController
 {
+
     protected $view;
 
     public function __construct(Twig $view)
@@ -32,6 +34,9 @@ class CreateTeamController
             'base_team' => $baseTeam,
             'special_rules' => $baseTeam->special_rules,
             'regional_rules' => $baseTeam->regional_rules,
+            'apothecary_allowed' => $baseTeam->apothecary_allowed,
+            // Fetch side staff options
+            'side_staff' => SideStaffPruner::getSideStaffOptions($baseTeam),
 
             // pre-format primary and secondary skills for all players
             'positions' => $baseTeam->players->map(function ($player) {
