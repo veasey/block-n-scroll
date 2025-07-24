@@ -1,0 +1,20 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Rules - Side Staff - {{side_staff.name|default('Side Staff')}}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/rules">Rules</a> - 
+        Side Staff -
+        {{side_staff.name|default('Side Staff')}}
+    </p>
+
+    <h2>{{side_staff.name|default('Side Staff')}}</h2>
+
+    <p>{{side_staff.description}}</p>
+
+    <p>Cost: {{side_staff.cost}}k</p>
+    <p>Max: {{side_staff.max_count}}</p>
+
+{% endblock %}

@@ -3,6 +3,7 @@ use App\Controllers\Rules\TeamController;
 use App\Controllers\Rules\PositionController;
 use App\Models\Base\BaseTeam;
 use App\Models\Base\Skill;
+use App\Models\Base\SideStaff;
 use Slim\Views\Twig;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -69,8 +70,30 @@ $app->get('/rules/skill/{skill_id}[.{format}]', function (Request $request, Resp
 
 $app->get('/rules/position/{position_id:\d+}[.{format}]', PositionController::class . ':getPosition');
 
-$app->get('/rules/side-staff/{side_staff_name}[.{format}]', function (Request $request, Response $response, array $args) use ($app) {
+$app->get('/rules/side-staff/{side_staff_id}[.{format}]', function (Request $request, Response $response, array $args) use ($app) {
+    
     $format = $args['format'] ?? 'html';
-    $sideStaffName = $args['side_staff_name'];
-    return Twig::fromRequest($request)->render($response, 'rules/side_staff/' . $sideStaffName . '.twig');
+    $staffId = $args['side_staff_id'];
+    $staff = SideStaff::find($staffId);
+    
+    if (!$staff) {
+        return $response->withStatus(404)->write('I don\'t know that side staff');
+    }
+
+    if ($format === 'json') {
+        $response->getBody()->write(json_encode($staff));
+        return $response->withHeader('Content-Type', 'application/json');
+    }
+
+    $template = 'rules/side_staff.twig';
+    $templateDir = __DIR__ . '/../../templates/rules/side_staff/';
+    $matches = glob("{$templateDir}{$staffId}_*.twig");
+
+    if (!empty($matches)) {
+        $template = 'rules/side_staff/' . basename($matches[0]);
+    }
+
+    return Twig::fromRequest($request)->render($response, $template, [
+        'side_staff' => $staff,
+    ]);
 });
