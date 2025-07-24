@@ -39,7 +39,7 @@ P4 - Match tracking + team sync
 21 Jul - Finished revising skills text
 22 Jul - Added position lookup, and began work on team create form.
 23 Jul - Finalised Create Team Form, needs submission. Created Login Form, middleware and controller. Need logic adding. Fixed logging in.
-24 Jul - Fettled Sidestaff, by putting in DB first. Reconsidering life choices. Repenting to Nuffle.
+24 Jul - Fettled Sidestaff, by putting in DB first. Reconsidering life choices. Repenting to Nuffle. Sidestaff form logic and submission added.
 
 → TODO & Bugs: 
 
