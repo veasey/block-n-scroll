@@ -2,6 +2,7 @@
 <table id="staff-table">
     <thead>
         <tr>
+            <th>&nbsp;</th>
             <th>Staff Type</th>
             <th>Cost</th>
             <th>Max</th>
@@ -14,6 +15,9 @@
             {% if staff is not null %}         
                 <tr>
                     <td>
+                        <span class="count">0</span>x
+                    </th>
+                    <td>
                         <a href="/rules/side-staff/{{ staff.id }}" title="{{ staff.description }}">
                             {{ staff.name }}
                         </a>
@@ -25,19 +29,15 @@
                             type="button" 
                             class="buy-staff-btn" 
                             data-staff-id="{{ staff.id }}"
-                            data-staff-type="{{ staff.type }}"
                             data-staff-cost="{{ staff.cost }}"
                             data-max-staff="{{ staff.max }}"
-                            data-current-staff="{{ staff.current }}"
+                            data-current-staff="0"
                         >Buy</button>
-                        {% if staff.current > 0 %}
-                            <button 
-                                type="button" 
-                                class="fire-staff-btn" 
-                                data-staff-type="{{ staff.type }}"
-                                disabled
-                            >Fire</button>
-                        {% endif %}
+                        <button 
+                            type="button" 
+                            class="fire-staff-btn" 
+                            data-staff-id="{{ staff.id }}"
+                        >Fire</button>
                     </td>
                 </tr>
             {% endif %}

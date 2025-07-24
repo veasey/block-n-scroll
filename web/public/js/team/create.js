@@ -84,13 +84,12 @@ document.addEventListener('DOMContentLoaded', function () {
      */
     document.querySelectorAll('.buy-staff-btn').forEach(function (btn) {
         btn.addEventListener('click', function () {
-            const staffType = btn.getAttribute('data-staff-type');
+
             const staffCost = parseInt(btn.getAttribute('data-staff-cost'), 10);
             const maxStaff = parseInt(btn.getAttribute('data-max-staff'), 10);
-            const currentStaffCount = parseInt(btn.getAttribute('data-current-staff'), 10) || 0;
+            let currentStaffCount = parseInt(btn.getAttribute('data-current-staff'), 10) || 0;
 
             if (currentStaffCount >= maxStaff) {
-                alert(`You cannot buy more than ${maxStaff} ${staffType.replace('_', ' ')}s.`);
                 return;
             }
 
@@ -100,18 +99,9 @@ document.addEventListener('DOMContentLoaded', function () {
             currentValueInput.value = currentValue + staffCost;
 
             // Update the staff count
-            btn.setAttribute('data-current-staff', currentStaffCount + 1);
-
-            // Update the UI to reflect the new staff count
-            const staffCountElem = document.querySelector(`.${staffType}-count`);
-            if (staffCountElem) {
-                staffCountElem.textContent = `(${currentStaffCount + 1})`;
-            } else {
-                const newCountElem = document.createElement('span');
-                newCountElem.className = `${staffType}-count`;
-                newCountElem.textContent = `(${currentStaffCount + 1})`;
-                btn.parentElement.appendChild(newCountElem);
-            }
+            currentStaffCount += 1;
+            btn.setAttribute('data-current-staff', currentStaffCount);
+            btn.closest('tr').querySelector('span.count').textContent = currentStaffCount;
         });
     });
 
@@ -119,34 +109,29 @@ document.addEventListener('DOMContentLoaded', function () {
      * Fire Staff Button Click Handler
      * Removes staff from the team and updates the current team value
      */
-    document.addEventListener('click', function (e) {
-        if (e.target.classList.contains('fire-staff-btn')) {
-            const staffType = e.target.getAttribute('data-staff-type');
-            const staffCost = parseInt(e.target.getAttribute('data-staff-cost'), 10);
-            const currentStaffCount = parseInt(e.target.getAttribute('data-current-staff'), 10) || 0;
+    document.querySelectorAll('.fire-staff-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+
+            const staffId = btn.getAttribute('data-staff-id'); // Get the staff ID if needed
+            const addStaffButton = btn.closest('tr')?.querySelector(`.buy-staff-btn[data-staff-id="${staffId}"]`);
+
+            const staffCost = parseInt(addStaffButton.getAttribute('data-staff-cost'), 10);
+            let currentStaffCount = parseInt(addStaffButton.getAttribute('data-current-staff'), 10) || 0;
 
             if (currentStaffCount <= 0) {
-                alert(`You have no ${staffType.replace('_', ' ')}s to fire.`);
                 return;
             }
 
-            // Decrement the current team value
+            // Increment the current team value
             const currentValueInput = document.querySelector('#current_team_value');
             const currentValue = parseInt(currentValueInput.value, 10) || 0;
             currentValueInput.value = currentValue - staffCost;
 
             // Update the staff count
-            e.target.setAttribute('data-current-staff', currentStaffCount - 1);
-
-            // Update the UI to reflect the new staff count
-            const staffCountElem = document.querySelector(`.${staffType}-count`);
-            if (staffCountElem) {
-                staffCountElem.textContent = `(${currentStaffCount - 1})`;
-                if (currentStaffCount - 1 <= 0) {
-                    staffCountElem.remove();
-                }
-            }
-        }
+            currentStaffCount -= 1;
+            addStaffButton.setAttribute('data-current-staff', currentStaffCount);
+            btn.closest('tr').querySelector('span.count').textContent = currentStaffCount;
+        });
     });
 
     /**
@@ -170,8 +155,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            const maxTeamValue = document.querySelector('#max_team_value');
-            if (parseInt(teamValueInput.value, 10) <= parseInt(maxTeamValue.value, 10)) {
+            const maxTeamValue = document.querySelector('#max_cost');
+            if (parseInt(teamValueInput.value, 10) > parseInt(maxTeamValue.value, 10)) {
                 alert('Team cannot exceed max team value.');
                 return;
             }
@@ -190,6 +175,24 @@ document.addEventListener('DOMContentLoaded', function () {
             teamPositionsInput.name = 'team_positions';
             teamPositionsInput.value = JSON.stringify(teamPositions);
             saveTeamForm.appendChild(teamPositionsInput);
+
+            // add all side staff to post
+            const teamStaff = [];
+            document.querySelectorAll('.buy-staff-btn').forEach(function (btn) {
+                const currentStaffCount = parseInt(btn.getAttribute('data-current-staff'), 10) || 0;
+                if (currentStaffCount > 0) {
+                    teamStaff.push({
+                        id: btn.getAttribute('data-staff-id'),
+                        count: currentStaffCount
+                    });
+                }
+            });
+
+            const teamStaffInput = document.createElement('input');
+            teamStaffInput.type = 'hidden';
+            teamStaffInput.name = 'team_staff';
+            teamStaffInput.value = JSON.stringify(teamStaff);
+            saveTeamForm.appendChild(teamStaffInput);
 
             // Submit the form
             this.submit();

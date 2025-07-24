@@ -25,7 +25,7 @@ class SideStaffPruner
             // alter cost and max rerolls allowed
             if ($staff->id === self::SIDESTAFF_RE_ROLLS) {
                 $staff->cost = $baseTeam->reroll_cost ?? 70000;
-                $staff->max = $baseTeam->max_rerolls ?? 8; 
+                $staff->max_count = $baseTeam->max_rerolls ?? 8; 
             }
 
             // disable apothecary if not allowed for this team
@@ -38,7 +38,7 @@ class SideStaffPruner
                 'name' => $staff->name,
                 'type' => $staff->type,
                 'cost' => $staff->cost,
-                'max' => $staff->max,
+                'max' => $staff->max_count,
             ];
 
         })->toArray();
