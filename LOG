@@ -38,17 +38,20 @@ P4 - Match tracking + team sync
 14 Jul - Revised Strength, Mutation, Passing and Extraordinary Skills Descriptions. Put skill templates in subdirs.
 21 Jul - Finished revising skills text
 22 Jul - Added position lookup, and began work on team create form.
-23 Jul - Finalised Create Team Form, needs submission. Created Login Form, middleware and controller. Need logic adding.
-       - Fixed logging in
+23 Jul - Finalised Create Team Form, needs submission. Created Login Form, middleware and controller. Need logic adding. Fixed logging in.
+24 Jul - Fettled Sidestaff, by putting in DB first. Reconsidering life choices. Repenting to Nuffle.
 
 → TODO & Bugs: 
+
+→→ TEAM CREATE FORM
+    →→→ All the side staff stuff.
+    →→→ Saving it, users etc etc.
+    →→ Any of this re-usable for modifying teams???
 
 →→ Logging in
   →→→ Success Message
 →→ send email verification code and logic, when registering a new user
-→→ TEAM CREATE FORM
-    →→→ All the side staff stuff.
-    →→→ Saving it, users etc etc.
+
 →→ SKILLS
     →→ What to do for Bloodlust, Loner etc where there is an X. Maybe have an X join on [position, skill]?
     →→ Standardise skill templates, and place repeated parts of template into base template
