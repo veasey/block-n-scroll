@@ -11,8 +11,8 @@ $app->get('/team', function (Request $request, Response $response) use ($app) {
 });
 $app->get('/team/create', function (Request $request, Response $response) use ($app) {
     return Twig::fromRequest($request)->render($response, 'team/create/1_race_picker.twig', ['teams' => BaseTeam::all()]);
-});
-$app->get('/team/create/{team_id}', CreateTeamController::class . ':getForm');
+})->add(new AuthMiddleware());
+$app->get('/team/create/{team_id}', CreateTeamController::class . ':getForm')->add(new AuthMiddleware());
 $app->post('/team/create/save', CreateTeamController::class . ':saveTeam')->add(new AuthMiddleware());
 
 

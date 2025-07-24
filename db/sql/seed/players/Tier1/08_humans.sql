@@ -1,5 +1,5 @@
 /* Human Team: Reroll Cost */
-UPDATE base_team SET reroll_cost = 50 WHERE id = 8;
+UPDATE base_team SET reroll_cost = 50000 WHERE id = 8;
 
 /* Human Team Players */
 INSERT INTO base_team_player

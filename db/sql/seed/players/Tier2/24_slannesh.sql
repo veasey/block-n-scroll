@@ -2,7 +2,7 @@
 update base_team SET is_hidden = true WHERE id = 24;
 
 /* reroll cost */
-UPDATE base_team SET reroll_cost = 70 WHERE id = 24;
+UPDATE base_team SET reroll_cost = 70000 WHERE id = 24;
 
 INSERT INTO base_team_player
 (id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count) VALUES

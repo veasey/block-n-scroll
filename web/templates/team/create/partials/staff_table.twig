@@ -11,18 +11,14 @@
     <tbody>
 
         {% for staff in side_staff %}
-
-            {% if staff is not null %}
-                
-          
-
+            {% if staff is not null %}         
                 <tr>
                     <td>
                         <a href="/rules/side-staff/{{ staff.id }}" title="{{ staff.description }}">
                             {{ staff.name }}
                         </a>
                     </td>
-                    <td>{{ staff.cost }}k</td>
+                    <td>{{ staff.cost | number_format }}</td>
                     <td>{{ staff.max }}</td>
                     <td>
                         <button 

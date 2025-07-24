@@ -1,4 +1,4 @@
-update base_team SET reroll_cost = 70 WHERE id = 22;
+update base_team SET reroll_cost = 70000 WHERE id = 22;
 
 /* Cannot have an apothecary */
 UPDATE base_team SET apothecary_allowed = false WHERE id = 22;

@@ -1,5 +1,5 @@
 /* Reroll Cost */
-update base_team SET reroll_cost = 70 WHERE id = 23;
+update base_team SET reroll_cost = 70000 WHERE id = 23;
 
 INSERT INTO base_team_player
 (id, name, description, category, base_team_id, ma, st, ag, pa, av, cost, max_count, exclusive_group_id) VALUES
