@@ -5,11 +5,12 @@
 {% block content %}
 
     <p class="breadcrumbs">
-        <a href="/team/view/all">User Created Teams</a> - 
+        <a href="/">Home</a> -
+        <a href="/team">Teams</a> -
         {% if user %}
-            <a href="/team/view/own">{{ user.name }}'s Teams</a>
+            <a href="/team/view/user/{{user.id}}">{{ user.name }}'s Teams</a>
         {% else %}
-            <a href="/team/view/all">View All Teams</a>
+            <a href="/team/view/all">All Teams</a>
         {% endif %}
     </p>
 

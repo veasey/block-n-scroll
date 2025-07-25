@@ -19,26 +19,23 @@ class ViewTeamController
     public function listTeams(Request $request, Response $response, array $args): Response
     {
         $format = $args['format'] ?? 'html';
-        $userId = $_SESSION['user_id'] ?? null;
+        $userId = $args['user_id'] ?? null;
 
-        if ($userId === null) {
-            $teams = Team::where('coach_id', $userId)->get();
-        } else {
-            $teams = Team::all();
-        }
+        $teams = (!$userId) ? Team::all() : Team::where('coach_id', $userId)->get();
 
         if ($format === 'json') {
             $response->getBody()->write($teams->toJson());
             return $response->withHeader('Content-Type', 'application/json');
         }
 
-        $data = [
-            'teams' => $teams,
-            'user' => [
+        $data['teams'] = $teams;
+        if ($userId) {
+           $data['user'] = [
                 'id' => $userId,
                 'name' => $_SESSION['user'] ?? 'Guest',
-            ],
-        ];
+            ];
+        }
+
         return $this->view->render($response, 'team/list.twig', $data);
     }
 

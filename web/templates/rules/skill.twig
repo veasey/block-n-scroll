@@ -4,15 +4,15 @@
 
 {% block content %}
 
-        <p class="breadcrumbs">
-            <a href="/rules">Rules</a> - 
-            <a href="/rules/skills">Skills</a> -
-            <a href="/rules/skill/{{ skill.id }}">{{ skill.name }}</a>
-        </p>
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/rules">Rules</a> - 
+        <a href="/rules/skills">Skills</a> -
+        <a href="/rules/skill/{{ skill.id }}">{{ skill.name }}</a>
+    </p>
 
-        <h2>{{ skill.name }}</h2>
-        <p>{{ skill.description }}</p>
-        <p>Category: {{ skill.category }}</p>
-
+    <h2>{{ skill.name }}</h2>
+    <p>{{ skill.description }}</p>
+    <p>Category: {{ skill.category }}</p>
 
 {% endblock %}
