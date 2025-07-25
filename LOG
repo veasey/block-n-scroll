@@ -40,13 +40,15 @@ P4 - Match tracking + team sync
 22 Jul - Added position lookup, and began work on team create form.
 23 Jul - Finalised Create Team Form, needs submission. Created Login Form, middleware and controller. Need logic adding. Fixed logging in.
 24 Jul - Fettled Sidestaff, by putting in DB first. Reconsidering life choices. Repenting to Nuffle. Sidestaff form logic and submission added.
+25 Jul - Added new team and player creation logic. Allow user to view all teams or own teams,
 
 → TODO & Bugs: 
 
 →→ TEAM CREATE FORM
-    →→→ All the side staff stuff.
-    →→→ Saving it, users etc etc.
+    →→ Viewing a single user created team
+    →→ Managing a single user created team
     →→ Any of this re-usable for modifying teams???
+
 
 →→ Logging in
   →→→ Success Message
