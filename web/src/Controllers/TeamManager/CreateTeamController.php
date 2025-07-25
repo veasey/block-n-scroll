@@ -3,9 +3,14 @@ namespace App\Controllers\TeamManager;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use App\Enums\SideStaff;
 use App\Helpers\SkillFormatter;
 use App\Helpers\SideStaffPruner;
 use App\Models\Base\BaseTeam;
+use App\Models\DefaultPlayerName;
+use App\Models\Team;
+use App\Models\Player;
+use App\Models\Base\BaseTeamPlayer;
 use Slim\Views\Twig;
 
 class CreateTeamController
@@ -51,51 +56,96 @@ class CreateTeamController
         return $this->view->render($response, 'team/create/2_buy_staff.twig', $data);
     }
 
+    private function getSideStaff(Team $team, array $data): Team
+    {
+        // Initialize side staff properties
+        $team->rerolls = 0;
+        $team->apothecary = 0;
+        $team->assistant_coaches = 0;
+        $team->cheerleaders = 0;
+        $team->fan_factor = 0;
+
+        // Set side staff based on input data
+        if (isset($data[SideStaff::REROLL])) {
+            $team->rerolls = (int) $data['team_staff'][SideStaff::REROLL] ?? 0;
+        }
+        if (isset($data[SideStaff::APOTHECARY])) {
+            $team->apothecary = (int) $data['team_staff'][SideStaff::APOTHECARY] ?? 0;
+        }
+        if (isset($data[SideStaff::ASSISTANT_COACH])) {
+            $team->assistant_coaches = (int) $data['team_staff'][SideStaff::ASSISTANT_COACH] ?? 0;
+        }
+        if (isset($data[SideStaff::CHEERLEADER])) {
+            $team->cheerleaders = (int) $data['team_staff'][SideStaff::CHEERLEADER] ?? 0;
+        }
+        if (isset($data[SideStaff::DEDICATED_FANS])) {
+            $team->fan_factor = (int) $data['team_staff'][SideStaff::DEDICATED_FANS] ?? 0;
+        }
+
+        return $team;
+    }
+
+    private function getPlayers(Team $team, array $teamPositions): Team
+    {
+        // Loop through player data and create Player models
+        foreach ($teamPositions ?? [] as $index => $positionId) {
+
+            $baseTeamPlayer = BaseTeamPlayer::find($positionId);
+            if (!$baseTeamPlayer) {
+                continue; // Skip if the base team player does not exist
+            }
+
+            $player = new Player();
+            $player->team_id = (int) $team->id;
+            $player->base_team_id = (int) $baseTeamPlayer->base_team_id;
+            $player->base_team_player_id = (int) $positionId;
+
+            $player->number = $index + 1;
+
+            // fill in default names
+            $player->name = DefaultPlayerName::getRandomFor($baseTeamPlayer->base_team_id, $baseTeamPlayer->name);
+
+            $player->ma = (int) $baseTeamPlayer->ma;
+            $player->st = (int) $baseTeamPlayer->st;
+            $player->ag = (int) $baseTeamPlayer->ag;
+            $player->av = (int) $baseTeamPlayer->av;
+
+            $player->original_coach_id = (int) $_SESSION['user_id'] ?? 0; // Set original coach ID
+
+            $player->save();
+        }
+
+        return $team;
+    }
+
     public function saveTeam(Request $request, Response $response): Response
     {
         $data = $request->getParsedBody();
 
-        echo '<pre>'; die(print_r($data, true));
+        $newTeam = new Team();
 
-        // Example: validate and collect data
-        $teamName = trim($data['team_name'] ?? '');
-        $race = $data['race'] ?? '';
-        $isNew = true;
+        $newTeam->name = $data['team_name'] ?? '';
+        $newTeam->description = $data['team_description'] ?? '';
+        $newTeam->coach_id = $_SESSION['user_id'] ?? null;
+        $newTeam->base_team_id = $data['base_team_id'] ?? null;
+        $newTeam->treasury = $data['max_cost'] - $data['current_team_value'];
 
-        if (!$teamName || !$race) {
-            // Optionally store error in session or flash bag
-            return $response
-                ->withHeader('Location', '/team/create?error=1')
-                ->withStatus(302);
+        $sideStaff= json_decode($data['team_staff'] ?? '{}', true);
+        $newTeam = $this->getSideStaff($newTeam, $sideStaff);
+        
+        if(!$newTeam->save()) {
+
+            // For now, just redirect back to the team creation page
+            return $response->withHeader('Location', '/team/create')->withStatus(302);
         }
 
-        $userId = $_SESSION['user_id'] ?? null;
-
-        if (!$userId && empty($_SESSION['guest_id'])) {
-            // Create a guest session ID if not logged in
-            $_SESSION['guest_id'] = bin2hex(random_bytes(8));
-        }
-
-        $ownerId = $userId ?? $_SESSION['guest_id'];
-
-        // Save to DB
-        $stmt = $this->db->prepare('
-            INSERT INTO teams (name, race, owner_id, is_new)
-            VALUES (:name, :race, :owner_id, :is_new)
-        ');
-        $stmt->execute([
-            'name' => $teamName,
-            'race' => $race,
-            'owner_id' => $ownerId,
-            'is_new' => $isNew,
-        ]);
+        // save and add players
+        $teamPositions = json_decode($data['team_positions'] ?? '[]', true);
+        $newTeam = $this->getPlayers($newTeam, $teamPositions);
 
         // Redirect to list or detail view
         return $response
-            ->withHeader('Location', '/teams')
-            ->withStatus(302);
-
-        // For now, just redirect back to the team creation page
-        return $response->withHeader('Location', '/team/create')->withStatus(302);
+            ->withHeader('Location', '/team/view/' . $newTeam->id)
+            ->withStatus(302);        
     }
 }

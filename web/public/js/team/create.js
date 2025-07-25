@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     const currentValueInput = document.querySelector('#current_team_value');
                     const currentValue = parseInt(currentValueInput.value, 10) || 0;
                     currentValueInput.value = currentValue + position.cost;
+                    document.querySelector('#current-team-value-span').textContent = currentValueInput.value;
 
                     // create skills
                     const skills = position.skills.map(skill => {
@@ -97,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const currentValueInput = document.querySelector('#current_team_value');
             const currentValue = parseInt(currentValueInput.value, 10) || 0;
             currentValueInput.value = currentValue + staffCost;
+            document.querySelector('#current-team-value-span').textContent = currentValueInput.value;
 
             // Update the staff count
             currentStaffCount += 1;
@@ -126,6 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const currentValueInput = document.querySelector('#current_team_value');
             const currentValue = parseInt(currentValueInput.value, 10) || 0;
             currentValueInput.value = currentValue - staffCost;
+            document.querySelector('#current-team-value-span').textContent = currentValueInput.value;
 
             // Update the staff count
             currentStaffCount -= 1;

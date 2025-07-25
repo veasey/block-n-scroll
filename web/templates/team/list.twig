@@ -1,0 +1,58 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - Team - List{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/team/view/all">User Created Teams</a> - 
+        {% if user %}
+            <a href="/team/view/own">{{ user.name }}'s Teams</a>
+        {% else %}
+            <a href="/team/view/all">View All Teams</a>
+        {% endif %}
+    </p>
+
+    <h1>
+        {% if user %}
+            {{ user.name }}'s
+        {% else %}
+            View All
+        {% endif %}
+        Teams
+    </h1>
+
+    {% if teams|length == 0 %}
+        <p><strong>⚠️ No Teams Found!</strong></p>
+    {% else %}
+        <table id="positions-table">
+            <thead>
+                <tr>
+                    <th>Team Name</th>
+                    <th>Race</th>
+                    <th>Coach</th>
+                    <th>League</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for team in teams %}
+                <tr>
+                    <td>
+                        <a href="/team/view/{{ team.id }}">{{ team.name }}</a>
+                    </td>
+                    <td>
+                        {{ team.baseTeam.name }}
+                    </td>
+                    <td>
+                        {{ team.coach.name }}
+                    </td>
+                    <td>
+                        {{ team.league.name }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+{% endblock %}

@@ -44,14 +44,16 @@
             <div class="form-group">
                 <label for="race"><strong>Race:</strong></label>
                 <p>{{ base_team.name }}</p>
+                <input type="hidden" name="base_team_id" value="{{ base_team.id }}">
             </div>
             <div class="form-group">
                 <label for="tier"><strong>Tier:</strong></label>
                 <p>{{ base_team.tier }}</p>
             </div>
             <div class="form-group">
-                <label for="max_cost"><strong>Current Team Value:</strong></label>
-                <input type="number" id="current_team_value" value="{{ current_team_value|default(0)|number_format }}" name="current_team_value" value="" class="form-control" disabled>
+                <label for="current_team_value"><strong>Current Team Value:</strong></label>
+                <p id="current-team-value-span">{{ current_team_value|default(0)|number_format }}</p>
+                <input type="hidden" id="current_team_value" name="current_team_value" value="{{ current_team_value|default(0)|number_format }}" class="form-control">
             </div>
         </div>
    

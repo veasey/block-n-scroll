@@ -2,14 +2,11 @@
 namespace App\Helpers;
 
 use App\Models\Base\BaseTeam;
-use App\Models\Base\SideStaff;
+use App\Models\Base\SideStaff as SideStaffModel;
+use App\Enums\SideStaff;
 
 class SideStaffPruner
 {
-    
-    private CONST SIDESTAFF_RE_ROLLS = 1;
-    private CONST SIDESTAFF_APOTHECARY = 2;
-
     /**
      * 
      * @param BaseTeam $baseTeam
@@ -18,18 +15,18 @@ class SideStaffPruner
     public static function getSideStaffOptions(BaseTeam $baseTeam): array
     {
         // Fetch side staff options from the database or configuration
-        $sideStaff = SideStaff::all();
+        $sideStaff = SideStaffModel::all();
 
         return $sideStaff->map(function ($staff) use ($baseTeam) {
 
             // alter cost and max rerolls allowed
-            if ($staff->id === self::SIDESTAFF_RE_ROLLS) {
+            if ($staff->id === SideStaff::REROLL) {
                 $staff->cost = $baseTeam->reroll_cost ?? 70000;
                 $staff->max_count = $baseTeam->max_rerolls ?? 8; 
             }
 
             // disable apothecary if not allowed for this team
-            if ($staff->id === self::SIDESTAFF_APOTHECARY && !$baseTeam->apothecary_allowed) {
+            if ($staff->id === SideStaff::APOTHECARY && !$baseTeam->apothecary_allowed) {
                 return null; // Skip this staff if not allowed
             }
 

@@ -1,5 +1,6 @@
 <?php
 use App\Controllers\TeamManager\CreateTeamController;
+use App\Controllers\TeamManager\ViewTeamController;
 use App\Middleware\AuthMiddleware;
 use App\Models\Base\BaseTeam;
 use Slim\Views\Twig;
@@ -15,28 +16,6 @@ $app->get('/team/create', function (Request $request, Response $response) use ($
 $app->get('/team/create/{team_id}', CreateTeamController::class . ':getForm')->add(new AuthMiddleware());
 $app->post('/team/create/save', CreateTeamController::class . ':saveTeam')->add(new AuthMiddleware());
 
-
-/*
-$app->get('/team/view/all[.{format}]', function (Request $request, Response $response, array $args) use ($app) {
-    $format = $args['format'] ?? 'html';
-    $teams = BaseTeam::all();
-
-    if ($format === 'json') {
-        $response->getBody()->write($teams->toJson());
-        return $response->withHeader('Content-Type', 'application/json');
-    }
-
-    return Twig::fromRequest($request)->render($response, 'rules/teams.twig', ['teams' => $teams]);
-});
-
-$app->get('/team/view/{team_id}[.{format}]', function (Request $request, Response $response, array $args) use ($app) {
-    $format = $args['format'] ?? 'html';
-    $teams = BaseTeam::all();
-
-    if ($format === 'json') {
-        $response->getBody()->write($teams->toJson());
-        return $response->withHeader('Content-Type', 'application/json');
-    }
-
-    return Twig::fromRequest($request)->render($response, 'rules/teams.twig', ['teams' => $teams]);
-});*/
+$app->get('/team/view/all', ViewTeamController::class . ':listTeams');
+$app->get('/team/view/user/{user_id}', ViewTeamController::class . ':listTeams');
+$app->get('/team/view/{team_id}', ViewTeamController::class . ':viewTeam');

@@ -33,6 +33,7 @@ CREATE TABLE player (
     
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    original_coach_id INT DEFAULT 0,
 
     FOREIGN KEY (team_id) REFERENCES team(id),
     FOREIGN KEY (base_team_id) REFERENCES base_team(id),
