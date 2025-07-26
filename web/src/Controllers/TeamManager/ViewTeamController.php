@@ -4,6 +4,7 @@ namespace App\Controllers\TeamManager;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Models\Team;
+use App\Models\Player;
 use Slim\Views\Twig;
 
 class ViewTeamController
@@ -42,6 +43,7 @@ class ViewTeamController
     public function viewTeam(Request $request, Response $response, array $args): Response
     {
         $teamId = $args['team_id'] ?? null;
+        $format = $args['format'] ?? 'html';
 
         if (!$teamId) {
             $response->getBody()->write('Team ID is required');
@@ -49,12 +51,19 @@ class ViewTeamController
         }
 
         $team = Team::find($teamId);
+        $players = Player::where('team_id', $team->id)->get();
+
+        if ($format === 'json') {
+            $response->getBody()->write(json_encode($team));
+            return $response->withHeader('Content-Type', 'application/json');
+        }
+
 
         if (!$team) {
             $response->getBody()->write('Team not found');
             return $response->withStatus(404);
         }
 
-        return $this->view->render($response, 'team/view.twig', ['team' => $team]);
+        return $this->view->render($response, 'team/view.twig', ['team' => $team, 'players' => $players]);
     }
 }

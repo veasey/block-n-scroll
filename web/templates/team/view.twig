@@ -1,1 +1,75 @@
-VIEW A TEAM!!!
+{% extends "base.twig" %}
+
+{% block title %}Block & Scroll - Rules - Team - {{ team.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/team">Teams</a> - 
+        <a href="/team/view/all">All Teams</a> -
+        <a href="/team/view/{{ team.id }}">{{ team.name }}</a>
+    </p>
+
+    <h2>{{ team.name }}</h2>
+    <p>{{ team.description }}</p>
+    <p>Tier: {{ team.tier }}</p>
+
+
+    <h3>Players</h3>
+    
+    {% if players|length == 0 %}
+        <p><strong>This team has no players!</strong></p>
+    {% else %}
+        <table id="positions-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>MA</th>
+                    <th>ST</th>
+                    <th>AG</th>
+                    <th>PA</th>
+                    <th>AV</th>
+                    <th>Skills</th>
+                    <th>SPP</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in players %}
+                <tr>
+                    <td>{{ player.number }}</td>
+                    <td>{{ player.name }}</td>
+                    <td>{{ player.position.name }}</td>
+                    <td>{{ player.ma }}</td>
+                    <td>{{ player.st }}</td>
+                    <td>{{ player.ag }}</td>
+                    <td>{{ player.pa }}</td>
+                    <td>{{ player.av }}</td>
+                    <td></td>
+                    <td>{{ player.spp }}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <p><strong>Rerolls</strong></p>
+        <p>Cost: {{ team.reroll_cost }}</p>
+        <p>Max: {{ team.max_rerolls }}</p>
+
+        <p>
+            <center>
+                <button onclick="window.location.href='/team/edit/{{ team.id }}'">Edit Team Details</button>
+            </center>
+        </p>
+
+    {% endif %}
+
+    {% include 'partials/special_rules.twig' with {'special_rules': special_rules, 'regional_rules': regional_rules} %}
+
+{% endblock %}

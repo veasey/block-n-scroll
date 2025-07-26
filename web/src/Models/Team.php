@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Base\BaseTeam;
 use App\Models\Coach;
 use App\Models\League;
+use App\Models\Player;
 
 class Team extends Model
 {
@@ -25,5 +26,10 @@ class Team extends Model
     public function league(): mixed
     {
         return $this->belongsTo(League::class, 'league_id');
+    }
+
+    public function players(): mixed
+    {
+        return $this->hasMany(Player::class, 'team_id');
     }
 }
