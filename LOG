@@ -52,7 +52,11 @@ P4 - Match tracking + team sync
 
 
 →→ Logging in
-  →→→ Success Message
+  →→ Success Message
+  →→ Log in via Facebook
+  →→ Log in via Google
+  →→ Can create and manage a team, assigned to a guest session (can create a user later.)
+
 →→ send email verification code and logic, when registering a new user
 
 →→ SKILLS
