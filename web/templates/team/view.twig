@@ -1,4 +1,4 @@
-{% extends "base.twig" %}
+{% extends "team/team_base.twig" %}
 
 {% block title %}Block & Scroll - Rules - Team - {{ team.name }}{% endblock %}
 
@@ -11,10 +11,25 @@
         <a href="/team/view/{{ team.id }}">{{ team.name }}</a>
     </p>
 
-    <h2>{{ team.name }}</h2>
-    <p>{{ team.description }}</p>
-    <p>Tier: {{ team.race.tier }}</p>
+    <div>
+        <h2>{{ team.name }}</h2>
+        <p class="team-description">{{ team.description }}</p>
+    </div>
 
+    <div class="team-header-grid">
+        <div class="team-meta">
+            <p><strong>Race:</strong> {{ team.race.name }} <i>(Tier: {{ team.race.tier }})</i></p>
+            <p><strong>Coach:</strong> {{ team.coach.name }}</p>
+            <p><strong>League:</strong> {{ team.league.name }} </p>
+            <p><strong>Treasury:</strong> {{ team.treasury|number_format }} Gold</p>            
+        </div>
+        <div class="team-meta">
+            <p><strong>Rerolls:</strong> {{ team.rerolls|number_format }}</p>
+            <p><strong>Cheerleaders:</strong> {{ team.cheerleaders|number_format }}</p>
+            <p><strong>Assistant Coaches:</strong> {{ team.assistant_coaches|number_format }}</p>
+            <p><strong>Fan Factor:</strong> {{ team.fan_factor|number_format }}</p>           
+        </div>
+    </div>
 
     <h3>Players</h3>
     
@@ -58,14 +73,11 @@
             </tbody>
         </table>
 
-        <p><strong>Rerolls</strong></p>
-        <p>Cost: {{ team.race.reroll_cost|number_format }} Gold</p>
-        <p>Max: {{ team.race.max_rerolls }}</p>
-
         {% if showManagementButtons == true %}
             <p>
                 <center>
                     <button onclick="window.location.href='/team/edit/{{ team.id }}'">Edit Team Details</button>
+                    <button onclick="window.location.href='/team/hire/{{ team.id }}'">Hire / Fire Staff</button>
                     <button onclick="window.location.href='/team/delete/{{ team.id }}/confirm'">Delete</button>
                 </center>
             </p>
@@ -73,6 +85,6 @@
 
     {% endif %}
 
-    {% include 'partials/special_rules.twig' with {'special_rules': special_rules, 'regional_rules': regional_rules} %}
+    {% include 'partials/special_rules.twig' with {'special_rules': team.race.special_rules, 'regional_rules': team.race.regional_rules} %}
 
 {% endblock %}

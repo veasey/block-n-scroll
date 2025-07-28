@@ -47,10 +47,8 @@ P4 - Match tracking + team sync
 → TODO & Bugs: 
 
 →→ TEAM CREATE FORM
-    →→ Viewing a single user created team
-    →→ Managing a single user created team
-    →→ Any of this re-usable for modifying teams???
-
+  →→ Managing a single user created team
+  →→ Any of this re-usable for modifying teams???
 
 →→ Logging in
   →→ Success Message
@@ -61,9 +59,13 @@ P4 - Match tracking + team sync
 →→ send email verification code and logic, when registering a new user
 
 →→ SKILLS
-    →→ What to do for Bloodlust, Loner etc where there is an X. Maybe have an X join on [position, skill]?
-    →→ Standardise skill templates, and place repeated parts of template into base template
-    →→ Add special rules lookup.
+  →→ What to do for Bloodlust, Loner etc where there is an X. Maybe have an X join on [position, skill]?
+  →→ Standardise skill templates, and place repeated parts of template into base template
+  →→ Add special rules lookup.
 →→ DB shutdown bug, after migrate finished
 →→ SideStaff needs to be in schema, with a limited by regional id (for apothacary etc)
 →→ JSON / HTML format does not work. Adding ".json" no longer returns JSON, specifically in controllers
+
+→→ Logging System
+ →→ All actions logged
+ →→ All public actions viewable (i.e. renaming team, joining leagues etc)

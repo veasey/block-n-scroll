@@ -1,0 +1,33 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block & Scroll - Rules - Team - {{ team.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/team">Teams</a> - 
+        <a href="/team/view/all">All Teams</a> -
+        <a href="/team/view/{{ team.id }}">{{ team.name }}</a> -
+        Edit Team Information
+    </p>
+
+    <form method="post" action="/team/edit/{{ team.id }}" id="save-team-form" class="form-horizontal">
+
+        <h2>Team Information</h2>
+        
+        <div class="form-section">
+            <div class="form-group">
+                <label for="team_name"><strong>Team Name:</strong></label>
+                <input type="text" id="team_name" name="team_name" value="{{ team.name }}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="team_bio"><strong>Team Bio:</strong></label>
+                <textarea id="team_bio" name="team_bio" rows="3" class="form-control">{{ team.description }}</textarea>
+            </div>
+        </div>
+
+        <p><center><button type="submit">Save Changes</button></center></p>
+    </form>
+
+{% endblock %}

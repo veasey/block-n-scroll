@@ -32,3 +32,24 @@
 .tables-flex .button {
     padding: 10px;
 }
+
+/* Team Management Styles */
+.team-header-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.team-header-grid h2 {
+    margin: 0;
+}
+
+.team-description {
+    margin-top: 0.5rem;
+    color: #555;
+}
+
+.team-meta p {
+    margin: 0.3rem 0;
+}

@@ -7,10 +7,10 @@ use App\Enums\SideStaff;
 use App\Helpers\SkillFormatter;
 use App\Helpers\SideStaffPruner;
 use App\Models\Base\BaseTeam;
+use App\Models\Base\BaseTeamPlayer;
 use App\Models\DefaultPlayerName;
 use App\Models\Team;
 use App\Models\Player;
-use App\Models\Base\BaseTeamPlayer;
 use Slim\Views\Twig;
 
 class CreateTeamController
@@ -23,7 +23,12 @@ class CreateTeamController
         $this->view = $view;
     }
 
-    public function getForm(Request $request, Response $response, array $args): Response
+    public function getFormSelectRace(Request $request, Response $response, array $args): Response
+    {
+        return $this->view->render($response, 'team/create/select_race.twig', ['teams' => BaseTeam::all()]);
+    }
+
+    public function getFormHireStaff(Request $request, Response $response, array $args): Response
     {
         $format = $args['format'] ?? 'html';
 
@@ -53,7 +58,7 @@ class CreateTeamController
             }),
         ];
 
-        return $this->view->render($response, 'team/create/2_buy_staff.twig', $data);
+        return $this->view->render($response, 'team/create/hire_staff.twig', $data);
     }
 
     private function getSideStaff(Team $team, array $data): Team
@@ -67,19 +72,19 @@ class CreateTeamController
 
         // Set side staff based on input data
         if (isset($data[SideStaff::REROLL])) {
-            $team->rerolls = (int) $data['team_staff'][SideStaff::REROLL] ?? 0;
+            $team->rerolls = (int) $data[SideStaff::REROLL] ?? 0;
         }
         if (isset($data[SideStaff::APOTHECARY])) {
-            $team->apothecary = (int) $data['team_staff'][SideStaff::APOTHECARY] ?? 0;
+            $team->apothecary = (int) $data[SideStaff::APOTHECARY] ?? 0;
         }
         if (isset($data[SideStaff::ASSISTANT_COACH])) {
-            $team->assistant_coaches = (int) $data['team_staff'][SideStaff::ASSISTANT_COACH] ?? 0;
+            $team->assistant_coaches = (int) $data[SideStaff::ASSISTANT_COACH] ?? 0;
         }
         if (isset($data[SideStaff::CHEERLEADER])) {
-            $team->cheerleaders = (int) $data['team_staff'][SideStaff::CHEERLEADER] ?? 0;
+            $team->cheerleaders = (int) $data[SideStaff::CHEERLEADER] ?? 0;
         }
         if (isset($data[SideStaff::DEDICATED_FANS])) {
-            $team->fan_factor = (int) $data['team_staff'][SideStaff::DEDICATED_FANS] ?? 0;
+            $team->fan_factor = (int) $data[SideStaff::DEDICATED_FANS] ?? 0;
         }
 
         return $team;
@@ -119,14 +124,14 @@ class CreateTeamController
         return $team;
     }
 
-    public function saveTeam(Request $request, Response $response): Response
+    public function save(Request $request, Response $response): Response
     {
         $data = $request->getParsedBody();
 
         $newTeam = new Team();
 
         $newTeam->name = $data['team_name'] ?? '';
-        $newTeam->description = $data['team_description'] ?? '';
+        $newTeam->description = $data['team_bio'] ?? '';
         $newTeam->coach_id = $_SESSION['user']['id'] ?? null;
         $newTeam->base_team_id = $data['base_team_id'] ?? null;
         $newTeam->treasury = $data['max_cost'] - $data['current_team_value'];
