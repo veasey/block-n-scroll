@@ -42,6 +42,7 @@ P4 - Match tracking + team sync
 24 Jul - Fettled Sidestaff, by putting in DB first. Reconsidering life choices. Repenting to Nuffle. Sidestaff form logic and submission added.
 25 Jul - Added new team and player creation logic. Allow user to view all teams or own teams,
 26 Jul - Add view and tweaked logic to show user created team. Delayed because of Docker and WSL updates. Boo!!!!
+27 Jul - Add Team Deletion. Check user is allowed to modify team before showing buttons to do so.
 
 → TODO & Bugs: 
 
