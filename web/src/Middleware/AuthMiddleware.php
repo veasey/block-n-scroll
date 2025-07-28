@@ -10,7 +10,7 @@ class AuthMiddleware
 {
     public function __invoke(Request $request, RequestHandlerInterface $handler): Response
     {
-        if (empty($_SESSION['user_id'])) {
+        if (empty($_SESSION['user'])) {
             $_SESSION['redirect_after_login'] = (string)$request->getUri();
 
             $response = new SlimResponse();

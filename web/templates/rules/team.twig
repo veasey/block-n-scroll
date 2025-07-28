@@ -35,16 +35,8 @@
             <tbody>
                 {% for pos in positions %}
                 <tr>
-                    <td>{{ pos.player.name }}</td>
-                    <td>
-                        {% for skill in pos.player.skills %}
-                            <a href="/rules/skill/{{ skill.id }}"
-                               title="{{ skill.description }}">
-                               
-                                {{ skill.name }}{% if not loop.last %}, {% endif %}
-                            </a>
-                        {% endfor %}
-                    </td>
+                    <td><a href="/rules/position/{{pos.player.id}}">{{ pos.player.name }}</a></td>
+                    <td>{% include 'partials/skill_tags.twig' with {'skills': pos.player.skills} %}</td>
                     <td>{{ pos.primary_skill_initials }}</td>
                     <td>{{ pos.secondary_skill_initials }}</td>
                     <td>{{ pos.player.cost }}k</td>

@@ -3,6 +3,7 @@ namespace App\Controllers\TeamManager;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use App\Enums\UserRole;
 use App\Models\Team;
 use App\Models\Player;
 use Slim\Views\Twig;
@@ -64,6 +65,41 @@ class ViewTeamController
             return $response->withStatus(404);
         }
 
-        return $this->view->render($response, 'team/view.twig', ['team' => $team, 'players' => $players]);
+        return $this->view->render($response, 'team/view.twig', [
+            'team' => $team, 
+            'players' => $players,
+            'showManagementButtons' => $this->showManagementButtons($team->id)
+        ]);
+    }
+
+    /**
+     * show team management controls?
+     * @param int
+     * @return bool
+     */
+    private function showManagementButtons(int $teamId): bool
+    {
+        if (!isset($_SESSION['user'])) {
+            return false;
+        }
+
+        $user = $_SESSION['user'];
+        $team = Team::find($teamId);
+
+        if (!$team) {
+            return false;
+        }
+
+        // Check if the user is the team's coach
+        if ($team->coach_id == $user['id']) {
+            return true;
+        }
+
+        // Check if the user is an admin
+        if (($user['role'] ?? '') === UserRole::ADMIN) {
+            return true;
+        }
+
+        return false;
     }
 }

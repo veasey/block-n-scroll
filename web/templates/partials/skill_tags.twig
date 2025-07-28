@@ -1,0 +1,7 @@
+{% for skill in skills %}
+    <a href="/rules/skill/{{ skill.id }}"
+        title="{{ skill.description }}">
+        
+        {{ skill.name }}{% if not loop.last %}, {% endif %}
+    </a>
+{% endfor %}

@@ -5,8 +5,8 @@
             <a href="/">Block &amp; Scroll</a> <span>🏉🐦</span>
         </div>
         <div class="bns-header-login">
-            {% if session.user_id %}
-                Signed in as <strong>{{ session.user }}</strong>&nbsp;
+            {% if session.user %}
+                Signed in as <strong>{{ session.user.name }}</strong>&nbsp;
                 <form method="post" action="/account/logout" style="display:inline;">
                     <button type="submit" class="bns-login-btn">Sign Out</button>
                 </form>

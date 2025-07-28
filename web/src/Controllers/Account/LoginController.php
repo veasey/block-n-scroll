@@ -40,8 +40,11 @@ class LoginController
 
         // Check if coach exists and password matches
         if ($coach && password_verify($password, $coach->password_hash)) {
-            $_SESSION['user_id'] = $coach->id;
-            $_SESSION['user'] = $coach->name;
+            $_SESSION['user'] = [
+                'id' => $coach->id,
+                'name' => $coach->name,
+                'role' => $coach->role
+            ];
             $_SESSION['successes'][] = 'Welcome '. $coach->name . '!';           
 
             return $this->sendUserBack($request, $response);
@@ -59,7 +62,6 @@ class LoginController
 
     public function logout(Request $request, Response $response): Response
     {
-        unset($_SESSION['user_id']);
         unset($_SESSION['user']);
         return $this->sendUserBack($request, $response);
     }

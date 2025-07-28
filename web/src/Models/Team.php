@@ -13,7 +13,7 @@ class Team extends Model
 {
     protected $table = 'team';
 
-    public function baseTeam()
+    public function race()
     {
         return $this->belongsTo(BaseTeam::class, 'base_team_id');
     }

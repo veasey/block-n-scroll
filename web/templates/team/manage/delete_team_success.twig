@@ -1,0 +1,72 @@
+{% extends "base.twig" %}
+
+{% block title %}Block & Scroll - Rules - Team - {{ team.name }} - Delete Success Page{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/team">Teams</a> - 
+        <a href="/team/view/all">All Teams</a> -
+        {{ teamName }} -
+        Deleted
+    </p>
+
+    <h2>{{ teamName }} Deleted!</h2>
+
+    {% set messages = [
+        "The dugout is empty. The team has left the pitch for good.",
+        "The crowd jeers one last time as the team disappears into obscurity.",
+        "Blood Bowl remembers nothing. Your team is gone.",
+        "With a puff of warpstone smoke, the team vanishes into legend.",
+        "The commissioner has shredded the team's paperwork. It's official.",
+        "The apothecary shrugs — there's nothing left to save.",
+        "The team's name is now just a smear on the locker room wall.",
+        "No one will sing songs of their glory. The team is history.",
+        "Even Nuffle can't recall their name now.",
+        "The last jersey has burned. It's over.",
+        "Their trophies are melted down for goblin snacks.",
+        "Retired, rerolled, and forgotten. Farewell, brave fools.",
+        "Disbanded. Disgraced. Deleted.",
+        "The fans riot briefly, then move on.",
+        "An ogre cried. That's how you know it's over.",
+        "The coach left a note: 'Don't look for us.'",
+        "Vanished like a halfling at a buffet table.",
+        "One last foul, one last whistle — then silence.",
+        "The announcer cleared their throat, but there was no name left to say.",
+        "They fumbled their legacy.",
+        "The team bus drove into the sunset. Or a swamp. Who knows?",
+        "The Chaos Gods are unimpressed.",
+        "Scrapped for parts and spare limbs.",
+        "The referee waves off the game. Permanently.",
+        "The pitch sighs in relief.",
+        "No rerolls. No resurrection. No regrets.",
+        "Buried beneath the stadium in an unmarked locker.",
+        "All that remains is a bloodstained team roster and a single broken boot.",
+        "The team was last seen arguing with a troll. The troll won.",
+        "Disqualified from existence.",
+        "Legend says they were deleted during maintenance.",
+        "All apothecaries unanimously declared them 'beyond saving'.",
+        "The team tried to dodge deletion... and rolled a 1.",
+        "Their final act? A failed GFI.",
+        "The mascot is still waiting outside.",
+        "This franchise has been red-carded from reality.",
+        "Turn 16 came early for this squad.",
+        "Deleted faster than a skaven with sprint and sure feet.",
+        "They heard the word 'retirement' and didn't argue.",
+        "The astrogranite claims another.",
+        "Their team reroll token is now a coaster.",
+        "Only goblins mourn them. Poorly.",
+        "The tavern cheers. One less rival to worry about.",
+        "Gone like a halfling thrown into the sun.",
+        "The team name is now just a trivia question nobody answers.",
+        "Their treasury has been looted by snotlings.",
+        "They were last seen being carried off by squigs.",
+        "Nuffle has spoken: denied.",
+        "The coach's clipboard shattered in silent understanding.",
+        "That team never really stood a chance, did they?"
+    ] %}
+
+    <p class="deletion-message"><strong>{{ random(messages) }}</strong></p>
+
+{% endblock %}

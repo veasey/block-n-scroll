@@ -1,5 +1,6 @@
 <?php
 use App\Controllers\TeamManager\CreateTeamController;
+use App\Controllers\TeamManager\DeleteTeamController;
 use App\Controllers\TeamManager\ViewTeamController;
 use App\Middleware\AuthMiddleware;
 use App\Models\Base\BaseTeam;
@@ -19,3 +20,6 @@ $app->post('/team/create/save', CreateTeamController::class . ':saveTeam')->add(
 $app->get('/team/view/all', ViewTeamController::class . ':listTeams');
 $app->get('/team/view/user/{user_id}', ViewTeamController::class . ':listTeams');
 $app->get('/team/view/{team_id}', ViewTeamController::class . ':viewTeam');
+
+$app->get('/team/delete/{team_id}/confirm', DeleteTeamController::class . ':getConfirmView');
+$app->get('/team/delete/{team_id}', DeleteTeamController::class . ':delete');

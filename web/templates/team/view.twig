@@ -13,7 +13,7 @@
 
     <h2>{{ team.name }}</h2>
     <p>{{ team.description }}</p>
-    <p>Tier: {{ team.tier }}</p>
+    <p>Tier: {{ team.race.tier }}</p>
 
 
     <h3>Players</h3>
@@ -43,13 +43,13 @@
                 <tr>
                     <td>{{ player.number }}</td>
                     <td>{{ player.name }}</td>
-                    <td>{{ player.position.name }}</td>
+                    <td><a href="/rules/position/{{player.position.id}}">{{ player.position.name }}</a></td>
                     <td>{{ player.ma }}</td>
                     <td>{{ player.st }}</td>
                     <td>{{ player.ag }}</td>
                     <td>{{ player.pa }}</td>
                     <td>{{ player.av }}</td>
-                    <td></td>
+                    <td>{% include 'partials/skill_tags.twig' with {'skills': player.position.skills} %}</td>
                     <td>{{ player.spp }}</td>
                     <td></td>
                     <td></td>
@@ -59,14 +59,17 @@
         </table>
 
         <p><strong>Rerolls</strong></p>
-        <p>Cost: {{ team.reroll_cost }}</p>
-        <p>Max: {{ team.max_rerolls }}</p>
+        <p>Cost: {{ team.race.reroll_cost|number_format }} Gold</p>
+        <p>Max: {{ team.race.max_rerolls }}</p>
 
-        <p>
-            <center>
-                <button onclick="window.location.href='/team/edit/{{ team.id }}'">Edit Team Details</button>
-            </center>
-        </p>
+        {% if showManagementButtons == true %}
+            <p>
+                <center>
+                    <button onclick="window.location.href='/team/edit/{{ team.id }}'">Edit Team Details</button>
+                    <button onclick="window.location.href='/team/delete/{{ team.id }}/confirm'">Delete</button>
+                </center>
+            </p>
+        {% endif %}
 
     {% endif %}
 

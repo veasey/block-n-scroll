@@ -1,0 +1,24 @@
+{% extends "base.twig" %}
+
+{% block title %}Block & Scroll - Rules - Team - {{ teamname }} - Comfirm Deletion{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/team">Teams</a> - 
+        <a href="/team/view/all">All Teams</a> -
+        <a href="/team/view/{{ team.id }}">{{ team.name }}</a> -
+        Delete
+    </p>
+
+    <h2>Delete {{ team.name }}?</h2>
+    <p>Are you sure?</p>
+    <p>
+        <center>
+            <button onclick="window.location.href='/team/delete/{{ team.id }}'">Yes</button>
+            <button onclick="window.location.href='/team/view/{{ team.id }}'">No</button>
+        </center>
+    </p>
+
+{% endblock %}

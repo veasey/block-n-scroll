@@ -109,8 +109,9 @@ class CreateTeamController
             $player->st = (int) $baseTeamPlayer->st;
             $player->ag = (int) $baseTeamPlayer->ag;
             $player->av = (int) $baseTeamPlayer->av;
+            $player->pa = (int) $baseTeamPlayer->pa;
 
-            $player->original_coach_id = (int) $_SESSION['user_id'] ?? 0; // Set original coach ID
+            $player->original_coach_id = (int) $_SESSION['user']['id'] ?? 0; // Set original coach ID
 
             $player->save();
         }
@@ -126,7 +127,7 @@ class CreateTeamController
 
         $newTeam->name = $data['team_name'] ?? '';
         $newTeam->description = $data['team_description'] ?? '';
-        $newTeam->coach_id = $_SESSION['user_id'] ?? null;
+        $newTeam->coach_id = $_SESSION['user']['id'] ?? null;
         $newTeam->base_team_id = $data['base_team_id'] ?? null;
         $newTeam->treasury = $data['max_cost'] - $data['current_team_value'];
 
