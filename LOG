@@ -57,6 +57,11 @@ P4 - Match tracking + team sync
  → Adjusting SideStaff
  → Compare relative team value with another team.
 
+→ Player
+ → View Skills (original and additional)
+ → View Total Touchdowns, Casualties, Times Injured, Completions
+  → When clicking above: Show log with each event with time logged next to it and other details.
+
 →→ TEAM CREATE FORM
   →→ Managing a single user created team
   →→ Any of this re-usable for modifying teams???
