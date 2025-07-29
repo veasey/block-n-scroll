@@ -45,8 +45,11 @@ P4 - Match tracking + team sync
 27 Jul - Add Team Deletion. Check user is allowed to modify team before showing buttons to do so.
 28 Jul - Added team edit info form
 29 Jul - Add player view and Quick log buttons for team management. Various other fixes and refactoring. Add Injury form and logic, plus event logs.
+29 Jul - Created player update controller. Got stat reduction logic working.
 
 → TODO & Bugs: 
+
+→ WHEN STAT REDUCED... IS IT LOGGED???
 
 → Team Management Screen
  → Quick Log Buttons
