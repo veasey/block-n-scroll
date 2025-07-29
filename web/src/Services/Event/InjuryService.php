@@ -21,6 +21,7 @@ class InjuryService
             CasualtyTable::DEAD => $this->markAsDead($player),
         };
 
+        $player->injuries += 1;
         if ($player->save()) {
             return $injury;
         }

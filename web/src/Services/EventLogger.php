@@ -7,9 +7,9 @@ class EventLogger
 {
     public static function log(
         string $eventType,
-        array $eventValue = [],
-        string $eventKey = null,
-        string $notes = null,
+        string $eventValue,
+        string $eventKey,
+        string $notes,
         $coach = null,
         $team = null,
         $player = null,

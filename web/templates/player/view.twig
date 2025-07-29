@@ -44,6 +44,15 @@
         </div>
     </div>
 
+    <div class="team-header-grid">
+        <div class="team-meta">
+            <p><strong>Times Injured:</strong> <a href="/player/view/{{player.id}}/log/injuries">{{ player.injuries }}</a></p>
+            <p><strong>Casualties:</strong> {{ player.touchdowns }}</p>
+            <p><strong>Touch Downs:</strong>  {{ player.spp }} </p>
+            <p><strong>Completions:</strong> {{ player.completions }}</p>    
+        </div>
+    </div>
+
     {% if canManagePlayer == true %}
         <p>
             <center>

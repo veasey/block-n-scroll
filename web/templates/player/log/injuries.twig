@@ -1,0 +1,51 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}
+    Block &amp; Scroll - Rules - Team - {{ team.name }} - {{ player.name }} (#{{ player.number }})
+{% endblock %}
+
+{% block content %}
+
+<p class="breadcrumbs">
+    <a href="/">Home</a> -
+    <a href="/team">Teams</a> - 
+    <a href="/team/view/all">All Teams</a> -
+    <a href="/team/view/{{ player.team.id }}">{{ player.team.name }}</a> -
+    <a href="/player/view/{{player.id}}">{{ player.name }} (#{{ player.number }})</a> -
+    Injury Log {% if totalPages > 1 %} - Page {{ page }} of {{ totalPages }} {% endif %}
+</p>
+
+<h2>{{ player.name }} Injury Log</h2>
+
+{% if logs|length == 0 %}
+    <p><strong>No relevant logs written, yet.</strong></p>
+{% else %}
+    <table id="positions-table">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Injury Type</th>
+                <th>Match</th>
+                <th>Notes</th>
+                <th>Source</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs %}
+                <tr>
+                    <td>{{ log.created_at | date("m/d/Y h:i:s") }}</td>
+                    <td>{{ log.event_value }}</td>
+                    <td>{% if log.match_id %}<a href="/match/view/{{ log.match_id }}">View Match</a>{% endif %}</td>
+                    <td>{{ log.notes }}</td>
+                    <td>{{ log.event_key }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if totalPages > 1 %}
+        {% include 'partials/pagination.twig' with {'page': page, 'totalPages': totalPages} %}
+    {% endif %}
+{% endif %}
+
+{% endblock %}

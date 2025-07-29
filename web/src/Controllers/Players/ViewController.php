@@ -20,7 +20,8 @@ class ViewController extends AccessController
         [$player, $errorResponse] = $this->getRecognisedPlayerOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
 
-        if ($args['format'] === 'json') {
+        $format = $args['format'] ?? 'html';
+        if ($format === 'json') {
             $response->getBody()->write($player->toJson());
             return $response->withHeader('Content-Type', 'application/json');
         }

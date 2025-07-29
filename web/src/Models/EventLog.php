@@ -12,8 +12,12 @@ class EventLog extends Model
 
     protected $fillable = [
         'event_type',
+        'event_value',
+        'event_key',
         'coach_id',
         'team_id',
-        'player_id'
+        'player_id',
+        'match_id',
+        'notes'
     ];
 }

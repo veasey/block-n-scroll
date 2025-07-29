@@ -110,9 +110,9 @@ class QuickButtonController extends AccessController
 
         $this->eventLogger->log(
             LogType::PLAYER_INJURED->value,
-            [],
-            null,
-            null,
+            $injuryType->value,
+            'Quick Button Entry',
+            '',
             $player->team->coach,
             $player->team,
             $player,
