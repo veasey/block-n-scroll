@@ -25,3 +25,7 @@ $app->get('/team/delete/{team_id}', DeleteTeamController::class . ':delete');
 
 $app->get('/team/edit/{team_id}', EditTeamController::class . ':getForm');
 $app->post('/team/edit/{team_id}', EditTeamController::class . ':save');
+
+$app->get('/team/hire/sidestaff/{team_id}', HireTeamController::class . ':getForm');
+$app->post('/team/hire/sidestaff/{team_id}', HireTeamController::class . ':hireStaff');
+$app->post('/team/fire/sidestaff/{team_id}', HireTeamController::class . ':fireStaff');
