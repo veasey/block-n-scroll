@@ -5,6 +5,8 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Controllers\Players\Shared\AccessController;
 use App\Services\EventLogger;
+use App\Services\Event\InjuryService;
+use App\Enums\CasualtyTable;
 use App\Enums\PlayerStats;
 use App\Enums\LogType;
 use Slim\Views\Twig;
@@ -12,37 +14,36 @@ use Slim\Views\Twig;
 class UpdateController extends AccessController
 {
     protected $eventLogger;
+    protected $injuryService;
     protected $view;
 
-    public function __construct(EventLogger $eventLogger, Twig $view)
+    public function __construct(
+        EventLogger $eventLogger, 
+        InjuryService $injuryService,
+        Twig $view
+    )
     {
         $this->eventLogger = $eventLogger;
+        $this->injuryService = $injuryService;
         $this->view = $view;
     }
 
-    public function addInjury(array $data, Team $team, Response $response): Response
+    
+    public function addInjury(Request $request, Response $response, array $args): Response
     {
         $data = $request->getParsedBody();        
         $roll = $data['injury_roll'] ?? null;
         $playerId = $data['player_id'] ?? null;
 
+        [$player, $errorResponse] = $this->getRecognisedPlayerOrFail($request, $response, $args, $playerId);
+        if ($errorResponse) return $errorResponse;
+
+        
+        
         if (!$roll) {
             $response->getBody()->write('Roll Required');
             return $response->withStatus(400);
         }
-
-        if (!$playerId) {
-            $response->getBody()->write('Player ID Required');
-            return $response->withStatus(400);
-        }
-
-        if (!$player) {
-            $response->getBody()->write('Player does not exist');
-            return $response->withStatus(404);
-        }
-
-        // Find player in team by ID
-        $player = $team->players->find($playerId);
 
         if (!$this->isAuthorizeToManagePlayer($player)) {
             $response->getBody()->write('Not authorised');
@@ -108,7 +109,7 @@ class UpdateController extends AccessController
 
         $player->save();
 
-        return $this->view->render($response, 'player/event/injury/lasting_injury_result.twig', [
+        return $this->view->render($response, 'event/injury/lasting_injury_result.twig', [
             'player' => $player,
             'reductionType' => $reductionType
         ]);

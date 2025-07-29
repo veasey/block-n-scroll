@@ -25,12 +25,15 @@ abstract class AccessController
             return false;
         }
 
-        return $user->isAdmin() || $player->player->coach->id === $user->id;
+        return $user->isAdmin() || $player->team->coach->id === $user->id;
     }
 
-    protected function getRecognisedPlayerOrFail(Request $request, Response $response, array $args)
+    protected function getRecognisedPlayerOrFail(Request $request, Response $response, array $args, ?int $playerId = null)
     {
-        $playerId = $args['player_id'] ?? null;
+        if (!$playerId) {
+            $playerId = $args['player_id'] ?? null;
+        }
+
         if (empty($playerId)) {
             return [null, $response->withStatus(404)->write('Player ID required')];
         }
@@ -39,7 +42,6 @@ abstract class AccessController
         if (!$player) {
             return [null, $response->withStatus(404)->write('Player not found')];
         }
-
 
         return [$player, null];
     }
@@ -57,7 +59,7 @@ abstract class AccessController
         }
 
         $user = UserHelper::getCurrentUser();
-        if (!$this->isAuthorizeToManagePlayer($user, $player)) {
+        if (!$this->isAuthorizeToManagePlayer( $player)) {
             return [null, $response->withStatus(404)->write('Not authorised')];
         }
 

@@ -4,28 +4,17 @@ namespace App\Controllers\TeamManager;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Controllers\TeamManager\Shared\AccessController;
-use App\Models\Team;
-use App\Services\EventLogger;
-use App\Services\Event\InjuryService;
 use App\Enums\EventType;
-use App\Enums\CasualtyTable;
-use App\Enums\LogType;
 use Slim\Views\Twig;
 
 class QuickButtonController extends AccessController
 {
-    protected $injuryService;
-    protected $eventLogger;
     protected $view;
 
     public function __construct(
-        InjuryService $injuryService,
-        EventLogger $eventLogger,
         Twig $view,
     )
     {
-        $this->injuryService = $injuryService;
-        $this->eventLogger = $eventLogger;
         $this->view = $view;
     }
 
