@@ -11,11 +11,17 @@
         <a href="/team/view/{{ team.id }}">{{ team.name }}</a>
     </p>
 
-    <div>
-        <h2>{{ team.name }}</h2>
-        <p class="team-description">{{ team.description }}</p>
-    </div>
 
+    <h2>{{ team.name }}</h2>
+    <p class="team-description">{{ team.description }}</p>
+    
+    <div class="team-quick-buttons">
+        <a href='/team/quick/{{ team.id }}/injury' class="quick-btn" title="Log Injury">🩸 Player Injured</a>
+        <a href='/team/quick/{{ team.id }}/casualty' class="quick-btn" title="Mark Casualty Caused">✊ Casualty Caused</a>
+        <a href='/team/quick/{{ team.id }}/touchdown' class="quick-btn" title="Add Touchdown">🏉 Touch Down</a>
+        <a href='/team/quick/{{ team.id }}/completion' class="quick-btn" title="Add Completion">🤾🏻‍♂️ Completion</a>
+    </div>
+ 
     <div class="team-header-grid">
         <div class="team-meta">
             <p><strong>Race:</strong> {{ team.race.name }} <i>(Tier: {{ team.race.tier }})</i></p>

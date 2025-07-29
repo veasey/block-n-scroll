@@ -53,3 +53,38 @@
 .team-meta p {
     margin: 0.3rem 0;
 }
+
+/* Quick Buttons */
+
+.team-quick-buttons {
+    display: flex;
+    width: fit-content;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.quick-btn {
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    background: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.quick-btn:hover {
+    background: #e6e6e6;
+    transform: scale(1.05);
+}
+
+.quick-btn:active {
+    background: #ddd;
+    transform: scale(0.95);
+}
