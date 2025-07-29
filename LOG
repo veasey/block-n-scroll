@@ -44,7 +44,7 @@ P4 - Match tracking + team sync
 26 Jul - Add view and tweaked logic to show user created team. Delayed because of Docker and WSL updates. Boo!!!!
 27 Jul - Add Team Deletion. Check user is allowed to modify team before showing buttons to do so.
 28 Jul - Added team edit info form
-29 Jul - Add player view and Quick log buttons for team management. Various other fixes and refactoring.
+29 Jul - Add player view and Quick log buttons for team management. Various other fixes and refactoring. Add Injury form and logic, plus event logs.
 
 → TODO & Bugs: 
 
