@@ -10,7 +10,6 @@ use App\Helpers\UserHelper;
 use App\Models\User;
 use App\Models\Team;
 
-// BaseController.php
 abstract class TeamManagementBaseController
 {
     /**
