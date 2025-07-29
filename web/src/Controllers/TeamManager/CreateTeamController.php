@@ -30,8 +30,6 @@ class CreateTeamController
 
     public function getFormHireStaff(Request $request, Response $response, array $args): Response
     {
-        $format = $args['format'] ?? 'html';
-
         $baseTeam = BaseTeam::find($args['team_id']);
 
         if (!$baseTeam || $baseTeam->is_hidden) {

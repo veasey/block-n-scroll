@@ -1,0 +1,24 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block & Scroll - Rules - Team - {{ team.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/team">Teams</a> - 
+        <a href="/team/view/all">All Teams</a> -
+        <a href="/team/view/{{ team.id }}">{{ team.name }}</a> -
+        Record Casualty
+    </p>
+
+    <h2>Record Casualty</h2>
+
+    <form method="post" action="/team/quick/{{team.id}}/injury" class="form-horizontal">
+        <div class="form-section">
+            {% include 'team/partials/select_team_player.twig' with {'team': team} %}
+            <button type="submit">Submit</button>
+        </div
+    </form>
+
+{% endblock %}

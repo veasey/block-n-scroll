@@ -1,0 +1,31 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - Rules - Team - {{ player.team.name }} - Record Injury - Roll Lasting Injury{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/team">Teams</a> - 
+        <a href="/team/view/all">All Teams</a> -
+        <a href="/team/view/{{ player.team.id }}">{{ player.team.name }}</a> -
+        Record Injury - Roll Lasting Injury
+    </p>
+
+    <h2>Record Lasting Injury</h2>
+
+    <form method="post" action="/player/injure/{{ player.id }}/lasting" class="form-horizontal">
+        <div class="form-section">
+            <div class="form-group">
+                <label for="injury_roll">Select injury roll result:</label>
+                <select name="injury_roll" id="injury_roll" required>
+                    {% for num in 1..6 %}
+                        <option value="{{ num }}">{{ num }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit">Submit</button>
+        </div
+    </form>
+
+{% endblock %}

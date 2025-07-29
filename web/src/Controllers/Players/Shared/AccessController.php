@@ -13,9 +13,9 @@ use App\Models\Player;
 abstract class AccessController
 {
     /**
-     * show team management controls?
+     * show player management controls?
      * @param User
-     * @param Team
+     * @param player
      * @return bool
      */
     protected function isAuthorizeToManagePlayer(Player $player): bool
@@ -25,7 +25,7 @@ abstract class AccessController
             return false;
         }
 
-        return $user->isAdmin() || $player->team->coach->id === $user->id;
+        return $user->isAdmin() || $player->player->coach->id === $user->id;
     }
 
     protected function getRecognisedPlayerOrFail(Request $request, Response $response, array $args)
@@ -40,6 +40,26 @@ abstract class AccessController
             return [null, $response->withStatus(404)->write('Player not found')];
         }
 
+
+        return [$player, null];
+    }
+
+    protected function getAuthorizedPlayerOrFail(Request $request, Response $response, array $args)
+    {
+        $playerId = $args['player_id'] ?? null;
+        if (empty($playerId)) {
+            return [null, $response->withStatus(404)->write('player ID required')];
+        }
+
+        $player = player::find($playerId);
+        if (!$player) {
+            return [null, $response->withStatus(404)->write('player not found')];
+        }
+
+        $user = UserHelper::getCurrentUser();
+        if (!$this->isAuthorizeToManagePlayer($user, $player)) {
+            return [null, $response->withStatus(404)->write('Not authorised')];
+        }
 
         return [$player, null];
     }

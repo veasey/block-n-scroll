@@ -1,0 +1,72 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Injury Logged for {{ player.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/team/view/{{ player.team.id }}">Team {{ player.team.name }}</a> -
+        <a href="/player/view/{{ player.id }}">{{ player.name }}</a> -
+        Lasting Injury Result
+    </p>
+
+    <h2>{{ player.name }} suffers a lasting injury</h2>
+    
+    <p>{{ reductionType.name }} reduced by 1 pt</p>
+
+    {% set injuryMessages = {
+        'ARMOUR_VALUE': [
+            "That armour's mostly for show now.",
+            "Oof! That crack was your gear saying goodbye.",
+            "Down a notch in protection. Up in vulnerability.",
+            "Guess they're playing in light mode now.",
+            "That armour downgrade came with a free limp.",
+            "Looks like it's duct tape season.",
+            "That hit left a permanent reminder—and a squeak.",
+            "New skill unlocked: 'Glass Cannon'.",
+            "They just got a little easier to squish.",
+            "That wasn't armour - it was wishful thinking.",
+            "Hope they kept the receipt for that chestplate.",
+            "Armour value reduced. So is the chance of survival.",
+            "Turns out steel isn't immune to bad luck.",
+            "You could hear the blacksmith crying from here.",
+            "Say hello to breezier battlefields!"
+        ],
+        'AGILITY': [
+            "Suddenly everything feels just a *bit* harder to catch.",
+            "Graceful as a sack of bricks now.",
+            "Well, they're not dancing through tackles anymore.",
+            "Hands like butter, feet like anchors.",
+            "Turns out balance is harder with one less stat point."
+        ],
+        'MOVEMENT_ALLOWANCE': [
+           "There goes their sprinting career.",
+            "Now arriving: the world's slowest blitz.",
+            "Might need a calendar to time their next turn.",
+            "They've officially been downgraded to 'mobile obstacle'.",
+            "Speed is a memory… a distant, painful memory."
+        ],
+        'STRENGTH': [
+            "Turns out muscle mass *is* a limited resource.",
+            "That last hit took the fight right out of them.",
+            "Now punching slightly below their weight class.",
+            "The bench press just became wishful thinking.",
+            "They can only manage to eat one wheetabix for breakfast."
+        ],
+        'PASSING_ABILITY': [
+            "That arm's not what it used to be.",
+            "They couldn't hit a teammate with a map now.",
+            "Passes downgraded from 'laser' to 'lobotomy'.",
+            "Air mail? More like ground delivery.",
+            "Hope the fans enjoy catching stray balls."
+        ]
+    } %}
+
+    {% set messages = injuryMessages[reductionType.name] ?? ["Something's changed... and not for the better."] %}
+
+    <p class="injury-message" style="font-style: italic; font-size: 1.2em; margin-top: 1em;">
+        <strong>{{ random(messages) }}</strong>
+    </p>
+
+{% endblock %}

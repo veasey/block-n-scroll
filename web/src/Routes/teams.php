@@ -29,7 +29,6 @@ $app->get('/team/edit/{team_id}', EditTeamController::class . ':getForm');
 $app->post('/team/edit/{team_id}', EditTeamController::class . ':save');
 
 $app->get('/team/quick/{team_id}/{event_type}', QuickButtonController::class . ':getForm');
-$app->post('/team/quick/{team_id}/{event_type}', QuickButtonController::class . ':submit');
 
 $app->get('/team/hire/sidestaff/{team_id}', HireTeamController::class . ':getForm');
 $app->post('/team/hire/sidestaff/{team_id}', HireTeamController::class . ':hireStaff');
