@@ -85,3 +85,7 @@ P4 - Match tracking + team sync
 →→ Logging System
  →→ All actions logged
  →→ All public actions viewable (i.e. renaming team, joining leagues etc)
+
+→→ Roles
+ →→ Mods can edit things within their OWN league
+ →→ Users can only request a team be added to league.
