@@ -1,11 +1,11 @@
 <?php
 namespace App\Controllers\TeamManager;
 
-use BaseController;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Controllers\TeamManager\Shared\AccessController;
 use App\Helpers\UserHelper;
+use App\Models\Coach;
 use App\Models\Team;
 use App\Models\Player;
 use Slim\Views\Twig;
@@ -25,21 +25,17 @@ class ViewTeamController extends AccessController
         $format = $args['format'] ?? 'html';
         $userId = $args['user_id'] ?? null;
 
-        $teams = (!$userId) ? Team::all() : Team::where('coach_id', $userId)->get();
+        $user = Coach::find($userId);
+        $teams = (!$user) ? Team::all() : Team::where('coach_id', $user->id)->get();
 
         if ($format === 'json') {
             $response->getBody()->write($teams->toJson());
             return $response->withHeader('Content-Type', 'application/json');
         }
-
-        $data['teams'] = $teams;
-        if ($userId) {
-           $data['user'] = [
-                'id' => $userId,
-                'name' => $_SESSION['user'] ?? 'Guest',
-            ];
-        }
-
+        
+        $data = ['teams' => $teams];
+        if ($user) $data['user'] = $user;
+        
         return $this->view->render($response, 'team/list.twig', $data);
     }
 
