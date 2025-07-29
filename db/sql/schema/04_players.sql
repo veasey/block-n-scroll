@@ -3,6 +3,7 @@
 CREATE TABLE player (
     id INT AUTO_INCREMENT PRIMARY KEY,
     
+    cost INT NOT NULL,
     team_id INT NOT NULL,          -- FK to teams table
     base_team_id INT NOT NULL,          -- FK to races table
     base_team_player_id INT NOT NULL,      -- FK to positions table
