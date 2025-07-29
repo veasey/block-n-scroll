@@ -50,14 +50,13 @@
                     <th>Skills</th>
                     <th>SPP</th>
                     <th>Status</th>
-                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {% for player in players %}
                 <tr>
                     <td>{{ player.number }}</td>
-                    <td>{{ player.name }}</td>
+                    <td><a href="/player/view/{{player.id}}">{{ player.name }}</a></td>
                     <td><a href="/rules/position/{{player.position.id}}">{{ player.position.name }}</a></td>
                     <td>{{ player.ma }}</td>
                     <td>{{ player.st }}</td>
@@ -67,22 +66,20 @@
                     <td>{% include 'partials/skill_tags.twig' with {'skills': player.position.skills} %}</td>
                     <td>{{ player.spp }}</td>
                     <td></td>
-                    <td></td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
+    {% endif %}
 
-        {% if showManagementButtons == true %}
-            <p>
-                <center>
-                    <button onclick="window.location.href='/team/edit/{{ team.id }}'">Edit Team Details</button>
-                    <button onclick="window.location.href='/team/hire/{{ team.id }}'">Hire / Fire Staff</button>
-                    <button onclick="window.location.href='/team/delete/{{ team.id }}/confirm'">Delete</button>
-                </center>
-            </p>
-        {% endif %}
-
+    {% if showManagementButtons == true %}
+        <p>
+            <center>
+                <button onclick="window.location.href='/team/edit/{{ team.id }}'">Edit Team Details</button>
+                <button onclick="window.location.href='/team/hire/{{ team.id }}'">Hire / Fire Staff</button>
+                <button onclick="window.location.href='/team/delete/{{ team.id }}/confirm'">Delete</button>
+            </center>
+        </p>
     {% endif %}
 
     {% include 'partials/special_rules.twig' with {'special_rules': team.race.special_rules, 'regional_rules': team.race.regional_rules} %}

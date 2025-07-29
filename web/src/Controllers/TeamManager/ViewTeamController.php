@@ -4,13 +4,13 @@ namespace App\Controllers\TeamManager;
 use BaseController;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use App\Controllers\TeamManager\TeamManagementBaseController;
+use App\Controllers\TeamManager\Shared\AccessController;
 use App\Helpers\UserHelper;
 use App\Models\Team;
 use App\Models\Player;
 use Slim\Views\Twig;
 
-class ViewTeamController extends TeamManagementBaseController
+class ViewTeamController extends AccessController
 {
 
     protected $view;

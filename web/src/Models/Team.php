@@ -32,4 +32,9 @@ class Team extends Model
     {
         return $this->hasMany(Player::class, 'team_id');
     }
+
+    public function teamValue(): int
+    {
+        
+    }
 }

@@ -5,6 +5,7 @@ namespace App\Models\Base;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use App\Models\Base\BaseTeam;
 use App\Models\Base\SkillCategory;
 
 class BaseTeamPlayer extends Model
@@ -55,5 +56,10 @@ class BaseTeamPlayer extends Model
             'base_team_player_id',       // Foreign key on pivot table for this model
             'skill_id'                   // Foreign key on pivot table for Skill
         );
+    }
+
+    public function race(): mixed
+    {
+        return $this->belongsTo(BaseTeam::class, 'base_team_id');
     }
 }

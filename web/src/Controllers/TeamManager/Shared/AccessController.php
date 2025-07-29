@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\TeamManager;
+namespace App\Controllers\TeamManager\Shared;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -10,7 +10,7 @@ use App\Helpers\UserHelper;
 use App\Models\User;
 use App\Models\Team;
 
-abstract class TeamManagementBaseController
+abstract class AccessController
 {
     /**
      * show team management controls?

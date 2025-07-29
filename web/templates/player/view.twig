@@ -1,0 +1,59 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block & Scroll - Rules - Team - {{ team.name }} - {{ player.name }} (#{{ player.number }}){% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/team">Teams</a> - 
+        <a href="/team/view/all">All Teams</a> -
+        <a href="/team/view/{{ player.team.id }}">{{ player.team.name }}</a> -
+        {{ player.name }} (#{{ player.number }})
+    </p>
+
+    <h2>{{ player.name }} (#{{ player.number }})</h2>
+
+    {% if (player.niggling_injury) %}
+        <p>{{ player.name }} has a niggling injury! (+1 to next injury roll)</p>
+    {% endif %}
+
+    {% if (player.miss_next_game) %}
+        <p>{{ player.name }} will miss next game. 🛌🏻</p>
+    {% endif %}
+
+    {% if (player.dead) %}
+        <p>🪦 RIP 🪦</p>
+    {% endif %}
+
+    <div class="team-header-grid">
+        <div class="team-meta">
+            <p><strong>Status:</strong> {{ player.status }}</p>
+            <p><strong>Level:</strong> {{ player.level }}</p>
+            <p><strong>SPP:</strong>  {{ player.spp }} </p>
+            <p><strong>Race:</strong> {{ player.position.race.name }}</p>
+            <p><strong>Team:</strong> {{ player.team.name }}</p>
+            <p><strong>Cost:</strong> {{ player.cost|number_format }} Gold</p>            
+        </div>
+        <div class="team-meta">
+            <p><strong>MA:</strong> {{ player.ma }}</p>
+            <p><strong>ST:</strong> {{ player.st }}</p>
+            <p><strong>AG:</strong> {{ player.ag }}</p>
+            <p><strong>PA:</strong> {{ player.pa }}</p>           
+            <p><strong>AV:</strong> {{ player.av }}</p>           
+        </div>
+    </div>
+
+    {% if canManagePlayer == true %}
+        <p>
+            <center>
+                <button onclick="window.location.href='/player/edit/{{ player.id }}'">Edit Player Details</button>
+                <button onclick="window.location.href='/player/spp/{{ player.id }}'">Spend SPP</button>
+                <button onclick="window.location.href='/player/delete/{{ player.id }}/confirm'">Fire</button>
+            </center>
+        </p>
+    {% endif %}
+
+    {% include 'partials/special_rules.twig' with {'special_rules': team.race.special_rules, 'regional_rules': team.race.regional_rules} %}
+
+{% endblock %}

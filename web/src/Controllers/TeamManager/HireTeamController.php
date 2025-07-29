@@ -3,7 +3,7 @@ namespace App\Controllers\TeamManager;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use App\Controllers\TeamManager\TeamManagementBaseController;
+use App\Controllers\TeamManager\Shared\AccessController;
 use App\Helpers\UserHelper;
 use App\Models\Team;
 use Slim\Views\Twig;
@@ -11,7 +11,7 @@ use Slim\Views\Twig;
 /**
  * Hiring and Firing of Side-Staff and Players
  */
-class HireTeamController extends TeamManagementBaseController
+class HireTeamController extends AccessController
 {
 
     protected $view;
@@ -23,25 +23,10 @@ class HireTeamController extends TeamManagementBaseController
 
     public function getForm(Request $request, Response $response, array $args): Response
     {
-        $teamId = $args['team_id'] ?? null;
-        if (empty($teamId)) {
-            $response->getBody()->write('Team ID required');
-            return $response->withStatus(404);
-        }
+        [$team, $errorResponse] = $this->getAuthorizedTeamOrFail($request, $response, $args);
+        if ($errorResponse) return $errorResponse;
 
-        $team = Team::find($teamId);
-        if (empty($teamId)) {
-            $response->getBody()->write('Team not found');
-            return $response->withStatus(404);
-        }
-
-        $user = UserHelper::getCurrentUser();
-        if ($this->isAuthorizeToModifyTeam($user, $team)) {
-            return $this->view->render($response, 'team/manage/edit_team_info.twig', ['team' => $team]);
-        }
-
-        $response->getBody()->write('Not authorised');
-        return $response->withStatus(404);
+        return $this->view->render($response, 'team/manage/edit_team_info.twig', ['team' => $team]);
     }
 
     public function save(Request $request, Response $response, array $args): Response

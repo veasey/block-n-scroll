@@ -104,6 +104,7 @@ class CreateTeamController
             $player->team_id = (int) $team->id;
             $player->base_team_id = (int) $baseTeamPlayer->base_team_id;
             $player->base_team_player_id = (int) $positionId;
+            $player->cost = (int) $baseTeamPlayer->cost;
 
             $player->number = $index + 1;
 

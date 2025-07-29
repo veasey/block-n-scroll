@@ -3,10 +3,10 @@ namespace App\Controllers\TeamManager;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use App\Controllers\TeamManager\TeamManagementBaseController;
+use App\Controllers\TeamManager\Shared\AccessController;
 use Slim\Views\Twig;
 
-class EditTeamController extends TeamManagementBaseController
+class EditTeamController extends AccessController
 {
     protected $view;
 
