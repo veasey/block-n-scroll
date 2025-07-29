@@ -1,0 +1,92 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Injury Logged for {{ player.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/team/view/{{ player.team.id }}">Team {{ player.team.name }}</a> -
+        <a href="/team/view/{{ player.team.id }}/players">Players</a> -
+        Injury Logged
+    </p>
+
+    <h2>Injury Result for {{ player.name }}</h2>
+    <h3 style="color: crimson; text-transform: uppercase; font-weight: bold; margin-bottom: 1em;">
+        {{ injury.value|replace({'_': ' '}) }}
+    </h3>
+
+    {% if injury.name == 'BADLY_HURT' %}
+        <p>No lasting effect!</p>
+    {% endif %}
+
+    {% if injury.name == 'SERIOUSLY_HURT' %}
+        <p>Player will Miss Next Game!</p>
+    {% endif %}
+
+     {% if injury.name == 'SERIOUS_INJURY' %}
+        <p>Next time the player is injured, add +1 to the injury roll!</p>
+    {% endif %}
+
+    {% if injury.name == 'DEAD' %}
+        <p>Dead!</p>
+    {% endif %}
+
+    {% set injuryMessages = {
+        'BADLY_HURT': [
+            "Looks like someone tripped over their own shoelaces!",
+            "That's gonna leave a mark, but they'll be back to kick soon.",
+            "More bruised ego than body, really.",
+            "Some roughhousing gone wrong, but no permanent damage.",
+            "Medics say 'ouch,' but player says 'meh.'",
+            "It's a 'stay off the pitch and binge-watch' injury.",
+            "They'll be back quicker than a goblin at a treasure chest.",
+            "The player's new dance move? The limp shuffle.",
+            "If only the ball could heal, right?",
+            "Temporary setback — only their pride is really hurt."
+        ],
+        'SERIOUSLY_HURT': [
+            "They'll miss the next game - no excuses this time!",
+            "Coach demands no sympathy; player demands ice cream.",
+            "The team's worst nightmare: a benchwarmer in the making.",
+            "Time for some R&R: rest and regrets.",
+            "At least now they can catch up on their reading.",
+            "Can't sprint, can't score, but can perfect their sulking.",
+            "They're out until further notice... or until the next feast.",
+            "MNG? More like 'Missing Next Game and partying instead.'",
+            "Their new role? Team spirit cheerleader from the sidelines.",
+            "Oops! Someone took a wrong step in the chaos."
+        ],
+        'SERIOUS_INJURY': [
+            "This injury's serious enough to make the apothecary sweat.",
+            "Player ordered to go home and find a nice hobby.",
+            "Expect slow-motion replays and dramatic sighs.",
+            "If only the injury came with a vacation package.",
+            "Coach's face when hearing the news: priceless.",
+            "Stats down, morale down, but spirit still questionable.",
+            "The player's new nickname? Captain Crutch.",
+            "Rumor says they're secretly training to become a referee.",
+            "Serious enough to consider an early retirement... maybe.",
+            "A big ouch that echoes through the locker room."
+        ],
+        'DEAD': [
+            "The player is dead - but the legend lives on (in taverns).",
+            "They took a dirt nap, and Nuffle wasn't impressed.",
+            "Coach's strategy now includes a moment of silence.",
+            "Their death was so dramatic, even the goblins cried.",
+            "They've joined the eternal bench in the sky.",
+            "Gone to the big Blood Bowl in the sky. RIP.",
+            "They kicked the bucket — but missed the ball.",
+            "The team will miss their ‘inspirational' grunts.",
+            "Some say their ghost still haunts the pitch.",
+            "They went out like a true warrior — badly."
+        ]
+    } %}
+
+    {% set messages = injuryMessages[injury.name] ?? ["An unexpected injury occurred."] %}
+
+    <p class="injury-message" style="font-style: italic; font-size: 1.2em; margin-top: 1em;">
+        <strong>{{ random(messages) }}</strong>
+    </p>
+
+{% endblock %}

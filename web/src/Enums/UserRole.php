@@ -1,9 +1,9 @@
 <?php
 namespace App\Enums;
 
-class UserRole
+enum UserRole: string
 {
-    public const COACH = 'coach';
-    public const MODERATOR = 'moderator';
-    public const ADMIN = 'admin';
+    case COACH = 'coach';
+    case MODERATOR = 'moderator';
+    case ADMIN = 'admin';
 }

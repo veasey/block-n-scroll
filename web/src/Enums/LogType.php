@@ -1,0 +1,19 @@
+<?php
+namespace App\Enums;
+
+enum LogType: string
+{
+    case TEAM_UPDATED = 'TEAM_UPDATED';
+    case PLAYER_UPDATE = 'PLAYER_UPDATE';
+    case PLAYER_INJURED = 'PLAYER_INJURED';
+    case MATCH_STARTED = 'MATCH_STARTED';
+    case MATCH_ENDED = 'MATCH_ENDED';
+    case USER_LOGIN = 'USER_LOGIN';
+    case USER_LOGOUT = 'USER_LOGOUT';
+    case PLAYER_ADDED = 'PLAYER_ADDED';
+    case PLAYER_REMOVED = 'PLAYER_REMOVED';
+    case INJURY_LOGGED = 'INJURY_LOGGED';
+    case CASUALTY_LOGGED = 'CASUALTY_LOGGED';
+    case TEAM_RENAMED = 'TEAM_RENAMED';
+    case MATCH_EVENT = 'MATCH_EVENT';
+}

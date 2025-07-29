@@ -1,11 +1,11 @@
 <?php
 namespace App\Enums;
 
-class SideStaff
+enum SideStaff: int
 {
-    public const REROLL = 1;
-    public const APOTHECARY = 2;
-    public const ASSISTANT_COACH = 3;
-    public const CHEERLEADER = 4;
-    public const DEDICATED_FANS = 5;
+    case REROLL = 1;
+    case APOTHECARY = 2;
+    case ASSISTANT_COACH = 3;
+    case CHEERLEADER = 4;
+    case DEDICATED_FANS = 5;
 }

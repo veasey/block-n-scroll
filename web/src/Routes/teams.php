@@ -3,6 +3,7 @@ use App\Controllers\TeamManager\CreateTeamController;
 use App\Controllers\TeamManager\DeleteTeamController;
 use App\Controllers\TeamManager\ViewTeamController;
 use App\Controllers\TeamManager\EditTeamController;
+use App\Controllers\TeamManager\HireTeamController;
 use App\Controllers\TeamManager\QuickButtonController;
 use App\Middleware\AuthMiddleware;
 use Slim\Views\Twig;
@@ -27,8 +28,9 @@ $app->get('/team/delete/{team_id}', DeleteTeamController::class . ':delete');
 $app->get('/team/edit/{team_id}', EditTeamController::class . ':getForm');
 $app->post('/team/edit/{team_id}', EditTeamController::class . ':save');
 
+$app->get('/team/quick/{team_id}/{event_type}', QuickButtonController::class . ':getForm');
+$app->post('/team/quick/{team_id}/{event_type}', QuickButtonController::class . ':submit');
+
 $app->get('/team/hire/sidestaff/{team_id}', HireTeamController::class . ':getForm');
 $app->post('/team/hire/sidestaff/{team_id}', HireTeamController::class . ':hireStaff');
 $app->post('/team/fire/sidestaff/{team_id}', HireTeamController::class . ':fireStaff');
-
-$app->get('/team//quick/{team_id}/{event_type}', QuickButtonController::class . ':getForm');

@@ -1,10 +1,10 @@
 <?php
 namespace App\Enums;
 
-class EventType
+enum EventType: string
 {
-    public const INJURY = 'injury';
-    public const CASUALTY = 'casualty';
-    public const TOUCHDOWN = 'touchdown';
-    public const COMPLETION = 'completion';
+    case  INJURY = 'injury';
+    case  CASUALTY = 'casualty';
+    case  TOUCHDOWN = 'touchdown';
+    case  COMPLETION = 'completion';
 }

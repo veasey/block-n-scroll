@@ -63,32 +63,21 @@ class CreateTeamController
 
     private function getSideStaff(Team $team, array $data): Team
     {
-        // Initialize side staff properties
-        $team->rerolls = 0;
-        $team->apothecary = 0;
-        $team->assistant_coaches = 0;
-        $team->cheerleaders = 0;
-        $team->fan_factor = 0;
+        $defaults = [
+            'rerolls' => SideStaff::REROLL->value,
+            'apothecary' => SideStaff::APOTHECARY->value,
+            'assistant_coaches' => SideStaff::ASSISTANT_COACH->value,
+            'cheerleaders' => SideStaff::CHEERLEADER->value,
+            'fan_factor' => SideStaff::DEDICATED_FANS->value,
+        ];
 
-        // Set side staff based on input data
-        if (isset($data[SideStaff::REROLL])) {
-            $team->rerolls = (int) $data[SideStaff::REROLL] ?? 0;
-        }
-        if (isset($data[SideStaff::APOTHECARY])) {
-            $team->apothecary = (int) $data[SideStaff::APOTHECARY] ?? 0;
-        }
-        if (isset($data[SideStaff::ASSISTANT_COACH])) {
-            $team->assistant_coaches = (int) $data[SideStaff::ASSISTANT_COACH] ?? 0;
-        }
-        if (isset($data[SideStaff::CHEERLEADER])) {
-            $team->cheerleaders = (int) $data[SideStaff::CHEERLEADER] ?? 0;
-        }
-        if (isset($data[SideStaff::DEDICATED_FANS])) {
-            $team->fan_factor = (int) $data[SideStaff::DEDICATED_FANS] ?? 0;
+        foreach ($defaults as $property => $key) {
+            $team->$property = isset($data[$key]) ? (int) $data[$key] : 0;
         }
 
         return $team;
     }
+
 
     private function getPlayers(Team $team, array $teamPositions): Team
     {
