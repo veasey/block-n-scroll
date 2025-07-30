@@ -50,7 +50,9 @@ P4 - Match tracking + team sync
 
 → TODO & Bugs: 
 
-→ WHEN STAT REDUCED... IS IT LOGGED???
+→ BUG: WHEN STAT REDUCED... IS IT LOGGED???
+→ BUG: Current match not logged on injury
+
 → Hire and Fire players
 → match events, and ending a match.
 → Whilst playing. Show and link to team they are playing (if have ID)
