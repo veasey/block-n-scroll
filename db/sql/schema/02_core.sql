@@ -30,7 +30,7 @@ CREATE TABLE team (
     assistant_coaches INT DEFAULT 0,
     cheerleaders INT DEFAULT 0,
     fan_factor INT DEFAULT 0,
-    is_fresh BOOLEAN DEFAULT TRUE, -- Team not yet in a league
+    status ENUM('fresh', 'playing', 'idle', 'retired') DEFAULT 'fresh',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (coach_id) REFERENCES coach(id),

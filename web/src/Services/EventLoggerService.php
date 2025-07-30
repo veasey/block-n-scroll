@@ -3,7 +3,7 @@ namespace App\Services;
 
 use App\Models\EventLog;
 
-class EventLogger
+class EventLoggerService
 {
     public static function log(
         string $eventType,

@@ -12,28 +12,43 @@
     </p>
 
 
-    <h2>{{ team.name }}</h2>
+    <h2>{{ team.name }} [{{ team.status }}]</h2>
     <p class="team-description">{{ team.description }}</p>
-    
+
     <div class="team-quick-buttons">
+    {% if team.status == 'playing' %}
         <a href='/team/quick/{{ team.id }}/injury' class="quick-btn" title="Log Injury">🩸 Player Injured</a>
         <a href='/team/quick/{{ team.id }}/casualty' class="quick-btn" title="Mark Casualty Caused">✊ Casualty Caused</a>
         <a href='/team/quick/{{ team.id }}/touchdown' class="quick-btn" title="Add Touchdown">🏉 Touch Down</a>
         <a href='/team/quick/{{ team.id }}/completion' class="quick-btn" title="Add Completion">🤾🏻‍♂️ Completion</a>
+        <a href='/team/quick/{{ team.id }}/endmatch' class="quick-btn" title="End Match">🏁 End Match</a>
+    {% else %}
+        <form action="/match/start" method="post">
+            <input type="hidden" id="team_id" name="team_id" value="{{team.id}}" />
+            <button class="quick-btn" title="Start Match">🏉 Start Match</button>
+        </form>
+    {% endif %}
     </div>
- 
+
     <div class="team-header-grid">
         <div class="team-meta">
+            <p><strong>Team Value:</strong> X Gold</p>      
             <p><strong>Race:</strong> {{ team.race.name }} <i>(Tier: {{ team.race.tier }})</i></p>
             <p><strong>Coach:</strong> {{ team.coach.name }}</p>
             <p><strong>League:</strong> {{ team.league.name }} </p>
-            <p><strong>Treasury:</strong> {{ team.treasury|number_format }} Gold</p>            
+            <p><strong>Treasury:</strong> {{ team.treasury|number_format }} Gold</p>      
         </div>
         <div class="team-meta">
             <p><strong>Rerolls:</strong> {{ team.rerolls|number_format }}</p>
             <p><strong>Cheerleaders:</strong> {{ team.cheerleaders|number_format }}</p>
             <p><strong>Assistant Coaches:</strong> {{ team.assistant_coaches|number_format }}</p>
             <p><strong>Fan Factor:</strong> {{ team.fan_factor|number_format }}</p>           
+        </div>
+    </div>
+
+    <div class="team-header-grid">
+        <div class="team-meta">
+            <p><strong>Matches Played:</strong> <a href="/match/view/team/{{team.id}}">{{ team.allMatches|length }}</a></p>
         </div>
     </div>
 
@@ -71,7 +86,16 @@
                     <td>{{ player.av }}</td>
                     <td>{% include 'partials/skill_tags.twig' with {'skills': player.position.skills} %}</td>
                     <td>{{ player.spp }}</td>
-                    <td></td>
+                    <td>
+                        {% if player.miss_next_game %}
+                            <p><b>Miss next game</b></p>
+                        {% else %}
+                            {{ player.status }}
+                        {% endif %}
+                        {% if player.niggling_injury %}
+                            <p><b>Niggling injury</b></p>
+                        {% endif %}
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -81,9 +105,14 @@
     {% if showManagementButtons == true %}
         <p>
             <center>
-                <button onclick="window.location.href='/team/edit/{{ team.id }}'">Edit Team Details</button>
-                <button onclick="window.location.href='/team/hire/{{ team.id }}'">Hire / Fire Staff</button>
-                <button onclick="window.location.href='/team/delete/{{ team.id }}/confirm'">Delete</button>
+                {% if team.status != 'retired' %}
+                    <button onclick="window.location.href='/team/edit/{{ team.id }}'">Edit Team Details</button>
+                    <button onclick="window.location.href='/team/hire/{{ team.id }}'">Hire / Fire Staff</button>
+                    <button onclick="window.location.href='/team/retire/{{ team.id }}'">Retire</button>       
+                {% else %}
+                    <button onclick="window.location.href='/team/unretire/{{ team.id }}'">Bring Out of Ritirement</button>       
+                    <button onclick="window.location.href='/team/delete/{{ team.id }}/confirm'">Delete</button>
+                {% endif %}                         
             </center>
         </p>
     {% endif %}

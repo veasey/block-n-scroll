@@ -1,0 +1,36 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - Rules - Team - {{ team.name }} - Start Match{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/team">Teams</a> - 
+        <a href="/team/view/all">All Teams</a> -
+        <a href="/team/view/{{ team.id }}">{{ team.name }}</a> -
+        Start Match
+    </p>
+
+    <h2>Start or Join a match</h2>
+
+    
+
+    <form method="post" action="/player/injure" class="form-horizontal">
+        <div class="form-section">
+
+            <a href="Find Team "
+           
+            <div class="form-group">
+                <label for="injury_roll">Select injury roll result:</label>
+                <select name="injury_roll" id="injury_roll" required>
+                    {% for num in 1..16 %}
+                        <option value="{{ num }}">{{ num }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit">Submit</button>
+        </div
+    </form>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - Team - {{ team.name }} - Start Match{% endblock %}
+{% block scripts %}
+    {{ parent() }}
+    <script src="/js/match/eligable-team-count.js"></script>
+{% endblock %}
+
+
+{% block content %}
+<p class="breadcrumbs">
+    <a href="/">Home</a> - <a href="/team">Teams</a> - 
+    <a href="/team/view/all">All Teams</a> - 
+    <a href="/team/view/{{ team.id }}">{{ team.name }}</a> - 
+    Start Match
+</p>
+
+<h2>Start a Match</h2>
+
+<form method="post" action="/match/create" class="form-horizontal">
+    <input type="hidden" name="team_id" value="{{ team.id }}">
+
+    <div class="form-section">
+        <div class="form-group">
+            <label for="team_search">Filter:</label>
+            <input type="text" id="team_search" name="team_search" placeholder="Search teams..." oninput="filterTeams(this.value)">
+        </div>
+        
+        <p id="team-count">
+            {{ eligibleTeams|length }} team{{ eligibleTeams|length == 1 ? '' : 's' }} available
+        </p>
+
+        <div class="form-group">
+            <label for="opponent_team_id">Select opponent:</label>
+            <select name="opponent_team_id" id="opponent_team_id">
+                <option value="">-- No registered team --</option>
+                {% for t in eligibleTeams %}
+                    <option value="{{ t.id }}">{{ t.name }} - {{ t.race.name }} {% if t.league is not null %} ({{ t.league.name }}){% endif %}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <div class="form-group">
+            <label for="unregistered_name">Or enter unregistered opponent name:</label>
+            <input type="text" name="unregistered_name" id="unregistered_name" placeholder="e.g., Orc Smashers">
+        </div>
+    </div>
+
+    <div class="form-section">
+        <button type="submit">Start Match</button>
+    </div>
+</form>
+
+<script>
+function filterTeams(query) {
+    const select = document.getElementById('opponent_team_id');
+    const options = select.querySelectorAll('option');
+
+    options.forEach(option => {
+        if (option.value === "") return;
+        option.hidden = !option.textContent.toLowerCase().includes(query.toLowerCase());
+    });
+}
+</script>
+{% endblock %}

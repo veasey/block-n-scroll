@@ -4,7 +4,7 @@ namespace App\Controllers\Players;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Controllers\Players\Shared\AccessController;
-use App\Services\EventLogger;
+use App\Services\EventLoggerService;
 use App\Services\Event\InjuryService;
 use App\Enums\CasualtyTable;
 use App\Enums\PlayerStats;
@@ -18,7 +18,7 @@ class UpdateController extends AccessController
     protected $view;
 
     public function __construct(
-        EventLogger $eventLogger, 
+        EventLoggerService $eventLogger, 
         InjuryService $injuryService,
         Twig $view
     )
@@ -64,7 +64,7 @@ class UpdateController extends AccessController
             $player->team->coach,
             $player->team,
             $player,
-            null
+            $player->team->currentMatch
         );
 
         return $this->view->render($response, "event/injury/result.twig", [
@@ -108,6 +108,17 @@ class UpdateController extends AccessController
         }
 
         $player->save();
+
+        $this->eventLogger->log(
+            LogType::PLAYER_INJURED->value,
+            $injuryType->value,
+            $reductionType->value,
+            $reductionType->value . ' reduced by 1',
+            $player->team->coach,
+            $player->team,
+            $player,
+            $player->team->currentMatch
+        );
 
         return $this->view->render($response, 'event/injury/lasting_injury_result.twig', [
             'player' => $player,
