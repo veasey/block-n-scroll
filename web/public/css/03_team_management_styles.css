@@ -68,7 +68,7 @@
     margin-left: auto;
 }
 
-.quick-btn, btn.quick-btn  {
+.quick-btn {
     display: inline-block;
     padding: 0.25em 0.5em;
     background: #f2f2f2;
@@ -76,7 +76,11 @@
     border-radius: 5px;
     text-decoration: none;
     font-size: 1rem;
+    color: inherit;
+    cursor: pointer;
     transition: background 0.2s, transform 0.2s;
+    font-family: inherit;
+    line-height: 1.2;
 }
 
 .quick-btn:hover {
@@ -87,4 +91,21 @@
 .quick-btn:active {
     background: #ddd;
     transform: scale(0.95);
+}
+
+/* Remove browser-specific button styles */
+button.quick-btn {
+    all: unset;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    background: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    color: inherit;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    font-family: inherit;
+    line-height: 1.2;
 }

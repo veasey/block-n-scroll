@@ -11,7 +11,6 @@
         <a href="/team/view/{{ team.id }}">{{ team.name }}</a>
     </p>
 
-
     <h2>{{ team.name }} [{{ team.status }}]</h2>
     <p class="team-description">{{ team.description }}</p>
 
@@ -21,7 +20,10 @@
         <a href='/team/quick/{{ team.id }}/casualty' class="quick-btn" title="Mark Casualty Caused">✊ Casualty Caused</a>
         <a href='/team/quick/{{ team.id }}/touchdown' class="quick-btn" title="Add Touchdown">🏉 Touch Down</a>
         <a href='/team/quick/{{ team.id }}/completion' class="quick-btn" title="Add Completion">🤾🏻‍♂️ Completion</a>
-        <a href='/team/quick/{{ team.id }}/endmatch' class="quick-btn" title="End Match">🏁 End Match</a>
+        <form action="/match/end" method="post">
+            <input type="hidden" id="team_id" name="team_id" value="{{team.id}}" />
+            <button class="quick-btn" title="Start Match">🏁 End Match</button>
+        </form>
     {% else %}
         <form action="/match/start" method="post">
             <input type="hidden" id="team_id" name="team_id" value="{{team.id}}" />

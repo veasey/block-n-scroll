@@ -45,4 +45,30 @@ class MatchService
 
         return $match;
     }
+
+    public function endMatch(MatchGame $matchGame): MatchGame
+    {
+        if ($matchGame->homeTeam) {
+            $matchGame->homeTeam->status = TeamStatus::IDLE;
+            $matchGame->homeTeam->save();
+        }
+
+        if ($matchGame->awayTeam) {
+            $matchGame->awayTeam->status = TeamStatus::IDLE;
+            $matchGame->awayTeam->save();
+        }
+
+        return $matchGame;
+    }
+
+    public function restorePlayersFromMissNextGame(MatchGame $matchGame): bool
+    {
+        $players = [];
+
+        if ($matchGame->homeTeam) {
+
+        }
+
+        return true;
+    }
 }
