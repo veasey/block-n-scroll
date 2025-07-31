@@ -8,3 +8,6 @@ $app->get('/player/view/{ player_id }/log/injuries[.{format}]', ViewLogControlle
 
 $app->post('/player/injure', UpdateController::class . ':addInjury');
 $app->post('/player/injure/{ player_id }/lasting', UpdateController::class . ':addLastingInjury');
+
+$app->get('/player/retire/{ player_id }', UpdateController::class . ':retireConfirm');
+$app->post('/player/retire/{ player_id }', UpdateController::class . ':retire');

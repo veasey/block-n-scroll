@@ -1,0 +1,27 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Confirm Retirement of {{player.name}}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/team">Teams</a> - 
+        <a href="/team/view/all">All Teams</a> -
+        <a href="/team/view/{{ player.team.id }}">{{ player.team.name }}</a> -
+        <a href="/player/view/{{ player.id }}">{{player.name}}</a> -
+        Confirm Retirement
+    </p>
+
+    <h2>Retire {{ player.name }} (#{{ player.number}})?</h2>
+    <p>Are you sure?</p>
+    <p>
+        <center>
+             <form action="/player/retire/{{ player.id }}" method="post">
+                <button class="quick-btn" title="Start Match">Yes</button>
+            </form>
+            <button onclick="window.location.href='/player/view/{{ player.id }}'">No</button>
+        </center>
+    </p>
+
+{% endblock %}

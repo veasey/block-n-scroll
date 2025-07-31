@@ -12,8 +12,8 @@ class PlayerRepository
     public function getActiveOrInjuredPlayersInTeam(Team $team): Collection
     {
         return Player::whereIn('status', [
-                PlayerStatus::Active->value,
-                PlayerStatus::Injured->value,
+                PlayerStatus::ACTIVE->value,
+                PlayerStatus::INJURED->value,
             ])
             ->where('team_id', $team->id)
             ->get();

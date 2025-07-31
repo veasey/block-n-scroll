@@ -56,9 +56,11 @@
     {% if canManagePlayer == true %}
         <p>
             <center>
-                <button onclick="window.location.href='/player/edit/{{ player.id }}'">Edit Player Details</button>
-                <button onclick="window.location.href='/player/spp/{{ player.id }}'">Spend SPP</button>
-                <button onclick="window.location.href='/player/delete/{{ player.id }}/confirm'">Fire</button>
+                <button disabled onclick="window.location.href='/player/edit/{{ player.id }}'">Edit Player Details</button>
+                {% if player.status != 'retired' %}
+                <button disabled onclick="window.location.href='/player/spp/{{ player.id }}'">Spend SPP</button>
+                <button onclick="window.location.href='/player/retire/{{ player.id }}'">Fire</button>
+                {% endif %}
             </center>
         </p>
     {% endif %}

@@ -8,6 +8,7 @@ use App\Repositories\MatchGameRepository;
 use App\Services\EventLoggerService;
 use App\Services\Event\InjuryService;
 use App\Enums\Player\CasualtyTable;
+use App\Enums\Player\PlayerStatus;
 use App\Enums\Player\PlayerStats;
 use App\Enums\LogType;
 use Slim\Views\Twig;
@@ -129,5 +130,35 @@ class UpdateController extends AccessController
             'player' => $player,
             'reductionType' => $reductionType
         ]);
+    }
+
+    public function retireConfirm(Request $request, Response $response, array $args): Response
+    {
+        [$player, $errorResponse] = $this->getAuthorizedPlayerOrFail($request, $response, $args);
+        if ($errorResponse) return $errorResponse;
+
+        return $this->view->render($response, 'player/retire/confirm.twig', ['player' => $player]);
+    }
+
+    public function retire(Request $request, Response $response, array $args): Response
+    {
+        [$player, $errorResponse] = $this->getAuthorizedPlayerOrFail($request, $response, $args);
+        if ($errorResponse) return $errorResponse;
+
+        $player->status = PlayerStatus::RETIRED->value;
+        $player->save();
+
+        $this->eventLogger->log(
+            LogType::PLAYER_RETIRED->value,
+            '',
+            '',
+            '',
+            $player->team->coach,
+            $player->team,
+            $player,
+            null
+        );
+
+        return $this->view->render($response, 'player/retire/success.twig', ['player' => $player]);
     }
 }
