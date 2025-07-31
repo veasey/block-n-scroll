@@ -5,6 +5,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Controllers\Players\Shared\AccessController;
 use App\Enums\LogType;
+use App\Helpers\PaginationHelper;
 use App\Models\EventLog;
 use App\Models\Player;
 use Slim\Views\Twig;
@@ -18,16 +19,6 @@ class ViewLogController extends AccessController
         $this->view = $view;
     }
 
-    private function getPaginationParams(int $perPage = 50): array {
-        $page = isset($_GET['page']) ? max((int)$_GET['page'], 1) : 1;
-        $offset = ($page - 1) * $perPage;
-        return [
-            'page' => $page,
-            'perPage' => $perPage,
-            'offset' => $offset,
-        ];
-    }
-
     public function viewInjuries(Request $request, Response $response, array $args): Response
     {
         // get Player
@@ -38,7 +29,7 @@ class ViewLogController extends AccessController
         }
 
         // get logs
-        $params = $this->getPaginationParams();
+        $params = PaginationHelper::getPaginationParams();
         $logs = EventLog::where('event_type', LogType::PLAYER_INJURED->value)
             ->where('player_id', $playerId)
             ->orderBy('created_at', 'desc')

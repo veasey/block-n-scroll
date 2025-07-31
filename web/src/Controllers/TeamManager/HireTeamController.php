@@ -49,7 +49,7 @@ class HireTeamController extends AccessController
         $team->description = $data['team_bio'] ?? '';        
 
         $user = UserHelper::getCurrentUser();
-        if ($this->isAuthorizeToModifyTeam($user, $team)) {
+        if ($this->isAuthorizeToModifyTeam($team)) {
             $team->save();
             return $response->withHeader('Location', "/team/view/$team->id")->withStatus(302);
         }

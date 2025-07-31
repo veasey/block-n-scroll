@@ -18,8 +18,9 @@ abstract class AccessController
      * @param Team
      * @return bool
      */
-    protected function isAuthorizeToModifyTeam($user, Team $team): bool
+    protected function isAuthorizeToModifyTeam(Team $team): bool
     {
+        $user = UserHelper::getCurrentUser();
         if (empty($user)) {
             return false;
         }
@@ -40,7 +41,7 @@ abstract class AccessController
         }
 
         $user = UserHelper::getCurrentUser();
-        if (!$this->isAuthorizeToModifyTeam($user, $team)) {
+        if (!$this->isAuthorizeToModifyTeam($team)) {
             return [null, $response->withStatus(404)->write('Not authorised')];
         }
 

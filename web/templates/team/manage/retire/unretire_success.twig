@@ -1,0 +1,41 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Bring {{ team.name }} our of ritirement{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/team">Teams</a> - 
+        <a href="/team/view/all">All Teams</a> -
+        <a href="/team/view/{{team.id}}">{{ team.name }}</a>
+        Brough out of ritirement
+    </p>
+
+    <h2>{{ teamName }} brought back out of retirement!</h2>
+
+    {% set messages = [
+        "The cleats are laced once more. They're back.",
+        "Out of the tavern and onto the pitch — the team's returned.",
+        "Retirement was boring. Time for blood.",
+        "The legends return, older, meaner, and probably smellier.",
+        "Dust off the playbook. The team is back in business.",
+        "The crowd gasps — that jersey hasn’t been seen in seasons.",
+        "They're back from the dead. Or just a long nap.",
+        "Whispers become cheers. The team has reappeared.",
+        "The coach’s clipboard is cracked again. Just like old times.",
+        "No longer retired — now just tired and angry.",
+        "Nuffle gives them a second chance. Probably a mistake.",
+        "The pitch trembles. Or maybe that’s just old injuries acting up.",
+        "Someone found the old roster. The rest is destiny.",
+        "The mascot screamed with joy. Then fainted.",
+        "They were gone. Now they’re not. Deal with it."
+    ] %}
+
+    <p class="retired-message"><strong>{{ random(messages) }}</strong></p>
+
+    <p style="margin-top: 1.5em;">
+        <a href="/team/view/{{team.id}}">← Back to Team</a>
+    </p>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Retired {{ team.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/team">Teams</a> - 
+        <a href="/team/view/all">All Teams</a> -
+        <a href="/team/view/{{team.id}}">{{ team.name }}</a>
+        Retired
+    </p>
+
+    <h2>{{ teamName }} Retired!</h2>
+
+    {% set messages = [
+        "The crowd applauds softly. The team takes its final bow.",
+        "Retired with honour... or at least with most of their limbs.",
+        "They walk off the pitch — battered, bruised, but unbeaten in spirit.",
+        "The locker room door closes one last time.",
+        "Legends fade, but they never truly die.",
+        "The team retires to the tavern, tales already growing taller.",
+        "No more kickoffs. No more carnage. Just stories.",
+        "The apothecary nods. “They've earned their rest.”",
+        "Nuffle smiles. “Not bad... not bad at all.”",
+        "They leave the league — not in disgrace, but with dignity (mostly).",
+        "Gone to pasture... or at least to coach other fools.",
+        "The final whistle echoes like a farewell tune.",
+        "Their jersey numbers are retired. Their bruises are not.",
+        "With a pint raised and a few missing teeth, they say goodbye.",
+        "From bloodstains to bronze plaques — the team retires."
+    ] %}
+
+    <p class="retired-message"><strong>{{ random(messages) }}</strong></p>
+
+    <p style="margin-top: 1.5em;">
+        <a href="/team/view/{{team.id}}">← Back to Team</a>
+    </p>
+
+{% endblock %}

@@ -7,7 +7,10 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
 
 use App\Controllers\MatchGame\Shared\AccessController;
+use App\Helpers\PaginationHelper;
+use App\Models\MatchGame;
 use App\Models\Team;
+use App\Repositories\EventLogRepository;
 use App\Repositories\TeamRepository;
 use App\Repositories\MatchGameRepository;
 use App\Services\EventLoggerService;
@@ -15,6 +18,7 @@ use App\Services\MatchService;
 
 class MatchGameController extends AccessController
 {
+    protected $logRepo;
     protected $teamRepo;
     protected $matchRepo;
     protected $eventLoggerService;
@@ -22,6 +26,7 @@ class MatchGameController extends AccessController
     protected $view;
 
     public function __construct(
+        EventLogRepository $logRepo,
         TeamRepository $teamRepo,
         MatchGameRepository $matchRepo,
         EventLoggerService $eventLoggerService,
@@ -29,11 +34,53 @@ class MatchGameController extends AccessController
         Twig $view
     )    
     {
+        $this->logRepo = $logRepo;
         $this->teamRepo = $teamRepo;
         $this->matchRepo = $matchRepo;
         $this->eventLoggerService = $eventLoggerService;
         $this->matchService = $matchService;
         $this->view = $view;
+    }
+
+    public function view(Request $request, Response $response, array $args): mixed
+    {
+        $matchId = $args['match_id'] ?? '';
+        $match = MatchGame::find($matchId);
+        if (!$match) {
+            $response->getBody()->write('Match not found');
+            $response->withStatus(404);
+        }
+
+        $params = PaginationHelper::getPaginationParams();
+        $logs = $this->logRepo->getMatchEventLogs($match);
+
+        $logPage = $logs->slice($params['offset'], $params['perPage']);
+        $totalPages = ceil($logs->count() / $params['perPage']);
+
+        return $this->view->render($response, 'match/view.twig', [
+            'match' => $match,
+            'logs' => $logPage,
+            'totalPage' => $totalPages
+        ]);
+    }
+
+    public function listAll(Request $request, Response $response, array $args): mixed
+    {
+        $data = $request->getParsedBody();
+        return $this->view->render($response, 'match/list.twig', ['matches' => MatchGame::all()]);
+    }
+
+    public function listTeamMatches(Request $request, Response $response, array $args): mixed
+    {
+        $teamId = $args['team_id'] ?? null;
+        $matches = MatchGame::where('home_team_id', $teamId)
+                    ->orWhere('away_team_id', $teamId)
+                    ->get();
+
+        return $this->view->render($response, 'match/list.twig', [
+            'matches' => $matches,
+            'team' => Team::find($teamId)
+        ]);
     }
 
     public function showStartMatchForm(Request $request, Response $response, array $args)

@@ -30,6 +30,7 @@
             <thead>
                 <tr>
                     <th>Team Name</th>
+                    <th>Status</th>
                     <th>Race</th>
                     <th>Coach</th>
                     <th>League</th>
@@ -38,18 +39,11 @@
             <tbody>
                 {% for team in teams %}
                 <tr>
-                    <td>
-                        <a href="/team/view/{{ team.id }}">{{ team.name }}</a>
-                    </td>
-                    <td>
-                        {{ team.race.name }}
-                    </td>
-                    <td>
-                        {{ team.coach.name }}
-                    </td>
-                    <td>
-                        {{ team.league.name }}
-                    </td>
+                    <td><a href="/team/view/{{ team.id }}">{{ team.name }}</a></td>
+                    <td>{{team.status}}</td>
+                    <td>{{ team.race.name }}</td>
+                    <td>{{ team.coach.name }}</td>
+                    <td>{{ team.league.name }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

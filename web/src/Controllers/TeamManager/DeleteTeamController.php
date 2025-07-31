@@ -3,11 +3,13 @@ namespace App\Controllers\TeamManager;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use App\Enums\UserRole;
-use App\Models\Team;
+
+use App\Enums\TeamStatus;
+use App\Controllers\TeamManager\Shared\AccessController;
+
 use Slim\Views\Twig;
 
-class DeleteTeamController
+class DeleteTeamController extends AccessController
 {
 
     protected $view;
@@ -19,46 +21,19 @@ class DeleteTeamController
 
     public function getConfirmView(Request $request, Response $response, array $args): Response
     {
-        $teamId = $args['team_id'];
-
-        if (!$teamId) {
-            $response->getBody()->write('Team ID is required');
-            return $response->withStatus(404);
+        [$team, $errorResponse] = $this->getAuthorizedTeamOrFail($request, $response, $args);
+        if ($errorResponse) {
+            return [null, $errorResponse];
         }
 
-        $team = Team::find($teamId);
-        if (!$team) {
-            $response->getBody()->write('Team not found');
-            return $response->withStatus(404);
-        }
-
-        if (!$this->canDeleteTeam($team->coach_id)) {
-            $response->getBody()->write('Not authorised!');
-            return $response->withStatus(404);
-        }
-
-        return $this->view->render($response, 'team/manage/delete_team_confirm.twig', ['team' => $team]);
+        return $this->view->render($response, 'team/manage/delete/confirm.twig', ['team' => $team]);
     }
 
     public function delete(Request $request, Response $response, array $args): Response
     {
-        $teamId = $args['team_id'];
-
-        if (!$teamId) {
-            $response->getBody()->write('Team ID is required');
-            return $response->withStatus(404);
-        }
-
-        $team = Team::find($teamId);
-
-        if (!$team) {
-            $response->getBody()->write('Team not found');
-            return $response->withStatus(404);
-        }
-
-         if (!$this->canDeleteTeam($team->coach_id)) {
-            $response->getBody()->write('Not authorised!');
-            return $response->withStatus(404);
+        [$team, $errorResponse] = $this->getAuthorizedTeamOrFail($request, $response, $args);
+        if ($errorResponse) {
+            return [null, $errorResponse];
         }
 
         $teamName = $team->name;
@@ -66,28 +41,32 @@ class DeleteTeamController
         $team->players()->delete();
         $team->delete();
 
-        return $this->view->render($response, 'team/manage/delete_team_success.twig', ['teamName' => $teamName]);
+        return $this->view->render($response, 'team/manage/delete/success.twig', ['teamName' => $teamName]);
     }
 
-    /**
-     * Can current user delete this team?
-     * @param int $coachId
-     * @return bool
-     */
-    private function canDeleteTeam(int $coachId): bool
+    public function retire(Request $request, Response $response, array $args): Response
     {
-        if (empty($_SESSION['user'])) {
-            return false;
+        [$team, $errorResponse] = $this->getAuthorizedTeamOrFail($request, $response, $args);
+        if ($errorResponse) {
+            return [null, $errorResponse];
         }
 
-        if (isset($_SESSION['user']) && $_SESSION['user']['id'] == $coachId) {
-            return true;
+        $team->status = TeamStatus::RETIRED;
+        $team->save();
+
+        return $this->view->render($response, 'team/manage/retire/retire_success.twig', ['team' => $team]);
+    }
+
+    public function unretire(Request $request, Response $response, array $args): Response
+    {
+        [$team, $errorResponse] = $this->getAuthorizedTeamOrFail($request, $response, $args);
+        if ($errorResponse) {
+            return [null, $errorResponse];
         }
 
-        if (isset($_SESSION['user']) && $_SESSION['user']['role'] == UserRole::ADMIN) {
-            return true;
-        }
- 
-        return false;
+        $team->status = TeamStatus::IDLE;
+        $team->save();
+        
+        return $this->view->render($response, 'team/manage/retire/unretire_success.twig', ['team' => $team]);
     }
 }

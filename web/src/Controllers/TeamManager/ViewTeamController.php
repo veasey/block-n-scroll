@@ -72,7 +72,7 @@ class ViewTeamController extends AccessController
         return $this->view->render($response, 'team/view.twig', [
             'team' => $team, 
             'players' => $players,
-            'showManagementButtons' => $this->isAuthorizeToModifyTeam($user, $team)
+            'showManagementButtons' => $this->isAuthorizeToModifyTeam( $team)
         ]);
     }
 

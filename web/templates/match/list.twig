@@ -1,0 +1,55 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - Team - List{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/match/view/all">Matches</a>
+        {% if team %}
+            - <a href="/match/view/team/{{team.id}}"> {{ team.name }} </a>
+        {% endif %}
+    </p>
+
+    <h1>
+        {% if team %}
+            {{ team.name }}'s
+        {% else %}
+            All
+        {% endif %}
+            Matches
+    </h1>
+
+    {% if matches|length == 0 %}
+        <p><strong>No matches found!</strong></p>
+    {% else %}
+        <table id="positions-table">
+            <thead>
+                <tr>
+                    <th>Match Start</th>
+                    <th>Match End</th>
+                    <th>Home Team</th>
+                    <th>Away Team</th>
+                    <th>Home TD</th>
+                    <th>Away TD</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for match in matches %}
+                <tr>
+                    <td>{{ match.created_at|date('Y/m/d H:m:i') }}</td>
+                    <td>{{ match.update_at|date('Y/m/d H:m:i') }}</td>
+                    <td>{{ match.homeTeam.name }}</td>
+                    <td>{{ match.awayTeam.name ?? match.awayTeamName }}</td>
+                    <td>{{ match.home_score|number_format }}</td>
+                    <td>{{ match.away_score|number_format }}</td>
+                    <td><a href="/match/view/{{match.id}}">View</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+{% endblock %}

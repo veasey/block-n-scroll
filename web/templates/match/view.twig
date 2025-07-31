@@ -1,0 +1,89 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}
+    Block &amp; Scroll - Match - {{ match.homeTeam.name }} vs {{ match.awayTeam.name ?? match.awayTeamName }}
+{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/match/view/all">Matches</a> -
+        Match {{ match.id }}
+    </p>
+
+    <h1>Match Details</h1>
+
+    <h2>{{ match.homeTeam.name }} vs {{ match.awayTeam.name ?? match.awayTeamName }}</h2>
+
+    <table class="match-details">
+        <tr>
+            <th>Home Team</th>
+            <td>{{ match.homeTeam.name }}</td>
+        </tr>
+        <tr>
+            <th>Away Team</th>
+            <td>{{ match.awayTeam.name ?? match.awayTeamName }}</td>
+        </tr>
+        <tr>
+            <th>Home Score</th>
+            <td>{{ match.home_score }}</td>
+        </tr>
+        <tr>
+            <th>Away Score</th>
+            <td>{{ match.away_score }}</td>
+        </tr>
+        <tr>
+            <th>League</th>
+            <td>{{ match.league.name ?? '—' }}</td>
+        </tr>
+        <tr>
+            <th>Match Start</th>
+            <td>{{ match.created_at|date('Y/m/d H:i') }}</td>
+        </tr>
+        <tr>
+            <th>Match End</th>
+            <td>{{ match.updated_at|date('Y/m/d H:i') }}</td>
+        </tr>
+        <tr>
+            <th>Notes</th>
+            <td>{{ match.notes|default('No notes.')|nl2br }}</td>
+        </tr>
+    </table>
+
+    {% if logs|length == 0 %}
+        <p><strong>No relevant logs written, yet.</strong></p>
+    {% else %}
+        <table id="positions-table">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Event Type</th>
+                    <th>Notes</th>
+                    <th>Team</th>
+                    <th>Player</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in logs %}
+                    <tr>
+                        <td>{{ log.created_at | date("m/d/Y h:i:s") }}</td>
+                        <td>{{ log.event_value }} {{ log.event_key }}
+                        <td><a href="/view/team/{{log.team.id}}">{{ log.team.name }}</a></td>
+                        <td><a href="/view/player/{{log.player.id}}">{{ log.player.name }} (#{{ log.player.number }})</a></td>
+                        <td>{{ log.notes }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% if totalPages > 1 %}
+            {% include 'partials/pagination.twig' with {'page': page, 'totalPages': totalPages} %}
+        {% endif %}
+    {% endif %}
+
+    <p style="margin-top: 1.5em;">
+        <a href="/match/view/all">← Back to all matches</a>
+    </p>
+
+{% endblock %}
