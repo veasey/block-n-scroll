@@ -6,11 +6,24 @@
 
     <p class="breadcrumbs">
         <a href="/">Home</a> - 
-        End Match - 
-        {{ match.homeTeam.name }} vs {{ match.awayTeam.name ?? match.away_team_name }}
+        Ending Match: 
+        <a href="/team/view/{{ match.away_team_id }}">{{ match.homeTeam.name }}</a> vs 
+        {% if match.awayTeam.id %}
+            <a href="/team/view/{{ match.away_team_id }}">{{ match.awayTeam.name }}</a>
+        {% else %}
+            {{ match.away_team_name }}
+        {% endif %}
     </p>
 
-    <h2>Ending Match: {{ match.homeTeam.name }} vs {{ match.awayTeam.name ?? match.away_team_name }}</h2>
+    <h2>
+        Ending Match: 
+        <a href="/team/view/{{ match.away_team_id }}">{{ match.homeTeam.name }}</a> vs 
+        {% if match.awayTeam.id %}
+            <a href="/team/view/{{ match.away_team_id }}">{{ match.awayTeam.name }}</a>
+        {% else %}
+            {{ match.away_team_name }}
+        {% endif %}
+    </h2>
 
     {% if match.home_score == 0 and match.away_score == 0 %}
 
@@ -74,6 +87,10 @@
     {% set messages = endMatchMessages %}
     <p class="retirement-message" style="font-style: italic; font-size: 1.2em; margin-top: 1em;">
         <strong>{{ random(messages) }}</strong>
+    </p>
+
+    <p style="margin-top: 1.5em;">
+        <a href="/team/view/{{userTeamId}}">← Back to Team</a>
     </p>
 
 {% endblock %}

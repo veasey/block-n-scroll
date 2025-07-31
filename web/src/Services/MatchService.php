@@ -5,6 +5,8 @@ use App\Repositories\MatchGameRepository;
 use App\Repositories\TeamRepository;
 
 use App\Enums\TeamStatus;
+use App\Enums\Player\CasualtyTable;
+use App\Models\EventLog;
 use App\Models\Team;
 use App\Models\MatchGame;
 
@@ -40,6 +42,10 @@ class MatchService
 
         $match->save();
 
+        if ($opponent) {
+            $opponent->status = TeamStatus::PLAYING;
+            $opponent->save();
+        }
         $team->status = TeamStatus::PLAYING;
         $team->save();
 
@@ -63,10 +69,28 @@ class MatchService
 
     public function restorePlayersFromMissNextGame(MatchGame $matchGame): bool
     {
-        $players = [];
+        $homePlayers = $matchGame->homeTeam->players;
+        $awayPlayers = $matchGame->awayTeam?->players ?? collect();
+        $allPlayers = $homePlayers->merge($awayPlayers);
 
-        if ($matchGame->homeTeam) {
+        foreach ($allPlayers as $player) {
+            if (!$player->miss_next_game) {
+                continue;
+            }
 
+            // Check if this player has a 'PLAYER_INJURED' event this match, excluding BADLY_HURT injuries
+            $missNextGameInjuryThisMatch = EventLog::where('event_type', 'PLAYER_INJURED')
+                ->where('event_key', '!=', CasualtyTable::BADLY_HURT)
+                ->where('match_id', $matchGame->id)
+                ->where('player_id', $player->id)
+                ->first();
+
+            if ($missNextGameInjuryThisMatch) {
+                continue;
+            }
+
+            $player->miss_next_game = false;
+            $player->save();
         }
 
         return true;

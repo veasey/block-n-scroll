@@ -47,4 +47,4 @@ P4 - Match tracking + team sync
 29 Jul - Add player view and Quick log buttons for team management. Various other fixes and refactoring. Add Injury form and logic, plus event logs.
 29 Jul - Created player update controller. Got stat reduction logic working.
 30 Jul - Added creation of a new match
-31 Jul - Bug fixes around injury logging. Enabled Retiring/Fireing of players.
+31 Jul - Bug fixes around injury logging. Enabled Retiring/Fireing of players. Sorted clearing MNG on end match.

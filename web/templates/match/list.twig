@@ -43,7 +43,7 @@
                     <td>{{ match.update_at|date('Y/m/d H:m:i') }}</td>
                     <td> <a href="/team/view/{{ match.home_team_id }}">{{ match.homeTeam.name }}</a></td>
                     <td>
-                         {% if match.awayTeam.id %}
+                        {% if match.awayTeam.id %}
                             <a href="/team/view/{{ match.away_team_id }}">{{ match.awayTeam.name }}</a>
                         {% else %}
                             {{ match.away_team_name }}
