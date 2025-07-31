@@ -5,6 +5,7 @@ use App\Controllers\TeamManager\ViewTeamController;
 use App\Controllers\TeamManager\EditTeamController;
 use App\Controllers\TeamManager\HireTeamController;
 use App\Controllers\TeamManager\QuickButtonController;
+use App\Controllers\TeamManager\ApiController;
 use App\Middleware\AuthMiddleware;
 use Slim\Views\Twig;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -17,6 +18,7 @@ $app->get('/team', function (Request $request, Response $response) use ($app) {
 $app->get('/team/create', CreateTeamController::class . ':getFormSelectRace')->add(new AuthMiddleware());
 $app->get('/team/create/{team_id}', CreateTeamController::class . ':getFormHireStaff')->add(new AuthMiddleware());
 $app->post('/team/create', CreateTeamController::class . ':save')->add(new AuthMiddleware());
+$app->get('/api/team/check-name', ApiController::class . ':checkName')->add(new AuthMiddleware());
 
 $app->get('/team/view/all', ViewTeamController::class . ':listTeams');
 $app->get('/team/view/user/{user_id}', ViewTeamController::class . ':listTeams');
