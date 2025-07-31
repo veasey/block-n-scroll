@@ -1,7 +1,7 @@
 {% extends "team/team_base.twig" %}
 
 {% block title %}
-    Block &amp; Scroll - Match - {{ match.homeTeam.name }} vs {{ match.awayTeam.name ?? match.awayTeamName }}
+    Block &amp; Scroll - Match - {{ match.homeTeam.name }} vs {{ match.awayTeam.name ?? match.away_team_name }}
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,7 @@
 
     <h1>Match Details</h1>
 
-    <h2>{{ match.homeTeam.name }} vs {{ match.awayTeam.name ?? match.awayTeamName }}</h2>
+    <h2>{{ match.homeTeam.name }} vs {{ match.awayTeam.name ?? match.away_team_name }}</h2>
 
     <table class="match-details">
         <tr>
@@ -23,7 +23,7 @@
         </tr>
         <tr>
             <th>Away Team</th>
-            <td>{{ match.awayTeam.name ?? match.awayTeamName }}</td>
+            <td>{{ match.awayTeam.name ?? match.away_team_name }}</td>
         </tr>
         <tr>
             <th>Home Score</th>

@@ -42,7 +42,7 @@
                     <td>{{ match.created_at|date('Y/m/d H:m:i') }}</td>
                     <td>{{ match.update_at|date('Y/m/d H:m:i') }}</td>
                     <td>{{ match.homeTeam.name }}</td>
-                    <td>{{ match.awayTeam.name ?? match.awayTeamName }}</td>
+                    <td>{{ match.awayTeam.name ?? match.away_team_name }}</td>
                     <td>{{ match.home_score|number_format }}</td>
                     <td>{{ match.away_score|number_format }}</td>
                     <td><a href="/match/view/{{match.id}}">View</a></td>
