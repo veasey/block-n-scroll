@@ -145,6 +145,11 @@ class UpdateController extends AccessController
         [$player, $errorResponse] = $this->getAuthorizedPlayerOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
 
+        if ($player->status == PlayerStatus::RETIRED->value) {
+            $response->getBody()->write('Cannot retire a player who is already retired');
+            return $response->withStatus(403);
+        }
+
         $player->status = PlayerStatus::RETIRED->value;
         $player->save();
 
