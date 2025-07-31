@@ -41,6 +41,7 @@ class ViewLogController extends AccessController
         $params = $this->getPaginationParams();
         $logs = EventLog::where('event_type', LogType::PLAYER_INJURED->value)
             ->where('player_id', $playerId)
+            ->orderBy('created_at', 'desc')
             ->skip($params['offset']) // offset
             ->take($params['perPage']) // limit
             ->get();

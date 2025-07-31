@@ -4,6 +4,7 @@ namespace App\Controllers\Players;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Controllers\Players\Shared\AccessController;
+use App\Repositories\MatchGameRepository;
 use App\Services\EventLoggerService;
 use App\Services\Event\InjuryService;
 use App\Enums\CasualtyTable;
@@ -13,16 +14,19 @@ use Slim\Views\Twig;
 
 class UpdateController extends AccessController
 {
+    protected $matchGameRepo;
     protected $eventLogger;
     protected $injuryService;
     protected $view;
 
     public function __construct(
+        MatchGameRepository $matchGameRepo,
         EventLoggerService $eventLogger, 
         InjuryService $injuryService,
         Twig $view
     )
     {
+        $this->matchGameRepo = $matchGameRepo;
         $this->eventLogger = $eventLogger;
         $this->injuryService = $injuryService;
         $this->view = $view;
@@ -53,6 +57,8 @@ class UpdateController extends AccessController
             return $this->view->render($response, "event/injury/injury_roll_form.twig", ['player' => $player]);
         }
 
+        $match = $this->matchGameRepo->getTeamCurrentMatch($player->team->id) ?? null;
+
         $this->eventLogger->log(
             LogType::PLAYER_INJURED->value,
             $injuryType->value,
@@ -61,7 +67,7 @@ class UpdateController extends AccessController
             $player->team->coach,
             $player->team,
             $player,
-            $player->team->currentMatch
+            $match
         );
 
         return $this->view->render($response, "event/injury/result.twig", [
@@ -106,15 +112,17 @@ class UpdateController extends AccessController
 
         $player->save();
 
+        $match = $this->matchGameRepo->getTeamCurrentMatch($player->team->id) ?? null;
+
         $this->eventLogger->log(
             LogType::PLAYER_INJURED->value,
-            $injuryType->value,
+            CasualtyTable::LASTING_INJURY->value,
             $reductionType->value,
             $reductionType->value . ' reduced by 1',
             $player->team->coach,
             $player->team,
             $player,
-            $player->team->currentMatch
+            $match
         );
 
         return $this->view->render($response, 'event/injury/lasting_injury_result.twig', [

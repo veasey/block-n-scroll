@@ -25,4 +25,28 @@ class MatchGameRepository
             ->where('away_score', 0)
             ->first();
     }
+
+    /**
+     * get team's current match
+     * @param int
+     * @return mixed
+     */
+    public function getTeamCurrentMatch(int $teamId): mixed
+    {
+        $team = Team::find($teamId);
+
+        if (!$team) {
+            return false;
+        }
+
+        $teamStatus = TeamStatus::tryFrom($team->status);
+        if ($teamStatus != TeamStatus::PLAYING) {
+            return false;
+        }
+
+        return MatchGame::where('home_team_id', $team->id)
+            ->orWhere('away_team_id', $team->id)
+            ->orderByDesc('updated_at')
+            ->first();
+    }
 }

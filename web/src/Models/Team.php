@@ -54,16 +54,4 @@ class Team extends Model
                     ->orWhere('away_team_id', $this->id)
                     ->get();
     }
-
-    public function getCurrentMatch(): mixed
-    {
-        if ($this->status != TeamStatus::PLAYING->value) {
-            return false;
-        }
-
-        return MatchGame::where('home_team_id', $this->id)
-            ->orWhere('away_team_id', $this->id)
-            ->orderByDesc('updated_at')
-            ->first();
-    }
 }
