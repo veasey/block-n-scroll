@@ -59,9 +59,9 @@
                 <tr>
                     <th>Time</th>
                     <th>Event Type</th>
-                    <th>Notes</th>
                     <th>Team</th>
                     <th>Player</th>
+                    <th>Notes</th>
                 </tr>
             </thead>
             <tbody>
@@ -69,8 +69,8 @@
                     <tr>
                         <td>{{ log.created_at | date("m/d/Y h:i:s") }}</td>
                         <td>{{ log.event_value }} {{ log.event_key }}
-                        <td><a href="/view/team/{{log.team.id}}">{{ log.team.name }}</a></td>
-                        <td><a href="/view/player/{{log.player.id}}">{{ log.player.name }} (#{{ log.player.number }})</a></td>
+                        <td><a href="/team/view/{{log.team.id}}">{{ log.team.name }}</a></td>
+                        <td><a href="/player/view/{{log.player.id}}">{{ log.player.name }} (#{{ log.player.number }})</a></td>
                         <td>{{ log.notes }}</td>
                     </tr>
                 {% endfor %}
