@@ -27,7 +27,6 @@ class UpdateController extends AccessController
         $this->injuryService = $injuryService;
         $this->view = $view;
     }
-
     
     public function addInjury(Request $request, Response $response, array $args): Response
     {
@@ -38,8 +37,6 @@ class UpdateController extends AccessController
         [$player, $errorResponse] = $this->getRecognisedPlayerOrFail($request, $response, $args, $playerId);
         if ($errorResponse) return $errorResponse;
 
-        
-        
         if (!$roll) {
             $response->getBody()->write('Roll Required');
             return $response->withStatus(400);
