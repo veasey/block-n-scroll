@@ -14,16 +14,30 @@
 
     <h1>Match Details</h1>
 
-    <h2>{{ match.homeTeam.name }} vs {{ match.awayTeam.name ?? match.away_team_name }}</h2>
+    <h2>
+        <a href="/team/view/{{ match.home_team_id }}">{{ match.homeTeam.name }}</a>
+        vs
+        {% if match.awayTeam.id %}
+            <a href="/team/view/{{ match.away_team_id }}">{{ match.awayTeam.name }}</a>
+        {% else %}
+            {{ match.away_team_name }}
+        {% endif %}
+    </h2>
 
     <table class="match-details">
         <tr>
             <th>Home Team</th>
-            <td>{{ match.homeTeam.name }}</td>
+            <td><a href="/team/view/{{match.home_team_id}}">{{ match.homeTeam.name }}</a></td>
         </tr>
         <tr>
             <th>Away Team</th>
-            <td>{{ match.awayTeam.name ?? match.away_team_name }}</td>
+            <td> 
+                {% if match.awayTeam %}
+                    <a href="/team/view/{{match.away_team_id}}">{{ match.awayTeam.name}}</a>
+                {% else %}
+                    {{ match.away_team_name }}
+                {% endif %}
+            </td>
         </tr>
         <tr>
             <th>Home Score</th>
