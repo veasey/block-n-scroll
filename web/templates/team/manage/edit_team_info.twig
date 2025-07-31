@@ -1,6 +1,12 @@
 {% extends "team/team_base.twig" %}
 
-{% block title %}Block & Scroll - Rules - Team - {{ team.name }}{% endblock %}
+{% block title %}Block &amp; Scroll - Rules - Team - {{ team.name }}{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="/js/team/check-name.js"></script>
+{% endblock %}
+
 
 {% block content %}
 
