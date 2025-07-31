@@ -7,8 +7,8 @@ use App\Controllers\Players\Shared\AccessController;
 use App\Repositories\MatchGameRepository;
 use App\Services\EventLoggerService;
 use App\Services\Event\InjuryService;
-use App\Enums\CasualtyTable;
-use App\Enums\PlayerStats;
+use App\Enums\Player\CasualtyTable;
+use App\Enums\Player\PlayerStats;
 use App\Enums\LogType;
 use Slim\Views\Twig;
 

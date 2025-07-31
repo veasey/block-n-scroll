@@ -8,15 +8,20 @@ use App\Helpers\UserHelper;
 use App\Models\Coach;
 use App\Models\Team;
 use App\Models\Player;
+use App\Repositories\PlayerRepository;
 use Slim\Views\Twig;
 
 class ViewTeamController extends AccessController
 {
-
+    protected $playerRepo;
     protected $view;
 
-    public function __construct(Twig $view)
+    public function __construct(
+        PlayerRepository $playerRepo,
+        Twig $view
+    )
     {
+        $this->playerRepo = $playerRepo;
         $this->view = $view;
     }
 
@@ -50,7 +55,7 @@ class ViewTeamController extends AccessController
         }
 
         $team = Team::find($teamId);
-        $players = Player::where('team_id', $team->id)->get();
+        $players = $this->playerRepo->getActiveOrInjuredPlayersInTeam($team);
 
         if ($format === 'json') {
             $response->getBody()->write(json_encode($team));

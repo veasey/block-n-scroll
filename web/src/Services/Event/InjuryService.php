@@ -2,7 +2,7 @@
 namespace App\Services\Event;
 
 use App\Models\Player;
-use App\Enums\CasualtyTable;
+use App\Enums\Player\CasualtyTable;
 
 class InjuryService
 {
