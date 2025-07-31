@@ -1,0 +1,42 @@
+
+→ TODO & Bugs: 
+
+→ END MATCH logic, MVP and MNG etc.
+
+→ Hire  players
+→ match events, and ending a match.
+→ Whilst playing. Show and link to team they are playing (if have ID)
+
+→ Team Management Screen
+ → Quick Log Buttons (logic)
+ → Hiring Player
+ → Spending Player SPP
+ → Adjusting SideStaff
+ → Compare relative team value with another team.
+
+→ Player
+ → View Skills (original and additional)
+ → View Total Touchdowns, Casualties, Times Injured, Completions
+  → When clicking above: Show log with each event with time logged next to it and other details.
+
+→→ Logging in
+  →→ Success Message
+  →→ Log in via Facebook
+  →→ Log in via Google
+  →→ Can create and manage a team, assigned to a guest session (can create a user later.)
+
+→→ send email verification code and logic, when registering a new user
+
+→→ SKILLS
+  →→ What to do for Bloodlust, Loner etc where there is an X. Maybe have an X join on [position, skill]?
+  →→ Standardise skill templates, and place repeated parts of template into base template
+  →→ Add special rules lookup.
+→→ DB shutdown bug, after migrate finished
+
+→→ Logging System
+ →→ All actions logged
+ →→ All public actions viewable (i.e. renaming team, joining leagues etc)
+
+→→ Roles
+ →→ Mods can edit things within their OWN league
+ →→ Users can only request a team be added to league.
