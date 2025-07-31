@@ -4,6 +4,7 @@ namespace App\Controllers\TeamManager;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Enums\SideStaff;
+use App\Helpers\UserHelper;
 use App\Helpers\SkillFormatter;
 use App\Helpers\SideStaffPruner;
 use App\Models\Base\BaseTeam;
@@ -25,6 +26,12 @@ class CreateTeamController
 
     public function getFormSelectRace(Request $request, Response $response, array $args): Response
     {
+        // if user has too many teams
+        $max = 50;
+        if (Team::where('coach_id', UserHelper::getCurrentUser()->id)->count() >= $max) {
+            return $this->view->render($response, 'team/create/too_many_teams.twig', ['max' => $max]);
+        }
+
         return $this->view->render($response, 'team/create/select_race.twig', ['teams' => BaseTeam::all()]);
     }
 
@@ -115,12 +122,12 @@ class CreateTeamController
     public function save(Request $request, Response $response): Response
     {
         $data = $request->getParsedBody();
+        $user = UserHelper::getCurrentUser();
 
         $newTeam = new Team();
-
         $newTeam->name = $data['team_name'] ?? '';
         $newTeam->description = $data['team_bio'] ?? '';
-        $newTeam->coach_id = $_SESSION['user']['id'] ?? null;
+        $newTeam->coach_id = $user->id;
         $newTeam->base_team_id = $data['base_team_id'] ?? null;
         $newTeam->treasury = $data['max_cost'] - $data['current_team_value'];
 
