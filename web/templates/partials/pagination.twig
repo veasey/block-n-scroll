@@ -6,7 +6,7 @@
 
     {% for i in 1..totalPages %}
         {% if i == page %}
-            <strong>{{ i }}</strong>
+            <a href="?page={{ i }}"><b>{{ i }}</b></a>
         {% else %}
             <a href="?page={{ i }}">{{ i }}</a>
         {% endif %}

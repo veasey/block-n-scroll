@@ -81,6 +81,7 @@ class MatchGameController extends AccessController
         return $this->view->render($response, 'match/list.twig', [
             'matches' => $matchPage,
             'totalPages' => $totalPages,
+            'page' => $params['page'],
         ]);
     }
 
@@ -105,6 +106,7 @@ class MatchGameController extends AccessController
         return $this->view->render($response, 'match/list.twig', [
             'matches' => $matches,
             'totalPages' => $totalPages,
+            'page' => $params['page'],
             'team' => Team::find($teamId)
         ]);
     }

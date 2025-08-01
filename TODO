@@ -4,10 +4,6 @@
 → END MATCH Logic
   → Winnings
 
--> Fix wonky pagination controls
- -> highlight current page
- -> show previous
-
 → Hire  players
 → match events, and ending a match.
 → Whilst playing. Show and link to team they are playing (if have ID)
