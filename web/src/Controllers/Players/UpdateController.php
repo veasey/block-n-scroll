@@ -5,7 +5,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Controllers\Players\Shared\AccessController;
 use App\Repositories\MatchGameRepository;
-use App\Services\EventLoggerService;
+use App\Services\EventLogging\PlayerEventLoggingService;
 use App\Services\Event\InjuryService;
 use App\Enums\Player\CasualtyTable;
 use App\Enums\Player\PlayerStatus;
@@ -22,7 +22,7 @@ class UpdateController extends AccessController
 
     public function __construct(
         MatchGameRepository $matchGameRepo,
-        EventLoggerService $eventLogger, 
+        PlayerEventLoggingService $eventLogger, 
         InjuryService $injuryService,
         Twig $view
     )
@@ -59,17 +59,7 @@ class UpdateController extends AccessController
         }
 
         $match = $this->matchGameRepo->getTeamCurrentMatch($player->team->id) ?? null;
-
-        $this->eventLogger->log(
-            LogType::PLAYER_INJURED->value,
-            $injuryType->value,
-            '',
-            '',
-            $player->team->coach,
-            $player->team,
-            $player,
-            $match
-        );
+        $this->eventLogger->logPlayerInjury($match, $player, $injuryType);
 
         return $this->view->render($response, "event/injury/result.twig", [
             'player' => $player,
@@ -115,16 +105,7 @@ class UpdateController extends AccessController
 
         $match = $this->matchGameRepo->getTeamCurrentMatch($player->team->id) ?? null;
 
-        $this->eventLogger->log(
-            LogType::PLAYER_INJURED->value,
-            CasualtyTable::LASTING_INJURY->value,
-            $reductionType->value,
-            $reductionType->value . ' reduced by 1',
-            $player->team->coach,
-            $player->team,
-            $player,
-            $match
-        );
+        $this->eventLogger->logPlayerLastingInjury($match, $player, $reductionType);
 
         return $this->view->render($response, 'event/injury/lasting_injury_result.twig', [
             'player' => $player,
@@ -152,17 +133,7 @@ class UpdateController extends AccessController
 
         $player->status = PlayerStatus::RETIRED->value;
         $player->save();
-
-        $this->eventLogger->log(
-            LogType::PLAYER_RETIRED->value,
-            '',
-            '',
-            '',
-            $player->team->coach,
-            $player->team,
-            $player,
-            null
-        );
+        $this->eventLogger->logPlayerRetirement($player);
 
         return $this->view->render($response, 'player/retire/success.twig', ['player' => $player]);
     }

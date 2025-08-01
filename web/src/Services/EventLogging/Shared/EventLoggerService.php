@@ -1,5 +1,5 @@
 <?php
-namespace App\Services;
+namespace App\Services\EventLogging\Shared;
 
 use App\Models\EventLog;
 

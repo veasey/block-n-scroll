@@ -13,7 +13,7 @@ use App\Models\Team;
 use App\Repositories\EventLogRepository;
 use App\Repositories\TeamRepository;
 use App\Repositories\MatchGameRepository;
-use App\Services\EventLoggerService;
+use App\Services\EventLogging\MatchEventLoggingService;
 use App\Services\MatchService;
 
 class MatchGameController extends AccessController
@@ -29,7 +29,7 @@ class MatchGameController extends AccessController
         EventLogRepository $logRepo,
         TeamRepository $teamRepo,
         MatchGameRepository $matchRepo,
-        EventLoggerService $eventLoggerService,
+        MatchEventLoggingService $eventLoggerService,
         MatchService $matchService,
         Twig $view
     )    
@@ -66,19 +66,45 @@ class MatchGameController extends AccessController
 
     public function listAll(Request $request, Response $response, array $args): mixed
     {
-        $data = $request->getParsedBody();
-        return $this->view->render($response, 'match/list.twig', ['matches' => MatchGame::all()]);
+        $params = PaginationHelper::getPaginationParams();
+        
+        $totalCount = MatchGame::count();
+
+        // Use query builder with offset and limit (skip and take)
+        $matchPage = MatchGame::query()
+            ->skip($params['offset'])
+            ->take($params['perPage'])
+            ->get();
+
+        $totalPages = ceil($totalCount / $params['perPage']);
+
+        return $this->view->render($response, 'match/list.twig', [
+            'matches' => $matchPage,
+            'totalPages' => $totalPages,
+        ]);
     }
 
     public function listTeamMatches(Request $request, Response $response, array $args): mixed
     {
+        $params = PaginationHelper::getPaginationParams();
+        
         $teamId = $args['team_id'] ?? null;
+
+        $totalCount = MatchGame::where('home_team_id', $teamId)
+            ->orWhere('away_team_id', $teamId)
+            ->count();
+
         $matches = MatchGame::where('home_team_id', $teamId)
-                    ->orWhere('away_team_id', $teamId)
-                    ->get();
+            ->orWhere('away_team_id', $teamId)
+            ->skip($params['offset'])
+            ->take($params['perPage'])
+            ->get();
+
+        $totalPages = ceil($totalCount / $params['perPage']);
 
         return $this->view->render($response, 'match/list.twig', [
             'matches' => $matches,
+            'totalPages' => $totalPages,
             'team' => Team::find($teamId)
         ]);
     }
@@ -104,6 +130,7 @@ class MatchGameController extends AccessController
         $awayTeamName = $data['unregistered_name'] ?? '';
 
         $match = $this->matchService->startOrJoinMatch($team, $awayTeamId, $awayTeamName);
+        $this->eventLoggerService->logMatchStart($match);
 
         return $response->withHeader('Location', '/team/view/' . $team->id)->withStatus(302);
     }
@@ -118,13 +145,18 @@ class MatchGameController extends AccessController
             $response->getBody()->write('No valid match in progress to end.');
             return $response->withStatus(409);
         }
+
         $this->matchService->endMatch($currentMatch);
+        $this->eventLoggerService->logMatchEnd($currentMatch);
 
         // unmark and MNG - use event logs to wake up those that were not MNG this match
         $recoveredPlayers = $this->matchService->restorePlayersFromMissNextGame($currentMatch);
 
         // award MVP spp
         $mvpPlayers = $this->matchService->awardMVP($currentMatch);
+        foreach ($mvpPlayers as $player) {
+            $this->eventLoggerService->logMatchEndAwardMVP($currentMatch, $player);
+        }
 
         // calculate winnings - send to form to enter D6
 

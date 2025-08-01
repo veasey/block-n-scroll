@@ -1,7 +1,7 @@
 <?php
 namespace App\Enums;
 
-enum EventType: string
+enum MatchEventType: string
 {
     case  INJURY = 'injury';
     case  CASUALTY = 'casualty';

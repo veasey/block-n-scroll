@@ -3,7 +3,7 @@ namespace App\Helpers;
 
 class PaginationHelper {
 
-    public static function getPaginationParams(int $perPage = 50): array {
+    public static function getPaginationParams(int $perPage = 10): array {
         $page = isset($_GET['page']) ? max((int)$_GET['page'], 1) : 1;
         $offset = ($page - 1) * $perPage;
         return [
