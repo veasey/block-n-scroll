@@ -87,12 +87,12 @@ class UpdateController extends AccessController
         }
 
         if ($lastingInjuryRoll == 4) {
-            $player->pa -= 1;
+            $player->pa += 1;
             $reductionType = PlayerStats::PASSING_ABILITY;
         }
 
         if ($lastingInjuryRoll == 5) {
-            $player->ag -= 1;
+            $player->ag += 1;
             $reductionType = PlayerStats::AGILITY;
         }
 
