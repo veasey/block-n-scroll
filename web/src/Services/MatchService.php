@@ -1,6 +1,8 @@
 <?php
 namespace App\Services;
 
+use Illuminate\Database\Eloquent\Collection;
+
 use App\Repositories\MatchGameRepository;
 use App\Repositories\TeamRepository;
 
@@ -68,16 +70,18 @@ class MatchService
         return $matchGame;
     }
 
+    private function filterOutTheDead(Collection $players) {
+        return $players->filter(function ($player) {
+            return !in_array($player->status, [PlayerStatus::DEAD, PlayerStatus::RETIRED]);
+        })->values();    
+    }
+
     public function restorePlayersFromMissNextGame(MatchGame $matchGame): array
     {
         $homePlayers = $matchGame->homeTeam->players;
         $awayPlayers = $matchGame->awayTeam?->players ?? collect();
         $allPlayers = $homePlayers->merge($awayPlayers);
-        
-        // filter out dead and retired
-        $allPlayers = $allPlayers->filter(function ($player) {
-            return !in_array($player->status, [PlayerStatus::DEAD, PlayerStatus::RETIRED]);
-        })->values();       
+        $allPlayers = $this->filterOutTheDead($allPlayers);  
 
         $recoveredPlayers = [];
 
@@ -105,5 +109,35 @@ class MatchService
         }
 
         return $recoveredPlayers;
+    }
+
+    public function awardMVP(MatchGame $matchGame): array
+    {
+        $data = [];
+
+        $teams = [
+            'home' => $matchGame->homeTeam,
+            'away' => $matchGame->awayTeam
+        ];
+
+        foreach ($teams as $side => $team) {
+            if (!$team || !$team->players) {
+                continue;
+            }
+
+            $players = $this->filterOutTheDead($team->players);
+
+            if ($players->isEmpty()) {
+                continue;
+            }
+
+            $mvp = $players->random();
+            $mvp->spp += 4; // Or 6 if you're using official MVP rules
+            $mvp->save();
+
+            $data["{$side}_mvp"] = $mvp;
+        }
+
+        return $data;
     }
 }

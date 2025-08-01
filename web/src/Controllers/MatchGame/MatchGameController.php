@@ -124,14 +124,15 @@ class MatchGameController extends AccessController
         $recoveredPlayers = $this->matchService->restorePlayersFromMissNextGame($currentMatch);
 
         // award MVP spp
-
+        $mvpPlayers = $this->matchService->awardMVP($currentMatch);
 
         // calculate winnings - send to form to enter D6
 
         return $this->view->render($response, 'match/end_match.twig', [
             'match' => $currentMatch,
-            'userTeamId' => $team->id,
-            'recoveredPlayers' => $recoveredPlayers
+            'user_team_id' => $team->id,
+            'recovered_players' => $recoveredPlayers,
+            'mvp_players' => $mvpPlayers
         ]);
-    }    
+    }
 }
