@@ -6,6 +6,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 use App\Helpers\UserHelper;
 
+use App\Models\MatchGame;
 use App\Models\Team;
 
 abstract class AccessController
@@ -37,5 +38,23 @@ abstract class AccessController
         }
 
         return [$team, null];
+    }
+
+    protected function getAuthorisedMatchOrFail(Request $request, Response $response, array $args)
+    {
+        $matchId = $args['match_id'] ?? '';
+
+        if (empty($matchId)) {
+            $response->getBody()->write('Missing match ID');
+            return [null, $response->withStatus(400)];
+        }
+
+        $match = MatchGame::find($matchId);
+        if (!$match) {
+            $response->getBody()->write('Match not found');
+            return [null, $response->withStatus(404)];
+        }
+
+        return [$match, null];
     }
 }

@@ -1,0 +1,87 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - The Kick Off for {{ match.homeTeam.name }} vs {{ match.awayTeam.name }} {% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> - 
+        Pre Match - 
+        {% include 'partials/home_team_name.twig' with {'match': match} %} vs 
+        {% include 'partials/away_team_name.twig' with {'match': match} %}
+        - Roll Fans
+    </p>
+
+    <h2>Kick Off!</h2>
+
+    {% set kickOffMessages = [
+        "The whistle blows — time to make questionable life choices.",
+        "Kick-off! Hope you brought extra bandages.",
+        "And they're off! Some to play, some to survive.",
+        "The ball's in the air — and so are the fists.",
+        "It begins: strategy, brutality, and the occasional miracle.",
+        "Hope your apothecary got a good night's sleep.",
+        "Kick-off! No refunds if you regret this.",
+        "Time for skill, luck, and a fair bit of screaming.",
+        "The calm before the inevitable chaos.",
+        "And so begins another 16 turns of misery.",
+        "Kick-off! Don't trip on your own dreams.",
+        "The ref is ready. The fans are rabid. The teams? Questionable.",
+        "Start the game, and may Nuffle have mercy.",
+        "Kick-off whistle: the sound of doomed ambitions.",
+        "Here we go — Blood Bowl doesn't play nice.",
+        "Balls flying, players crying, it's go time!",
+        "Play begins — only half of you will walk away.",
+        "First whistle: time to forget your tactics.",
+        "Let's pretend this is going to go well.",
+        "Kick-off! Strategy ends now.",
+        "This is either the beginning of glory, or the warm-up to disaster.",
+        "Mayhem starts in 3... 2... too late.",
+        "Ready or not, here comes the pain.",
+        "The ball is live — and soon someone won't be.",
+        "Every match starts the same: badly.",
+        "The game starts and so do the excuses.",
+        "Kick-off! A perfect moment to forget how to play.",
+        "The journey of a thousand injuries begins with one kick.",
+        "The crowd roars, the teams clash, and nobody has a plan.",
+        "It's live! Not for long, though.",
+        "Hope was high — but the kick-off just crushed it.",
+        "Kick-off: the only moment where everyone still believes.",
+        "The ball is in play, and sanity is out the window.",
+        "The grass is green. It won't be for long.",
+        "Blood Bowl starts now — what could possibly go wrong?",
+        "Kick-off! Already regretting your roster?",
+        "The sun shines, the crowd cheers, the violence begins.",
+        "It starts with a kick and ends in therapy.",
+        "And we're off — to a bad start, most likely.",
+        "Let the bruising begin.",
+        "Kick-off time! This will be a tale for the infirmary.",
+        "The coin toss was fair. That's the last fair thing you'll see.",
+        "The game begins. Hide your halflings.",
+        "Kick-off! The most organised part of this sport.",
+        "We begin... and logic departs.",
+        "Let's get this farce officially started.",
+        "Kick-off: the only part they rehearsed.",
+        "One small kick for man, one giant leap into nonsense.",
+        "And here we go — all downhill from here.",
+        "Welcome to the game. Abandon hope."
+    ] %}
+
+    <p class="retirement-message" style="font-style: italic; font-size: 1.2em; margin-top: 1em;">
+        <strong>{{ random(kickOffMessages) }}</strong>
+    </p>
+
+    <div class="additional-info">
+       <h4>Weather</h4>
+       <p>{{ match_info.weather.eventValue }}</p>
+
+       <h4>Fan Factor</h4>
+       <p>{{ match_info.fan_factor.eventValue }}</p>
+       <p>{{ match_info.fan_factor.notes }}</p>
+    </div>
+
+    <p style="margin-top: 1.5em;">
+        <a href="/team/view/{{user_team_id}}">← Back to Team</a>
+    </p>
+
+{% endblock %}

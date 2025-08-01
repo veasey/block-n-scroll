@@ -4,7 +4,7 @@ namespace App\Controllers\TeamManager;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Controllers\TeamManager\Shared\AccessController;
-use App\Enums\MatchEventType;
+use App\Enums\Match\EventType;
 use App\Enums\Player\PlayerStatus;
 use Slim\Views\Twig;
 
@@ -27,7 +27,7 @@ class QuickButtonController extends AccessController
         }
 
         $eventType = $args['event_type'] ?? null;
-        $eventEnum = MatchEventType::tryFrom($eventType);
+        $eventEnum = EventType::tryFrom($eventType);
         if (!$eventEnum) {
             $response->getBody()->write('Invalid event type');
             return [null, null, $response->withStatus(404)];

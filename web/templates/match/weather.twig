@@ -1,0 +1,33 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - Team - {{ team.name }} - Start Match - PreMatch Sequence{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> - 
+        Pre Match - 
+        {% include 'partials/home_team_name.twig' with {'match': match} %} vs 
+        {% include 'partials/away_team_name.twig' with {'match': match} %}
+        - Weather
+    </p>
+
+    <h2>What's the weather like?</h2>
+
+    <form method="post" action="/match/{{match.id}}/weather" class="form-horizontal">
+        <div class="form-section">   
+            <div class="form-group">
+                <label for="weather_roll">Weather Roll:</label>
+                <select name="weather_roll" id="weather_roll" class="form-control"  required>
+                    {% for num in 1..12 %}
+                        <option value="{{ num }}">{{ num }}</option>
+                    {% endfor %}
+                </select>
+            </div>        
+            <div class="form-section">
+                <button type="submit">Submit Weather Result</button>
+            </div>
+        </div>      
+    </form>
+    
+{% endblock %}

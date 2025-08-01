@@ -1,0 +1,5 @@
+{% if match.awayTeam.id %}
+    <a href="/team/view/{{ match.away_team_id }}">{{ match.awayTeam.name }}</a>
+{% else %}
+    {{ match.away_team_name }}
+{% endif %}

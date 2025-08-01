@@ -1,6 +1,8 @@
 <?php
 namespace App\Services;
 
+use App\Enums\LogType;
+use App\Enums\Match\EventType;
 use Illuminate\Database\Eloquent\Collection;
 
 use App\Repositories\MatchGameRepository;
@@ -139,5 +141,18 @@ class MatchService
         }
 
         return $data;
+    }
+
+    public function getMatchSetupInfo(MatchGame $matchGame): array
+    {
+        $events = EventLog::where('match_id', $matchGame->id)
+            ->where('event_type', LogType::MATCH_EVENT)
+            ->whereIn('event_key', [EventType::WEATHER, EventType::FAN_ATTENDANCE])
+            ->get();
+
+        return [
+            'weather' => $events->where('event_key', EventType::WEATHER->value)->first() ?? null,
+            'fan_factor' => $events->where('event_key', EventType::FAN_ATTENDANCE->value)->first() ?? null
+        ];
     }
 }

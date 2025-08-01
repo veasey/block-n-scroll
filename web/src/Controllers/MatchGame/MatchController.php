@@ -16,7 +16,7 @@ use App\Repositories\MatchGameRepository;
 use App\Services\EventLogging\MatchEventLoggingService;
 use App\Services\MatchService;
 
-class MatchGameController extends AccessController
+class MatchController extends AccessController
 {
     protected $logRepo;
     protected $teamRepo;
@@ -42,75 +42,6 @@ class MatchGameController extends AccessController
         $this->view = $view;
     }
 
-    public function view(Request $request, Response $response, array $args): mixed
-    {
-        $matchId = $args['match_id'] ?? '';
-        $match = MatchGame::find($matchId);
-        if (!$match) {
-            $response->getBody()->write('Match not found');
-            $response->withStatus(404);
-        }
-
-        $params = PaginationHelper::getPaginationParams();
-        $logs = $this->logRepo->getMatchEventLogs($match);
-
-        $logPage = $logs->slice($params['offset'], $params['perPage']);
-        $totalPages = ceil($logs->count() / $params['perPage']);
-
-        return $this->view->render($response, 'match/view.twig', [
-            'match' => $match,
-            'logs' => $logPage,
-            'totalPage' => $totalPages
-        ]);
-    }
-
-    public function listAll(Request $request, Response $response, array $args): mixed
-    {
-        $params = PaginationHelper::getPaginationParams();
-        
-        $totalCount = MatchGame::count();
-
-        // Use query builder with offset and limit (skip and take)
-        $matchPage = MatchGame::query()
-            ->skip($params['offset'])
-            ->take($params['perPage'])
-            ->get();
-
-        $totalPages = ceil($totalCount / $params['perPage']);
-
-        return $this->view->render($response, 'match/list.twig', [
-            'matches' => $matchPage,
-            'totalPages' => $totalPages,
-            'page' => $params['page'],
-        ]);
-    }
-
-    public function listTeamMatches(Request $request, Response $response, array $args): mixed
-    {
-        $params = PaginationHelper::getPaginationParams();
-        
-        $teamId = $args['team_id'] ?? null;
-
-        $totalCount = MatchGame::where('home_team_id', $teamId)
-            ->orWhere('away_team_id', $teamId)
-            ->count();
-
-        $matches = MatchGame::where('home_team_id', $teamId)
-            ->orWhere('away_team_id', $teamId)
-            ->skip($params['offset'])
-            ->take($params['perPage'])
-            ->get();
-
-        $totalPages = ceil($totalCount / $params['perPage']);
-
-        return $this->view->render($response, 'match/list.twig', [
-            'matches' => $matches,
-            'totalPages' => $totalPages,
-            'page' => $params['page'],
-            'team' => Team::find($teamId)
-        ]);
-    }
-
     public function showStartMatchForm(Request $request, Response $response, array $args)
     {
         [$team, $errorResponse] = $this->getRecognisedTeamOrFail($request, $response, $args);
@@ -134,7 +65,10 @@ class MatchGameController extends AccessController
         $match = $this->matchService->startOrJoinMatch($team, $awayTeamId, $awayTeamName);
         $this->eventLoggerService->logMatchStart($match);
 
-        return $response->withHeader('Location', '/team/view/' . $team->id)->withStatus(302);
+        // Redirect to weather form
+        return $response
+        ->withHeader('Location', "/match/{$match->id}/gate")
+        ->withStatus(302);
     }
 
     public function endMatch(Request $request, Response $response, array $args)

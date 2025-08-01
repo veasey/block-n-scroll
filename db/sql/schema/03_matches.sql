@@ -8,6 +8,8 @@ CREATE TABLE `match` (
     league_id INT,
     home_score INT,
     away_score INT,
+    home_fans INT,
+    away_fans INT,
     notes TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
