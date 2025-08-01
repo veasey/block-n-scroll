@@ -6,6 +6,7 @@ use App\Repositories\TeamRepository;
 
 use App\Enums\TeamStatus;
 use App\Enums\Player\CasualtyTable;
+use App\Enums\Player\PlayerStatus;
 use App\Models\EventLog;
 use App\Models\Team;
 use App\Models\MatchGame;
@@ -67,11 +68,18 @@ class MatchService
         return $matchGame;
     }
 
-    public function restorePlayersFromMissNextGame(MatchGame $matchGame): bool
+    public function restorePlayersFromMissNextGame(MatchGame $matchGame): array
     {
         $homePlayers = $matchGame->homeTeam->players;
         $awayPlayers = $matchGame->awayTeam?->players ?? collect();
         $allPlayers = $homePlayers->merge($awayPlayers);
+        
+        // filter out dead and retired
+        $allPlayers = $allPlayers->filter(function ($player) {
+            return !in_array($player->status, [PlayerStatus::DEAD, PlayerStatus::RETIRED]);
+        })->values();       
+
+        $recoveredPlayers = [];
 
         foreach ($allPlayers as $player) {
             if (!$player->miss_next_game) {
@@ -90,9 +98,12 @@ class MatchService
             }
 
             $player->miss_next_game = false;
+            $player->status = PlayerStatus::ACTIVE;
             $player->save();
+
+            $recoveredPlayers[] = $player;
         }
 
-        return true;
+        return $recoveredPlayers;
     }
 }

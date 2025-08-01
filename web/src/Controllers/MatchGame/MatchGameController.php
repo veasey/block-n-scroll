@@ -114,18 +114,24 @@ class MatchGameController extends AccessController
         if ($errorResponse) return $errorResponse;
 
         $currentMatch = $this->matchRepo->getTeamCurrentMatch($team->id);
+        if (!$currentMatch) {
+            $response->getBody()->write('No valid match in progress to end.');
+            return $response->withStatus(409);
+        }
         $this->matchService->endMatch($currentMatch);
 
         // unmark and MNG - use event logs to wake up those that were not MNG this match
-        $this->matchService->restorePlayersFromMissNextGame($currentMatch);
+        $recoveredPlayers = $this->matchService->restorePlayersFromMissNextGame($currentMatch);
 
         // award MVP spp
+
 
         // calculate winnings - send to form to enter D6
 
         return $this->view->render($response, 'match/end_match.twig', [
             'match' => $currentMatch,
-            'userTeamId' => $team->id
+            'userTeamId' => $team->id,
+            'recoveredPlayers' => $recoveredPlayers
         ]);
     }    
 }

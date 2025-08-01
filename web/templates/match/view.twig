@@ -59,6 +59,20 @@
             <th>Match End</th>
             <td>{{ match.updated_at|date('Y/m/d H:i') }}</td>
         </tr>
+        <th>Duration</th>
+        <td>
+            {% set duration = match.updated_at.diff(match.created_at) %}
+            {% set total_minutes = duration.days * 1440 + duration.hours * 60 + duration.minutes %}
+
+            {% if total_minutes < 2 %}
+                <strong>Suspiciously Short</strong>
+            {% else %}
+                {% if duration.hours > 0 %}
+                    {{ duration.hours }}h
+                {% endif %}
+                {{ duration.minutes }}m
+            {% endif %}
+        </td>
         <tr>
             <th>Notes</th>
             <td>{{ match.notes|default('No notes.')|nl2br }}</td>

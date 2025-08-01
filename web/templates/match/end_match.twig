@@ -7,7 +7,7 @@
     <p class="breadcrumbs">
         <a href="/">Home</a> - 
         Ending Match: 
-        <a href="/team/view/{{ match.away_team_id }}">{{ match.homeTeam.name }}</a> vs 
+        <a href="/team/view/{{ match.home_team_id }}">{{ match.homeTeam.name }}</a> vs 
         {% if match.awayTeam.id %}
             <a href="/team/view/{{ match.away_team_id }}">{{ match.awayTeam.name }}</a>
         {% else %}
@@ -17,7 +17,7 @@
 
     <h2>
         Ending Match: 
-        <a href="/team/view/{{ match.away_team_id }}">{{ match.homeTeam.name }}</a> vs 
+        <a href="/team/view/{{ match.home_team_id }}">{{ match.homeTeam.name }}</a> vs 
         {% if match.awayTeam.id %}
             <a href="/team/view/{{ match.away_team_id }}">{{ match.awayTeam.name }}</a>
         {% else %}
@@ -88,6 +88,21 @@
     <p class="retirement-message" style="font-style: italic; font-size: 1.2em; margin-top: 1em;">
         <strong>{{ random(messages) }}</strong>
     </p>
+
+    <div class="additional-info">
+        {% if recoveredPlayers %}
+            <p>The following players are now ready to play bloodbowl again. </p>
+            <ul>
+            {% for recoveredPlayer in recoveredPlayers %}
+                <li> 
+                    <a href="/player/view/{{ recoveredPlayer.id }}">
+                        {{ recoveredPlayer.name }} (#{{ recoveredPlayer.number}}) - {{ recoveredPlayer.team.name }}
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
 
     <p style="margin-top: 1.5em;">
         <a href="/team/view/{{userTeamId}}">← Back to Team</a>

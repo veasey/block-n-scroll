@@ -5,6 +5,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Controllers\TeamManager\Shared\AccessController;
 use App\Enums\EventType;
+use App\Enums\Player\PlayerStatus;
 use Slim\Views\Twig;
 
 class QuickButtonController extends AccessController
@@ -44,6 +45,7 @@ class QuickButtonController extends AccessController
         $players = $team->players()
             ->where('dead', false)
             ->where('miss_next_game', false)
+            ->where('status', PlayerStatus::ACTIVE)
             ->get();
 
         $eventType = $eventEnum->value;

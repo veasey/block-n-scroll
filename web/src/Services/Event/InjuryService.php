@@ -3,6 +3,7 @@ namespace App\Services\Event;
 
 use App\Models\Player;
 use App\Enums\Player\CasualtyTable;
+use App\Enums\Player\PlayerStatus;
 
 class InjuryService
 {
@@ -33,19 +34,21 @@ class InjuryService
 
     private function markAsMNG(Player $player) {
         $player->miss_next_game = true;
+        $player->status = PlayerStatus::INJURED;
     }
 
     private function markAsNIAndMNG(Player $player) {
         $player->miss_next_game = true;
-        // optional: add injury record
+        $player->status = PlayerStatus::INJURED;
     }
 
     private function applyStatLossAndMNG(Player $player) {
         $player->miss_next_game = true;
-        // randomly reduce a stat here
+        $player->status = PlayerStatus::INJURED;
     }
 
     private function markAsDead(Player $player) {
         $player->dead = true;
+        $player->status = PlayerStatus::DEAD;
     }
 }
