@@ -48,4 +48,4 @@ P4 - Match tracking + team sync
 29 Jul - Created player update controller. Got stat reduction logic working.
 30 Jul - Added creation of a new match
 31 Jul - Bug fixes around injury logging. Enabled Retiring/Fireing of players. Sorted clearing MNG on end match.
-01 Aug - MNG End of match logic. Refactored event logging service. pagination to match view lists. Various other tweaks and fixes.
+01 Aug - MNG End of match logic. Refactored event logging service. pagination to match view lists. Various other tweaks and fixes. pre game sequence.
