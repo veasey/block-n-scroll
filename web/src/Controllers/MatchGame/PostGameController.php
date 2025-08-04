@@ -62,9 +62,6 @@ class PostGameController extends AccessController
         [$homeWinnings, $awayWinnings] = $this->matchService->calculateWinnings($currentMatch);
         $this->eventLoggerService->logMatchEndWinningsAwarded($currentMatch, $homeWinnings, $awayWinnings);
         
-        // update fans
-        $this->matchService->updatePopularity($currentMatch);
-
         return $this->view->render($response, 'match/end/end_match.twig', [
             'match' => $currentMatch,
             'user_team_id' => $team->id,
@@ -72,5 +69,20 @@ class PostGameController extends AccessController
             'mvp_players' => $mvpPlayers,
             'winnings' => ['home' => $homeWinnings, 'away' => $awayWinnings]
         ]);
+    }
+
+    public function showUpdatePopularityForm(Request $request, Response $response, array $args)
+    {
+        [$team, $errorResponse] = $this->getRecognisedTeamOrFail($request, $response, $args);
+        if ($errorResponse) return $errorResponse;
+    }
+
+    public function updatePopularity(Request $request, Response $response, array $args)
+    {
+        [$team, $errorResponse] = $this->getRecognisedTeamOrFail($request, $response, $args);
+        if ($errorResponse) return $errorResponse;
+
+        // update fans
+        $this->matchService->updatePopularity($currentMatch);
     }
 }

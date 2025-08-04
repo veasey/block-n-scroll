@@ -60,12 +60,12 @@ class MatchService
     public function endMatch(MatchGame $matchGame): MatchGame
     {
         if ($matchGame->homeTeam) {
-            $matchGame->homeTeam->status = TeamStatus::IDLE;
+            $matchGame->homeTeam->status = TeamStatus::POST_SEQUENCE;
             $matchGame->homeTeam->save();
         }
 
         if ($matchGame->awayTeam) {
-            $matchGame->awayTeam->status = TeamStatus::IDLE;
+            $matchGame->awayTeam->status = TeamStatus::POST_SEQUENCE;
             $matchGame->awayTeam->save();
         }
 
