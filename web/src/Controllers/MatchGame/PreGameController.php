@@ -43,7 +43,7 @@ class PreGameController extends AccessController
         [$team, $errorResponse] = $this->getRecognisedTeamOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
 
-        return $this->view->render($response, 'match/start_match.twig', [
+        return $this->view->render($response, 'match/start/start_match.twig', [
             'team' => $team, 
             'eligibleTeams' => $this->teamRepo->getEligableTeams($team)
         ]);
@@ -71,7 +71,7 @@ class PreGameController extends AccessController
     {
         [$match, $errorResponse] = $this->getAuthorisedMatchOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
-        return $this->view->render($response, 'match/gate.twig', ['match' => $match]);
+        return $this->view->render($response, 'match/start/gate.twig', ['match' => $match]);
     }
 
     public function submitGate(Request $request, Response $response, array $args)
@@ -101,7 +101,7 @@ class PreGameController extends AccessController
     {
         [$match, $errorResponse] = $this->getAuthorisedMatchOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
-        return $this->view->render($response, 'match/weather.twig', ['match' => $match]);
+        return $this->view->render($response, 'match/start/weather.twig', ['match' => $match]);
     }
 
     public function submitWeather(Request $request, Response $response, array $args)
@@ -139,7 +139,7 @@ class PreGameController extends AccessController
 
         $matchInfo = $this->matchService->getMatchSetupInfo($match);
 
-        return $this->view->render($response, 'match/kickoff.twig', [
+        return $this->view->render($response, 'match/start/kickoff.twig', [
             'match' => $match,
             'user_team_id' => $team->id,
             'match_info' => $matchInfo

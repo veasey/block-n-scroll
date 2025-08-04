@@ -1,0 +1,9 @@
+<h4>MVPs</h4>
+<p>
+    {% if mvp_players.home_mvp %}
+        {% include 'partials/player_link.twig' with {'player': mvp_players.home_mvp} %}
+    {% endif %}
+    {% if mvp_players.away_mvp %}
+        <br /> {% include 'partials/player_link.twig' with {'player': mvp_players.away_mvp} %}
+    {% endif %}
+</p>

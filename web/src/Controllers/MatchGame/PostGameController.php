@@ -62,7 +62,10 @@ class PostGameController extends AccessController
         [$homeWinnings, $awayWinnings] = $this->matchService->calculateWinnings($currentMatch);
         $this->eventLoggerService->logMatchEndWinningsAwarded($currentMatch, $homeWinnings, $awayWinnings);
         
-        return $this->view->render($response, 'match/end_match.twig', [
+        // update fans
+        $this->matchService->updatePopularity($currentMatch);
+
+        return $this->view->render($response, 'match/end/end_match.twig', [
             'match' => $currentMatch,
             'user_team_id' => $team->id,
             'recovered_players' => $recoveredPlayers,

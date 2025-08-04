@@ -1,0 +1,47 @@
+{% if home_score == 0 and away_score == 0 %}
+    {% set endMatchMessages = [
+        "A masterclass in doing absolutely nothing.",
+        "They came, they played, they failed to score.",
+        "Zeroes on the board, and in the stands.",
+        "If boredom were a strategy, both sides nailed it.",
+        "Defences strong, attacks… missing.",
+        "No touchdowns, no casualties, just yawns.",
+        "Did they play, or just jog around for an hour?",
+        "Highlight of the game: the halftime snacks.",
+        "An inspiring reminder that not every game is worth remembering.",
+        "That wasn't Blood Bowl — that was a stretching session."
+    ] %}
+{% elseif home_score == away_score %}
+    {% set endMatchMessages = [
+        "Nobody wins, but nobody sulks too hard either.",
+        "A clash of titans — or just two teams too tired to finish it.",
+        "Evenly matched… or equally mediocre?",
+        "Score's even. Emotions? Not so much.",
+        "They battled to a standstill — and then to the buffet.",
+        "A draw: the universe's way of saying 'meh.'",
+        "Well-fought! Shame about the lack of closure.",
+        "Both teams claim moral victory. Neither is right.",
+        "Deadlock. At least the fans got their money's worth. Maybe.",
+        "Stalemate! Like chess, but with more mud and screaming."
+    ] %}
+{% else %}
+    {% set endMatchMessages = [
+        "And that's all she wrote — time to hit the pub!",
+        "Whistles blown, dreams crushed, snacks incoming.",
+        "The pitch breathes a sigh of relief — it's over.",
+        "Another match down, another excuse to brag.",
+        "Everyone survived... barely. Time to log the damage!",
+        "Game's done, egos bruised, spirits questionable.",
+        "Coach says 'good effort', players say 'where's lunch?'",
+        "That's a wrap — now to argue over MVP.",
+        "No more touchdowns, just tall tales and stat sheets.",
+        "Well, that happened. Let's pretend it went to plan."
+    ] %}
+{% endif %}
+
+{% set messages = endMatchMessages %}
+<p class="post-game-message" style="font-style: italic; font-size: 1.2em; margin-top: 1em;">
+    <center>
+        <i>{{ random(messages) }}</i>
+    </center>
+</p>

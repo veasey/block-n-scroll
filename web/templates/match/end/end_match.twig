@@ -1,0 +1,58 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - End Match {{ match.homeTeam.name }} vs {{ match.awayTeam.name }} {% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> - 
+        Ending Match: 
+        <a href="/team/view/{{ match.home_team_id }}">{{ match.homeTeam.name }}</a> vs 
+        {% if match.awayTeam.id %}
+            <a href="/team/view/{{ match.away_team_id }}">{{ match.awayTeam.name }}</a>
+        {% else %}
+            {{ match.away_team_name }}
+        {% endif %}
+    </p>
+
+    <h2>
+        Ending Match: 
+        <a href="/team/view/{{ match.home_team_id }}">{{ match.homeTeam.name }}</a> vs 
+        {% if match.awayTeam.id %}
+            <a href="/team/view/{{ match.away_team_id }}">{{ match.awayTeam.name }}</a>
+        {% else %}
+            {{ match.away_team_name }}
+        {% endif %}
+    </h2>
+
+    {% include 'match/end/partials/match_result.twig' with {'match': match} %}
+
+    <div class="column-container">
+        <div class="box left">
+            {% include 'match/end/partials/winnings.twig' with {'match': match, 'winnings': winnings} %}
+        </div>
+        <div class="box right">
+            {% include 'match/end/partials/mvp.twig' with {'mvp_players': mvp_players} %}
+        </div>
+    </div>
+    
+    {% include 'match/end/partials/end_match_message.twig' with {'match': match} %}
+
+    <div class="additional-info">
+        {% if recovered_players %}
+            <p>The following players are now ready to play bloodbowl again. </p>
+            <ul>
+            {% for recovered_player in recovered_players %}
+                <li> 
+                    {% include 'partials/player_link.twig' with {'player': recovered_player} %}
+                </li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+    <p style="margin-top: 1.5em;">
+        <a href="/team/view/{{user_team_id}}">← Back to Team</a>
+    </p>
+
+{% endblock %}

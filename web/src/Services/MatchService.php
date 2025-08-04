@@ -180,4 +180,9 @@ class MatchService
 
         return true;
     }
+
+    public function updatePopularity(MatchGame $matchGame): bool 
+    {
+        return false;
+    }
 }
