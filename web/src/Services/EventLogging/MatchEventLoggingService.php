@@ -119,4 +119,31 @@ class MatchEventLoggingService extends EventLoggerService
             $matchGame
         );
     }
+
+    public function logMatchEndWinningsAwarded(MatchGame $matchGame, int $homeWinnings, int $awayWinnings) {
+        
+        // log home team winnings
+        $this->log(
+            LogType::MATCH_EVENT->value,
+            "$homeWinnings Gold",
+            EventType::WINNINGS->value,
+            '',
+            $matchGame->homeTeam->coach,
+            $matchGame->homeTeam,
+            null,
+            $matchGame
+        );
+
+        // log away team winnings
+        $this->log(
+            LogType::MATCH_EVENT->value,
+            "$awayWinnings Gold",
+            EventType::WINNINGS->value,
+            '',
+            ($matchGame->awayTeam) ? $matchGame->awayTeam->coach : null,
+            ($matchGame->awayTeam) ? $matchGame->awayTeam : null,
+            null,
+            $matchGame
+        );
+    }
 }

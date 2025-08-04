@@ -84,6 +84,19 @@
         ] %}
     {% endif %}
 
+    <h4>Winnings</h4>
+    <p>
+        <a href="/team/view/{{ match.home_team_id }}">{{ match.homeTeam.name }}</a> won {{ winnings.home }}
+    </p>
+    <p>
+        {% if match.awayTeam.id %}
+            <a href="/team/view/{{ match.away_team_id }}">{{ match.awayTeam.name }}</a>
+        {% else %}
+            {{ match.away_team_name }}
+        {% endif %}
+        won {{ winnings.away }}
+    </p>
+
     {% if mvp_players.home_mvp %}
         <p><strong>MVP</strong> awarded to {% include 'partials/player_link.twig' with {'player': mvp_players.home_mvp} %}
     {% endif %}
@@ -93,7 +106,7 @@
     {% endif %}
 
     {% set messages = endMatchMessages %}
-    <p class="retirement-message" style="font-style: italic; font-size: 1.2em; margin-top: 1em;">
+    <p class="post-game-message" style="font-style: italic; font-size: 1.2em; margin-top: 1em;">
         <strong>{{ random(messages) }}</strong>
     </p>
 

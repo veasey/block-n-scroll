@@ -82,6 +82,7 @@ class ViewController
             ->orWhere('away_team_id', $teamId)
             ->skip($params['offset'])
             ->take($params['perPage'])
+            ->orderBy('created_at', 'desc')
             ->get();
 
         $totalPages = ceil($totalCount / $params['perPage']);

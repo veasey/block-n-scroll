@@ -155,4 +155,29 @@ class MatchService
             'fan_factor' => $events->where('event_key', EventType::FAN_ATTENDANCE->value)->first() ?? null
         ];
     }
+
+    public function calculateWinnings(MatchGame $matchGame): array
+    {
+        $totalFanGold = ($matchGame->home_fans + $matchGame->away_fans) * 10000;
+
+        $homeWinnings = ($totalFanGold / 2) + ($matchGame->home_fans * 10000);
+        $awayWinnings = ($totalFanGold / 2) + ($matchGame->away_fans * 10000);
+
+        $this->allocateWinnings($matchGame, $homeWinnings, $awayWinnings);
+
+        return [$homeWinnings, $awayWinnings];      
+    }
+
+    public function allocateWinnings(MatchGame $matchGame, int $homeWinnings, int $awayWinnings): bool
+    {
+        $matchGame->homeTeam->treasury += $homeWinnings;
+        $matchGame->homeTeam->save();
+
+        if ($matchGame->awayTeam) {
+            $matchGame->awayTeam->treasury += $awayWinnings;
+            $matchGame->awayTeam->save();
+        }
+
+        return true;
+    }
 }
