@@ -6,7 +6,7 @@ ANd when PLAYING team sheet should link to opposing team AND OR current match li
 AND matches_player should not show in progress matches
 REPLACE ERROR TO VIEW MATCH
 IF USER WANDERS OFF DURING PRE GAME -> links to continue OR just play.
-Should not be allowed to continue against NO TEAM
+
 
 CREATE TEAM FOR BREAKS ON SUBMISSION
 

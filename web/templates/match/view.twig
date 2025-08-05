@@ -9,35 +9,29 @@
     <p class="breadcrumbs">
         <a href="/">Home</a> -
         <a href="/match/view/all">Matches</a> -
-        Match {{ match.id }}
+        <a href="/match/view/{{match.id}}">Match #{{match.id}}</a>
     </p>
 
-    <h1>Match Details</h1>
-
     <h2>
-        <a href="/team/view/{{ match.home_team_id }}">{{ match.homeTeam.name }}</a>
-        vs
-        {% if match.awayTeam.id %}
-            <a href="/team/view/{{ match.away_team_id }}">{{ match.awayTeam.name }}</a>
-        {% else %}
-            {{ match.away_team_name }}
-        {% endif %}
+        Match #{{match.id}}:
+        {% include 'partials/home_team_name.twig' with {'match': match} %} vs 
+        {% include 'partials/away_team_name.twig' with {'match': match} %}
     </h2>
+
+    {% if match.homeTeam.status == 'playing' %}
+        <h1>In Progress</h2>
+    {% else %}
+        {% include 'match/end/partials/match_result.twig' with {'match': match} %}
+    {% endif %}
 
     <table class="match-details">
         <tr>
             <th>Home Team</th>
-            <td><a href="/team/view/{{match.home_team_id}}">{{ match.homeTeam.name }}</a></td>
+            <td>{% include 'partials/home_team_name.twig' with {'match': match} %}</td>
         </tr>
         <tr>
             <th>Away Team</th>
-            <td> 
-                {% if match.awayTeam %}
-                    <a href="/team/view/{{match.away_team_id}}">{{ match.awayTeam.name}}</a>
-                {% else %}
-                    {{ match.away_team_name }}
-                {% endif %}
-            </td>
+            <td>{% include 'partials/away_team_name.twig' with {'match': match} %}</td>
         </tr>
         <tr>
             <th>Home Score</th>
@@ -49,7 +43,7 @@
         </tr>
         <tr>
             <th>League</th>
-            <td>{{ match.league.name ?? '—' }}</td>
+            <td>{{ match.league.name ?? '-' }}</td>
         </tr>
         <tr>
             <th>Match Start</th>
@@ -57,26 +51,31 @@
         </tr>
         <tr>
             <th>Match End</th>
-            <td>{{ match.updated_at|date('Y/m/d H:i') }}</td>
-        </tr>
-        <th>Duration</th>
-        <td>
-            {% set duration = match.updated_at.diff(match.created_at) %}
-            {% set total_minutes = duration.days * 1440 + duration.hours * 60 + duration.minutes %}
-
-            {% if total_minutes < 2 %}
-                <strong>Suspiciously Short</strong>
-            {% else %}
-                {% if duration.hours > 0 %}
-                    {{ duration.hours }}h
+            <td>
+                {% if match.homeTeam.status != 'playing' %}
+                    {{ match.updated_at|date('Y/m/d H:i') }}
+                {% else %}
+                    -
                 {% endif %}
-                {{ duration.minutes }}m
-            {% endif %}
-        </td>
-        <tr>
-            <th>Notes</th>
-            <td>{{ match.notes|default('No notes.')|nl2br }}</td>
+            </td>
         </tr>
+
+        {% if match.homeTeam.status != 'playing' %}
+            <th>Duration</th>
+            <td>
+                {% set duration = match.updated_at.diff(match.created_at) %}
+                {% set total_minutes = duration.days * 1440 + duration.hours * 60 + duration.minutes %}
+
+                {% if total_minutes < 2 %}
+                    <strong>Suspiciously Short</strong>
+                {% else %}
+                    {% if duration.hours > 0 %}
+                        {{ duration.hours }}h
+                    {% endif %}
+                    {{ duration.minutes }}m
+                {% endif %}
+            </td>
+        {% endif %}
     </table>
 
     {% if logs|length == 0 %}

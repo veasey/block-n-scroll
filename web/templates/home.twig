@@ -9,6 +9,39 @@
         <a href="/team">Team Management</a>
         <a href="/leagues">League Tracker</a>
     </nav>
+
+    <h3>Latest Matches</h3>
+    <table>
+        <thead>
+            <th>Match Start Time</th>
+            <th>Teams</th>
+            <th>Status</th>
+            <th>&nbsp;</th>
+        </thead>
+        {% for match in matches %}
+            <tr>
+                <td>
+                    {{match.created_at|date("l j F Y \\a\\t H:i")}}
+                </td>
+                <td>
+                    {% include 'partials/home_team_name.twig' with {'match': match} %} ({{match.home_score ?? 0}}) vs 
+                    {% include 'partials/away_team_name.twig' with {'match': match} %} ({{match.away_core ?? 0}})
+                </td>
+                <td>
+                    {% if match.homeTeam.status == 'playing' %}IN PROGRESS
+                    {% elseif match.homeTeam.status == 'postgame_sequence' %}POST GAME SEQUENCE
+                    {% else %}CONCLUDED
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="/match/view/{{match.id}}">
+                        View
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
     <div class="news">
         <h2>Latest News</h2>
         <ul>
