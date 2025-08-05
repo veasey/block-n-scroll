@@ -58,6 +58,11 @@ class PreGameController extends AccessController
         $awayTeamId = (int) $data['opponent_team_id'];
         $awayTeamName = $data['unregistered_name'] ?? '';
 
+        if (!$awayTeamId && empty($awayTeamName)) {
+            $response->getBody()->write("A team cannot play with itself.");
+            return $response->withStatus(404);
+        }
+
         $match = $this->matchService->startOrJoinMatch($team, $awayTeamId, $awayTeamName);
         $this->eventLoggerService->logMatchStart($match);
 

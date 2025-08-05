@@ -4,6 +4,7 @@
 {% block scripts %}
     {{ parent() }}
     <script src="/js/match/eligable-team-count.js"></script>
+    <script src="/js/match/ensure-team-selected.js"></script>
 {% endblock %}
 
 
@@ -17,7 +18,7 @@
 
 <h2>Start a Match</h2>
 
-<form method="post" action="/match/create" class="form-horizontal">
+<form method="post" action="/match/create" class="form-horizontal" id="start_match_form">
     <input type="hidden" name="team_id" value="{{ team.id }}">
 
     <div class="form-section">
