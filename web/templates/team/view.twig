@@ -14,23 +14,25 @@
     <h2>{{ team.name }} [{{ team.status }}]</h2>
     <p class="team-description">{{ team.description }}</p>
 
-    <div class="team-quick-buttons">
-    {% if team.status == 'playing' %}
-        <a href='/team/quick/{{ team.id }}/injury' class="quick-btn" title="Log Injury">🩸 Player Injured</a>
-        <a href='/team/quick/{{ team.id }}/casualty' class="quick-btn" title="Mark Casualty Caused">✊ Casualty Caused</a>
-        <a href='/team/quick/{{ team.id }}/touchdown' class="quick-btn" title="Add Touchdown">🏉 Touch Down</a>
-        <a href='/team/quick/{{ team.id }}/completion' class="quick-btn" title="Add Completion">🤾🏻‍♂️ Completion</a>
-        <form action="/match/end" method="post">
-            <input type="hidden" id="team_id" name="team_id" value="{{team.id}}" />
-            <button class="quick-btn" title="Start Match">🏁 End Match</button>
-        </form>
-    {% else %}
-        <form action="/match/start" method="post">
-            <input type="hidden" id="team_id" name="team_id" value="{{team.id}}" />
-            <button class="quick-btn" title="Start Match">🏉 Start Match</button>
-        </form>
+    {% if session.user and session.user.id == team.coach.id %}
+        <div class="team-quick-buttons">
+            {% if team.status == 'playing' %}
+                <a href='/team/quick/{{ team.id }}/injury' class="quick-btn" title="Log Injury">🩸 Player Injured</a>
+                <a href='/team/quick/{{ team.id }}/casualty' class="quick-btn" title="Mark Casualty Caused">✊ Casualty Caused</a>
+                <a href='/team/quick/{{ team.id }}/touchdown' class="quick-btn" title="Add Touchdown">🏉 Touch Down</a>
+                <a href='/team/quick/{{ team.id }}/completion' class="quick-btn" title="Add Completion">🤾🏻‍♂️ Completion</a>
+                <form action="/match/end" method="post">
+                    <input type="hidden" id="team_id" name="team_id" value="{{team.id}}" />
+                    <button class="quick-btn" title="Start Match">🏁 End Match</button>
+                </form>
+            {% else %}
+                <form action="/match/start" method="post">
+                    <input type="hidden" id="team_id" name="team_id" value="{{team.id}}" />
+                    <button class="quick-btn" title="Start Match">🏉 Start Match</button>
+                </form>
+            {% endif %}
+        </div>
     {% endif %}
-    </div>
 
     <div class="team-header-grid">
         <div class="team-meta">
