@@ -14,6 +14,7 @@ $app->post('/match/{match_id}/weather', PreGameController::class . ':submitWeath
 
 $app->get('/match/{match_id}/kickoff', PreGameController::class . ':kickOff');
 $app->post('/match/end', PostGameController::class . ':endMatch');
+$app->post('/match/{match_id}/update_popularity', PostGameController::class . ':updatePopularity');
 
 $app->get('/match/view/all', ViewController::class . ':listAll');
 $app->get('/match/view/{match_id}', ViewController::class . ':view');

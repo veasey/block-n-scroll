@@ -1,0 +1,16 @@
+<form method="post" action="/match/{{match.id}}/update_popularity" class="form-horizontal">
+    <input type="hidden" name="team_id" value="{{team.id}}">
+    <div class="form-section">   
+        <div class="form-group">
+            <label for="home_roll">{% include 'partials/home_team_name.twig' with {'match': match} %}<br /> Roll:</label>
+            {% include 'partials/dice_roll.twig' with {'name': 'home_roll', 'min': 1, 'max': 6} %}
+        </div>
+        <div class="form-group">
+            <label for="away_roll">{% include 'partials/away_team_name.twig' with {'match': match} %}<br /> Roll:</label>
+            {% include 'partials/dice_roll.twig' with {'name': 'away_roll', 'min': 1, 'max': 6} %}
+        </div>       
+        <div class="form-section">
+            <button type="submit">Submit Roll</button>
+        </div>
+    </div>      
+</form>

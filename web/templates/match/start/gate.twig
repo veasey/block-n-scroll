@@ -18,28 +18,16 @@
         <div class="form-section">   
             <div class="form-group">
                 <label for="home_fan_roll">{% include 'partials/home_team_name.twig' with {'match': match} %}<br />Fan Factor:</label>
-                <select name="injury_roll" id="injury_roll" class="form-control"  required>
-                    {% for num in 1..6 %}
-                        <option value="{{ num }}">{{ num }}</option>
-                    {% endfor %}
-                </select>
+                {% include 'partials/dice_roll.twig' with {'name': 'home_fan_roll', 'min': 1, 'max': 6} %}
             </div>
             <div class="form-group">
                 <label for="away_fan_roll">{% include 'partials/away_team_name.twig' with {'match': match} %}<br />Fan Factor:</label>
-                <select name="away_fan_roll" id="away_fan_roll" class="form-control"  required>
-                    {% for num in 1..6 %}
-                        <option value="{{ num }}">{{ num }}</option>
-                    {% endfor %}
-                </select>
+                {% include 'partials/dice_roll.twig' with {'name': 'away_fan_roll', 'min': 1, 'max': 6} %}
             </div>       
             {% if not match.away_team_id %}
                 <div class="form-group">
                     <label for="away_dedicated_fans">{% include 'partials/away_team_name.twig' with {'match': match} %} Dedicated Fans:</label>
-                    <select name="away_dedicated_fans" id="away_dedicated_fans" class="form-control"  required>
-                        {% for num in 1..6 %}
-                            <option value="{{ num }}">{{ num }}</option>
-                        {% endfor %}
-                    </select>
+                    {% include 'partials/dice_roll.twig' with {'name': 'away_dedicated_fans', 'min': 1, 'max': 6} %}
                 </div>  
             {% endif %}     
         

@@ -7,22 +7,14 @@
     <p class="breadcrumbs">
         <a href="/">Home</a> - 
         Ending Match: 
-        <a href="/team/view/{{ match.home_team_id }}">{{ match.homeTeam.name }}</a> vs 
-        {% if match.awayTeam.id %}
-            <a href="/team/view/{{ match.away_team_id }}">{{ match.awayTeam.name }}</a>
-        {% else %}
-            {{ match.away_team_name }}
-        {% endif %}
+        {% include 'partials/home_team_name.twig' with {'match': match} %} vs 
+        {% include 'partials/away_team_name.twig' with {'match': match} %}
     </p>
 
     <h2>
         Ending Match: 
-        <a href="/team/view/{{ match.home_team_id }}">{{ match.homeTeam.name }}</a> vs 
-        {% if match.awayTeam.id %}
-            <a href="/team/view/{{ match.away_team_id }}">{{ match.awayTeam.name }}</a>
-        {% else %}
-            {{ match.away_team_name }}
-        {% endif %}
+        {% include 'partials/home_team_name.twig' with {'match': match} %} vs 
+        {% include 'partials/away_team_name.twig' with {'match': match} %}
     </h2>
 
     {% include 'match/end/partials/match_result.twig' with {'match': match} %}
@@ -51,8 +43,9 @@
         {% endif %}
     </div>
 
-    <p style="margin-top: 1.5em;">
-        <a href="/team/view/{{user_team_id}}">← Back to Team</a>
-    </p>
+    {% include 'match/end/partials/end_match_message.twig' with {'match': match} %}
+
+    <h2>Roll for Fans</h2>
+    {% include 'match/end/partials/fan_factor_form.twig' with {'match': match, 'team': team} %}
 
 {% endblock %}

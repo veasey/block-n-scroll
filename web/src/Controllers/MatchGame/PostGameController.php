@@ -7,6 +7,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
 
 use App\Controllers\MatchGame\Shared\AccessController;
+use App\Enums\TeamStatus;
 use App\Repositories\EventLogRepository;
 use App\Repositories\MatchGameRepository;
 use App\Services\EventLogging\MatchEventLoggingService;
@@ -42,11 +43,12 @@ class PostGameController extends AccessController
 
         $currentMatch = $this->matchRepo->getTeamCurrentMatch($team->id);
         if (!$currentMatch) {
+            // @todo: send to view match with a notice>
             $response->getBody()->write('No valid match in progress to end.');
             return $response->withStatus(409);
         }
 
-        $this->matchService->endMatch($currentMatch);
+        $this->matchService->setStatus($currentMatch, TeamStatus::POST_SEQUENCE);
         $this->eventLoggerService->logMatchEnd($currentMatch);
 
         // unmark and MNG - use event logs to wake up those that were not MNG this match
@@ -64,17 +66,11 @@ class PostGameController extends AccessController
         
         return $this->view->render($response, 'match/end/end_match.twig', [
             'match' => $currentMatch,
-            'user_team_id' => $team->id,
             'recovered_players' => $recoveredPlayers,
             'mvp_players' => $mvpPlayers,
-            'winnings' => ['home' => $homeWinnings, 'away' => $awayWinnings]
+            'winnings' => ['home' => $homeWinnings, 'away' => $awayWinnings],
+            'team' => $team
         ]);
-    }
-
-    public function showUpdatePopularityForm(Request $request, Response $response, array $args)
-    {
-        [$team, $errorResponse] = $this->getRecognisedTeamOrFail($request, $response, $args);
-        if ($errorResponse) return $errorResponse;
     }
 
     public function updatePopularity(Request $request, Response $response, array $args)
@@ -82,7 +78,26 @@ class PostGameController extends AccessController
         [$team, $errorResponse] = $this->getRecognisedTeamOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
 
+        $currentMatch = $this->matchRepo->getTeamCurrentMatch($team->id);
+        if (!$currentMatch) {
+            // @todo: send to view match with a notice>
+            $response->getBody()->write('No valid match in progress to end.');
+            return $response->withStatus(409);
+        }
+
+        $data = $request->getParsedBody();
+        $homeRoll = $data['home_roll'] ?? 1;
+        $awayRoll = $data['away_roll'] ?? 1;
+
         // update fans
-        $this->matchService->updatePopularity($currentMatch);
+        $adjustment = $this->matchService->updatePopularity($currentMatch, $homeRoll, $awayRoll);
+        $this->eventLoggerService->logMatchEndUpdatePopularity($currentMatch, $adjustment);
+        $this->matchService->setStatus($currentMatch, TeamStatus::IDLE);
+
+        return $this->view->render($response, 'match/end/fan_factor_result.twig', [
+            'match' => $currentMatch,
+            'adjustment' => $adjustment,
+            'team' => $team
+        ]);
     }
 }

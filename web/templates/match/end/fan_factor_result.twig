@@ -1,0 +1,31 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - End Match {{ match.homeTeam.name }} vs {{ match.awayTeam.name }} {% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> - 
+        Fan Factor Update after match:
+        {% include 'partials/home_team_name.twig' with {'match': match} %} vs 
+        {% include 'partials/away_team_name.twig' with {'match': match} %}
+    </p>
+
+    <h2>
+        Fan Factor Update after match:  
+        {% include 'partials/home_team_name.twig' with {'match': match} %} vs 
+        {% include 'partials/away_team_name.twig' with {'match': match} %}
+    </h2>
+
+    {% if adjustment.home != 0 %}
+        <p>{% include 'partials/home_team_name.twig' with {'match': match} %} Fan Factor {{ adjustment.home == 1 ? 'increased' : 'decreased' }} by 1.</p>
+    {% endif %}
+    {% if adjustment.away != 0 %}
+        <p>{% include 'partials/away_team_name.twig' with {'match': match} %} Fan Factor {{ adjustment.away == 1 ? 'increased' : 'decreased' }} by 1.</p>
+    {% endif %}
+
+    <p style="margin-top: 1.5em;">
+        <a href="/team/view/{{team.id}}">← Back to Team</a>
+    </p>
+
+{% endblock %}

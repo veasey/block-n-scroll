@@ -40,7 +40,8 @@ class MatchGameRepository
         }
 
         $teamStatus = TeamStatus::tryFrom($team->status);
-        if ($teamStatus != TeamStatus::PLAYING) {
+        if ($teamStatus != TeamStatus::PLAYING &&
+            $teamStatus != TeamStatus::POST_SEQUENCE) {
             return false;
         }
 

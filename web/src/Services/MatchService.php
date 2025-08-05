@@ -57,15 +57,15 @@ class MatchService
         return $match;
     }
 
-    public function endMatch(MatchGame $matchGame): MatchGame
+    public function setStatus(MatchGame $matchGame, TeamStatus $status): MatchGame
     {
         if ($matchGame->homeTeam) {
-            $matchGame->homeTeam->status = TeamStatus::POST_SEQUENCE;
+            $matchGame->homeTeam->status = $status;
             $matchGame->homeTeam->save();
         }
 
         if ($matchGame->awayTeam) {
-            $matchGame->awayTeam->status = TeamStatus::POST_SEQUENCE;
+            $matchGame->awayTeam->status = $status;
             $matchGame->awayTeam->save();
         }
 
@@ -181,8 +181,51 @@ class MatchService
         return true;
     }
 
-    public function updatePopularity(MatchGame $matchGame): bool 
+    public function updatePopularity(MatchGame $match, int $homeDiceRoll, int $awayDiceRoll): Array 
     {
-        return false;
+        $adjustment = [
+            'home' => 0,
+            'away' => 0
+        ];
+
+        //  If the game was a draw, neither team's Dedicated Fans characteristic will increase or decrease.
+        if ($match->away_score == $match->home_score) {
+            return $adjustment;
+        }
+
+        if ($match->away_score > $match->home_score) {
+            
+            // away team wins
+            if ($match->awayTeam && $awayDiceRoll > $match->awayTeam->fan_factor) {
+                $match->awayTeam->fan_factor += 1;
+                $match->awayTeam->save();
+                $adjustment['away'] = 1;
+            }
+
+            // home team loses
+            if ($homeDiceRoll < $match->homeTeam->fan_factor) {
+                $match->homeTeam->fan_factor -= 1;
+                $match->homeTeam->save();
+                $adjustment['home'] = -1;
+            }
+
+        } else {
+
+            // home team wins
+            if ($match->homeTeam && $homeDiceRoll > $match->homeTeam->fan_factor) {
+                $match->homeTeam->fan_factor += 1;
+                $match->homeTeam->save();
+                $adjustment['home'] = 1;
+            }
+
+            // away team loses
+            if ($match->awayTeam && $awayDiceRoll < $match->awayTeam->fan_factor) {
+                $match->awayTeam->fan_factor -= 1;
+                $match->awayTeam->save();
+                $adjustment['away'] = -1;
+            }
+        }
+
+        return $adjustment;
     }
 }

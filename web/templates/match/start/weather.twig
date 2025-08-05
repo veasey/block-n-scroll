@@ -18,11 +18,7 @@
         <div class="form-section">   
             <div class="form-group">
                 <label for="weather_roll">Weather Roll:</label>
-                <select name="weather_roll" id="weather_roll" class="form-control"  required>
-                    {% for num in 2..12 %}
-                        <option value="{{ num }}">{{ num }}</option>
-                    {% endfor %}
-                </select>
+                {% include 'partials/dice_roll.twig' with {'name': 'weather_roll', 'min': 2, 'max': 12} %}
             </div>        
             <div class="form-section">
                 <button type="submit">Submit Weather Result</button>

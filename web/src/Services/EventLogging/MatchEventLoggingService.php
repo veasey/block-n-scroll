@@ -146,4 +146,27 @@ class MatchEventLoggingService extends EventLoggerService
             $matchGame
         );
     }
+
+    public function logMatchEndUpdatePopularity(MatchGame $matchGame, array $adjustments)
+    {
+        foreach($adjustments as $key => $value) {
+
+            if ($value == 0) {
+                continue;
+            }
+
+            $team = $key . 'Team';
+            
+            $this->log(
+                LogType::MATCH_EVENT->value,
+                ($value) ? 'Fans Increased by 1' : 'Fans Decreased by 1',
+                EventType::UPDATE_POPULARITY->value,
+                '',
+                ($matchGame->$team) ? $matchGame->$team->coach : null,
+                ($matchGame->$team) ? $matchGame->$team : null,
+                null,
+                $matchGame
+            );
+        }
+    }
 }
