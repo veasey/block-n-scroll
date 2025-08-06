@@ -77,7 +77,7 @@ class CreateTeamController
         ];
 
         foreach ($defaults as $property => $key) {
-            if ($$key === SideStaff::DEDICATED_FANS->value) {
+            if ($key === SideStaff::DEDICATED_FANS->value) {
                 $team->$property = isset($data[$key]) ? (int) $data[$key] : 1;
             } else {
                 $team->$property = isset($data[$key]) ? (int) $data[$key] : 0;

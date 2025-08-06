@@ -39,7 +39,7 @@
             {% include 'partials/home_team_name.twig' with {'match': match} %} ({{match.home_score ?? 0}}) vs 
             {% include 'partials/away_team_name.twig' with {'match': match} %} ({{match.away_core ?? 0}})
             <br />
-            <a href='/match/view/{{ match.id }}' class="quick-btn" title="LView Match">🕶️ View Match Details</a>
+            <a href='/match/view/{{ match.id }}' class="quick-btn" title="View Match">🕶️ View Match Details</a>
         </div>
     {% endif %}
 

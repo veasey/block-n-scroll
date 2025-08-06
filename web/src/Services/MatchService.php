@@ -61,14 +61,13 @@ class MatchService
     {
         if ($matchGame->homeTeam) {
             $matchGame->homeTeam->status = $status;
-            $matchGame->homeTeam->save();
         }
 
         if ($matchGame->awayTeam) {
             $matchGame->awayTeam->status = $status;
-            $matchGame->awayTeam->save();
         }
 
+        $matchGame->save();
         return $matchGame;
     }
 

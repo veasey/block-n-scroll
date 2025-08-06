@@ -33,7 +33,6 @@
                     <th>Away Team</th>
                     <th>Home TD</th>
                     <th>Away TD</th>
-                    <th>Match End</th>
                     <th>&nbsp;</th>
                 </tr>
             </thead>
@@ -52,7 +51,6 @@
                     </td>
                     <td>{{ match.home_score|number_format }}</td>
                     <td>{{ match.away_score|number_format }}</td>
-                    <td>{{ match.update_at|date("j F Y \\a\\t H:i") }}</td>
                     <td><a href="/match/view/{{match.id}}">View</a></td>
                 </tr>
                 {% endfor %}

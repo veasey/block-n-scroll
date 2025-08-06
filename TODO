@@ -1,9 +1,6 @@
 
 → TODO & Bugs: 
 
-Maybe add a match status. As currently if players play each other ALL THEIR matches are shown as in progres..
-ANd when PLAYING team sheet should link to opposing team AND OR current match link
-AND matches_player should not show in progress matches
 REPLACE ERROR TO VIEW MATCH
 IF USER WANDERS OFF DURING PRE GAME -> links to continue OR just play.
 
@@ -62,3 +59,5 @@ NICE TO HAVES
 → Quick Button
  → Add Note
  → Half Time
+
+ SNOTS DONT ADD TO CTV

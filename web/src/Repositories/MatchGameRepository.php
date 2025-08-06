@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories;
 
+use App\Enums\Match\Status as MatchStatus;
 use App\Enums\TeamStatus;
 use App\Models\Team;
 use App\Models\MatchGame;
@@ -23,6 +24,8 @@ class MatchGameRepository
             
         return $existingMatch->where('home_score', 0)
             ->where('away_score', 0)
+            ->where('status', '!=', MatchStatus::FINSIHED)
+            ->orderBy('updated_at', 'desc')
             ->first();
     }
 
@@ -47,7 +50,8 @@ class MatchGameRepository
 
         return MatchGame::where('home_team_id', $team->id)
             ->orWhere('away_team_id', $team->id)
-            ->orderByDesc('updated_at')
+            ->where('status', '!=', MatchStatus::FINSIHED)
+            ->orderByDesc('updated_at', 'desc')
             ->first();
     }
 }

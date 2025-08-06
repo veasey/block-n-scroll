@@ -23,6 +23,9 @@
     {% if adjustment.away != 0 %}
         <p>{% include 'partials/away_team_name.twig' with {'match': match} %} Fan Factor {{ adjustment.away == 1 ? 'increased' : 'decreased' }} by 1.</p>
     {% endif %}
+    {% if adjustment.away == 0 and adjustment.home == 0 %}
+        <p>No change at all to Fans</p>
+    {% endif %}
 
     <p style="margin-top: 1.5em;">
         <a href="/team/view/{{team.id}}">← Back to Team</a>

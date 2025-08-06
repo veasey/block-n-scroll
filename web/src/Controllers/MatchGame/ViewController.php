@@ -55,6 +55,7 @@ class ViewController
 
         // Use query builder with offset and limit (skip and take)
         $matchPage = MatchGame::query()
+            ->orderBy('created_at', 'desc')
             ->skip($params['offset'])
             ->take($params['perPage'])
             ->get();

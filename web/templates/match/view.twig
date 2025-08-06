@@ -26,6 +26,10 @@
 
     <table class="match-details">
         <tr>
+            <th>Match Status</th>
+            <td>{{ match.status }}</td>
+        </tr>
+        <tr>
             <th>Home Team</th>
             <td>{% include 'partials/home_team_name.twig' with {'match': match} %}</td>
         </tr>
@@ -50,7 +54,7 @@
             <td>{{ match.created_at|date('Y/m/d H:i') }}</td>
         </tr>
         <tr>
-            <th>Match End</th>
+            <th>Last Update</th>
             <td>
                 {% if match.homeTeam.status != 'playing' %}
                     {{ match.updated_at|date('Y/m/d H:i') }}
@@ -60,7 +64,7 @@
             </td>
         </tr>
 
-        {% if match.homeTeam.status != 'playing' %}
+        {% if match.status == 'finished' %}
             <th>Duration</th>
             <td>
                 {% set duration = match.updated_at.diff(match.created_at) %}
