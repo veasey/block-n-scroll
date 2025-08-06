@@ -51,3 +51,4 @@ P4 - Match tracking + team sync
 01 Aug - MNG End of match logic. Refactored event logging service. pagination to match view lists. Various other tweaks and fixes. pre game sequence.
 04 Aug - Caculate Winnings Method added. Altered layout and styling of endmatch.
 05 Aug - Post Game Sequence: Update Popularity
+06 Aug - match Events, various bug fixes.
