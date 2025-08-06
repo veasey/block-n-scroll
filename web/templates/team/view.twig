@@ -12,7 +12,6 @@
     </p>
 
     <h2>{{ team.name }} [{{ team.status }}]</h2>
-    <p class="team-description">{{ team.description }}</p>
 
     {% if session.user and session.user.id == team.coach.id %}
         <div class="team-quick-buttons">
@@ -33,6 +32,18 @@
             {% endif %}
         </div>
     {% endif %}
+
+    {% if team.status == 'playing' %}
+        <div style="border: 1px solid; border-radius: 8px; padding: 0.5em;">
+            Ongoing Match:
+            {% include 'partials/home_team_name.twig' with {'match': match} %} ({{match.home_score ?? 0}}) vs 
+            {% include 'partials/away_team_name.twig' with {'match': match} %} ({{match.away_core ?? 0}})
+            <br />
+            <a href='/match/view/{{ match.id }}' class="quick-btn" title="LView Match">🕶️ View Match Details</a>
+        </div>
+    {% endif %}
+
+    <p class="team-description">{{ team.description }}</p>
 
     <div class="team-header-grid">
         <div class="team-meta">

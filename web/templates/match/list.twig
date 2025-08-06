@@ -28,19 +28,20 @@
             <thead>
                 <tr>
                     <th>Match Start</th>
-                    <th>Match End</th>
+                    <th>Status</th>
                     <th>Home Team</th>
                     <th>Away Team</th>
                     <th>Home TD</th>
                     <th>Away TD</th>
+                    <th>Match End</th>
                     <th>&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
                 {% for match in matches %}
                 <tr>
-                    <td>{{ match.created_at|date('Y/m/d H:m:i') }}</td>
-                    <td>{{ match.update_at|date('Y/m/d H:m:i') }}</td>
+                    <td>{{ match.created_at|date("j F Y \\a\\t H:i") }}</td>
+                    <td>{{ match.status }}</td>
                     <td> <a href="/team/view/{{ match.home_team_id }}">{{ match.homeTeam.name }}</a></td>
                     <td>
                         {% if match.awayTeam.id %}
@@ -51,6 +52,7 @@
                     </td>
                     <td>{{ match.home_score|number_format }}</td>
                     <td>{{ match.away_score|number_format }}</td>
+                    <td>{{ match.update_at|date("j F Y \\a\\t H:i") }}</td>
                     <td><a href="/match/view/{{match.id}}">View</a></td>
                 </tr>
                 {% endfor %}

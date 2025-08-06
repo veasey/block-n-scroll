@@ -4,10 +4,11 @@ namespace App\Controllers\TeamManager;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Controllers\TeamManager\Shared\AccessController;
-use App\Helpers\UserHelper;
+use App\Enums\TeamStatus;
+use App\Enums\Match\Status as MatchStatus;
 use App\Models\Coach;
+use App\Models\MatchGame;
 use App\Models\Team;
-use App\Models\Player;
 use App\Repositories\PlayerRepository;
 use Slim\Views\Twig;
 
@@ -67,14 +68,20 @@ class ViewTeamController extends AccessController
             return $response->withStatus(404);
         }
 
-        $user = UserHelper::getCurrentUser();
-
+        $match = null;
+        if (TeamStatus::tryFrom($team->status) == TeamStatus::PLAYING) {
+            $match = MatchGame::where('home_team_id', $team->id)
+                ->orWhere('away_team_id', $team->id)
+                ->where('status', MatchStatus::IN_PROGRESS->value)
+                ->orderBy('updated_at', 'desc')
+                ->first();
+        }
+       
         return $this->view->render($response, 'team/view.twig', [
             'team' => $team, 
             'players' => $players,
-            'showManagementButtons' => $this->isAuthorizeToModifyTeam( $team)
+            'showManagementButtons' => $this->isAuthorizeToModifyTeam( $team),
+            'match' => $match
         ]);
     }
-
-    
 }

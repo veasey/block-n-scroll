@@ -7,6 +7,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
 
 use App\Controllers\MatchGame\Shared\AccessController;
+use App\Enums\Match\Status as MatchStatus;
 use App\Enums\TeamStatus;
 use App\Repositories\EventLogRepository;
 use App\Repositories\MatchGameRepository;
@@ -64,6 +65,9 @@ class PostGameController extends AccessController
         [$homeWinnings, $awayWinnings] = $this->matchService->calculateWinnings($currentMatch);
         $this->eventLoggerService->logMatchEndWinningsAwarded($currentMatch, $homeWinnings, $awayWinnings);
         
+        $currentMatch->status = MatchStatus::POSTGAME;
+        $currentMatch->save();
+
         return $this->view->render($response, 'match/end/end_match.twig', [
             'match' => $currentMatch,
             'recovered_players' => $recoveredPlayers,
@@ -93,6 +97,9 @@ class PostGameController extends AccessController
         $adjustment = $this->matchService->updatePopularity($currentMatch, $homeRoll, $awayRoll);
         $this->eventLoggerService->logMatchEndUpdatePopularity($currentMatch, $adjustment);
         $this->matchService->setStatus($currentMatch, TeamStatus::IDLE);
+
+        $currentMatch->status = MatchStatus::FINSIHED;
+        $currentMatch->save();
 
         return $this->view->render($response, 'match/end/fan_factor_result.twig', [
             'match' => $currentMatch,

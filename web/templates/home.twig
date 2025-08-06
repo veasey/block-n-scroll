@@ -27,11 +27,7 @@
                     {% include 'partials/home_team_name.twig' with {'match': match} %} ({{match.home_score ?? 0}}) vs 
                     {% include 'partials/away_team_name.twig' with {'match': match} %} ({{match.away_core ?? 0}})
                 </td>
-                <td>
-                    {% if match.homeTeam.status == 'playing' %}IN PROGRESS
-                    {% elseif match.homeTeam.status == 'postgame_sequence' %}POST GAME SEQUENCE
-                    {% else %}CONCLUDED
-                    {% endif %}
+                <td>{{ match.status }}
                 </td>
                 <td>
                     <a href="/match/view/{{match.id}}">

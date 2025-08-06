@@ -7,6 +7,7 @@ use InvalidArgumentException;
 
 use Slim\Views\Twig;
 
+use App\Enums\Match\Status as MatchStatus;
 use App\Enums\Match\WeatherTable;
 use App\Controllers\MatchGame\Shared\AccessController;
 use App\Helpers\TeamHelper;
@@ -143,6 +144,8 @@ class PreGameController extends AccessController
         $team = TeamHelper::getCurrentPlayingTeam();
 
         $matchInfo = $this->matchService->getMatchSetupInfo($match);
+        $match->status = MatchStatus::IN_PROGRESS;
+        $match->save();
 
         return $this->view->render($response, 'match/start/kickoff.twig', [
             'match' => $match,
