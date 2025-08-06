@@ -46,10 +46,10 @@
 
     <div class="team-header-grid">
         <div class="team-meta">
-            <p><strong>Times Injured:</strong> <a href="/player/view/{{player.id}}/log/injuries">{{ player.injuries }}</a></p>
-            <p><strong>Casualties:</strong> {{ player.touchdowns }}</p>
-            <p><strong>Touch Downs:</strong>  {{ player.spp }} </p>
-            <p><strong>Completions:</strong> {{ player.completions }}</p>    
+            <p><strong>Times Injured:</strong> <a href="/player/view/{{player.id}}/log/injury_logged">{{ player.injuries }}</a></p>
+            <p><strong>Casualties:</strong> <a href="/player/view/{{player.id}}/log/casualty_logged">{{ player.casualties }}</a></p>
+            <p><strong>Touch Downs:</strong> <a href="/player/view/{{player.id}}/log/touchdown_logged">{{ player.touchdowns }}</a></p>
+            <p><strong>Completions:</strong> <a href="/player/view/{{player.id}}/log/completion_logged">{{ player.completions }}</a></p>    
         </div>
     </div>
 

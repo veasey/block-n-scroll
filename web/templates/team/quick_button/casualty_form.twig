@@ -1,6 +1,6 @@
 {% extends "team/team_base.twig" %}
 
-{% block title %}Block & Scroll - Rules - Team - {{ team.name }}{% endblock %}
+{% block title %}Block &amp; Scroll - Rules - Team - {{ team.name }}{% endblock %}
 
 {% block content %}
 
@@ -14,7 +14,7 @@
 
     <h2>Record Casualty</h2>
 
-    <form method="post" action="/team/quick/{{team.id}}/injury" class="form-horizontal">
+    <form method="post" action="/player/casualty" class="form-horizontal">
         <div class="form-section">
             {% include 'team/partials/select_team_player.twig' with {'team': team} %}
             <button type="submit">Submit</button>

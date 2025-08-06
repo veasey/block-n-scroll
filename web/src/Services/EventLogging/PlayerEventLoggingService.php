@@ -52,4 +52,18 @@ class PlayerEventLoggingService extends EventLoggerService
             null
         );
     }
+
+    public function logPlayerCasualty(Player $player, MatchGame $match)
+    {
+        $this->log(
+            LogType::CASUALTY_LOGGED->value,
+            '',
+            '',
+            '',
+            $player->team->coach,
+            $player->team,
+            $player,
+            $match
+        );
+    }
 }

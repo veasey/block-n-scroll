@@ -19,18 +19,25 @@ class ViewLogController extends AccessController
         $this->view = $view;
     }
 
-    public function viewInjuries(Request $request, Response $response, array $args): Response
+    public function viewLog(Request $request, Response $response, array $args): Response
     {
+        $logType = LogType::tryFrom(strtoupper($args['log_type']));
+        if (!$logType) {
+            $response->getBody()->write('Log Type "'. $args['log_type'] .'" Unavailable');
+            return $response->withStatus(400);
+        }
+
         // get Player
         $playerId = $args['player_id'];
         $player = Player::find($playerId);
         if (!$player) {
-            $response->withStatus(400)->write('Player not found');
+            $response->getBody()->write('Player not found');
+            return $response->withStatus(400);
         }
 
         // get logs
         $params = PaginationHelper::getPaginationParams();
-        $logs = EventLog::where('event_type', LogType::PLAYER_INJURED->value)
+        $logs = EventLog::where('event_type', $logType->value)
             ->where('player_id', $playerId)
             ->orderBy('created_at', 'desc')
             ->skip($params['offset']) // offset
@@ -38,7 +45,7 @@ class ViewLogController extends AccessController
             ->get();
 
         // get totals for pagination
-        $total = EventLog::where('event_type', LogType::PLAYER_INJURED->value)
+        $total = EventLog::where('event_type', $logType->value)
             ->where('player_id', $playerId)
             ->count();
         $totalPages = ceil($total / $params['perPage']);
@@ -50,8 +57,9 @@ class ViewLogController extends AccessController
             return $response->withHeader('Content-Type', 'application/json');
         }       
 
-        return $this->view->render($response, 'player/log/injuries.twig', [
+        return $this->view->render($response, 'player/view_logs.twig', [
             'player' => $player,
+            'log_type' => $logType->value,
             'logs' => $logs,
             'page' => $params['page'],
             'totalPages' => $totalPages

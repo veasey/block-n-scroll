@@ -4,29 +4,33 @@ namespace App\Controllers\Players;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Controllers\Players\Shared\AccessController;
+use App\Constants\SPPAward;
+use App\Helpers\MatchHelper;
 use App\Repositories\MatchGameRepository;
 use App\Services\EventLogging\PlayerEventLoggingService;
 use App\Services\Event\InjuryService;
 use App\Enums\Player\CasualtyTable;
 use App\Enums\Player\PlayerStatus;
 use App\Enums\Player\PlayerStats;
-use App\Enums\LogType;
 use Slim\Views\Twig;
 
 class UpdateController extends AccessController
 {
+    protected $matchHelper;
     protected $matchGameRepo;
     protected $eventLogger;
     protected $injuryService;
     protected $view;
 
     public function __construct(
+        MatchHelper $matchHelper,
         MatchGameRepository $matchGameRepo,
         PlayerEventLoggingService $eventLogger, 
         InjuryService $injuryService,
         Twig $view
     )
     {
+        $this->matchHelper = $matchHelper;
         $this->matchGameRepo = $matchGameRepo;
         $this->eventLogger = $eventLogger;
         $this->injuryService = $injuryService;
@@ -137,4 +141,22 @@ class UpdateController extends AccessController
 
         return $this->view->render($response, 'player/retire/success.twig', ['player' => $player]);
     }
+
+    public function recordCasualty(Request $request, Response $response, array $args): Response
+    {
+        $data = $request->getParsedBody();     
+        $playerId = $data['player_id'] ?? null;
+
+        [$player, $errorResponse] = $this->getRecognisedPlayerOrFail($request, $response, $args, $playerId);
+        if ($errorResponse) return $errorResponse;
+
+        $player->casualties += 1;
+        $player->spp += SPPAward::CASUALTY;
+        $player->save();
+
+        $match = $this->matchHelper->getCurrentMatchTeamPlayingIn($player->team);
+        $this->eventLogger->logPlayerCasualty($player, $match);
+
+        return $this->view->render($response, 'event/casualty.twig', ['player' => $player]);
+    }    
 }

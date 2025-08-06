@@ -15,7 +15,7 @@
     Injury Log {% if totalPages > 1 %} - Page {{ page }} of {{ totalPages }} {% endif %}
 </p>
 
-<h2>{{ player.name }} Injury Log</h2>
+<h2>{{ player.name }} {{log_type}} Log</h2>
 
 {% if logs|length == 0 %}
     <p><strong>No relevant logs written, yet.</strong></p>
@@ -24,10 +24,10 @@
         <thead>
             <tr>
                 <th>Time</th>
-                <th>Injury Type</th>
+                <th>Log Content</th>
                 <th>Match</th>
                 <th>Notes</th>
-                <th>Source</th>
+                <th>Log Type</th>
             </tr>
         </thead>
         <tbody>

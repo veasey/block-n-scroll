@@ -1,0 +1,45 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Logging Casualty for {{ player.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+          <a href="/">Home</a> -
+        <a href="/team">Teams</a> - 
+        <a href="/team/view/all">All Teams</a> -
+        <a href="/team/view/{{ player.team.id }}">{{ player.team.name }}</a> -
+        <a href="/player/view/{{ player.id }}">{{player.name}}</a> -
+        Log Casualty
+    </p>
+
+    <h2>Casualty Logged for {{ player.name }}</h2>
+    
+    {% set casualtyMessages = [
+        "That one's not getting back up anytime soon!",
+        "Sent straight to the apothecary — or the morgue.",
+        "Now *that's* how you make a lasting impression.",
+        "They'll be feeling that hit in the next edition.",
+        "Another player turned into a red smear on the pitch.",
+        "Looks like someone's armour check failed — badly.",
+        "Cleared a path the old-fashioned way: with violence.",
+        "That block came with a complimentary injury.",
+        "Removed from play... possibly from life.",
+        "The crowd loves it! The medic doesn't.",
+        "That'll teach them to stand there!",
+        "One casualty closer to legendary status.",
+        "Knocked out of the game — and probably their career.",
+        "If you listen closely, you can hear the crunch.",
+        "Say hello to the injury box, courtesy of that hit."
+    ] %}
+
+
+    <p class="casualty-message" style="font-style: italic; font-size: 1.2em; margin-top: 1em;">
+        <strong>{{ random(casualtyMessages) }}</strong>
+    </p>
+
+    <p style="margin-top: 1.5em;">
+        <a href="/team/view/{{player.team.id}}">← Back to Team</a>
+    </p>
+
+{% endblock %}
