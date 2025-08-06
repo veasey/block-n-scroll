@@ -39,24 +39,10 @@ class PlayerEventLoggingService extends EventLoggerService
         );
     }
 
-    public function logPlayerRetirement(Player $player)
+    public function logPlayerMatchEvent(Player $player, MatchGame $match, LogType $matchEvent)
     {
         $this->log(
-            LogType::PLAYER_RETIRED->value,
-            '',
-            '',
-            '',
-            $player->team->coach,
-            $player->team,
-            $player,
-            null
-        );
-    }
-
-    public function logPlayerCasualty(Player $player, MatchGame $match)
-    {
-        $this->log(
-            LogType::CASUALTY_LOGGED->value,
+            $matchEvent->value,
             '',
             '',
             '',

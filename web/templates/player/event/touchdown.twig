@@ -1,0 +1,44 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Logging Touchdown for {{ player.name }}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+          <a href="/">Home</a> -
+        <a href="/team">Teams</a> - 
+        <a href="/team/view/all">All Teams</a> -
+        <a href="/team/view/{{ player.team.id }}">{{ player.team.name }}</a> -
+        <a href="/player/view/{{ player.id }}">{{player.name}}</a> -
+        Log Touchdown
+    </p>
+
+    <h2>{{ player.name }} Scores a Touchdown!</h2>
+    
+    {% set touchdownMessages = [
+        "That's three points of pure style!",
+        "They danced through the defence like elves at a masquerade.",
+        "A touchdown! And only three near-death experiences to get there.",
+        "Marked, blitzed, fouled — still made it to the end zone.",
+        "Scoreboard says touchdown, armour says ‘thank Nuffle’.",
+        "That's one way to silence the opposing fans.",
+        "Dodged death and tackles to claim glory!",
+        "Ran it in like they had a chainsaw behind them — which they might’ve.",
+        "Touchdown! Against all odds — and several dirty players.",
+        "The coach faints. The crowd roars. The ref shrugs.",
+        "Well, that’s one way to make the MVP list.",
+        "Touchdown? More like a miracle in cleats.",
+        "They waltzed in while the defence took a nap.",
+        "From scrum to stardom — what a run!",
+        "They crossed the line like it was payday."
+    ] %}
+
+    <p class="touchdown-message" style="font-style: italic; font-size: 1.2em; margin-top: 1em;">
+        <strong>{{ random(touchdownMessages) }}</strong>
+    </p>
+
+    <p style="margin-top: 1.5em;">
+        <a href="/team/view/{{player.team.id}}">← Back to Team</a>
+    </p>
+
+{% endblock %}

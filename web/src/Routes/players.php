@@ -10,6 +10,8 @@ $app->post('/player/injure', UpdateController::class . ':addInjury');
 $app->post('/player/injure/{ player_id }/lasting', UpdateController::class . ':addLastingInjury');
 
 $app->post('/player/casualty', UpdateController::class . ':recordCasualty');
+$app->post('/player/touchdown', UpdateController::class . ':recordTouchdown');
+$app->post('/player/completion', UpdateController::class . ':recordCompletion');
 
 $app->get('/player/retire/{ player_id }', UpdateController::class . ':retireConfirm');
 $app->post('/player/retire/{ player_id }', UpdateController::class . ':retire');

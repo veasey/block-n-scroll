@@ -9,6 +9,7 @@ use App\Helpers\MatchHelper;
 use App\Repositories\MatchGameRepository;
 use App\Services\EventLogging\PlayerEventLoggingService;
 use App\Services\Event\InjuryService;
+use App\Enums\LogType;
 use App\Enums\Player\CasualtyTable;
 use App\Enums\Player\PlayerStatus;
 use App\Enums\Player\PlayerStats;
@@ -59,13 +60,13 @@ class UpdateController extends AccessController
         $injuryType = $this->injuryService->record($player, $roll);
 
         if ($injuryType == CasualtyTable::LASTING_INJURY) {
-            return $this->view->render($response, "event/injury/injury_roll_form.twig", ['player' => $player]);
+            return $this->view->render($response, "player/event/injury/injury_roll_form.twig", ['player' => $player]);
         }
 
         $match = $this->matchGameRepo->getTeamCurrentMatch($player->team->id) ?? null;
         $this->eventLogger->logPlayerInjury($match, $player, $injuryType);
 
-        return $this->view->render($response, "event/injury/result.twig", [
+        return $this->view->render($response, "player/event/injury/result.twig", [
             'player' => $player,
             'injury' => $injuryType
         ]);
@@ -111,7 +112,7 @@ class UpdateController extends AccessController
 
         $this->eventLogger->logPlayerLastingInjury($match, $player, $reductionType);
 
-        return $this->view->render($response, 'event/injury/lasting_injury_result.twig', [
+        return $this->view->render($response, 'player/event/injury/lasting_injury_result.twig', [
             'player' => $player,
             'reductionType' => $reductionType
         ]);
@@ -144,10 +145,7 @@ class UpdateController extends AccessController
 
     public function recordCasualty(Request $request, Response $response, array $args): Response
     {
-        $data = $request->getParsedBody();     
-        $playerId = $data['player_id'] ?? null;
-
-        [$player, $errorResponse] = $this->getRecognisedPlayerOrFail($request, $response, $args, $playerId);
+        [$player, $errorResponse] = $this->getRecognisedPlayerOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
 
         $player->casualties += 1;
@@ -155,8 +153,43 @@ class UpdateController extends AccessController
         $player->save();
 
         $match = $this->matchHelper->getCurrentMatchTeamPlayingIn($player->team);
-        $this->eventLogger->logPlayerCasualty($player, $match);
+        $this->eventLogger->logPlayerMatchEvent($player, $match, LogType::CASUALTY_LOGGED);
+        return $this->view->render($response, "player/event/casualty.twig", ['player' => $player]);
+    }
 
-        return $this->view->render($response, 'event/casualty.twig', ['player' => $player]);
-    }    
+    public function recordTouchdown(Request $request, Response $response, array $args): Response
+    {
+        [$player, $errorResponse] = $this->getRecognisedPlayerOrFail($request, $response, $args);
+        if ($errorResponse) return $errorResponse;
+
+        $match = $this->matchHelper->getCurrentMatchTeamPlayingIn($player->team);
+
+        $player->touchdowns += 1;
+        $player->spp += SPPAward::TOUCHDOWN;
+        $player->save();
+
+        if ($match->homeTeam->id = $player->team->id) {
+            $match->home_score += 1;
+        } else {
+            $match->away_score += 1;
+        }
+        $match->save();
+
+        $this->eventLogger->logPlayerMatchEvent($player, $match, LogType::TOUCHDOWN_LOGGED);
+        return $this->view->render($response, "player/event/touchdown.twig", ['player' => $player]);
+    }
+
+    public function recordCompletion(Request $request, Response $response, array $args): Response
+    {
+        [$player, $errorResponse] = $this->getRecognisedPlayerOrFail($request, $response, $args);
+        if ($errorResponse) return $errorResponse;
+
+        $player->completions += 1;
+        $player->spp += SPPAward::COMPLETION;
+        $player->save();
+
+        $match = $this->matchHelper->getCurrentMatchTeamPlayingIn($player->team);
+        $this->eventLogger->logPlayerMatchEvent($player, $match, LogType::COMPLETION_LOGGED);
+        return $this->view->render($response, "player/event/completion.twig", ['player' => $player]);
+    }
 }

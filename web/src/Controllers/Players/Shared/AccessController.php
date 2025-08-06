@@ -28,8 +28,11 @@ abstract class AccessController
         return $user->isAdmin() || $player->team->coach->id === $user->id;
     }
 
-    protected function getRecognisedPlayerOrFail(Request $request, Response $response, array $args, ?int $playerId = null)
+    protected function getRecognisedPlayerOrFail(Request $request, Response $response, array $args)
     {
+        $data = $request->getParsedBody();     
+        $playerId = $data['player_id'] ?? null;
+
         if (!$playerId) {
             $playerId = $args['player_id'] ?? null;
         }
