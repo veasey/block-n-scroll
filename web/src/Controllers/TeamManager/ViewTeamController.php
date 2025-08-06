@@ -70,11 +70,13 @@ class ViewTeamController extends AccessController
 
         $match = null;
         if (TeamStatus::tryFrom($team->status) == TeamStatus::PLAYING) {
-            $match = MatchGame::where('home_team_id', $team->id)
-                ->orWhere('away_team_id', $team->id)
-                ->where('status', MatchStatus::IN_PROGRESS->value)
-                ->orderBy('updated_at', 'desc')
-                ->first();
+            $match = MatchGame::where(function ($query) use ($team) {
+                $query->where('home_team_id', $team->id)
+                    ->orWhere('away_team_id', $team->id);
+            })
+            ->where('status', '!=', MatchStatus::FINISHED)
+            ->orderByDesc('updated_at')
+            ->first();
         }
        
         return $this->view->render($response, 'team/view.twig', [

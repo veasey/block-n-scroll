@@ -24,7 +24,7 @@ class MatchGameRepository
             
         return $existingMatch->where('home_score', 0)
             ->where('away_score', 0)
-            ->where('status', '!=', MatchStatus::FINSIHED)
+            ->where('status', '!=', MatchStatus::FINISHED)
             ->orderBy('updated_at', 'desc')
             ->first();
     }
@@ -48,10 +48,12 @@ class MatchGameRepository
             return false;
         }
 
-        return MatchGame::where('home_team_id', $team->id)
-            ->orWhere('away_team_id', $team->id)
-            ->where('status', '!=', MatchStatus::FINSIHED)
-            ->orderByDesc('updated_at', 'desc')
+        return MatchGame::where(function ($query) use ($team) {
+                $query->where('home_team_id', $team->id)
+                    ->orWhere('away_team_id', $team->id);
+            })
+            ->where('status', '!=', MatchStatus::FINISHED)
+            ->orderByDesc('updated_at')
             ->first();
     }
 }

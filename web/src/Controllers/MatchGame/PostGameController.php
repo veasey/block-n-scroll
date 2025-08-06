@@ -98,7 +98,7 @@ class PostGameController extends AccessController
         $this->eventLoggerService->logMatchEndUpdatePopularity($currentMatch, $adjustment);
         $this->matchService->setStatus($currentMatch, TeamStatus::IDLE);
 
-        $currentMatch->status = MatchStatus::FINSIHED;
+        $currentMatch->status = MatchStatus::FINISHED;
         $currentMatch->save();
 
         return $this->view->render($response, 'match/end/fan_factor_result.twig', [
