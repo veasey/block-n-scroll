@@ -3,9 +3,12 @@ namespace App\Helpers;
 
 use Illuminate\Support\Collection;
 
+use App\Constants\ColumnMaps;
+use App\Constants\RaceSpecialRules;
 use App\Enums\SideStaff;
 use App\Enums\TeamStatus;
 use App\Models\Base\BaseTeam as Race;
+use App\Models\Base\BaseTeamPlayer as RacePositional;
 use App\Models\Team;
 use App\Models\Base\SideStaff as SideStaffModel;
 use App\Models\Coach;
@@ -76,5 +79,31 @@ class TeamHelper
             ];
 
         })->toArray();
+    }
+
+    public static function calculateCurrentTeamValue(Team $team ): int
+    {
+        $currentTeamValue = 0;
+        foreach($team->players as $player) {
+            $currentTeamValue += $player->cost;
+        }
+
+        foreach(SideStaffModel::all() as $sideStaff) {
+            $columnName = ColumnMaps::SIDESTAFF_DB[$sideStaff->name];
+            $currentTeamValue += $sideStaff->cost * $team->$columnName;
+        }
+
+        return $currentTeamValue;
+    }
+
+    public static function isLowCostLineman(RacePositional $racePositional, Race $race): bool
+    {
+        $isLineman = str_contains(strtolower($racePositional->name), 'lineman');
+
+        $hasLowCostLinemanRule = $race->special_rules->contains(function ($rule) {
+            return $rule->id === RaceSpecialRules::LOW_COST_LINEMEN;
+        });
+
+        return $isLineman && $hasLowCostLinemanRule;
     }
 }

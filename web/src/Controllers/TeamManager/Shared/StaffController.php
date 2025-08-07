@@ -4,6 +4,7 @@ namespace App\Controllers\TeamManager\Shared;
 use App\Controllers\TeamManager\Shared\AccessController;
 use App\Constants\ColumnMaps;
 use App\Enums\SideStaff;
+use App\Enums\TeamStatus;
 use App\Helpers\UserHelper;
 use App\Models\Base\BaseTeamPlayer;
 use App\Models\DefaultPlayerName;
@@ -26,14 +27,23 @@ class StaffController extends AccessController
         return $team;
     }
 
-    protected function getPlayers(Team $team, array $teamPositions): Team
+    protected function addNewPlayersToTeam(Team $team, array $teamPositions): Team
     {
-        // Loop through player data and create Player models
-        foreach ($teamPositions ?? [] as $index => $positionId) {
+        $totalCost = 0;
 
+        // Get existing player numbers for the team
+        $existingNumbers = $team->players->pluck('number')->toArray();
+        $nextNumber = 1;
+
+        foreach ($teamPositions ?? [] as $positionId) {
             $baseTeamPlayer = BaseTeamPlayer::find($positionId);
             if (!$baseTeamPlayer) {
                 continue; // Skip if the base team player does not exist
+            }
+
+            // Find the next available player number
+            while (in_array($nextNumber, $existingNumbers)) {
+                $nextNumber++;
             }
 
             $player = new Player();
@@ -42,7 +52,8 @@ class StaffController extends AccessController
             $player->base_team_player_id = (int) $positionId;
             $player->cost = (int) $baseTeamPlayer->cost;
 
-            $player->number = $index + 1;
+            $player->number = $nextNumber;
+            $existingNumbers[] = $nextNumber; // Mark this number as used
 
             // fill in default names
             $player->name = DefaultPlayerName::getRandomFor($baseTeamPlayer->base_team_id, $baseTeamPlayer->name);
@@ -53,9 +64,17 @@ class StaffController extends AccessController
             $player->av = (int) $baseTeamPlayer->av;
             $player->pa = (int) $baseTeamPlayer->pa;
 
-            $player->original_coach_id = (int) UserHelper::getCurrentUser()->id ?? 0; // Set original coach ID
+            $player->original_coach_id = (int) UserHelper::getCurrentUser()->id ?? 0;
 
             $player->save();
+
+            $totalCost += $baseTeamPlayer->cost;
+            
+            $nextNumber++;
+        }
+
+        if (TeamStatus::tryFrom($team->status) != TeamStatus::FRESH) {
+            $team->treasury -= $totalCost;
         }
 
         return $team;

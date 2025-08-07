@@ -7,6 +7,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Controllers\Players\Shared\AccessController;
 use App\Constants\SPPAward;
 use App\Enums\TeamStatus;
+use App\Helpers\TeamHelper;
 use App\Helpers\MatchHelper;
 use App\Repositories\MatchGameRepository;
 use App\Services\EventLogging\PlayerEventLoggingService;
@@ -138,18 +139,23 @@ class UpdateController extends AccessController
             return $response->withStatus(403);
         }
 
-        $player->status = PlayerStatus::RETIRED->value;
-        $player->save();
+        $team = $player->team;
+        if (!TeamHelper::isLowCostLineman($player->position, $team->race)) {
+            $team->current_team_value -= $player->cost;
+        }
 
         // if  team is still fresh, don't log these adjustments and return cost.
-        if (TeamStatus::tryFrom($player->team->status) === TeamStatus::FRESH) {
-            $team = $player->team;
+        if (TeamStatus::tryFrom($team->status) == TeamStatus::FRESH) {
             $team->treasury += $player->cost;
-            $team->save; 
         } else {
             $this->eventLogger->logPlayerRetirement($player);
         }
+        $team->save(); 
 
+        $player->status = PlayerStatus::RETIRED->value;
+        $player->save();
+
+        
         return $this->view->render($response, 'player/retire/success.twig', ['player' => $player]);
     }
 

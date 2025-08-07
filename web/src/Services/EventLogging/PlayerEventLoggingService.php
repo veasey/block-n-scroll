@@ -11,6 +11,19 @@ use App\Models\Player;
 
 class PlayerEventLoggingService extends EventLoggerService
 {
+    public function logPlayerRetirement(Player $player)
+    {
+        $this->log(
+            LogType::PLAYER_RETIRED->value,
+            '',
+            '',
+            '',
+            $player->team->coach,
+            $player->team,
+            $player,
+            null
+        );
+    }
     public function logPlayerInjury(MatchGame $matchGame, Player $player, CasualtyTable $injuryType)
     {
         $this->log(

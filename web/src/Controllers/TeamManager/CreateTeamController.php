@@ -5,6 +5,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 use App\Controllers\TeamManager\Shared\StaffController;
+use App\Enums\TeamStatus;
 use App\Helpers\UserHelper;
 use App\Helpers\TeamHelper;
 use App\Models\Base\BaseTeam;
@@ -60,6 +61,7 @@ class CreateTeamController extends StaffController
         $user = UserHelper::getCurrentUser();
 
         $newTeam = new Team();
+        $newTeam->status = TeamStatus::FRESH->value;
         $newTeam->name = $data['team_name'] ?? '';
         $newTeam->description = $data['team_bio'] ?? '';
         $newTeam->coach_id = $user->id;
@@ -78,7 +80,7 @@ class CreateTeamController extends StaffController
 
         // save and add players
         $teamPositions = json_decode($data['team_positions'] ?? '[]', true);
-        $newTeam = $this->getPlayers($newTeam, $teamPositions);
+        $newTeam = $this->addNewPlayersToTeam($newTeam, $teamPositions);
 
         // Redirect to list or detail view
         return $response

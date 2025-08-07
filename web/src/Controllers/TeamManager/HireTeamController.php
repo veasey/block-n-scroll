@@ -6,8 +6,10 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 use App\Controllers\TeamManager\Shared\StaffController;
 use App\Constants\ColumnMaps;
+use App\Enums\TeamStatus;
 use App\Helpers\TeamHelper;
 use App\Models\Team;
+use App\Models\Base\SideStaff as SideStaffModel;
 
 use Slim\Views\Twig;
 
@@ -64,14 +66,38 @@ class HireTeamController extends StaffController
         
         $data = $request->getParsedBody();
 
-        $team->treasury = $team->treasury - ($team->current_team_value - (int) $data['current_team_value']);
-        $team->current_team_value = $data['current_team_value'];
-
-        $sideStaff= json_decode($data['team_staff'] ?? '{}', true);
-        $team = $this->getSideStaff($team, $sideStaff);
+        $sideStaffData = json_decode($data['team_staff'] ?? '{}', true);
+        $team = $this->getSideStaff($team, $sideStaffData);
        
         $teamPositions = json_decode($data['team_positions'] ?? '[]', true);
-        $team = $this->getPlayers($team, $teamPositions);
+        $team = $this->addNewPlayersToTeam($team, $teamPositions);
+ 
+        // Update sidestaff
+        foreach (SideStaffModel::all() as $sideStaff) {
+            $columnName = ColumnMaps::SIDESTAFF_DB[$sideStaff->name];
+            $newValue = $sideStaffData[$sideStaff->name] ?? 0;
+            $oldValue = (int) $team->{$columnName} ?? 0;
+
+            $difference = $newValue - $oldValue;
+
+            if (TeamStatus::tryFrom($team->status) === TeamStatus::FRESH && $difference < 0) {
+                // Refund when reducing staff on a fresh team
+                $team->treasury += abs($difference) * $sideStaff->cost;
+            } elseif (TeamStatus::tryFrom($team->status) !== TeamStatus::FRESH) {
+                if ($difference > 0) {
+                    // Cost for adding staff
+                    $team->treasury -= $difference * $sideStaff->cost;
+                } elseif ($difference < 0) {
+                    // Refund for reducing staff
+                    $team->treasury += abs($difference) * $sideStaff->cost;
+                }
+            }
+
+            $team->{$columnName} = $newValue;
+        }
+
+
+        $team->current_team_value = TeamHelper::calculateCurrentTeamValue($team);
 
         if(!$team->save()) {
             $response->getBody()->write('Unable to save team');

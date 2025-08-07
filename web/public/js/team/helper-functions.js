@@ -100,13 +100,11 @@ function removeTeamPlayerCost(row) {
     const teamTable = document.querySelector('#team-table tbody');
     if (!teamTable) return;
     
-    const currentValueInput = document.querySelector('#current_team_value');
-    const currentValue = parseInt(currentValueInput.value, 10) || 0;
-
     const playerCostCell = row.querySelector('td:nth-child(6)');
     const playerCost = parseInt(playerCostCell.textContent.replace(/,/g, ''), 10) || 0;
 
-    currentValueInput.value = currentValue - playerCost; // Reset to current value before recalculating
+    decreaseCurrentTeamValue(playerCost);
+    increaseTreasuryValue(playerCost);
 }
 
 function increaseCurrentTeamValue(amount) {
@@ -212,7 +210,7 @@ function buyPlayerButtonHandler(btn) {
             const playerNumber = teamTable.querySelectorAll('tr').length + 1;
 
             increaseCurrentTeamValue(position.cost);
-            decreaseCurrentTeamValue(position.cost);
+            decreaseTreasuryValue(position.cost);
 
             // create skills
             const skills = position.skills.map(skill => {
