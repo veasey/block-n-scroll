@@ -54,4 +54,9 @@ class Team extends Model
                     ->orWhere('away_team_id', $this->id)
                     ->get();
     }
+
+    public function getPositionalCount(int $postionalId): int
+    {
+        return $this->players->where('base_team_player_id', $postionalId)->count();
+    }
 }

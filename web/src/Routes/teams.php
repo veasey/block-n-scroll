@@ -34,6 +34,5 @@ $app->post('/team/edit/{team_id}', EditTeamController::class . ':save');
 
 $app->get('/team/quick/{team_id}/{event_type}', QuickButtonController::class . ':getForm');
 
-$app->get('/team/hire/sidestaff/{team_id}', HireTeamController::class . ':getForm');
-$app->post('/team/hire/sidestaff/{team_id}', HireTeamController::class . ':hireStaff');
-$app->post('/team/fire/sidestaff/{team_id}', HireTeamController::class . ':fireStaff');
+$app->get('/team/hire/{team_id}', HireTeamController::class . ':getForm');
+$app->post('/team/hire/{team_id}', HireTeamController::class . ':save');

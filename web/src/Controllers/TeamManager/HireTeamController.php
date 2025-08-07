@@ -3,15 +3,18 @@ namespace App\Controllers\TeamManager;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use App\Controllers\TeamManager\Shared\AccessController;
-use App\Helpers\UserHelper;
+
+use App\Controllers\TeamManager\Shared\StaffController;
+use App\Constants\ColumnMaps;
+use App\Helpers\TeamHelper;
 use App\Models\Team;
+
 use Slim\Views\Twig;
 
 /**
  * Hiring and Firing of Side-Staff and Players
  */
-class HireTeamController extends AccessController
+class HireTeamController extends StaffController
 {
 
     protected $view;
@@ -21,40 +24,63 @@ class HireTeamController extends AccessController
         $this->view = $view;
     }
 
+    /**
+     * Add existing number of bought sidestaff to side staff list
+     * @param \App\Models\Team $team
+     * @param array $sideStaff
+     * @return array
+     */
+    private function addExistingCountToSideStaff(Team $team, array $sideStaff): Array
+    {
+        $hydratedSideStaffList = [];
+
+        foreach($sideStaff as $staff) {
+            $columnName = ColumnMaps::SIDESTAFF_DB[$staff['name']];
+            $staff['existing_count'] = $team->$columnName;
+            $hydratedSideStaffList[] = $staff;
+        }
+
+        return $hydratedSideStaffList;
+    }
+
     public function getForm(Request $request, Response $response, array $args): Response
     {
         [$team, $errorResponse] = $this->getAuthorizedTeamOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
 
-        return $this->view->render($response, 'team/manage/edit_team_info.twig', ['team' => $team]);
+        $sideStaff = TeamHelper::getSideStaffOptions($team->race);
+
+        return $this->view->render($response, 'team/manage/hire_staff.twig', [
+            'team' => $team,
+            'side_staff' => $this->addExistingCountToSideStaff($team, $sideStaff),
+            'positions' => TeamHelper::hydrateRacePositionals($team->race)
+        ]);
     }
 
     public function save(Request $request, Response $response, array $args): Response
     {
-        $teamId = $args['team_id'] ?? null;
-
-        if (empty($teamId)) {
-            $response->getBody()->write('Team ID required');
-            return $response->withStatus(404);
-        }
-
-        $team = Team::find($teamId);
-        if (empty($teamId)) {
-            $response->getBody()->write('Team not found');
-            return $response->withStatus(404);
-        }
-
+        [$team, $errorResponse] = $this->getAuthorizedTeamOrFail($request, $response, $args);
+        if ($errorResponse) return $errorResponse;
+        
         $data = $request->getParsedBody();
-        $team->name = $data['team_name'] ?? '';
-        $team->description = $data['team_bio'] ?? '';        
 
-        $user = UserHelper::getCurrentUser();
-        if ($this->isAuthorizeToModifyTeam($team)) {
-            $team->save();
-            return $response->withHeader('Location', "/team/view/$team->id")->withStatus(302);
+        $team->treasury = $team->treasury - ($team->current_team_value - (int) $data['current_team_value']);
+        $team->current_team_value = $data['current_team_value'];
+
+        $sideStaff= json_decode($data['team_staff'] ?? '{}', true);
+        $team = $this->getSideStaff($team, $sideStaff);
+       
+        $teamPositions = json_decode($data['team_positions'] ?? '[]', true);
+        $team = $this->getPlayers($team, $teamPositions);
+
+        if(!$team->save()) {
+            $response->getBody()->write('Unable to save team');
+            return $response->withStatus(500);
         }
 
-        $response->getBody()->write('Not authorised');
-        return $response->withStatus(404);
+        // Redirect to list or detail view
+        return $response
+            ->withHeader('Location', '/team/view/' . $team->id)
+            ->withStatus(302);        
     }
 }

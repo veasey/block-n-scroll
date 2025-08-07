@@ -4,7 +4,7 @@
 {% block scripts %}
     {{ parent() }}
     <script src="/js/team/helper-functions.js"></script>
-    <script src="/js/team/create.js"></script>
+    <script src="/js/team/hire.js"></script>
 {% endblock %}
 
 {% set max_cost = max_cost|default(1000000) %}
@@ -16,50 +16,30 @@
 
     <p class="breadcrumbs">
         <a href="/">Home</a> -
-        <a href="/team">Teams</a> - 
-        <a href="/team/create">Create</a> -
-        Hire Staff
+        <a href="/team/view/all">Teams</a> - 
+        <a href="/team/view/{{team.id}}">{{ team.name }}</a> -
+        Hire Additional Staff
     </p>
 
-    <h1>Hire Staff</h1>
+    <h1>Hire Additional Staff for {{ team.name }}</h1>
 
     {% include 'partials/special_rules.twig' with {'special_rules': special_rules, 'regional_rules': regional_rules} %}
 
-    <form method="post" action="/team/create" id="save-team-form" class="form-horizontal">
+    <form method="post" action="/team/hire/{{team.id}}" id="save-team-form" class="form-horizontal">
 
         <div class="form-section">
             <div class="form-group">
-                <label for="team_name"><strong>Team Name:</strong></label>
-                <input type="text" id="team_name" name="team_name" value="" required class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="team_bio"><strong>Team Bio:</strong></label>
-                <textarea id="team_bio" name="team_bio" rows="3" class="form-control"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="max_cost"><strong>Max Team Value:</strong></label>
-                <input type="number" id="max_cost" name="max_cost" value="{{ max_cost|default(1000000) }}" min="0" step="10000" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="race"><strong>Race:</strong></label>
-                <p>{{ base_team.name }}</p>
-                <input type="hidden" name="base_team_id" value="{{ base_team.id }}">
-            </div>
-            <div class="form-group">
-                <label for="tier"><strong>Tier:</strong></label>
-                <p>{{ base_team.tier }}</p>
-            </div>
-            <div class="form-group">
                 <label for="current_team_value"><strong>Current Team Value:</strong></label>
-                <p id="current-team-value-span">{{ current_team_value|default(0)|number_format }}</p>
-                <input type="hidden" id="current_team_value" name="current_team_value" value="{{ current_team_value|default(0)|number_format }}" class="form-control">
+                <p id="current-team-value-span">{{ team.current_team_value|default(0)|number_format }}</p>
+                <input type="hidden" id="current_team_value" name="current_team_value" value="{{ team.current_team_value|default(0) }}" class="form-control">
+                <input type="hidden" id="treasury" name="treasury" value="{{ team.treasury|default(0) }}" class="form-control">
             </div>
         </div>
    
         <h2>Team Staff</h2>
         <div class="tables-flex">
             <div class="table-wrapper">
-                {% include 'team/partials/positions_table.twig' with {'positions': positions} %}
+                {% include 'team/partials/positions_table.twig' with {'positions': positions, 'team': team} %}
             </div>
             <div class="table-wrapper">
                 {% include 'team/partials/staff_table.twig' with {'base_team': base_team, 'team': team, 'side_staff': side_staff} %}
@@ -68,7 +48,7 @@
 
         {% include 'team/partials/team_table.twig' with {'team': team} %}
 
-        <p><center><button type="submit">Save Team</button></center> </p>
+        <p><center><button type="submit">Save Changes</button></center> </p>
     </form>
 
 {% endblock %}

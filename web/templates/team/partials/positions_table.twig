@@ -19,8 +19,15 @@
                         {{ pos.player.name }}
                     </a>
                 </td>
-                <td>{{ pos.player.cost | number_format }}</td>
                 <td>
+                    {{ pos.player.cost | number_format }}
+                </td>
+                <td>
+                    {% if team %}
+                        <span class="bought-count" data-position-id="{{pos.player.id}}" data-bought-count="{{ team.getPositionalCount( pos.player.id ) }}">
+                            {{ team.getPositionalCount(pos.player.id) }} of 
+                        </span>
+                    {% endif %}
                     {{ pos.player.max_count == 0 ? 'Unlimited' : pos.player.max_count }}</td>
                 <td>
                     <button type="button" class="buy-player-btn"

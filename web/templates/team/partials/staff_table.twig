@@ -15,7 +15,7 @@
             {% if staff is not null %}         
                 <tr>
                     <td>
-                        <span class="count">0</span>x
+                        <span class="count">{{ staff.existing_count ?? 0 }}</span>x
                     </th>
                     <td>
                         <a href="/rules/side-staff/{{ staff.id }}" title="{{ staff.description }}">
@@ -31,7 +31,7 @@
                             data-staff-id="{{ staff.id }}"
                             data-staff-cost="{{ staff.cost }}"
                             data-max-staff="{{ staff.max }}"
-                            data-current-staff="0"
+                            data-current-staff="{{ staff.existing_count ?? 0 }}"
                         >Buy</button>
                         <button 
                             type="button" 

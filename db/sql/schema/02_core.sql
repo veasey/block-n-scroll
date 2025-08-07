@@ -24,6 +24,7 @@ CREATE TABLE team (
     coach_id INT,
     base_team_id INT,
     league_id INT,
+    current_team_value INT DEFAULT 0,
     treasury INT DEFAULT 1000000,
     rerolls INT DEFAULT 0,
     apothecary BOOLEAN DEFAULT FALSE,

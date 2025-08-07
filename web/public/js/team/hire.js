@@ -50,21 +50,9 @@ document.addEventListener('DOMContentLoaded', function () {
         saveTeamForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            const teamNameInput = document.querySelector('#team_name');
-            if (!teamNameInput.value.trim()) {
-                alert('Please enter a team name.');
-                return;
-            }
-
-            const teamValueInput = document.querySelector('#current_team_value');
-            if (parseInt(teamValueInput.value, 10) <= 0) {
-                alert('Your team must have a value greater than zero.');
-                return;
-            }
-
-            const maxTeamValue = document.querySelector('#max_cost');
-            if (parseInt(teamValueInput.value, 10) > parseInt(maxTeamValue.value, 10)) {
-                alert('Team cannot exceed max team value.');
+            const treasury = document.querySelector('#treasury');
+            if (parseInt(treasury.value, 10) <= 0) {
+                alert('You cannot afford to do that.');
                 return;
             }
 

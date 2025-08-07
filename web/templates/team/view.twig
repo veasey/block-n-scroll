@@ -47,7 +47,7 @@
 
     <div class="team-header-grid">
         <div class="team-meta">
-            <p><strong>Team Value:</strong> X Gold</p>      
+            <p><strong>Team Value:</strong> {{ team.current_team_value|number_format }} Gold</p>      
             <p><strong>Race:</strong> {{ team.race.name }} <i>(Tier: {{ team.race.tier }})</i></p>
             <p><strong>Coach:</strong> {{ team.coach.name }}</p>
             <p><strong>League:</strong> {{ team.league.name }} </p>
@@ -57,7 +57,9 @@
             <p><strong>Rerolls:</strong> {{ team.rerolls|number_format }}</p>
             <p><strong>Cheerleaders:</strong> {{ team.cheerleaders|number_format }}</p>
             <p><strong>Assistant Coaches:</strong> {{ team.assistant_coaches|number_format }}</p>
-            <p><strong>Fan Factor:</strong> {{ team.fan_factor|number_format }}</p>           
+            <p><strong>Fan Factor:</strong> {{ team.fan_factor|number_format }}</p>
+            <p><strong>Apothecary:</strong> {{ team.apothecary ? 'Yes' : 'No' }}</p>
+
         </div>
     </div>
 

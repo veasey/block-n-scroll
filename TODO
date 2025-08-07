@@ -8,10 +8,14 @@ IF USER WANDERS OFF DURING PRE GAME -> links to continue OR just play.
 CREATE TEAM FOR BREAKS ON SUBMISSION
 
 → Hire  players
+  → Charge Treasury if Hiring, but firing does not reclaim treasury!
+  → Flash messages on return to team view
+  → Logging
+
 → hire and fire side staff
 → spend SPP
 
-→ Whilst playing. Show and link to team they are playing (if have ID)
+→ ADD NOTE during match
 
 MOBILE STYLING
 -> REMOVE MARGINS
@@ -19,9 +23,14 @@ MOBILE STYLING
 
 → Team Management Screen
  → Hiring Player
- → Spending Player SPP
  → Adjusting SideStaff
  → Compare relative team value with another team.
+
+→ Player Management Screen
+ → Renaming Players
+ → Spending Player SPP
+
+BUG: Players stuck in POST SEQUENCE after match ended.
 
 → Player
  → View Skills (original and additional)
@@ -60,3 +69,9 @@ NICE TO HAVES
  → Half Time
 
  SNOTS DONT ADD TO CTV
+
+
+ CRON JOBS
+ -> check and update CTV
+ -> Set Idle players to Idle
+ -> Finish Games after 24 hours
