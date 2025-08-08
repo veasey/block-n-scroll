@@ -78,7 +78,13 @@ class ViewTeamController extends AccessController
             ->orderByDesc('updated_at')
             ->first();
         }
-       
+
+        // fix status
+        if (!$match && TeamStatus::tryFrom($team->status) == TeamStatus::POST_SEQUENCE) {
+            $team->status = TeamStatus::IDLE->value;
+            $team->save();
+        }
+
         return $this->view->render($response, 'team/view.twig', [
             'team' => $team, 
             'players' => $players,
