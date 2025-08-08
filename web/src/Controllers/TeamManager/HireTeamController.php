@@ -71,31 +71,6 @@ class HireTeamController extends StaffController
        
         $teamPositions = json_decode($data['team_positions'] ?? '[]', true);
         $team = $this->addNewPlayersToTeam($team, $teamPositions);
- 
-        // Update sidestaff
-        foreach (SideStaffModel::all() as $sideStaff) {
-            $columnName = ColumnMaps::SIDESTAFF_DB[$sideStaff->name];
-            $newValue = $sideStaffData[$sideStaff->name] ?? 0;
-            $oldValue = (int) $team->{$columnName} ?? 0;
-
-            $difference = $newValue - $oldValue;
-
-            if (TeamStatus::tryFrom($team->status) === TeamStatus::FRESH && $difference < 0) {
-                // Refund when reducing staff on a fresh team
-                $team->treasury += abs($difference) * $sideStaff->cost;
-            } elseif (TeamStatus::tryFrom($team->status) !== TeamStatus::FRESH) {
-                if ($difference > 0) {
-                    // Cost for adding staff
-                    $team->treasury -= $difference * $sideStaff->cost;
-                } elseif ($difference < 0) {
-                    // Refund for reducing staff
-                    $team->treasury += abs($difference) * $sideStaff->cost;
-                }
-            }
-
-            $team->{$columnName} = $newValue;
-        }
-
 
         $team->current_team_value = TeamHelper::calculateCurrentTeamValue($team);
 

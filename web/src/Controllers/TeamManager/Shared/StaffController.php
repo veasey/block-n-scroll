@@ -9,6 +9,7 @@ use App\Helpers\UserHelper;
 use App\Models\Base\BaseTeamPlayer;
 use App\Models\DefaultPlayerName;
 use App\Models\Player;
+use App\Models\Base\SideStaff as SideStaffModel;
 use App\Models\Team;
 
 /**
@@ -19,9 +20,20 @@ class StaffController extends AccessController
     protected function getSideStaff(Team $team, array $data): Team
     {
         foreach($data as $row) {
-            $sideStaff = SideStaff::tryFrom($row['id']);
-            $columnName = ColumnMaps::SIDESTAFF_ENUMS[$sideStaff->name];
-            $team->$columnName = $row['count'];
+            $sideStaffId = SideStaff::tryFrom($row['id']);
+            $sideStaff = SideStaffModel::find($sideStaffId);
+            $columnName = ColumnMaps::SIDESTAFF_DB[$sideStaff->name];
+
+            $difference = $row['count'] - $team->$columnName;
+            $team->$columnName = $row['count'];           
+
+            if (TeamStatus::tryFrom($team->status) === TeamStatus::FRESH && $difference < 0) {
+                // Refund when reducing staff on a fresh team
+                $team->treasury += abs($difference) * $sideStaff->cost;
+            } elseif ($difference > 0) {
+                // Cost for adding staff
+                $team->treasury -= $difference * $sideStaff->cost;
+            }          
         }
 
         return $team;
@@ -73,9 +85,7 @@ class StaffController extends AccessController
             $nextNumber++;
         }
 
-        if (TeamStatus::tryFrom($team->status) != TeamStatus::FRESH) {
-            $team->treasury -= $totalCost;
-        }
+        $team->treasury -= $totalCost;
 
         return $team;
     }
