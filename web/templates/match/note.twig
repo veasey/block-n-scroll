@@ -1,0 +1,21 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Note Added {% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> - 
+        <a href="/match/view/all">Matches</a> -
+        <a href="/match/view/{{match.id}}">{% include 'partials/home_team_name.twig' with {'match': match} %} vs 
+        {% include 'partials/away_team_name.twig' with {'match': match} %}</a> -
+        Note Added
+    </p>
+
+    <h2>Note Added</h2>
+
+    <p style="margin-top: 1.5em;">
+        <a href="/team/view/{{team.id}}">← Back to Team</a>
+    </p>
+
+{% endblock %}

@@ -4,20 +4,10 @@
 REPLACE ERROR TO VIEW MATCH
 IF USER WANDERS OFF DURING PRE GAME -> links to continue OR just play.
 
+→ Flash messages on return to team view
+ → Logging
 
-CREATE TEAM FOR BREAKS ON SUBMISSION
-
-→ Hire  players
-  → Bug in Treasury
-    → If Team is FRESH, when firing player or staff reclaim cost. Otherwise, that is not returned.
-
-  → Flash messages on return to team view
-  → Logging
-
-→ hire and fire side staff
 → spend SPP
-
-→ ADD NOTE during match
 
 MOBILE STYLING
 -> REMOVE MARGINS

@@ -20,6 +20,7 @@
                 <a href='/team/quick/{{ team.id }}/casualty' class="quick-btn" title="Mark Casualty Caused">✊ Casualty Caused</a>
                 <a href='/team/quick/{{ team.id }}/touchdown' class="quick-btn" title="Add Touchdown">🏉 Touch Down</a>
                 <a href='/team/quick/{{ team.id }}/completion' class="quick-btn" title="Add Completion">🤾🏻‍♂️ Completion</a>
+                <a href='/team/quick/{{ team.id }}/note' class="quick-btn" title="Add Note">📝 Note</a>
                 <form action="/match/end" method="post">
                     <input type="hidden" id="team_id" name="team_id" value="{{team.id}}" />
                     <button class="quick-btn" title="Start Match">🏁 End Match</button>

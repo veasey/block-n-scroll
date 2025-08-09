@@ -12,4 +12,5 @@ enum EventType: string
     case WINNINGS = 'winnings';
     case WEATHER = 'weather';
     case KICK_OFF = 'kick_off';
+    case NOTE = 'note';
 }

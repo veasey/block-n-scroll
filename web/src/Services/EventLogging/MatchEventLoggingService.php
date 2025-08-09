@@ -7,6 +7,8 @@ use App\Enums\LogType;
 use App\Enums\Match\EventType;
 use App\Enums\Match\WeatherTable;
 use App\Models\MatchGame;
+use App\Models\Team;
+use App\Models\Coach;
 use App\Models\Player;
 
 class MatchEventLoggingService extends EventLoggerService
@@ -168,5 +170,23 @@ class MatchEventLoggingService extends EventLoggerService
                 $matchGame
             );
         }
+    }
+
+    public function addNote(MatchGame $match, Team $team, Coach $coach, String $note)
+    {
+        if (empty($note)) {
+            return;
+        }
+
+        $this->log(
+            LogType::MATCH_EVENT->value,
+            'Note Added.',
+            EventType::NOTE->value,
+            $note,
+            $coach,
+            $team,
+            null,
+            $match
+        );
     }
 }
