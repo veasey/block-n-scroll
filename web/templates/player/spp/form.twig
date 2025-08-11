@@ -9,7 +9,7 @@
         <a href="/team">Teams</a> - 
         <a href="/team/view/all">All Teams</a> -
         <a href="/team/view/{{ player.team.id }}">{{ player.team.name }}</a> -
-        <a href="/team/view/{{ player.id }}">{{ player.name }} (#{{ player.number }})</a> -
+        <a href="/player/view/{{ player.id }}">{{ player.name }} (#{{ player.number }})</a> -
         Spend Start Player Points
     </p>
 
@@ -19,20 +19,38 @@
     <p class="rules-intro">All skills currently in <strong>Blood Bowl</strong>:</p>
 
     <p>This player has <strong>{{player.spp}}</strong> star player points to spend</p>
-
-    <p class="rules-intro">All skills currently available for {{ player.name }} (#{{ player.number }}):</p>
-
-    <div class="team-header-grid">
-        <div class="team-meta">
-            <h2>Primary Skills</h2>
-            {% include 'player/spp/partials/skill_list.twig' with {'skills': skills.primary} %}
+    
+    {% if upgrade_cost.random_primary <= player.spp %}
+        <div>
+            <button onclick="window.location.href='/player/spp/{{ player.id }}/random_primary'">
+                🎲 Random Primary Skill [{{upgrade_cost.random_primary}}]
+            </button>
         </div>
-        <div class="team-meta">
-            <h2>Secondary Skills</h2>
-            {% include 'player/spp/partials/skill_list.twig' with {'skills': skills.secondary} %}
-        </div>
-    </div>
+    {% endif %}
 
+    {% if upgrade_cost.select_primary_or_random_secondary <= player.spp %}
+        <button onclick="window.location.href='/player/spp/{{ player.id }}/select_primary'">
+            👆 Select Primary Skill [{{upgrade_cost.select_primary_or_random_secondary}}]
+        </button>
+    {% endif %}
+
+    {% if upgrade_cost.select_primary_or_random_secondary <= player.spp %}
+        <button onclick="window.location.href='/player/spp/{{ player.id }}/random_secondary'">
+            🎲 Random Secondary Skill [{{upgrade_cost.select_primary_or_random_secondary}}]
+        </button>
+    {% endif %}
+
+    {% if upgrade_cost.select_secondary <= player.spp %}
+        <button onclick="window.location.href='/player/spp/{{ player.id }}/select_secondary'">
+            👆 Select Secondary Skill [{{upgrade_cost.select_secondary}}]
+        </button>
+    {% endif %}
+
+    {% if upgrade_cost.characteristic <= player.spp %}
+        <button onclick="window.location.href='/player/spp/{{ player.id }}/characteristic'">
+            🎲 Random Character Increase [{{upgrade_cost.characteristic}}]
+        </button>
+    {% endif %}
 
     <p style="margin-top: 1.5em;">
         <a href="/player/view/{{player.id}}">← Back to player</a>

@@ -23,15 +23,15 @@ class SkillRepository
                     ->get();
     }
 
-    public function getAvailableSkills(Player $player): array
+    public function getPrimarySkills(Player $player): Collection
     {
-        
         $primarySkillCategory = $player->position->primarySkill->pluck('name');
-        $secondarySkillCategory = $player->position->secondarySkill->pluck('name');
+        return $this->getAvailableSkillsInCategories($primarySkillCategory);
+    }
 
-        return [
-            'primary' => $this->getAvailableSkillsInCategories($primarySkillCategory),
-            'secondary' => $this->getAvailableSkillsInCategories($secondarySkillCategory),
-        ];
+    public function getSecondarySkills(Player $player): Collection
+    {
+        $primarySkillCategory = $player->position->secondarySkill->pluck('name');
+        return $this->getAvailableSkillsInCategories($primarySkillCategory);
     }
 }

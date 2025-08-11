@@ -8,6 +8,7 @@ class StarPlayerPointHelper
 {
     public function nextSkillCost(Player $player): mixed
     {
-        return Cost::UPDGRADE_THRESHOLD[$player->level];
+        $level = $player->level;
+        return Cost::UPDGRADE_THRESHOLD[$level];
     }
 }

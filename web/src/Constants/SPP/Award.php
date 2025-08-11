@@ -1,5 +1,5 @@
 <?php
-namespace App\SPP\Constants;
+namespace App\Constants\SPP;
 
 class Award
 {

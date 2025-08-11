@@ -1,44 +1,44 @@
 <?php
-namespace App\SPP\Constants;
+namespace App\Constants\SPP;
 
 class Cost
 {
     public CONST UPDGRADE_THRESHOLD = [
-        'Experienced'   => [
-            'primary_random'   => 3,
-            'primary_selected' => 6,
-            'secondary_random' => 12,
-            'secondary_selected' => 18,
+        'Rookie'   => [
+            'random_primary'   => 3,
+            'select_primary_or_random_secondary' => 6,
+            'select_secondary' => 12,
+            'characteristic' => 18,
         ],
-        'Veteran'       => [
-            'primary_random'   => 4,
-            'primary_selected' => 8,
-            'secondary_random' => 14,
-            'secondary_selected' => 20,
+        'Experienced'       => [
+            'random_primary'   => 4,
+            'select_primary_or_random_secondary' => 8,
+            'selected_secondary' => 14,
+            'characteristic' => 20,
         ],
-        'Emerging Star' => [
-            'primary_random'   => 6,
-            'primary_selected' => 10,
-            'secondary_random' => 16,
-            'secondary_selected' => 24,
+        'Veteran' => [
+            'random_primary'   => 6,
+            'select_primary_or_random_secondary' => 10,
+            'selected_secondary' => 16,
+            'characteristic' => 24,
         ],
-        'Star'          => [
-            'primary_random'   => 8,
-            'primary_selected' => 12,
-            'secondary_random' => 18,
-            'secondary_selected' => 28,
+        'Emerging Star'          => [
+            'random_primary'   => 8,
+            'select_primary_or_random_secondary' => 12,
+            'selected_secondary' => 18,
+            'characteristic' => 28,
         ],
-        'Super Star'    => [
-            'primary_random'   => 10,
-            'primary_selected' => 14,
-            'secondary_random' => 20,
-            'secondary_selected' => 32,
+        'Star'    => [
+            'random_primary'   => 10,
+            'select_primary_or_random_secondary' => 14,
+            'selected_secondary' => 20,
+            'characteristic' => 32,
         ],
-        'Legend'        => [
-            'primary_random'   => 15,
-            'primary_selected' => 30,
-            'secondary_random' => 40,
-            'secondary_selected' => 50,
+        'Super Star'        => [
+            'random_primary'   => 15,
+            'select_primary_or_random_secondary' => 30,
+            'selected_secondary' => 40,
+            'characteristic' => 50,
         ],
     ];
 }

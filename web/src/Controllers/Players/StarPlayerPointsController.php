@@ -38,12 +38,30 @@ class StarPlayerPointsController extends AccessController
         [$player, $errorResponse] = $this->getAuthorizedPlayerOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
    
-        $skills = $this->skillRepository->getAvailableSkills($player);
-
         return $this->view->render($response, 'player/spp/form.twig', [
             'player' => $player,
-            'skills' => $skills,
-            'updgradeCost' => $this->starPlayerPointHelper->nextSkillCost()
+            'upgrade_cost' => $this->starPlayerPointHelper->nextSkillCost($player)
+        ]);
+    }
+
+    public function getPrimarySkillSelectForm(Request $request, Response $response, array $args): Response
+    {
+        [$player, $errorResponse] = $this->getAuthorizedPlayerOrFail($request, $response, $args);
+        if ($errorResponse) return $errorResponse;
+   
+        return $this->view->render($response, 'player/spp/select_primary_skill.twig', [
+            'player' => $player,
+            'skills' => $this->skillRepository->getPrimarySkills($player)
+        ]);
+    }
+
+    public function getPrimarySkillRandomForm(Request $request, Response $response, array $args): Response
+    {
+        [$player, $errorResponse] = $this->getAuthorizedPlayerOrFail($request, $response, $args);
+        if ($errorResponse) return $errorResponse;
+   
+        return $this->view->render($response, 'player/spp/random_primary_skill.twig', [
+            'player' => $player
         ]);
     }
 }

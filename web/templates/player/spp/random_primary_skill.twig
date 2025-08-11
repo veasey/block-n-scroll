@@ -1,0 +1,41 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - Rules - Team - {{ team.name }} - {{ player.name }} (#{{ player.number }}) - SPP - Random Primary Skill{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/team">Teams</a> - 
+        <a href="/team/view/all">All Teams</a> -
+        <a href="/team/view/{{ player.team.id }}">{{ player.team.name }}</a> -
+        <a href="/player/view/{{ player.id }}">{{ player.name }} (#{{ player.number }})</a> -
+        <a href="/player/spp/{{ player.id }}">Spend Start Player Points</a> -
+        Random Primary Skill
+    </p>
+
+    <h2>{{ player.name }} (#{{ player.number }}) Random Primary Skill</h2>
+
+    <p class="rules-intro">Roll two D6 for a random Primary Skill for {{ player.name }} (#{{ player.number }}):</p>
+
+    <form method="post" action="/match/{{match.id}}/weather" class="form-horizontal">
+        <div class="form-section">   
+            <div class="form-group">
+                <label for="primary_random_1">Random Primary Skill Roll 1:</label>
+                {% include 'partials/dice_roll.twig' with {'name': 'primary_random_1', 'min': 1, 'max': 6} %}
+            </div>
+            <div class="form-group">
+                <label for="primary_random_2">Random Primary Skill Roll 2:</label>
+                {% include 'partials/dice_roll.twig' with {'name': 'primary_random_2', 'min': 1, 'max': 6} %}
+            </div>       
+            <div class="form-section">
+                <button type="submit">Submit Weather Result</button>
+            </div>
+        </div>      
+    </form>
+
+    <p style="margin-top: 1.5em;">
+        <a href="/player/spp/{{player.id}}">← Back to player SPP</a>
+    </p>
+
+{% endblock %}
