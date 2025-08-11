@@ -24,6 +24,12 @@
         {% include 'match/end/partials/match_result.twig' with {'match': match} %}
     {% endif %}
 
+    {% if isAdmin or team %}
+        <div class="team-quick-buttons" style="border: 1px solid gray; border-radius: 8px; padding: 0.5em;">
+            <a href='/team/quick/{{ team.id }}/note' class="quick-btn" title="Add Note">📝 Note</a>
+        </div>
+    {% endif %}
+
     <table class="match-details">
         <tr>
             <th>Match Status</th>

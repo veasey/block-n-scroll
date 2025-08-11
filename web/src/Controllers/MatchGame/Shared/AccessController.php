@@ -5,15 +5,23 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 use App\Helpers\UserHelper;
-
 use App\Models\MatchGame;
 use App\Models\Team;
 
 abstract class AccessController
 {
+
+    protected $userHelper;
+
+    public function __construct(
+        UserHelper $userHelper
+    ) {
+        $this->userHelper = $userHelper;
+    }
+
     protected function isAuthorizeToManageTeam(Team $team): bool
     {
-        $user = UserHelper::getCurrentUser();
+        $user = $this->userHelper->getCurrentUser();
         if (empty($user)) {
             return false;
         }

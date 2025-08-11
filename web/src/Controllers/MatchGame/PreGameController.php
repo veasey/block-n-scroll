@@ -11,6 +11,7 @@ use App\Enums\Match\Status as MatchStatus;
 use App\Enums\Match\WeatherTable;
 use App\Controllers\MatchGame\Shared\AccessController;
 use App\Helpers\TeamHelper;
+use App\Helpers\MatchHelper;
 use App\Repositories\EventLogRepository;
 use App\Repositories\TeamRepository;
 use App\Services\EventLogging\MatchEventLoggingService;
@@ -19,12 +20,17 @@ use App\Services\MatchService;
 class PreGameController extends AccessController
 {
     protected $logRepo;
+
+    protected $matchHelper;
+    protected $teamHelper;
     protected $teamRepo;
     protected $eventLoggerService;
     protected $matchService;
     protected $view;
 
     public function __construct(
+        MatchHelper $matchHelper,
+        TeamHelper $teamHelper,
         EventLogRepository $logRepo,
         TeamRepository $teamRepo,
         MatchEventLoggingService $eventLoggerService,
@@ -32,6 +38,8 @@ class PreGameController extends AccessController
         Twig $view
     )    
     {
+        $this->teamHelper = $teamHelper;
+        $this->matchHelper = $matchHelper;
         $this->logRepo = $logRepo;
         $this->teamRepo = $teamRepo;
         $this->eventLoggerService = $eventLoggerService;
@@ -58,6 +66,11 @@ class PreGameController extends AccessController
         $data = $request->getParsedBody();
         $awayTeamId = (int) $data['opponent_team_id'];
         $awayTeamName = $data['unregistered_name'] ?? '';
+
+        // has opponent already started the match?
+        if ($match = $this->matchHelper->getCurrentMatchTeamPlayingIn($team)) {
+            return $this->view->render($response, 'match/start/duplicate_start_match.twig', ['match' => $match, 'team' => $team]);
+        }
 
         if (!$awayTeamId && empty($awayTeamName)) {
             $response->getBody()->write("A team cannot play with itself.");
@@ -141,7 +154,7 @@ class PreGameController extends AccessController
         if ($errorResponse) return $errorResponse;
 
         $this->eventLoggerService->logKickOff($match);
-        $team = TeamHelper::getCurrentPlayingTeam();
+        $team = $this->teamHelper->getCurrentPlayingTeam();
 
         $matchInfo = $this->matchService->getMatchSetupInfo($match);
         $match->status = MatchStatus::IN_PROGRESS;

@@ -3,13 +3,16 @@ namespace App\Controllers\TeamManager;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+
 use App\Controllers\TeamManager\Shared\AccessController;
 use App\Enums\TeamStatus;
 use App\Enums\Match\Status as MatchStatus;
+use App\Helpers\UserHelper;
 use App\Models\Coach;
 use App\Models\MatchGame;
 use App\Models\Team;
 use App\Repositories\PlayerRepository;
+
 use Slim\Views\Twig;
 
 class ViewTeamController extends AccessController
@@ -18,10 +21,12 @@ class ViewTeamController extends AccessController
     protected $view;
 
     public function __construct(
+        UserHelper $userHelper,
         PlayerRepository $playerRepo,
         Twig $view
     )
     {
+        parent::__construct($userHelper);
         $this->playerRepo = $playerRepo;
         $this->view = $view;
     }

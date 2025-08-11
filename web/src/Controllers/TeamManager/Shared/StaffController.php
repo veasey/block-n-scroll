@@ -17,6 +17,14 @@ use App\Models\Team;
  */
 class StaffController extends AccessController
 {
+    protected $userHelper;
+
+    public function __construct(
+        UserHelper $userHelper
+    ) {
+        $this->userHelper = $userHelper;
+    }
+
     protected function getSideStaff(Team $team, array $data): Team
     {
         foreach($data as $row) {
@@ -76,7 +84,7 @@ class StaffController extends AccessController
             $player->av = (int) $baseTeamPlayer->av;
             $player->pa = (int) $baseTeamPlayer->pa;
 
-            $player->original_coach_id = (int) UserHelper::getCurrentUser()->id ?? 0;
+            $player->original_coach_id = (int) $this->userHelper->getCurrentUser()->id ?? 0;
 
             $player->save();
 

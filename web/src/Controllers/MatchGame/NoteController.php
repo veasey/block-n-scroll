@@ -8,18 +8,25 @@ use App\Controllers\MatchGame\Shared\AccessController;
 use App\Helpers\UserHelper;
 use App\Helpers\TeamHelper;
 use App\Services\EventLogging\MatchEventLoggingService;
+
 use Slim\Views\Twig;
 
 class NoteController extends AccessController
 {
+    protected $userHelper;
+    protected $teamHelper;
     protected $eventLoggerService;
     protected $view;
 
      public function __construct(
+        UserHelper $userHelper,
+        TeamHelper $teamHelper,
         MatchEventLoggingService $eventLoggerService,
         Twig $view
     )    
     {
+        $this->userHelper = $userHelper;
+        $this->teamHelper = $teamHelper;
         $this->eventLoggerService = $eventLoggerService;
         $this->view = $view;
     }
@@ -32,8 +39,8 @@ class NoteController extends AccessController
         $data = $request->getParsedBody();
         $note = $data['note'] ?? '';
 
-        $coach = UserHelper::getCurrentUser();
-        $team = TeamHelper::getCurrentPlayingTeam();
+        $coach = $this->userHelper->getCurrentUser();
+        $team = $this->teamHelper->getCurrentPlayingTeam();
 
         $this->eventLoggerService->addNote($match, $team, $coach, $note);
 

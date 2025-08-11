@@ -1,12 +1,6 @@
 
 → TODO & Bugs: 
 
-REPLACE ERROR TO VIEW MATCH
-IF USER WANDERS OFF DURING PRE GAME -> links to continue OR just play.
-
-→ Flash messages on return to team view
- → Logging
-
 → spend SPP
 
 MOBILE STYLING
@@ -54,13 +48,14 @@ BUG: Players stuck in POST SEQUENCE after match ended.
 ---
 NICE TO HAVES
 
+- Flash messages on return to team view
+  - Perhapos just keep using templates?
+
 → Player Info View
  → Quick View Actions (so can injure etc from here)
 → Quick Button
  → Add Note
  → Half Time
-
- SNOTS DONT ADD TO CTV
 
 
  CRON JOBS

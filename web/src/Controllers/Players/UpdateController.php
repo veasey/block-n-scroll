@@ -21,6 +21,7 @@ use Slim\Views\Twig;
 class UpdateController extends AccessController
 {
     protected $matchHelper;
+    protected $teamHelper;
     protected $matchGameRepo;
     protected $eventLogger;
     protected $injuryService;
@@ -28,12 +29,14 @@ class UpdateController extends AccessController
 
     public function __construct(
         MatchHelper $matchHelper,
+        TeamHelper $teamHelper,
         MatchGameRepository $matchGameRepo,
         PlayerEventLoggingService $eventLogger, 
         InjuryService $injuryService,
         Twig $view
     )
     {
+        $this->teamHelper = $teamHelper;
         $this->matchHelper = $matchHelper;
         $this->matchGameRepo = $matchGameRepo;
         $this->eventLogger = $eventLogger;
@@ -140,7 +143,7 @@ class UpdateController extends AccessController
         }
 
         $team = $player->team;
-        if (!TeamHelper::isLowCostLineman($player->position, $team->race)) {
+        if (!$this->teamHelper->isLowCostLineman($player->position, $team->race)) {
             $team->current_team_value -= $player->cost;
         }
 

@@ -14,11 +14,19 @@ use Slim\Views\Twig;
 
 class CreateTeamController extends StaffController
 {
+    protected $userHelper;
+    protected $teamHelper;
 
     protected $view;
 
-    public function __construct(Twig $view)
+    public function __construct(
+        UserHelper $userHelper,
+        TeamHelper $teamHelper,
+        Twig $view
+    )
     {
+        $this->userHelper = $userHelper;
+        $this->teamHelper = $teamHelper;
         $this->view = $view;
     }
 
@@ -26,7 +34,7 @@ class CreateTeamController extends StaffController
     {
         // if user has too many teams
         $max = 50;
-        if (Team::where('coach_id', UserHelper::getCurrentUser()->id)->count() >= $max) {
+        if (Team::where('coach_id', $this->userHelper->getCurrentUser()->id)->count() >= $max) {
             return $this->view->render($response, 'team/create/too_many_teams.twig', ['max' => $max]);
         }
 
@@ -47,8 +55,8 @@ class CreateTeamController extends StaffController
             'special_rules' => $baseTeam->special_rules,
             'regional_rules' => $baseTeam->regional_rules,
             'apothecary_allowed' => $baseTeam->apothecary_allowed,
-            'side_staff' => TeamHelper::getSideStaffOptions($baseTeam),
-            'positions' => TeamHelper::hydrateRacePositionals($baseTeam)
+            'side_staff' => $this->teamHelper->getSideStaffOptions($baseTeam),
+            'positions' => $this->teamHelper->hydrateRacePositionals($baseTeam)
         ];
 
         return $this->view->render($response, 'team/create/hire_staff.twig', $data);
@@ -58,7 +66,7 @@ class CreateTeamController extends StaffController
     public function save(Request $request, Response $response): Response
     {
         $data = $request->getParsedBody();
-        $user = UserHelper::getCurrentUser();
+        $user = $this->userHelper->getCurrentUser();
 
         $newTeam = new Team();
         $newTeam->status = TeamStatus::FRESH->value;

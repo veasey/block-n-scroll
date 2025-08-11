@@ -7,6 +7,7 @@ use App\Controllers\TeamManager\Shared\AccessController;
 use App\Enums\Match\EventType;
 use App\Enums\Player\PlayerStatus;
 use App\Helpers\MatchHelper;
+use App\Helpers\UserHelper;
 use Slim\Views\Twig;
 
 class QuickButtonController extends AccessController
@@ -16,9 +17,11 @@ class QuickButtonController extends AccessController
 
     public function __construct(
         Twig $view,
-        MatchHelper $matchHelper
+        MatchHelper $matchHelper,
+        UserHelper $userHelper
     )
     {
+        parent::__construct($userHelper);
         $this->view = $view;
         $this->matchHelper = $matchHelper;
     }

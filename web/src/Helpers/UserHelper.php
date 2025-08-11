@@ -1,5 +1,6 @@
 <?php
 namespace App\Helpers;
+use App\Enums\UserRole;
 use App\Models\Coach;
 use Exception;
 
@@ -10,7 +11,7 @@ class UserHelper
      * @throws \Exception
      * @return mixed
      */
-    public static function getCurrentUser()
+    public function getCurrentUser()
     {
         if (!isset($_SESSION['user']) || !isset($_SESSION['user']['id'])) {
             return null;
@@ -23,5 +24,12 @@ class UserHelper
         }
 
         return $user;
+    }
+
+    public function isCurrentUserAdmin(): bool 
+    {
+        $currentUser = $this->getCurrentUser();
+        $userRole = UserRole::tryFrom($currentUser->role);
+        return $userRole === UserRole::ADMIN;
     }
 }

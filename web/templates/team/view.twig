@@ -14,13 +14,12 @@
     <h2>{{ team.name }} [{{ team.status }}]</h2>
 
     {% if session.user and session.user.id == team.coach.id %}
-        <div class="team-quick-buttons">
+        <div class="team-quick-buttons" style="border: 1px solid gray; border-radius: 8px; padding: 0.5em;">
             {% if team.status == 'playing' %}
                 <a href='/team/quick/{{ team.id }}/injury' class="quick-btn" title="Log Injury">🩸 Player Injured</a>
                 <a href='/team/quick/{{ team.id }}/casualty' class="quick-btn" title="Mark Casualty Caused">✊ Casualty Caused</a>
                 <a href='/team/quick/{{ team.id }}/touchdown' class="quick-btn" title="Add Touchdown">🏉 Touch Down</a>
                 <a href='/team/quick/{{ team.id }}/completion' class="quick-btn" title="Add Completion">🤾🏻‍♂️ Completion</a>
-                <a href='/team/quick/{{ team.id }}/note' class="quick-btn" title="Add Note">📝 Note</a>
                 <form action="/match/end" method="post">
                     <input type="hidden" id="team_id" name="team_id" value="{{team.id}}" />
                     <button class="quick-btn" title="Start Match">🏁 End Match</button>

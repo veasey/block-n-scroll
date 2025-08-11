@@ -16,4 +16,22 @@ class MatchHelper
             ->orderByDesc('updated_at')
             ->first();
     }
+
+    // Is team currently playing in match?
+    public function isParticipant(?Team $team, ?MatchGame $match) 
+    {
+        if (!$team || !$match) {
+            return false;
+        }
+
+        if ($match->homeTeam && $match->homeTeam->id === $team->id) {
+            return true;
+        }
+
+        if ($match->awayTeam && $match->awayTeam->id === $team->id) {
+            return true;
+        }
+
+        return false;
+    }
 }

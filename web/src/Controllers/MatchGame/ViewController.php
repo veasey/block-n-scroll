@@ -4,23 +4,38 @@ namespace App\Controllers\MatchGame;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-use Slim\Views\Twig;
-
 use App\Helpers\PaginationHelper;
+use App\Helpers\MatchHelper;
+use App\Helpers\TeamHelper;
+use App\Helpers\UserHelper;
+
 use App\Repositories\EventLogRepository;
 use App\Models\MatchGame;
 use App\Models\Team;
 
+use Slim\Views\Twig;
 
 class ViewController
 {
+    protected $paginationHelper;
+    protected $matchHelper;
+    protected $teamHelper;
+    protected $userHelper;
     protected $logRepo;
     protected $view;
 
     public function __construct(
+        PaginationHelper $paginationHelper,
+        MatchHelper $matchHelper,
+        TeamHelper $teamHelper,
+        UserHelper $userHelper,
         EventLogRepository $logRepo,
         Twig $view)    
     {
+        $this->paginationHelper = $paginationHelper;
+        $this->matchHelper = $matchHelper;
+        $this->teamHelper = $teamHelper;
+        $this->userHelper = $userHelper;
         $this->logRepo = $logRepo;
         $this->view = $view;
     }
@@ -34,22 +49,30 @@ class ViewController
             $response->withStatus(404);
         }
 
-        $params = PaginationHelper::getPaginationParams();
+        $params = $this->paginationHelper->getPaginationParams();
         $logs = $this->logRepo->getMatchEventLogs($match);
 
         $logPage = $logs->slice($params['offset'], $params['perPage']);
         $totalPages = ceil($logs->count() / $params['perPage']);
-
-        return $this->view->render($response, 'match/view.twig', [
+        
+        $data = [
             'match' => $match,
             'logs' => $logPage,
-            'totalPage' => $totalPages
-        ]);
+            'totalPage' => $totalPages,
+            'isAdmin' => $this->userHelper->isCurrentUserAdmin()
+        ];
+
+        $currentTeam  = $this->teamHelper->getCurrentPlayingTeam();
+        if ($this->matchHelper->isParticipant($currentTeam, $match)) {
+            $data['team'] = $currentTeam;
+        }
+
+        return $this->view->render($response, 'match/view.twig', $data);
     }
 
     public function listAll(Request $request, Response $response, array $args): mixed
     {
-        $params = PaginationHelper::getPaginationParams();
+        $params = $this->paginationHelper->getPaginationParams();
         
         $totalCount = MatchGame::count();
 
@@ -71,7 +94,7 @@ class ViewController
 
     public function listTeamMatches(Request $request, Response $response, array $args): mixed
     {
-        $params = PaginationHelper::getPaginationParams();
+        $params = $this->paginationHelper->getPaginationParams();
         
         $teamId = $args['team_id'] ?? null;
 

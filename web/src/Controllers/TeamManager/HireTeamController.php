@@ -20,10 +20,15 @@ class HireTeamController extends StaffController
 {
 
     protected $view;
+    protected $teamHelper;
 
-    public function __construct(Twig $view)
+    public function __construct(
+        Twig $view,
+        TeamHelper $teamHelper
+    )
     {
         $this->view = $view;
+        $this->teamHelper = $teamHelper;
     }
 
     /**
@@ -50,12 +55,12 @@ class HireTeamController extends StaffController
         [$team, $errorResponse] = $this->getAuthorizedTeamOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
 
-        $sideStaff = TeamHelper::getSideStaffOptions($team->race);
+        $sideStaff = $this->teamHelper->getSideStaffOptions($team->race);
 
         return $this->view->render($response, 'team/manage/hire_staff.twig', [
             'team' => $team,
             'side_staff' => $this->addExistingCountToSideStaff($team, $sideStaff),
-            'positions' => TeamHelper::hydrateRacePositionals($team->race)
+            'positions' => $this->teamHelper->hydrateRacePositionals($team->race)
         ]);
     }
 
@@ -72,7 +77,7 @@ class HireTeamController extends StaffController
         $teamPositions = json_decode($data['team_positions'] ?? '[]', true);
         $team = $this->addNewPlayersToTeam($team, $teamPositions);
 
-        $team->current_team_value = TeamHelper::calculateCurrentTeamValue($team);
+        $team->current_team_value = $this->teamHelper->calculateCurrentTeamValue($team);
 
         if(!$team->save()) {
             $response->getBody()->write('Unable to save team');

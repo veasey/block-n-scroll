@@ -12,6 +12,15 @@ use App\Models\Player;
 
 abstract class AccessController
 {
+    protected $userHelper;
+
+    public function __construct(
+        UserHelper $userHelper
+    )    
+    {
+        $this->userHelper = $userHelper;
+    }
+
     /**
      * show player management controls?
      * @param User
@@ -20,7 +29,7 @@ abstract class AccessController
      */
     protected function isAuthorizeToManagePlayer(Player $player): bool
     {
-        $user = UserHelper::getCurrentUser();
+        $user = $this->userHelper->getCurrentUser();
         if (empty($user)) {
             return false;
         }
@@ -61,7 +70,6 @@ abstract class AccessController
             return [null, $response->withStatus(404)->write('player not found')];
         }
 
-        $user = UserHelper::getCurrentUser();
         if (!$this->isAuthorizeToManagePlayer( $player)) {
             return [null, $response->withStatus(404)->write('Not authorised')];
         }

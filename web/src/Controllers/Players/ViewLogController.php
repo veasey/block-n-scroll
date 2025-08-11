@@ -12,10 +12,12 @@ use Slim\Views\Twig;
 
 class ViewLogController extends AccessController
 {
+    protected $paginationHelper;
     protected $view;
 
-    public function __construct(Twig $view)
+    public function __construct(PaginationHelper $paginationHelper, Twig $view)
     {
+        $this->paginationHelper = $paginationHelper;
         $this->view = $view;
     }
 
@@ -36,7 +38,7 @@ class ViewLogController extends AccessController
         }
 
         // get logs
-        $params = PaginationHelper::getPaginationParams();
+        $params = $this->paginationHelper->getPaginationParams();
         $logs = EventLog::where('event_type', $logType->value)
             ->where('player_id', $playerId)
             ->orderBy('created_at', 'desc')

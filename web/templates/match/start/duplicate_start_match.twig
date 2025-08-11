@@ -1,0 +1,27 @@
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - Match Started {{ match.homeTeam.name }} vs {{ match.awayTeam.name }} {% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> - 
+        Match Already Started: 
+        {% include 'partials/home_team_name.twig' with {'match': match} %} vs 
+        {% include 'partials/away_team_name.twig' with {'match': match} %}
+    </p>
+
+    <h2>
+        Match Already Started: 
+        {% include 'partials/home_team_name.twig' with {'match': match} %} vs 
+        {% include 'partials/away_team_name.twig' with {'match': match} %}
+    </h2>
+
+    <p>You team is already in a match!</p>
+
+    <p><a href="/match/view/{{match.id}}">View match</a></p>
+    <p style="margin-top: 1.5em;">
+        <a href="/team/view/{{team.id}}">← Back to Team</a>
+    </p>
+
+{% endblock %}

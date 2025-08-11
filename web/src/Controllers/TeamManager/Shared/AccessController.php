@@ -12,6 +12,13 @@ use App\Models\Team;
 
 abstract class AccessController
 {
+    protected $userHelper;
+
+    public function __construct(UserHelper $userHelper)    
+    {
+        $this->userHelper = $userHelper;
+    }
+    
     /**
      * show team management controls?
      * @param User
@@ -20,7 +27,7 @@ abstract class AccessController
      */
     protected function isAuthorizeToModifyTeam(Team $team): bool
     {
-        $user = UserHelper::getCurrentUser();
+        $user = $this->userHelper->getCurrentUser();
         if (empty($user)) {
             return false;
         }
@@ -40,7 +47,6 @@ abstract class AccessController
             return [null, $response->withStatus(404)->write('Team not found')];
         }
 
-        $user = UserHelper::getCurrentUser();
         if (!$this->isAuthorizeToModifyTeam($team)) {
             return [null, $response->withStatus(404)->write('Not authorised')];
         }
