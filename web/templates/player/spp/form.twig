@@ -1,0 +1,41 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - Rules - Team - {{ team.name }} - {{ player.name }} (#{{ player.number }}) - SPP{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/team">Teams</a> - 
+        <a href="/team/view/all">All Teams</a> -
+        <a href="/team/view/{{ player.team.id }}">{{ player.team.name }}</a> -
+        <a href="/team/view/{{ player.id }}">{{ player.name }} (#{{ player.number }})</a> -
+        Spend Start Player Points
+    </p>
+
+    <h2>{{ player.name }} (#{{ player.number }}) Star Player Points</h2>
+
+
+    <p class="rules-intro">All skills currently in <strong>Blood Bowl</strong>:</p>
+
+    <p>This player has <strong>{{player.spp}}</strong> star player points to spend</p>
+
+    <p class="rules-intro">All skills currently available for {{ player.name }} (#{{ player.number }}):</p>
+
+    <div class="team-header-grid">
+        <div class="team-meta">
+            <h2>Primary Skills</h2>
+            {% include 'player/spp/partials/skill_list.twig' with {'skills': skills.primary} %}
+        </div>
+        <div class="team-meta">
+            <h2>Secondary Skills</h2>
+            {% include 'player/spp/partials/skill_list.twig' with {'skills': skills.secondary} %}
+        </div>
+    </div>
+
+
+    <p style="margin-top: 1.5em;">
+        <a href="/player/view/{{player.id}}">← Back to player</a>
+    </p>
+
+{% endblock %}

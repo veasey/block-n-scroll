@@ -1,7 +1,7 @@
 <?php
-namespace App\Constants;
+namespace App\SPP\Constants;
 
-class SPPAward
+class Award
 {
     public const MOST_VALUED_PLAYER = 4;
     public const TOUCHDOWN = 3;

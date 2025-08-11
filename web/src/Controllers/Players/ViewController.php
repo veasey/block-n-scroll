@@ -3,15 +3,19 @@ namespace App\Controllers\Players;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+
 use App\Controllers\Players\Shared\AccessController;
+use App\Helpers\UserHelper;
+
 use Slim\Views\Twig;
 
 class ViewController extends AccessController
 {
     protected $view;
 
-    public function __construct(Twig $view)
+    public function __construct(UserHelper $userHelper, Twig $view)
     {
+        parent::__construct($userHelper);
         $this->view = $view;
     }
 

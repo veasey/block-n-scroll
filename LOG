@@ -54,3 +54,4 @@ P4 - Match tracking + team sync
 06 Aug - match Events, various bug fixes.
 07 Aug - Hiring and Firing of side staff. And hiring of new players added.
 08 Aug - Fix Hiring / Firing Treasury Bug.
+11 Aug - Make SPP upgrade form. Display skills. Added Constant, and retireve costs depending on level.

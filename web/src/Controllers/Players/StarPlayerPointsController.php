@@ -5,42 +5,31 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 use App\Controllers\Players\Shared\AccessController;
-use App\Constants\SPPAward;
-use App\Enums\TeamStatus;
-use App\Helpers\TeamHelper;
-use App\Helpers\MatchHelper;
-use App\Repositories\MatchGameRepository;
+use App\Helpers\StarPlayerPointHelper;
+use App\Helpers\UserHelper;
+use App\Repositories\SkillRepository;
 use App\Services\EventLogging\PlayerEventLoggingService;
-use App\Services\Event\InjuryService;
-use App\Enums\LogType;
-use App\Enums\Player\CasualtyTable;
-use App\Enums\Player\PlayerStatus;
-use App\Enums\Player\PlayerStats;
 use Slim\Views\Twig;
 
 class StarPlayerPointsController extends AccessController
 {
-    protected $matchHelper;
-    protected $teamHelper;
-    protected $matchGameRepo;
+    protected $starPlayerPointHelper;
     protected $eventLogger;
-    protected $injuryService;
+    protected $skillRepository;
     protected $view;
 
     public function __construct(
-        MatchHelper $matchHelper,
-        TeamHelper $teamHelper,
-        MatchGameRepository $matchGameRepo,
+        StarPlayerPointHelper $starPlayerPointHelper,
+        UserHelper $userHelper,
         PlayerEventLoggingService $eventLogger, 
-        InjuryService $injuryService,
-        Twig $view
+        SkillRepository $skillRepository,
+        Twig $view,
     )
     {
-        $this->teamHelper = $teamHelper;
-        $this->matchHelper = $matchHelper;
-        $this->matchGameRepo = $matchGameRepo;
+        parent::__construct($userHelper);
+        $this->starPlayerPointHelper = $starPlayerPointHelper;
         $this->eventLogger = $eventLogger;
-        $this->injuryService = $injuryService;
+        $this->skillRepository = $skillRepository;
         $this->view = $view;
     }
     
@@ -48,10 +37,13 @@ class StarPlayerPointsController extends AccessController
     {
         [$player, $errorResponse] = $this->getAuthorizedPlayerOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
+   
+        $skills = $this->skillRepository->getAvailableSkills($player);
 
         return $this->view->render($response, 'player/spp/form.twig', [
-            'primarySkills' => []
-            'secondarySkills' => []
+            'player' => $player,
+            'skills' => $skills,
+            'updgradeCost' => $this->starPlayerPointHelper->nextSkillCost()
         ]);
     }
 }

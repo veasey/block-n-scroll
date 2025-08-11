@@ -5,7 +5,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 use App\Controllers\Players\Shared\AccessController;
-use App\Constants\SPPAward;
+use App\Constants\SPP\Award as SPPAward;
 use App\Enums\TeamStatus;
 use App\Helpers\TeamHelper;
 use App\Helpers\MatchHelper;

@@ -1,0 +1,25 @@
+{% set grouped = {} %}
+    {% for skill in skills %}
+        {% set grouped = grouped|merge({ (skill.category): (grouped[skill.category]|default([]))|merge([skill]) }) %}
+    {% endfor %}
+    {% for category, skills_in_category in grouped %}
+        <h3>{{ category }}</h3>
+        <table class="sortable-category-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>&nbsp;</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for skill in skills_in_category %}
+                <tr>
+                    <td><a href="/rules/skill/{{ skill.id }}">{{ skill.name }}</a></td>
+                    <td>{{ skill.description }}</td>
+                    <td><button onclick="window.location.href='/player/spp/purchase/{{ skill.id }}'">Purchase</button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
