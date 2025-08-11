@@ -101,7 +101,7 @@
                     <td>{{ player.ag }}</td>
                     <td>{{ player.pa }}</td>
                     <td>{{ player.av }}</td>
-                    <td>{% include 'partials/skill_tags.twig' with {'skills': player.position.skills} %}</td>
+                    <td>{% include 'partials/skill_tags.twig' with {'skills':  (player.position.skills | merge(player.skills))} %}</td>
                     <td>{{ player.spp }}</td>
                     <td>
                         {% if player.miss_next_game %}

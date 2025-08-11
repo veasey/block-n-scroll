@@ -47,12 +47,14 @@ abstract class AccessController
         }
 
         if (empty($playerId)) {
-            return [null, $response->withStatus(404)->write('Player ID required')];
+            $response->getBody()->write('player ID required');
+            return [null, $response->withStatus(404)];
         }
 
         $player = Player::find($playerId);
         if (!$player) {
-            return [null, $response->withStatus(404)->write('Player not found')];
+            $response->getBody()->write('player not found');
+            return [null, $response->withStatus(404)];
         }
 
         return [$player, null];
@@ -62,16 +64,19 @@ abstract class AccessController
     {
         $playerId = $args['player_id'] ?? null;
         if (empty($playerId)) {
-            return [null, $response->withStatus(404)->write('player ID required')];
+            $response->getBody()->write('player ID required');
+            return [null, $response->withStatus(404)];
         }
 
         $player = player::find($playerId);
         if (!$player) {
-            return [null, $response->withStatus(404)->write('player not found')];
+            $response->getBody()->write('player not found');
+            return [null, $response->withStatus(404)];
         }
 
         if (!$this->isAuthorizeToManagePlayer( $player)) {
-            return [null, $response->withStatus(404)->write('Not authorised')];
+            $response->getBody()->write('Not authorised');
+            return [null, $response->withStatus(404)];
         }
 
         return [$player, null];

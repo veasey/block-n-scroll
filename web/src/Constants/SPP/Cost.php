@@ -3,7 +3,7 @@ namespace App\Constants\SPP;
 
 class Cost
 {
-    public CONST UPDGRADE_THRESHOLD = [
+    public const UPDGRADE_THRESHOLD = [
         'Rookie'   => [
             'random_primary'   => 3,
             'select_primary_or_random_secondary' => 6,
@@ -41,4 +41,14 @@ class Cost
             'characteristic' => 50,
         ],
     ];
+
+    const COST_RANDOM_PRIMARY_SKILL = 10000;
+    const COST_CHOSEN_PRIMARY_SKILL = 20000;
+    const COST_RANDOM_SECONDARY_SKILL = 20000;
+    const COST_CHOSEN_SECONDARY_SKILL = 40000;
+
+    const COST_AV = 10000;
+    const COST_MA = 20000;
+    const COST_AG = 40000;
+    const COST_ST = 80000;
 }
