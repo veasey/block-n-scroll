@@ -13,31 +13,31 @@ class Cost
         'Experienced'       => [
             'random_primary'   => 4,
             'select_primary_or_random_secondary' => 8,
-            'selected_secondary' => 14,
+            'select_secondary' => 14,
             'characteristic' => 20,
         ],
         'Veteran' => [
             'random_primary'   => 6,
             'select_primary_or_random_secondary' => 10,
-            'selected_secondary' => 16,
+            'select_secondary' => 16,
             'characteristic' => 24,
         ],
         'Emerging Star'          => [
             'random_primary'   => 8,
             'select_primary_or_random_secondary' => 12,
-            'selected_secondary' => 18,
+            'select_secondary' => 18,
             'characteristic' => 28,
         ],
         'Star'    => [
             'random_primary'   => 10,
             'select_primary_or_random_secondary' => 14,
-            'selected_secondary' => 20,
+            'select_secondary' => 20,
             'characteristic' => 32,
         ],
         'Super Star'        => [
             'random_primary'   => 15,
             'select_primary_or_random_secondary' => 30,
-            'selected_secondary' => 40,
+            'select_secondary' => 40,
             'characteristic' => 50,
         ],
     ];
@@ -45,7 +45,7 @@ class Cost
     const RANDOM_PRIMARY = 'random_primary';
     const SELECT_PRIMARY = 'select_primary_or_random_secondary';
     const RANDOM_SECONDARY = 'select_primary_or_random_secondary';
-    const SELECTED_SECONDARY = 'selected_secondary';
+    const SELECTED_SECONDARY = 'select_secondary';
     const CHARACTERISTIC = 'characteristic';
 
     const COST_RANDOM_PRIMARY_SKILL = 10000;

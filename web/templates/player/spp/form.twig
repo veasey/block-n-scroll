@@ -20,6 +20,10 @@
 
     <p>This player has <strong>{{player.spp}}</strong> star player points to spend</p>
     
+    {% if upgrade_cost.random_primary > player.spp %}
+        <p><i>Not enough SPP to purchase anything.</i></p>
+    {% endif %}
+
     {% if upgrade_cost.random_primary <= player.spp %}
         <div>
             <button onclick="window.location.href='/player/spp/{{ player.id }}/random_primary'">
@@ -29,27 +33,35 @@
     {% endif %}
 
     {% if upgrade_cost.select_primary_or_random_secondary <= player.spp %}
-        <button onclick="window.location.href='/player/spp/{{ player.id }}/select_primary'">
-            👆 Select Primary Skill [{{upgrade_cost.select_primary_or_random_secondary}}]
-        </button>
+        <div>
+            <button onclick="window.location.href='/player/spp/{{ player.id }}/select_primary'">
+                👆 Select Primary Skill [{{upgrade_cost.select_primary_or_random_secondary}}]
+            </button>
+        </div>
     {% endif %}
 
     {% if upgrade_cost.select_primary_or_random_secondary <= player.spp %}
-        <button onclick="window.location.href='/player/spp/{{ player.id }}/random_secondary'">
-            🎲 Random Secondary Skill [{{upgrade_cost.select_primary_or_random_secondary}}]
-        </button>
+        <div>
+            <button onclick="window.location.href='/player/spp/{{ player.id }}/random_secondary'">
+                🎲 Random Secondary Skill [{{upgrade_cost.select_primary_or_random_secondary}}]
+            </button>
+        </div>
     {% endif %}
 
     {% if upgrade_cost.select_secondary <= player.spp %}
-        <button onclick="window.location.href='/player/spp/{{ player.id }}/select_secondary'">
-            👆 Select Secondary Skill [{{upgrade_cost.select_secondary}}]
-        </button>
+        <div>
+            <button onclick="window.location.href='/player/spp/{{ player.id }}/select_secondary'">
+                👆 Select Secondary Skill [{{upgrade_cost.select_secondary}}]
+            </button>
+        </div>
     {% endif %}
 
     {% if upgrade_cost.characteristic <= player.spp %}
-        <button onclick="window.location.href='/player/spp/{{ player.id }}/characteristic'">
-            🎲 Random Character Increase [{{upgrade_cost.characteristic}}]
-        </button>
+        <div>
+            <button onclick="window.location.href='/player/spp/{{ player.id }}/characteristic'">
+                🎲 Random Character Increase [{{upgrade_cost.characteristic}}]
+            </button>
+        </div>
     {% endif %}
 
     <p style="margin-top: 1.5em;">

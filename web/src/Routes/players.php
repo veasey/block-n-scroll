@@ -11,7 +11,9 @@ $app->get('/player/view/{ player_id }/log/{log_type}[.{format}]', ViewLogControl
 
 $app->get('/player/spp/{ player_id }', StarPlayerPointsController::class . ':getStarPlayerPointsForm');
 $app->get('/player/spp/{ player_id }/select_primary', StarPlayerPointsController::class . ':getPrimarySkillSelectForm');
+$app->get('/player/spp/{ player_id }/select_secondary', StarPlayerPointsController::class . ':getSecondarySkillSelectForm');
 $app->get('/player/spp/{ player_id }/random_primary', StarPlayerPointsController::class . ':getPrimarySkillRandomForm');
+$app->get('/player/spp/{ player_id }/random_secondary', StarPlayerPointsController::class . ':getSecondarySkillRandomForm');
 $app->get('/player/spp/{ player_id }/purchase_primary/{ skill_id }', StarPlayerPointsController::class . ':submitSelectedPrimarySkill');
 $app->get('/player/spp/{ player_id }/purchase_secondary/{ skill_id }', StarPlayerPointsController::class . ':submitSelectedSecondarySkill');
 
