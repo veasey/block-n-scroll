@@ -65,4 +65,25 @@ class PlayerEventLoggingService extends EventLoggerService
             $match
         );
     }
+
+    public function logPlayerInfoUpdate(Player $player, string $newName, int $newNumber): void
+    {
+        $messages = [];
+        if ($player->name != $newName) {
+            $messages[] = "Player renamed to $newName";
+        }
+        if ($player->number != $newNumber) {
+            $messages[] = "Player allocated number $newNumber";
+        }
+
+        $this->log(
+            LogType::PLAYER_UPDATE->value,
+            implode('. ', $messages),
+            '',
+            '',
+            $player->team->coach,
+            $player->team,
+            null
+        );
+    }
 }

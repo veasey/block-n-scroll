@@ -1,8 +1,10 @@
 <?php
+
+use App\Controllers\Players\EditController;
+use App\Controllers\Players\StarPlayerPointsController;
+use App\Controllers\Players\UpdateController;
 use App\Controllers\Players\ViewController;
 use App\Controllers\Players\ViewLogController;
-use App\Controllers\Players\UpdateController;
-use App\Controllers\Players\StarPlayerPointsController;
 
 $app->get('/player/view/{ player_id }[.{format}]', ViewController::class . ':view');
 $app->get('/player/view/{ player_id }/log/{log_type}[.{format}]', ViewLogController::class . ':viewLog');
@@ -14,6 +16,9 @@ $app->post('/player/spp/{ player_id }/purchase/{ skill_id }', StarPlayerPointsCo
 
 $app->post('/player/injure', UpdateController::class . ':addInjury');
 $app->post('/player/injure/{ player_id }/lasting', UpdateController::class . ':addLastingInjury');
+
+$app->get('/player/edit/{player_id}', EditController::class . ':getForm');
+$app->post('/player/edit/{player_id}', EditController::class . ':save');
 
 $app->post('/player/casualty', UpdateController::class . ':recordCasualty');
 $app->post('/player/touchdown', UpdateController::class . ':recordTouchdown');

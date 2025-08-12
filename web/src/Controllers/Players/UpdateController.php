@@ -16,6 +16,7 @@ use App\Enums\LogType;
 use App\Enums\Player\CasualtyTable;
 use App\Enums\Player\PlayerStatus;
 use App\Enums\Player\PlayerStats;
+
 use Slim\Views\Twig;
 
 class UpdateController extends AccessController

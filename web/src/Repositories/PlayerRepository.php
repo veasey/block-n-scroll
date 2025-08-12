@@ -16,6 +16,7 @@ class PlayerRepository
                 PlayerStatus::INJURED->value,
             ])
             ->where('team_id', $team->id)
+            ->orderBy('number', 'asc')
             ->get();
     }
 }

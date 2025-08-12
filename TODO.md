@@ -2,7 +2,6 @@
 # TODO & Bugs: 
 
 ## Player Management Screen
-- Renaming Players
 - Spending Player SPP
 
 ## Global

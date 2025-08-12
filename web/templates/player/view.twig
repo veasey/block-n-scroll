@@ -56,7 +56,7 @@
     {% if canManagePlayer == true %}
         <p>
             <center>
-                <button disabled onclick="window.location.href='/player/edit/{{ player.id }}'">Edit Player Details</button>
+                <button onclick="window.location.href='/player/edit/{{ player.id }}'">Edit Player Details</button>
                 {% if player.status != 'retired' %}
                 <button onclick="window.location.href='/player/spp/{{ player.id }}'">Spend SPP</button>
                 <button onclick="window.location.href='/player/retire/{{ player.id }}'">Fire</button>

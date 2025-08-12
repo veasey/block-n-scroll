@@ -1,0 +1,24 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - Player - Edit{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/team">Teams</a> - 
+        <a href="/team/view/all">All Teams</a> -
+        <a href="/team/view/{{ player.team.id }}">{{ player.team.name }}</a> -
+        <a href="/player/view/{{ player.id }}">{{ player.name }} (#{{ player.number }})</a> -
+        Edit Player
+    </p>
+
+    <h2>Name is not valid</h2>
+
+    <p>The name "{{ name }}" is not valid.</p>
+
+    <p style="margin-top: 1.5em;">
+        <a href="/player/edit/{{player.id}}">← Back to Edit Player</a>
+    </p>
+
+{% endblock %}

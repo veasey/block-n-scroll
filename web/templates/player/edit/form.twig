@@ -1,0 +1,41 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - Player - Edit{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/team">Teams</a> - 
+        <a href="/team/view/all">All Teams</a> -
+        <a href="/team/view/{{ player.team.id }}">{{ player.team.name }}</a> -
+        <a href="/player/view/{{ player.id }}">{{ player.name }} (#{{ player.number }})</a> -
+        Edit Player
+    </p>
+
+    <h2>Edit Player</h2>
+    
+    <form method="post" action="/player/edit/{{ player.id }}" id="edit-player-form" class="form-horizontal">
+        <div class="form-section">
+            <div class="form-group">
+                <label for="name"><strong>Name:</strong></label>
+                <input type="text" id="name" name="name" value="{{ player.name }}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="number">Number:</label>
+                <select name="number" id="number" class="form-control"  required>
+                    {% for num in 1..16 %}
+                        <option value="{{ num }}" {{ (player.number == num) ? 'selected' : '' }}>{{ num }}</option>
+                    {% endfor %}
+                </select>
+            </div>  
+            
+            <button type="submit">Save Changes</button>  
+        </div>
+    </form>
+
+    <p style="margin-top: 1.5em;">
+        <a href="/player/view/{{player.id}}">← Back to player</a>
+    </p>
+
+{% endblock %}
