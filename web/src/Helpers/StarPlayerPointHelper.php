@@ -1,14 +1,22 @@
 <?php
 namespace App\Helpers;
 
+use App\Enums\Player\Level;
 use App\Constants\SPP\Cost;
-use App\Models\Player;
+
 
 class StarPlayerPointHelper
 {
-    public function nextSkillCost(Player $player): mixed
+    public function nextSkillCost(Level $level): mixed
     {
-        $level = $player->level;
-        return Cost::UPDGRADE_THRESHOLD[$level];
+        return Cost::UPDGRADE_THRESHOLD[$level->value];
+    }
+
+    public function getSppCost(Level $level, string $upgradeType) {
+        if (isset( Cost::UPDGRADE_THRESHOLD[$level->value][$upgradeType] )) {
+            return  Cost::UPDGRADE_THRESHOLD[$level->value][$upgradeType];
+        }
+
+        return false;
     }
 }

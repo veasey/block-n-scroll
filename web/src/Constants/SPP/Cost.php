@@ -42,6 +42,12 @@ class Cost
         ],
     ];
 
+    const RANDOM_PRIMARY = 'random_primary';
+    const SELECT_PRIMARY = 'select_primary_or_random_secondary';
+    const RANDOM_SECONDARY = 'select_primary_or_random_secondary';
+    const SELECTED_SECONDARY = 'selected_secondary';
+    const CHARACTERISTIC = 'characteristic';
+
     const COST_RANDOM_PRIMARY_SKILL = 10000;
     const COST_CHOSEN_PRIMARY_SKILL = 20000;
     const COST_RANDOM_SECONDARY_SKILL = 20000;

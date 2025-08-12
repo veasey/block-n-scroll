@@ -8,6 +8,7 @@ use App\Enums\Player\PlayerStats;
 use App\Enums\LogType;
 use App\Models\MatchGame;
 use App\Models\Player;
+use App\Models\Base\Skill;
 
 class PlayerEventLoggingService extends EventLoggerService
 {
@@ -78,6 +79,27 @@ class PlayerEventLoggingService extends EventLoggerService
 
         $this->log(
             LogType::PLAYER_UPDATE->value,
+            implode('. ', $messages),
+            '',
+            '',
+            $player->team->coach,
+            $player->team,
+            null
+        );
+    }
+
+    public function logPlayerLevelUp(Player $player, Skill $skill, string $characteristic): void
+    {
+        $messages[] = $player->name . ' gained experience';
+        if ($skill) {
+            $messages[] = "Player gained " . $skill->name;
+        }
+        if (!empty($characteristic)) {
+            $messages[] = "Player increased " . $characteristic;
+        }
+
+        $this->log(
+            LogType::PLAYER_INCREASED_LEVEL->value,
             implode('. ', $messages),
             '',
             '',

@@ -1,6 +1,6 @@
 {% extends "team/team_base.twig" %}
 
-{% block title %}Block &amp; Scroll - Skill Added{% endblock %}
+{% block title %}Block &amp; Scroll - Select Secondary Skill{% endblock %}
 
 {% block content %}
 
@@ -11,12 +11,14 @@
         <a href="/team/view/{{ player.team.id }}">{{ player.team.name }}</a> -
         <a href="/player/view/{{ player.id }}">{{ player.name }} (#{{ player.number }})</a> -
         <a href="/player/spp/{{ player.id }}">Spend Start Player Points</a> -
-        Skill Added
+        Select Secondary Skill
     </p>
 
-    <h2>{{ player.name }} (#{{ player.number }}) has gained a new skill</h2>
+    <h2>{{ player.name }} (#{{ player.number }}) Select Secondary Skill</h2>
 
-    <p class="rules-intro">Your player - {{ player.name }} (#{{ player.number }}) - has gained the skill {{skill.name}}</p>
+    <p class="rules-intro">All skills currently available for {{ player.name }} (#{{ player.number }}):</p>
+
+    {% include 'player/spp/partials/skill_list.twig' with {'skills': skills, 'player': player, 'type': 'secondary'} %}
 
     <p style="margin-top: 1.5em;">
         <a href="/player/spp/{{player.id}}">← Back to player SPP</a>

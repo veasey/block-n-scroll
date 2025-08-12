@@ -12,7 +12,8 @@ $app->get('/player/view/{ player_id }/log/{log_type}[.{format}]', ViewLogControl
 $app->get('/player/spp/{ player_id }', StarPlayerPointsController::class . ':getStarPlayerPointsForm');
 $app->get('/player/spp/{ player_id }/select_primary', StarPlayerPointsController::class . ':getPrimarySkillSelectForm');
 $app->get('/player/spp/{ player_id }/random_primary', StarPlayerPointsController::class . ':getPrimarySkillRandomForm');
-$app->post('/player/spp/{ player_id }/purchase/{ skill_id }', StarPlayerPointsController::class . ':submitSelectedSkill');
+$app->get('/player/spp/{ player_id }/purchase_primary/{ skill_id }', StarPlayerPointsController::class . ':submitSelectedPrimarySkill');
+$app->get('/player/spp/{ player_id }/purchase_secondary/{ skill_id }', StarPlayerPointsController::class . ':submitSelectedSecondarySkill');
 
 $app->post('/player/injure', UpdateController::class . ':addInjury');
 $app->post('/player/injure/{ player_id }/lasting', UpdateController::class . ':addLastingInjury');

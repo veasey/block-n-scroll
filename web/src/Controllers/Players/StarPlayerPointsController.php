@@ -12,6 +12,7 @@ use App\Helpers\UserHelper;
 use App\Repositories\SkillRepository;
 use App\Services\EventLogging\PlayerEventLoggingService;
 use App\Models\Base\Skill;
+use App\Models\Player;
 
 use Slim\Views\Twig;
 
@@ -47,7 +48,7 @@ class StarPlayerPointsController extends AccessController
    
         return $this->view->render($response, 'player/spp/form.twig', [
             'player' => $player,
-            'upgrade_cost' => $this->starPlayerPointHelper->nextSkillCost($player)
+            'upgrade_cost' => $this->starPlayerPointHelper->nextSkillCost($player->level)
         ]);
     }
 
@@ -72,14 +73,18 @@ class StarPlayerPointsController extends AccessController
         ]);
     }
 
-    private function submitSelectedSkill(Player $player, Skill $skill, int $costIncrease) {
-        
-        $player->skills()->attach($skill->Id);
+    private function submitSelectedSkill(Player $player, Skill $skill, int $costIncrease, int $spp, $response) 
+    {
+        $player->skills()->attach($skill->id);
         $player->cost += $costIncrease;
+        $player->spp -= $spp;
+        $player->level = $player->getNextLevel();
         $player->save();
 
         $player->team->current_team_value = $this->teamHelper->calculateCurrentTeamValue($player->team);
         $player->team->save();
+
+        $this->eventLogger->logPlayerLevelUp($player, $skill, '');
 
         return $this->view->render($response, 'player/spp/add_skill_success.twig', [
             'player' => $player,
@@ -87,29 +92,41 @@ class StarPlayerPointsController extends AccessController
         ]);
     }
 
-    public function submitSelectedPrimarySkill(Request $request, Response $response, array $args): Response
+    private function handleSubmitSelectSkill(int $goldCost, string $upgradeType, int $skillId, Request $request, Response $response, array $args): Response
     {
         [$player, $errorResponse] = $this->getAuthorizedPlayerOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
         
-        if (!$skill = Skill::find($args['skill_id'])) {
+        if (!$skill = Skill::find($skillId)) {
             $response->getBody()->write('Skill not found');
             return $response->withStatus(404);
-        }      
+        }
 
-        return $this->submitSelectedSkill($player, $skill, COST::COST_CHOSEN_PRIMARY_SKILL);
+        $sppCost = $this->starPlayerPointHelper->getSppCost($player->level,$upgradeType);
+        return $this->submitSelectedSkill($player, $skill, $goldCost, $sppCost, $response);
+    }
+
+    public function submitSelectedPrimarySkill(Request $request, Response $response, array $args): Response
+    {
+        return $this->handleSubmitSelectSkill(
+            COST::COST_CHOSEN_PRIMARY_SKILL,
+            COST::SELECT_PRIMARY,
+            $args['skill_id'],
+            $request,
+            $response,
+            $args
+        );
     }
 
     public function submitSelectedSecondarySkill(Request $request, Response $response, array $args): Response
     {
-        [$player, $errorResponse] = $this->getAuthorizedPlayerOrFail($request, $response, $args);
-        if ($errorResponse) return $errorResponse;
-        
-        if (!$skill = Skill::find($args['skill_id'])) {
-            $response->getBody()->write('Skill not found');
-            return $response->withStatus(404);
-        }      
-
-        return $this->submitSelectedSkill($player, $skill, COST::COST_CHOSEN_SECONDARY_SKILL);
+        return $this->handleSubmitSelectSkill(
+            COST::COST_CHOSEN_SECONDARY_SKILL,
+            COST::SELECTED_SECONDARY,
+            $args['skill_id'],
+            $request,
+            $response,
+            $args
+        );
     }
 }

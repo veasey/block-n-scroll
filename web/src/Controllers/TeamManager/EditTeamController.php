@@ -3,15 +3,22 @@ namespace App\Controllers\TeamManager;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+
 use App\Controllers\TeamManager\Shared\AccessController;
+use App\Helpers\UserHelper;
+
 use Slim\Views\Twig;
 
 class EditTeamController extends AccessController
 {
     protected $view;
 
-    public function __construct(Twig $view)
+    public function __construct(
+        UserHelper $userHelper,
+        Twig $view
+    )
     {
+        parent::__construct($userHelper);
         $this->view = $view;
     }
 

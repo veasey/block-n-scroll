@@ -29,7 +29,7 @@
     <div class="team-header-grid">
         <div class="team-meta">
             <p><strong>Status:</strong> {{ player.status }}</p>
-            <p><strong>Level:</strong> {{ player.level }}</p>
+            <p><strong>Level:</strong> {{ player.level.value }}</p>
             <p><strong>SPP:</strong>  {{ player.spp }} </p>
             <p><strong>Race:</strong> {{ player.position.race.name }}</p>
             <p><strong>Team:</strong> {{ player.team.name }}</p>
@@ -52,6 +52,17 @@
             <p><strong>Completions:</strong> <a href="/player/view/{{player.id}}/log/completion_logged">{{ player.completions }}</a></p>    
         </div>
     </div>
+
+    {% if player.position.skills|length > 0 %}
+    <p>Base Skills:
+        {% include 'partials/skill_tags.twig' with {'skills':  player.position.skills } %}
+    </p>
+    {% endif %}
+    {% if player.skills|length > 0 %}
+    <p>Purchased Skills:
+        {% include 'partials/skill_tags.twig' with {'skills':  player.skills } %}
+    </p>
+    {% endif %}
 
     {% if canManagePlayer == true %}
         <p>
