@@ -5,6 +5,7 @@ P3 - Basic team builder + leagues
 P4 - Match tracking + team sync
 
 # DEV LOG
+## Data
 06 Jun - Schema + seed done.
 07 Jun - Containerized schema + seed.
 08 Jun - Validated seeds, started backend.
@@ -37,6 +38,8 @@ P4 - Match tracking + team sync
 09 Jul - Revised Agility Skills Descriptions (not sure what I was doing last time, but still work here). Also Passing Skills.
 14 Jul - Revised Strength, Mutation, Passing and Extraordinary Skills Descriptions. Put skill templates in subdirs.
 21 Jul - Finished revising skills text
+
+## Tracker App
 22 Jul - Added position lookup, and began work on team create form.
 23 Jul - Finalised Create Team Form, needs submission. Created Login Form, middleware and controller. Need logic adding. Fixed logging in.
 24 Jul - Fettled Sidestaff, by putting in DB first. Reconsidering life choices. Repenting to Nuffle. Sidestaff form logic and submission added.
