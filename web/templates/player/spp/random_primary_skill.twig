@@ -18,8 +18,17 @@
 
     <p class="rules-intro">Roll two D6 for a random Primary Skill for {{ player.name }} (#{{ player.number }}):</p>
 
-    <form method="post" action="/match/{{match.id}}/weather" class="form-horizontal">
+    <form method="post" action="/player/spp/{{ player.id }}/random_primary" class="form-horizontal">
         <div class="form-section">   
+            <div class="form-group">
+                <label for="skill_category">Skill Category</label>
+                <select name="category_id" id="category_id" class="form-control">
+                    <option value="">-- Select --</option>
+                    {% for category in skill_categories %}
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
             <div class="form-group">
                 <label for="primary_random_1">Random Primary Skill Roll 1:</label>
                 {% include 'partials/dice_roll.twig' with {'name': 'primary_random_1', 'min': 1, 'max': 6} %}
@@ -29,7 +38,7 @@
                 {% include 'partials/dice_roll.twig' with {'name': 'primary_random_2', 'min': 1, 'max': 6} %}
             </div>       
             <div class="form-section">
-                <button type="submit">Submit Weather Result</button>
+                <button type="submit">Submit Selection and Roll</button>
             </div>
         </div>      
     </form>

@@ -3,6 +3,9 @@
 
 ## Player Management Screen
 - Spending Player SPP
+ - Rework how random skill selection works. Use SKill IDs to save the string converstions.
+ - check rulebook, is it 2-12?
+- Characteristics
 
 ## Global
 - Mobile Styling
@@ -14,7 +17,6 @@
 - View Skills (original and additional)
 - View Total Touchdowns, Casualties, Times Injured, Completions
   - When   clicking above: Show log with each event with time logged next to it and other details.
-
 
 ## Leagues
 - Creating / Running Etc.

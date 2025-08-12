@@ -13,7 +13,9 @@ $app->get('/player/spp/{ player_id }', StarPlayerPointsController::class . ':get
 $app->get('/player/spp/{ player_id }/select_primary', StarPlayerPointsController::class . ':getPrimarySkillSelectForm');
 $app->get('/player/spp/{ player_id }/select_secondary', StarPlayerPointsController::class . ':getSecondarySkillSelectForm');
 $app->get('/player/spp/{ player_id }/random_primary', StarPlayerPointsController::class . ':getPrimarySkillRandomForm');
+$app->post('/player/spp/{ player_id }/random_primary', StarPlayerPointsController::class . ':submitRandomPrimarySkill');
 $app->get('/player/spp/{ player_id }/random_secondary', StarPlayerPointsController::class . ':getSecondarySkillRandomForm');
+$app->post('/player/spp/{ player_id }/random_secondary', StarPlayerPointsController::class . ':submitRandomSecondarySkill');
 $app->get('/player/spp/{ player_id }/purchase_primary/{ skill_id }', StarPlayerPointsController::class . ':submitSelectedPrimarySkill');
 $app->get('/player/spp/{ player_id }/purchase_secondary/{ skill_id }', StarPlayerPointsController::class . ':submitSelectedSecondarySkill');
 
