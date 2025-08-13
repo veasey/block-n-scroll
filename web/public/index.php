@@ -31,13 +31,6 @@ $app->add(TwigMiddleware::create($app, $container->get(Twig::class)));
 // Load DB
 require __DIR__ . '/../src/bootstrap.php';
 
-// Register your controller in container
-$container->set(App\Controllers\Rules\TeamController::class, function ($c) {
-    return new App\Controllers\Rules\TeamController(
-        $c->get(Twig::class)
-    );
-});
-
 // Load all routes
 foreach (['account', 'web', 'rules', 'teams', 'players', 'matchgames'] as $routeFile) {
     require __DIR__ . "/../src/Routes/{$routeFile}.php";

@@ -9,7 +9,7 @@ INSERT INTO base_team_player
 
 /* Orc Linemen - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(130, 3, 1, 1), -- General
+(130, 3, 1, 0), -- General
 (130, 4, 0, 1), -- Agility
 (130, 2, 0, 1); -- Strength
 

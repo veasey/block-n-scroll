@@ -13,7 +13,7 @@ CREATE TABLE `match` (
     notes TEXT,
     status ENUM('pregame', 'in_progress', 'postgame', 'finished', 'paused') DEFAULT 'pregame',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (home_team_id) REFERENCES team(id),
     FOREIGN KEY (away_team_id) REFERENCES team(id),
     FOREIGN KEY (league_id) REFERENCES league(id)

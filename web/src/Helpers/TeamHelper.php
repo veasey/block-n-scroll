@@ -9,6 +9,7 @@ use App\Enums\SideStaff;
 use App\Enums\TeamStatus;
 use App\Models\Base\BaseTeam as Race;
 use App\Models\Base\BaseTeamPlayer as RacePositional;
+use App\Helpers\SkillHelper;
 use App\Models\Team;
 use App\Models\Base\SideStaff as SideStaffModel;
 use App\Models\Coach;
@@ -16,12 +17,18 @@ use Exception;
 
 class TeamHelper
 {
+    protected $skillHelper;
+
+    public function __construct(SkillHelper $skillHelper) {
+        $this->skillHelper = $skillHelper;
+    }
+
     /**
      * return current logged in user
      * @throws \Exception
      * @return mixed
      */
-    public static function getCurrentPlayingTeam()
+    public function getCurrentPlayingTeam()
     {
         if (!isset($_SESSION['user']) || !isset($_SESSION['user']['id'])) {
             return null;
@@ -41,18 +48,18 @@ class TeamHelper
         return $team;
     }
 
-    public static function hydrateRacePositionals(Race $race): Collection
+    public function hydrateRacePositionals(Race $race): Collection
     {    
         return $race->players->map(function ($player) {
             return [
                 'player' => $player,
-                'primary_skill_initials' => SkillFormatter::formatSkillCategoryInitials($player->primarySkill()->get()),
-                'secondary_skill_initials' => SkillFormatter::formatSkillCategoryInitials($player->secondarySkill()->get()),
+                'primary_skill_initials' => $this->skillHelper->formatSkillCategoryInitials($player->primarySkill()->get()),
+                'secondary_skill_initials' => $this->skillHelper->formatSkillCategoryInitials($player->secondarySkill()->get()),
             ];
         });
     }
 
-    public static function getSideStaffOptions(Race $race): array
+    public function getSideStaffOptions(Race $race): array
     {
         // Fetch side staff options from the database or configuration
         $sideStaff = SideStaffModel::all();
@@ -81,7 +88,7 @@ class TeamHelper
         })->toArray();
     }
 
-    public static function calculateCurrentTeamValue(Team $team ): int
+    public function calculateCurrentTeamValue(Team $team ): int
     {
         $currentTeamValue = 0;
         foreach($team->players as $player) {
@@ -96,7 +103,7 @@ class TeamHelper
         return $currentTeamValue;
     }
 
-    public static function isLowCostLineman(RacePositional $racePositional, Race $race): bool
+    public function isLowCostLineman(RacePositional $racePositional, Race $race): bool
     {
         $isLineman = str_contains(strtolower($racePositional->name), 'lineman');
 

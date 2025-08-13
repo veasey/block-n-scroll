@@ -5,7 +5,6 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 use App\Constants\SPP\Cost;
-use App\Constants\SkillRandomSelection;
 use App\Controllers\Players\Shared\AccessController;
 use App\Helpers\StarPlayerPointHelper;
 use App\Helpers\TeamHelper;
@@ -13,7 +12,6 @@ use App\Helpers\UserHelper;
 use App\Repositories\SkillRepository;
 use App\Services\EventLogging\PlayerEventLoggingService;
 use App\Models\Base\Skill;
-use App\Models\Base\SkillRandomSelection as SkillRandomSelectionModel;
 use App\Models\Player;
 
 use Slim\Views\Twig;
@@ -76,6 +74,17 @@ class StarPlayerPointsController extends AccessController
         ]);
     }
 
+    public function getSecondarySkillRandomForm(Request $request, Response $response, array $args): Response
+    {
+        [$player, $errorResponse] = $this->getAuthorizedPlayerOrFail($request, $response, $args);
+        if ($errorResponse) return $errorResponse;
+   
+        return $this->view->render($response, 'player/spp/random_secondary_skill.twig', [
+            'player' => $player,
+            'skill_categories' => $player->position->secondarySkill
+        ]);
+    }
+
     private function submitSelectedSkill(Player $player, Skill $skill, int $costIncrease, int $spp, $response) 
     {
         $player->skills()->attach($skill->id);
@@ -135,24 +144,11 @@ class StarPlayerPointsController extends AccessController
 
     private function getSkillFromRoll(array $data): mixed {
         
-        $category_id = $data['category_id'];
+        $categoryId = $data['category_id'];
         $roll1 = (int) $data['primary_random_1'];
         $roll2 = (int) $data['primary_random_2'];
-        $roll1 = ($roll1 > 3) ? 2 : 1;
 
-        $field = SkillRandomSelection::CategoryIdColumnMap[$category_id] ?? null;
-
-        if ($field) {
-
-            $record = SkillRandomSelectionModel::where('first_d6', $roll1)
-                ->where('second_d6', $roll2)
-                ->first();
-
-            $skillName = $record?->$field;
-            return Skill::where('name', $skillName)->first();
-        }
-
-        return null;
+        return $this->skillRepository->getRandomSkill($roll1, $roll2, $categoryId);
     }
 
     public function submitRandomPrimarySkill(Request $request, Response $response, array $args): Response

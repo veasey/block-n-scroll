@@ -36,8 +36,13 @@ class RegisterController
         }
 
         // Check if email exists
-        if (Coach::where('email', $email)->exists()) {
-            $errors[] = 'Email already exists.';
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = 'Email not valid.';
+        }
+
+        // very basic validation of username
+        if (!preg_match('/^[A-Za-z0-9_]{3,}$/', $username)) {
+            $errors[] = 'Please enter a longer username.';
         }
 
         // Check if passwords match
@@ -60,7 +65,14 @@ class RegisterController
         $coach->email = $email;
         $coach->password_hash = password_hash($password, PASSWORD_DEFAULT);
         $coach->save();
+
+        if (!empty($errors)) {
+            return $this->view->render($response, 'account/register.twig', [
+                'errors' => $errors,
+                'form_data' => $data
+            ]);   
+        }
         
-        return $response->withHeader('Location', '/account/login')->withStatus(302);
+        return $this->view->render($response, 'account/login.twig', ['successes' => ['Account registered successfully!']]);
     }
 }

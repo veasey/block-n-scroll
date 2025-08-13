@@ -1,6 +1,6 @@
 {% extends "team/team_base.twig" %}
 
-{% block title %}Block &amp; Scroll - Random Primary Skill{% endblock %}
+{% block title %}Block &amp; Scroll - Random Secondary Skill{% endblock %}
 
 {% block content %}
 
@@ -11,12 +11,12 @@
         <a href="/team/view/{{ player.team.id }}">{{ player.team.name }}</a> -
         <a href="/player/view/{{ player.id }}">{{ player.name }} (#{{ player.number }})</a> -
         <a href="/player/spp/{{ player.id }}">Spend Start Player Points</a> -
-        Random Primary Skill
+        Random Secondary Skill
     </p>
 
-    <h2>{{ player.name }} (#{{ player.number }}) Random Primary Skill</h2>
+    <h2>{{ player.name }} (#{{ player.number }}) Random Secondary Skill</h2>
 
-    <p class="rules-intro">Roll two D6 for a random Primary Skill for {{ player.name }} (#{{ player.number }}):</p>
+    <p class="rules-intro">Roll two D6 for a random Secondary Skill for {{ player.name }} (#{{ player.number }}):</p>
 
     <form method="post" action="/player/spp/{{ player.id }}/random_primary" class="form-horizontal">
         <div class="form-section">   
@@ -29,11 +29,11 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="primary_random_1">Random Primary Skill Roll 1:</label>
+                <label for="primary_random_1">Random Secondary Skill Roll 1:</label>
                 {% include 'partials/dice_roll.twig' with {'name': 'primary_random_1', 'min': 1, 'max': 6} %}
             </div>
             <div class="form-group">
-                <label for="primary_random_2">Random Primary Skill Roll 2:</label>
+                <label for="primary_random_2">Random Secondary Skill Roll 2:</label>
                 {% include 'partials/dice_roll.twig' with {'name': 'primary_random_2', 'min': 1, 'max': 6} %}
             </div>       
             <div class="form-section">

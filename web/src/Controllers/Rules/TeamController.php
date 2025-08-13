@@ -3,16 +3,21 @@ namespace App\Controllers\Rules;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use App\Helpers\SkillFormatter;
+use App\Helpers\SkillHelper;
 use App\Models\Base\BaseTeam;
 use Slim\Views\Twig;
 
 class TeamController
 {
+    protected $skillHelper;
     protected $view;
 
-    public function __construct(Twig $view)
+    public function __construct(
+        SkillHelper $skillHelper,
+        Twig $view
+    )
     {
+        $this->skillHelper = $skillHelper;
         $this->view = $view;
     }
 
@@ -37,8 +42,8 @@ class TeamController
             'positions' => $team->players->map(function ($player) {
                 return [
                     'player' => $player,
-                    'primary_skill_initials' => SkillFormatter::formatSkillCategoryInitials($player->primarySkill()->get()),
-                    'secondary_skill_initials' => SkillFormatter::formatSkillCategoryInitials($player->secondarySkill()->get()),
+                    'primary_skill_initials' => $this->skillHelper->formatSkillCategoryInitials($player->primarySkill()->get()),
+                    'secondary_skill_initials' => $this->skillHelper->formatSkillCategoryInitials($player->secondarySkill()->get()),
                 ];
             }),
         ];

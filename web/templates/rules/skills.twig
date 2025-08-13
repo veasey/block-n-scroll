@@ -14,7 +14,7 @@
 
 {% set grouped = {} %}
 {% for skill in skills %}
-    {% set grouped = grouped|merge({ (skill.category): (grouped[skill.category]|default([]))|merge([skill]) }) %}
+    {% set grouped = grouped|merge({ (skill.skillCategory.name): (grouped[skill.skillCategory.name]|default([]))|merge([skill]) }) %}
 {% endfor %}
 
 {% for category, skills_in_category in grouped %}

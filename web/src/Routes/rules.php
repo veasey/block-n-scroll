@@ -52,7 +52,7 @@ $app->get('/rules/skill/{skill_id}[.{format}]', function (Request $request, Resp
         return $response->withHeader('Content-Type', 'application/json');
     }
 
-    $category = strtolower($skill->category);
+    $category = strtolower($skill->skillCategory->name);
     $matchingTemplate = null;
     $templateDir = __DIR__ . "/../../templates/rules/skills/";
 

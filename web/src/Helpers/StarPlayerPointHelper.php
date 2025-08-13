@@ -4,7 +4,6 @@ namespace App\Helpers;
 use App\Enums\Player\Level;
 use App\Constants\SPP\Cost;
 
-
 class StarPlayerPointHelper
 {
     public function nextSkillCost(Level $level): mixed
