@@ -1,0 +1,35 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - Increase Random Characteristic{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/team">Teams</a> - 
+        <a href="/team/view/all">All Teams</a> -
+        <a href="/team/view/{{ player.team.id }}">{{ player.team.name }}</a> -
+        <a href="/player/view/{{ player.id }}">{{ player.name }} (#{{ player.number }})</a> -
+        <a href="/player/spp/{{ player.id }}">Spend Start Player Points</a> -
+        Increase Characteristic
+    </p>
+
+    <h2>{{ player.name }} (#{{ player.number }}) Increase Characteristic?</h2>
+
+    <form method="post" action="/player/spp/{{player.id}}/characteristic/roll_improvement" class="form-horizontal">
+        <div class="form-section">   
+            <div class="form-group">
+                <label for="improvement_roll">Improvement Table Roll [D16]:</label>
+                {% include 'partials/dice_roll.twig' with {'name': 'improvement_roll', 'min': 1, 'max': 16} %}
+            </div>       
+            <div class="form-section">
+                <button type="submit">Submit Roll</button>
+            </div>
+        </div>      
+    </form>
+
+    <p style="margin-top: 1.5em;">
+        <a href="/player/spp/{{player.id}}">← Back to player SPP</a>
+    </p>
+
+{% endblock %}

@@ -18,6 +18,7 @@ $app->get('/player/spp/{ player_id }/random_secondary', StarPlayerPointsControll
 $app->post('/player/spp/{ player_id }/random_secondary', StarPlayerPointsController::class . ':submitRandomSecondarySkill');
 $app->get('/player/spp/{ player_id }/purchase_primary/{ skill_id }', StarPlayerPointsController::class . ':submitSelectedPrimarySkill');
 $app->get('/player/spp/{ player_id }/purchase_secondary/{ skill_id }', StarPlayerPointsController::class . ':submitSelectedSecondarySkill');
+$app->get('/player/spp/{ player_id }/characteristic', StarPlayerPointsController::class . ':getCharacteristicForm');
 
 $app->post('/player/injure', UpdateController::class . ':addInjury');
 $app->post('/player/injure/{ player_id }/lasting', UpdateController::class . ':addLastingInjury');

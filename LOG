@@ -59,3 +59,4 @@ P4 - Match tracking + team sync
 08 Aug - Fix Hiring / Firing Treasury Bug.
 11 Aug - Make SPP upgrade form. Display skills. Added Constant, and retireve costs depending on level.
 12 Aug - Allow users to rename players and change team number.
+13 Aug - Addition of the ability to add Random Skills to players, from SPP form. Various tweaks and refactoring.

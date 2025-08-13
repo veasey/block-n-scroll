@@ -2,10 +2,12 @@
 # TODO & Bugs: 
 
 ## Player Management Screen
-- Spending Player SPP
- - Rework how random skill selection works. Use SKill IDs to save the string converstions.
- - check rulebook, is it 2-12?
 - Characteristics
+ https://bloodbowlbase.ru/core_rules/post-game_sequence
+ - Roll a D16
+ - Show Available Choices
+  - Check against Position if a stat has already been increased by 2
+  (remember that passing and agility decrease)
 
 ## Global
 - Mobile Styling

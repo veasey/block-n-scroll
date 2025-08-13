@@ -178,4 +178,15 @@ class StarPlayerPointsController extends AccessController
             $args
         );
     }
+
+    public function getCharacteristicForm(Request $request, Response $response, array $args): Response
+    {
+        [$player, $errorResponse] = $this->getAuthorizedPlayerOrFail($request, $response, $args);
+        if ($errorResponse) return $errorResponse;
+   
+        return $this->view->render($response, 'player/spp/characteristic/rolld16.twig', [
+            'player' => $player,
+            'skill_categories' => $player->position->secondarySkill
+        ]);
+    }
 }
