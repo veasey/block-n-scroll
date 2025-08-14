@@ -12,6 +12,7 @@ $app->get('/player/view/{ player_id }[.{format}]', ViewController::class . ':vie
 $app->get('/player/view/{ player_id }/log/{log_type}[.{format}]', ViewLogController::class . ':viewLog');
 
 $app->get('/player/spp/{ player_id }', StarPlayerPointsController::class . ':getStarPlayerPointsForm');
+
 $app->get('/player/spp/{ player_id }/select_primary', SkillsController::class . ':getPrimarySkillSelectForm');
 $app->get('/player/spp/{ player_id }/select_secondary', SkillsController::class . ':getSecondarySkillSelectForm');
 $app->get('/player/spp/{ player_id }/random_primary', SkillsController::class . ':getPrimarySkillRandomForm');
@@ -20,7 +21,9 @@ $app->get('/player/spp/{ player_id }/random_secondary', SkillsController::class 
 $app->post('/player/spp/{ player_id }/random_secondary', SkillsController::class . ':submitRandomSecondarySkill');
 $app->get('/player/spp/{ player_id }/purchase_primary/{ skill_id }', SkillsController::class . ':submitSelectedPrimarySkill');
 $app->get('/player/spp/{ player_id }/purchase_secondary/{ skill_id }', SkillsController::class . ':submitSelectedSecondarySkill');
+
 $app->get('/player/spp/{ player_id }/characteristic', CharacteristicsController::class . ':getCharacteristicForm');
+$app->get('/player/spp/{ player_id }/characteristic', CharacteristicsController::class . ':submitRoll');
 
 $app->post('/player/injure', UpdateController::class . ':addInjury');
 $app->post('/player/injure/{ player_id }/lasting', UpdateController::class . ':addLastingInjury');

@@ -16,7 +16,7 @@ use App\Models\Player;
 
 use Slim\Views\Twig;
 
-class SkillsController extends AccessController
+class CharacteristicsController extends AccessController
 {
     protected $starPlayerPointHelper;
     protected $teamHelper;
@@ -49,6 +49,49 @@ class SkillsController extends AccessController
         return $this->view->render($response, 'player/spp/characteristic/rolld16.twig', [
             'player' => $player,
             'skill_categories' => $player->position->secondarySkill
+        ]);
+    }
+
+    public function submitRoll(Request $request, Response $response, array $args): Response
+    {
+        [$player, $errorResponse] = $this->getAuthorizedPlayerOrFail($request, $response, $args);
+        if ($errorResponse) return $errorResponse;
+
+        $data = $request->getParsedBody();     
+        $improvementRoll = (int) $data['improvement_roll'];
+        $characteristic = [];
+        $secondarySkills = $this->skillRepository->getSecondarySkills($player);
+
+        // 1‑7 Improve either MA or AV by 1 (or choose a Secondary skill).
+        if ($improvementRoll >= 1 || $improvementRoll <= 7) {
+            $characteristic = ['MA', 'AV'];
+        }
+
+        // 8‑13 Improve either MA, PA, or AV by 1 (or choose a Secondary skill).
+        if ($improvementRoll >= 8 || $improvementRoll <= 13) {
+            $characteristic = ['MA', 'PA', 'AV'];
+        }
+
+        // 14 Improve either AG or PA by 1 (or choose a Secondary skill).
+        if ($improvementRoll >= 8 || $improvementRoll <= 13) {
+            $characteristic = ['AG', 'PA'];
+        }
+
+        // 15 Improve either ST or AG by 1 (or choose a Secondary skill).
+        if ($improvementRoll == 15) {
+            $characteristic = ['ST', 'AG'];
+        }
+
+        // 16 Improve a characteristic of your choice by 1.
+        if ($improvementRoll == 16) {
+            $characteristic = ['MA', 'AV', 'PA', 'ST', 'AG'];
+            $secondarySkills = false;
+        }
+
+        return $this->view->render($response, 'player/spp/characteristic/choose_characteristic.twig', [
+            'player' => $player,
+            'characteristic' => $characteristic,
+            'secondarySkills' => $secondarySkills
         ]);
     }
 }
