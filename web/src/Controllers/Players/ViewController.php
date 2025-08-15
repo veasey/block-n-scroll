@@ -5,6 +5,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 use App\Controllers\Players\Shared\AccessController;
+use App\Enums\TeamStatus;
 use App\Helpers\UserHelper;
 
 use Slim\Views\Twig;
@@ -30,9 +31,11 @@ class ViewController extends AccessController
             return $response->withHeader('Content-Type', 'application/json');
         }
 
+        $canManagePlayer = $this->isAuthorizeToManagePlayer($player) && $player->team->status != TeamStatus::PLAYING->value;
+
         return $this->view->render($response, 'player/view.twig', [
             'player' => $player,
-            'canManagePlayer' => $this->isAuthorizeToManagePlayer($player)
+            'canManagePlayer' => $canManagePlayer
         ]);
     }
 }
