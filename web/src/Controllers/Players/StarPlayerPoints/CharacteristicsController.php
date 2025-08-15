@@ -7,26 +7,21 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Constants\SPP\Cost;
 use App\Controllers\Players\Shared\AccessController;
 use App\Helpers\StarPlayerPointHelper;
-use App\Helpers\TeamHelper;
 use App\Helpers\UserHelper;
 use App\Repositories\SkillRepository;
 use App\Services\EventLogging\PlayerEventLoggingService;
-use App\Models\Base\Skill;
-use App\Models\Player;
 
 use Slim\Views\Twig;
 
 class CharacteristicsController extends AccessController
 {
     protected $starPlayerPointHelper;
-    protected $teamHelper;
     protected $eventLogger;
     protected $skillRepository;
     protected $view;
 
     public function __construct(
         StarPlayerPointHelper $starPlayerPointHelper,
-        TeamHelper $teamHelper,
         UserHelper $userHelper,
         PlayerEventLoggingService $eventLogger, 
         SkillRepository $skillRepository,
@@ -34,14 +29,13 @@ class CharacteristicsController extends AccessController
     )
     {
         parent::__construct($userHelper);
-        $this->teamHelper = $teamHelper;
         $this->starPlayerPointHelper = $starPlayerPointHelper;
         $this->eventLogger = $eventLogger;
         $this->skillRepository = $skillRepository;
         $this->view = $view;
     }
     
-    public function getCharacteristicForm(Request $request, Response $response, array $args): Response
+    public function getRollD16Form(Request $request, Response $response, array $args): Response
     {
         [$player, $errorResponse] = $this->getAuthorizedPlayerOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
@@ -52,46 +46,62 @@ class CharacteristicsController extends AccessController
         ]);
     }
 
-    public function submitRoll(Request $request, Response $response, array $args): Response
+    public function getCharacteristicForm(Request $request, Response $response, array $args): Response
     {
         [$player, $errorResponse] = $this->getAuthorizedPlayerOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
 
         $data = $request->getParsedBody();     
         $improvementRoll = (int) $data['improvement_roll'];
-        $characteristic = [];
-        $secondarySkills = $this->skillRepository->getSecondarySkills($player);
+        
+        $secondarySkills = null;
+        $characteristic = $this->starPlayerPointHelper->getRandomCharacteristicsStatFromRoll($improvementRoll, $player);
 
-        // 1‑7 Improve either MA or AV by 1 (or choose a Secondary skill).
-        if ($improvementRoll >= 1 || $improvementRoll <= 7) {
-            $characteristic = ['MA', 'AV'];
-        }
-
-        // 8‑13 Improve either MA, PA, or AV by 1 (or choose a Secondary skill).
-        if ($improvementRoll >= 8 || $improvementRoll <= 13) {
-            $characteristic = ['MA', 'PA', 'AV'];
-        }
-
-        // 14 Improve either AG or PA by 1 (or choose a Secondary skill).
-        if ($improvementRoll >= 8 || $improvementRoll <= 13) {
-            $characteristic = ['AG', 'PA'];
-        }
-
-        // 15 Improve either ST or AG by 1 (or choose a Secondary skill).
-        if ($improvementRoll == 15) {
-            $characteristic = ['ST', 'AG'];
-        }
-
-        // 16 Improve a characteristic of your choice by 1.
-        if ($improvementRoll == 16) {
-            $characteristic = ['MA', 'AV', 'PA', 'ST', 'AG'];
+        if ($improvementRoll == 16) {            
             $secondarySkills = false;
+        } else {
+            $secondarySkills = $player->position->secondarySkill
+                ->flatMap(fn($category) => $category->skills)
+                ->unique('id')
+                ->values();
         }
 
         return $this->view->render($response, 'player/spp/characteristic/choose_characteristic.twig', [
             'player' => $player,
-            'characteristic' => $characteristic,
+            'characteristics' => $characteristic,
             'secondarySkills' => $secondarySkills
+        ]);
+    }
+
+    public function getSelectCharacteristicResult(Request $request, Response $response, array $args): Response
+    {
+        // increase characteristic
+        [$player, $errorResponse] = $this->getAuthorizedPlayerOrFail($request, $response, $args);
+        if ($errorResponse) return $errorResponse;
+
+        $data = $request->getParsedBody();     
+        $stat = $data['characteristic'];
+        $col = strtolower($stat);
+        $increased = true;
+
+        if (in_array($stat, ['MA', 'AV', 'ST'])) {
+            $player->$col += 1;
+        }
+
+        else if (in_array($stat, ['PA', 'AG'])) {
+            $player->$col -= 1;
+            $increased = false;
+        }
+
+        $this->eventLogger->logPlayerLevelUp($player, null, $stat);
+        $player->spp -= $this->starPlayerPointHelper->getSppCost($player->level, Cost::CHARACTERISTIC);
+        $player->cost += $this->starPlayerPointHelper->getGoldCostForCharacteristic($stat);
+        $player->save();
+
+        return $this->view->render($response, 'player/spp/characteristic/success.twig', [
+            'player' => $player,
+            'stat' => $stat,
+            'is_increased' => $increased
         ]);
     }
 }

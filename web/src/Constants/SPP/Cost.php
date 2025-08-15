@@ -55,6 +55,7 @@ class Cost
 
     const COST_AV = 10000;
     const COST_MA = 20000;
+    const COST_PA = 20000;
     const COST_AG = 40000;
     const COST_ST = 80000;
 }

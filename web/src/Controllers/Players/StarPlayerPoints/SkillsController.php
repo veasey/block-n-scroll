@@ -57,9 +57,14 @@ class SkillsController extends AccessController
         [$player, $errorResponse] = $this->getAuthorizedPlayerOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
    
+        $skills =  $player->position->primarySkill
+            ->flatMap(fn($category) => $category->skills)
+            ->unique('id')
+            ->values();
+
         return $this->view->render($response, 'player/spp/select_primary_skill.twig', [
             'player' => $player,
-            'skills' => $this->skillRepository->getPrimarySkills($player)
+            'skills' => $skills
         ]);
     }
 

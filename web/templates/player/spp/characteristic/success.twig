@@ -1,0 +1,25 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - Increase Characteristic{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/team">Teams</a> - 
+        <a href="/team/view/all">All Teams</a> -
+        <a href="/team/view/{{ player.team.id }}">{{ player.team.name }}</a> -
+        <a href="/player/view/{{ player.id }}">{{ player.name }} (#{{ player.number }})</a> -
+        <a href="/player/spp/{{ player.id }}">Spend Start Player Points</a> -
+        Characteristic Increased! 
+    </p>
+
+    <h2>{{ player.name }} (#{{ player.number }}) has improved {{ stat }}}</h2>
+
+    <p>Player has had stat <b>{{stat}}</b> {{ is_increased ? 'increased' : 'reduced' }} by 1.</p>
+
+    <p style="margin-top: 1.5em;">
+        <a href="/player/{{player.id}}">← Back to player</a>
+    </p>
+
+{% endblock %}

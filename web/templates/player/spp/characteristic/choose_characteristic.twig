@@ -1,0 +1,47 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - Increase Random Characteristic{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/team">Teams</a> - 
+        <a href="/team/view/all">All Teams</a> -
+        <a href="/team/view/{{ player.team.id }}">{{ player.team.name }}</a> -
+        <a href="/player/view/{{ player.id }}">{{ player.name }} (#{{ player.number }})</a> -
+        <a href="/player/spp/{{ player.id }}">Spend Start Player Points</a> -
+        Increase Characteristic
+    </p>
+
+    <h2>{{ player.name }} (#{{ player.number }}) Choose Characteristic to Increase</h2>
+
+    <form method="post" action="/player/spp/{{player.id}}/select_characteristic" class="form-horizontal">
+        <div class="form-section">   
+          
+            <div class="form-group">
+                <label for="skill_category">Characteristic</label>
+                <select name="characteristic" id="characteristic" class="form-control">
+                    {% for characteristic in characteristics %}
+                        <option value="{{ characteristic }}">{{ characteristic }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-section">
+                <button type="submit">Upgrade Characteristic</button>
+            </div>            
+        </div>      
+    </form>
+
+    
+    {% if secondarySkills|length != 0 %}
+        <h2>...or Choose a Secondary Skill</h2>
+        {% include 'player/spp/partials/skill_list.twig' with {'skills': secondarySkills, 'player': player, 'type': 'secondary'} %}
+    {% endif %}
+
+    <p style="margin-top: 1.5em;">
+        <a href="/player/spp/{{player.id}}">← Back to player SPP</a>
+    </p>
+
+{% endblock %}

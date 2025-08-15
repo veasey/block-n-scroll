@@ -1,12 +1,8 @@
 <?php
 namespace App\Repositories;
 
-use Illuminate\Support\Collection;
-
 use App\Models\Base\Skill;
 use App\Models\Base\SkillCategory;
-
-use App\Models\Player;
 
 class SkillRepository
 {
@@ -17,25 +13,6 @@ class SkillRepository
         self::WALL_THROWER,
          self::PORTAL_PASSER,
     ];
-
-    private function getAvailableSkillsInCategories(Collection $categories)
-    {   
-        return Skill::whereIn('category', $categories)
-                    ->whereNotIn('id', $this->dungeonBowlSkills)
-                    ->get();
-    }
-
-    public function getPrimarySkills(Player $player): Collection
-    {
-        $primarySkillCategory = $player->position->primarySkill->pluck('name');
-        return $this->getAvailableSkillsInCategories($primarySkillCategory);
-    }
-
-    public function getSecondarySkills(Player $player): Collection
-    {
-        $primarySkillCategory = $player->position->secondarySkill->pluck('name');
-        return $this->getAvailableSkillsInCategories($primarySkillCategory);
-    }
 
      /**
      * Get Random SKill - as per bloodbowl roll for random skill rules

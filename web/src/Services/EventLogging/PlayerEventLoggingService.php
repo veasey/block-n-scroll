@@ -88,7 +88,7 @@ class PlayerEventLoggingService extends EventLoggerService
         );
     }
 
-    public function logPlayerLevelUp(Player $player, Skill $skill, string $characteristic): void
+    public function logPlayerLevelUp(Player $player, ?Skill $skill, string $characteristic): void
     {
         $messages[] = $player->name . ' gained experience';
         if ($skill) {

@@ -25,7 +25,7 @@ INSERT INTO skill (id, name, category_id, description) VALUES
 
 -- AGILITY
 (15, 'Catch', '2', 'A player who has the Catch skill is allowed to re-roll the D6 if he fails a catch roll. It also allows the player to re-roll the D6 if he drops a hand-off or fails to make an interception.'),
-(16, 'Defensive', '2', 'During your opponent’s team turn (but not during your own team), any opposition player being marked by this player cannot use the guard skill.'),
+(16, 'Defensive', '2', 'During your opponent''s team turn (but not during your own team), any opposition player being marked by this player cannot use the guard skill.'),
 (17, 'Diving Catch', '2', 'Can catch the ball from adjacent squares and gains +1 to Catch rolls for accurate passes.'),
 (18, 'Diving Tackle', '2', 'May go prone to apply -2 to adjacent opponent''s Dodge roll when they attempt to dodge away.'),
 (19, 'Dodge', '2', 'Allows rerolling failed Dodge rolls.'),

@@ -22,8 +22,9 @@ $app->post('/player/spp/{ player_id }/random_secondary', SkillsController::class
 $app->get('/player/spp/{ player_id }/purchase_primary/{ skill_id }', SkillsController::class . ':submitSelectedPrimarySkill');
 $app->get('/player/spp/{ player_id }/purchase_secondary/{ skill_id }', SkillsController::class . ':submitSelectedSecondarySkill');
 
-$app->get('/player/spp/{ player_id }/characteristic', CharacteristicsController::class . ':getCharacteristicForm');
-$app->get('/player/spp/{ player_id }/characteristic', CharacteristicsController::class . ':submitRoll');
+$app->get('/player/spp/{ player_id }/characteristic', CharacteristicsController::class . ':getRollD16Form');
+$app->post('/player/spp/{ player_id }/characteristic', CharacteristicsController::class . ':getCharacteristicForm');
+$app->post('/player/spp/{ player_id }/select_characteristic', CharacteristicsController::class . ':getSelectCharacteristicResult');
 
 $app->post('/player/injure', UpdateController::class . ':addInjury');
 $app->post('/player/injure/{ player_id }/lasting', UpdateController::class . ':addLastingInjury');
