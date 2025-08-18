@@ -9,12 +9,12 @@
             <a href="/rules">Teams</a>
         </p>
 
-        <nav class="rules-nav">
-            <a href="/team/view/all" class="rules-link">View Teams</a>
+        <nav class="primary-nav">
+            <a href="/team/view/all" class="primary-nav-link">View Teams</a>
             {% if session.user %}
-                <a href="/team/view/user/{{ session.user.id }}" class="rules-link">View My Teams</a>
+                <a href="/team/view/user/{{ session.user.id }}" class="primary-nav-link">View My Teams</a>
             {% endif %}
-            <a href="/team/create" class="rules-link">Create Team</a>
+            <a href="/team/create" class="primary-nav-link">Create Team</a>
         </nav>
         
 {% endblock %}

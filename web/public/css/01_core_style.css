@@ -212,3 +212,21 @@ button:hover {
         flex-direction: column;
     }
 }
+
+/* Mobile First Styles */
+nav.primary-nav {
+    display: flex;
+}
+
+nav.primary-nav a.primary-nav-link {
+    padding: 5px;
+    background-color: #1a4fa0;
+    color: whitesmoke;
+    border: 1px solid  #007bff;
+    border-radius: 4px;
+}
+
+nav.primary-nav a.primary-nav-link:hover {
+    background-color: #007bff;
+    text-decoration: none;
+}
