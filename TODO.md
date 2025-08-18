@@ -3,8 +3,12 @@
 
 ## Global
 - Mobile Styling
- - REMOVE MARGINS
- - forms and tables fit on (simplify, only show 2-3 cols)
+ - Replace buttons with inline javascript with primary navigation buttons - if applicable.
+ - ( example: edit team info) forms mobile styling.
+ - Header fix style
+ - Make "BACK TO X" a partial, but make it float in the bottom right
+ - Quick View buttons 5/10 make it a 7/10+ style
+ - log tables on mobile
 
 ## Team Management Screen
 - Compare relative team value with another team [Start Match]
