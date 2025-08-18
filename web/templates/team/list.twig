@@ -39,11 +39,11 @@
             <tbody>
                 {% for team in teams %}
                 <tr>
-                    <td><a href="/team/view/{{ team.id }}">{{ team.name }}</a></td>
-                    <td>{{team.status}}</td>
-                    <td>{{ team.race.name }}</td>
-                    <td>{{ team.coach.name }}</td>
-                    <td>{{ team.league.name }}</td>
+                    <td data-label="Team"><a href="/team/view/{{ team.id }}">{{ team.name }}</a></td>
+                    <td data-label="Status">{{team.status}}</td>
+                    <td data-label="Race">{{ team.race.name }}</td>
+                    <td data-label="Coach">{{ team.coach.name }}</td>
+                    <td data-label="League">{{ team.league.name }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

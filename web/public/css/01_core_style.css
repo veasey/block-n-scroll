@@ -1,9 +1,6 @@
 body { font-family: Arial, sans-serif; margin: 2em; background: #f8f8f8; }
 .container { max-width: 800px; margin: auto; background: #fff; padding: 2em; border-radius: 8px; box-shadow: 0 2px 8px #ccc; }
 h1 { color: #333; }
-nav { margin-bottom: 2em; }
-nav a { margin-right: 2em; text-decoration: none; color: #0074d9; font-weight: bold; }
-nav a:hover { text-decoration: underline; }
 
 /* HEADER STYLES */
 .bns-header {
@@ -103,6 +100,16 @@ table td {
 }
 table tr:nth-child(even) {
     background: #fafbfc;
+}
+
+/* Mobile view of tables */
+@media (max-width: 640px) {
+   thead { display: none; }
+   tr { display: grid; grid-template-columns: minmax(80px, 30%) 1fr; gap: .25rem .75rem; padding: .75rem; border: 1px solid #eee; border-radius: .75rem; margin-bottom: .75rem; }
+   td { display: contents; }
+   /* labels */
+   td::before { content: attr(data-label); font-weight: 600; }
+   td::before,  td { min-width: 0; padding: .25rem 0; }
 }
 
 /* button styles */
@@ -206,27 +213,39 @@ button:hover {
     border-radius: 8px;
 }
 
+/* Mobile First Styles */
+
 /* Stack vertically on small screens */
 @media (max-width: 768px) {
+    .bns-header-container {
+        padding: 0.5em 1em;
+    }
     .container {
         flex-direction: column;
+        padding: 0.5em;
     }
 }
 
-/* Mobile First Styles */
-nav.primary-nav {
+.primary-nav {
     display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2em;
+    color: #0074d9; 
+    font-weight: bold;
 }
 
-nav.primary-nav a.primary-nav-link {
+.primary-nav a.primary-nav-link {
+    flex: 1;
     padding: 5px;
     background-color: #1a4fa0;
     color: whitesmoke;
     border: 1px solid  #007bff;
     border-radius: 4px;
+    text-decoration: none; 
+    text-align: center;
 }
 
-nav.primary-nav a.primary-nav-link:hover {
+.primary-nav a.primary-nav-link:hover {
     background-color: #007bff;
     text-decoration: none;
 }
