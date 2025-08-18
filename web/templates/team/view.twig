@@ -74,17 +74,18 @@
     {% if players|length == 0 %}
         <p><strong>This team has no players!</strong></p>
     {% else %}
-        <table id="positions-table">
+        <table id="positions-table" class="stacked">
             <thead>
                 <tr>
                     <th>#</th>
                     <th>Name</th>
                     <th>Position</th>
-                    <th>MA</th>
-                    <th>ST</th>
-                    <th>AG</th>
-                    <th>PA</th>
-                    <th>AV</th>
+                    <th class="desktop-row">MA</th>
+                    <th class="desktop-row">ST</th>
+                    <th class="desktop-row">AG</th>
+                    <th class="desktop-row">PA</th>
+                    <th class="desktop-row">AV</th>
+                    <th class="mobile-row">Attr</th>
                     <th>Skills</th>
                     <th>SPP</th>
                     <th>Status</th>
@@ -93,17 +94,20 @@
             <tbody>
                 {% for player in players %}
                 <tr>
-                    <td>{{ player.number }}</td>
-                    <td><a href="/player/view/{{player.id}}">{{ player.name }}</a></td>
-                    <td><a href="/rules/position/{{player.position.id}}">{{ player.position.name }}</a></td>
-                    <td>{{ player.ma }}</td>
-                    <td>{{ player.st }}</td>
-                    <td>{{ player.ag }}</td>
-                    <td>{{ player.pa }}</td>
-                    <td>{{ player.av }}</td>
-                    <td>{% include 'partials/skill_tags.twig' with {'skills':  (player.position.skills | merge(player.skills))} %}</td>
-                    <td>{{ player.spp }}</td>
-                    <td>
+                    <td data-label="#">{{ player.number }}</td>
+                    <td data-label="Name"><a href="/player/view/{{player.id}}">{{ player.name }}</a></td>
+                    <td data-label="Pos"><a href="/rules/position/{{player.position.id}}">{{ player.position.name }}</a></td>
+                    <td data-label="MA" class="desktop-row">{{ player.ma }}</td>
+                    <td data-label="ST" class="desktop-row">{{ player.st }}</td>
+                    <td data-label="AG" class="desktop-row">{{ player.ag }}</td>
+                    <td data-label="PA" class="desktop-row">{{ player.pa }}</td>
+                    <td data-label="AV" class="desktop-row">{{ player.av }}</td>
+                    <td data-label="Attr" class="mobile-row">MA:{{ player.ma }} ST:{{ player.st }} AG:{{ player.ag }} PA:{{ player.pa }} AV:{{ player.av }}</td>
+                    <td data-label="Skills">
+                        {% include 'partials/skill_tags.twig' with {'skills':  (player.position.skills | merge(player.skills))} %}
+                    </td>
+                    <td data-label="SPP">{{ player.spp }}</td>
+                    <td data-label="Status">
                         {% if player.miss_next_game %}
                             <p><b>Miss next game</b></p>
                         {% else %}

@@ -99,18 +99,57 @@ table td {
     border-bottom: 1px solid #eee;
 }
 table tr:nth-child(even) {
-    background: #fafbfc;
+    background: #d6e2ee;
+}
+
+.stacked .mobile-row {
+    display: none;
 }
 
 /* Mobile view of tables */
 @media (max-width: 640px) {
-   thead { display: none; }
-   tr { display: grid; grid-template-columns: minmax(80px, 30%) 1fr; gap: .25rem .75rem; padding: .75rem; border: 1px solid #eee; border-radius: .75rem; margin-bottom: .75rem; }
-   td { display: contents; }
-   /* labels */
-   td::before { content: attr(data-label); font-weight: 600; }
-   td::before,  td { min-width: 0; padding: .25rem 0; }
+
+    .stacked thead {
+        display: none; /* hide header row */
+    }
+
+    .stacked td {
+        display: flex;
+        gap: 0.5rem;
+        padding: .25rem 0;
+        align-items: baseline;
+        white-space: nowrap;
+        width: auto;
+    }
+
+    .stacked td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        flex: 0 0 120px;
+        text-align: right;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .stacked .cell-group {
+        display: flex;
+        flex-wrap: wrap; /* allow multiple lines */
+        gap: 0.25em;
+        min-width: 0;
+        overflow: hidden; /* optional if you still want to clip */
+        white-space: normal; /* let it wrap */
+    }
+
+    .stacked .desktop-row {
+        display: none;
+    }
+
+    .stacked .mobile-row {
+        display: flex;
+    }
 }
+
 
 /* button styles */
 button {

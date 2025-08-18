@@ -21,7 +21,7 @@
     {% if positions|length == 0 %}
         <p><strong>⚠️ No positional player data available for this team. Please contact admin</strong></p>
     {% else %}
-        <table id="positions-table">
+        <table id="positions-table" class="stacked">
             <thead>
                 <tr>
                     <th>Position</th>
@@ -35,12 +35,12 @@
             <tbody>
                 {% for pos in positions %}
                 <tr>
-                    <td><a href="/rules/position/{{pos.player.id}}">{{ pos.player.name }}</a></td>
-                    <td>{% include 'partials/skill_tags.twig' with {'skills': pos.player.skills} %}</td>
-                    <td>{{ pos.primary_skill_initials }}</td>
-                    <td>{{ pos.secondary_skill_initials }}</td>
-                    <td>{{ pos.player.cost }}k</td>
-                    <td>{{ pos.player.max_count == 0 ? 'Unlimited' : pos.player.max_count }}</td>
+                    <td data-label="Position"><a href="/rules/position/{{pos.player.id}}">{{ pos.player.name }}</a></td>
+                    <td data-label="Skills">{% include 'partials/skill_tags.twig' with {'skills': pos.player.skills} %}</td>
+                    <td data-label="Primary">{{ pos.primary_skill_initials }}</td>
+                    <td data-label="Secondary">{{ pos.secondary_skill_initials }}</td>
+                    <td data-label="Cost">{{ pos.player.cost }}k</td>
+                    <td data-label="Max">{{ pos.player.max_count == 0 ? 'Unlimited' : pos.player.max_count }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

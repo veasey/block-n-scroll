@@ -53,3 +53,6 @@
 ## Flash Messages?
 - Flash messages on return to team view
 - Perhapos just keep using templates?
+
+## Mobile Styling
+- Stacked tables to have a top and bottom border. To seperate table content from rest of content, as the table no longer looks like a traditional table.
