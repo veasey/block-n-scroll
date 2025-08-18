@@ -45,28 +45,25 @@
 
     <p class="team-description">{{ team.description }}</p>
 
-    <div class="team-header-grid">
-        <div class="team-meta">
-            <p><strong>Team Value:</strong> {{ team.current_team_value|number_format }} Gold</p>      
-            <p><strong>Race:</strong> {{ team.race.name }} <i>(Tier: {{ team.race.tier }})</i></p>
-            <p><strong>Coach:</strong> {{ team.coach.name }}</p>
-            <p><strong>League:</strong> {{ team.league.name }} </p>
-            <p><strong>Treasury:</strong> {{ team.treasury|number_format }} Gold</p>      
-        </div>
-        <div class="team-meta">
-            <p><strong>Rerolls:</strong> {{ team.rerolls|number_format }}</p>
-            <p><strong>Cheerleaders:</strong> {{ team.cheerleaders|number_format }}</p>
-            <p><strong>Assistant Coaches:</strong> {{ team.assistant_coaches|number_format }}</p>
-            <p><strong>Fan Factor:</strong> {{ team.fan_factor|number_format }}</p>
-            <p><strong>Apothecary:</strong> {{ team.apothecary ? 'Yes' : 'No' }}</p>
+    <div class="team-meta-grid-compact">
+        <dl>
+            <dt>Team Value:</dt><dd>{{ team.current_team_value|number_format }} Gold</dd>
+            <dt>Race:</dt><dd>{{ team.race.name }} <i>(Tier: {{ team.race.tier }})</i></dd>
 
-        </div>
-    </div>
+            <dt>Coach:</dt><dd>{{ team.coach.name }}</dd>
+            <dt>League:</dt><dd>{{ team.league.name }}</dd>
 
-    <div class="team-header-grid">
-        <div class="team-meta">
-            <p><strong>Matches Played:</strong> <a href="/match/view/team/{{team.id}}">{{ team.allMatches|length }}</a></p>
-        </div>
+            <dt>Treasury:</dt><dd>{{ team.treasury|number_format }} Gold</dd>
+            <dt>Rerolls:</dt><dd>{{ team.rerolls|number_format }}</dd>
+
+            <dt>Cheerleaders:</dt><dd>{{ team.cheerleaders|number_format }}</dd>
+            <dt>Assistant Coaches:</dt><dd>{{ team.assistant_coaches|number_format }}</dd>
+
+            <dt>Fan Factor:</dt><dd>{{ team.fan_factor|number_format }}</dd>
+            <dt>Apothecary:</dt><dd>{{ team.apothecary ? 'Yes' : 'No' }}</dd>
+        
+            <dt><strong>Matches Played:</strong> <a href="/match/view/team/{{team.id}}">{{ team.allMatches|length }}</a></dt>
+        </dl>
     </div>
 
     <h3>Players</h3>
@@ -124,18 +121,11 @@
     {% endif %}
 
     {% if showManagementButtons == true %}
-        <p>
-            <center>
-                {% if team.status != 'retired' %}
-                    <button onclick="window.location.href='/team/edit/{{ team.id }}'">Edit Team Details</button>
-                    <button onclick="window.location.href='/team/hire/{{ team.id }}'">Hire / Fire Staff</button>
-                    <button onclick="window.location.href='/team/retire/{{ team.id }}'">Retire</button>       
-                {% else %}
-                    <button onclick="window.location.href='/team/unretire/{{ team.id }}'">Bring Out of Ritirement</button>       
-                    <button onclick="window.location.href='/team/delete/{{ team.id }}/confirm'">Delete</button>
-                {% endif %}                         
-            </center>
-        </p>
+        <div class="primary-nav">
+            <a href="/team/edit/{{ team.id }}" class="primary-nav-link">Edit Team Details</a>
+            <a href="/team/hire/{{ team.id }}" class="primary-nav-link">Hire / Fire Staff</a>
+            <a href="/team/retire/{{ team.id }}" class="primary-nav-link">Retire</a>
+        </div>
     {% endif %}
 
     {% include 'partials/special_rules.twig' with {'special_rules': team.race.special_rules, 'regional_rules': team.race.regional_rules} %}

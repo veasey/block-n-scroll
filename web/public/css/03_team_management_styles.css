@@ -54,6 +54,34 @@
     margin: 0.3rem 0;
 }
 
+/* new header grid */
+
+.team-meta-grid-compact dl {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 equally spaced columns: dt + dd + dt + dd */
+    column-gap: 1em;
+    row-gap: 0.25em;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.team-meta-grid-compact dt {
+    font-weight: bold;
+    text-align: right;
+}
+
+.team-meta-grid-compact dd {
+    margin: 0;
+}
+
+/* Mobile / narrow screens: single column */
+@media (max-width: 600px) {
+    .team-meta-grid-compact dl {
+        grid-template-columns: 1fr 2fr; /* dt + dd in single column */
+    }
+}
+
+
 /* Quick Buttons */
 
 .team-quick-buttons {
