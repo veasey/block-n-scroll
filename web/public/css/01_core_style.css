@@ -272,7 +272,7 @@ button:hover {
 /* Stack vertically on small screens */
 @media (max-width: 768px) {
     .bns-header-container {
-        padding: 0.5em 1em;
+        padding: 0.25em 0.5em;
     }
     .container {
         flex-direction: column;
