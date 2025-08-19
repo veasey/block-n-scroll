@@ -280,21 +280,30 @@ button:hover {
     }
 }
 
-.primary-nav {
+
+.primary-nav, .secondary-nav {
     display: flex;
     gap: 0.5rem;
     margin-top: 1em;
     margin-bottom: 2em;
-    color: #0074d9; 
     font-weight: bold;
 }
 
+
 .primary-nav a.primary-nav-link {
-    flex: 1;
-    padding: 5px;
     background-color: #1a4fa0;
     color: whitesmoke;
     border: 1px solid  #007bff;
+}
+ .primary-nav a.secondary-nav-link {
+    background-color: #c0cddd;
+    color: rgb(52, 18, 248);
+    border: 1px solid  #007bff;
+}
+
+.primary-nav a.primary-nav-link, .primary-nav a.secondary-nav-link {
+    flex: 1;
+    padding: 5px;
     border-radius: 4px;
     text-decoration: none; 
     text-align: center;
@@ -302,5 +311,9 @@ button:hover {
 
 .primary-nav a.primary-nav-link:hover {
     background-color: #007bff;
+    text-decoration: none;
+}
+.primary-nav a.secondary-nav-link:hover {
+    background-color: #ffffff;
     text-decoration: none;
 }

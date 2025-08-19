@@ -18,8 +18,8 @@
 
     <p class="rules-intro">Your player - {{ player.name }} (#{{ player.number }}) - has gained the skill {{skill.name}}</p>
 
-    <p style="margin-top: 1.5em;">
-        <a href="/player/spp/{{player.id}}">← Back to player SPP</a>
-    </p>
+    <div class="primary-nav">
+        <a href="/player/spp/{{player.id}}" class="secondary-nav-link">🔙 Back to Player SPP</a>
+    </div>
 
 {% endblock %}

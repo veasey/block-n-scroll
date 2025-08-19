@@ -18,10 +18,10 @@
     </h2>
 
     <p>You team is already in a match!</p>
-
-    <p><a href="/match/view/{{match.id}}">View match</a></p>
-    <p style="margin-top: 1.5em;">
-        <a href="/team/view/{{team.id}}">← Back to Team</a>
-    </p>
+    
+    <div class="primary-nav">
+        <a href="/match/view/{{match.id}}"  class="primary-nav-link">View match</a>
+        <a href="/team/view/{{team.id}}" class="secondary-nav-link">🔙 Back to Team</a>
+    </div>
 
 {% endblock %}

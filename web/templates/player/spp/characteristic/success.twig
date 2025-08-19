@@ -18,8 +18,8 @@
 
     <p>Player has had stat <b>{{stat}}</b> {{ is_increased ? 'increased' : 'reduced' }} by 1.</p>
 
-    <p style="margin-top: 1.5em;">
-        <a href="/player/{{player.id}}">← Back to player</a>
-    </p>
+    <div class="primary-nav">
+        <a href="/player/view/{{player.id}}" class="secondary-nav-link">🔙 Back to Player</a>
+    </div>
 
 {% endblock %}

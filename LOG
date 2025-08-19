@@ -63,3 +63,4 @@ P4 - Match tracking + team sync
 14 Aug - Charactertics Logic in own controller. Added logic to feed form. Form still TODO
 15 Aug - Finished characteristics upgrade.
 18 Aug - Began tweaking mobile styles. Player Tables, primary navigation buttons and team view.
+19 Aug - Continued work on mobile styles. Fixed some bugs I had missed during previous refactors.

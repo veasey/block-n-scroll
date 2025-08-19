@@ -20,8 +20,8 @@
 
     {% include 'player/spp/partials/skill_list.twig' with {'skills': skills, 'player': player, 'type': 'secondary'} %}
 
-    <p style="margin-top: 1.5em;">
-        <a href="/player/spp/{{player.id}}">← Back to player SPP</a>
-    </p>
+    <div class="primary-nav">
+        <a href="/player/spp/{{player.id}}" class="secondary-nav-link">🔙 Back to Player SPP</a>
+    </div>
 
 {% endblock %}

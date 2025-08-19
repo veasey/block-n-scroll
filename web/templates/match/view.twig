@@ -90,8 +90,8 @@
 
     {% include 'match/partials/logs.twig' with {'logs': logs, 'page': page, 'totalPages': totalPages} %}
 
-    <p style="margin-top: 1.5em;">
-        <a href="/match/view/all">← Back to all matches</a>
-    </p>
+    <div class="prinary-nav">
+        <a href="/match/view/all" class="secondary-nav-link">🔙 Back to all matches</a>
+    </div>
 
 {% endblock %}
