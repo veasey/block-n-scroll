@@ -6,10 +6,9 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 use App\Controllers\TeamManager\Shared\StaffController;
 use App\Constants\ColumnMaps;
-use App\Enums\TeamStatus;
+use App\Helpers\UserHelper;
 use App\Helpers\TeamHelper;
 use App\Models\Team;
-use App\Models\Base\SideStaff as SideStaffModel;
 
 use Slim\Views\Twig;
 
@@ -24,10 +23,12 @@ class HireTeamController extends StaffController
 
     public function __construct(
         Twig $view,
+        UserHelper $userHelper,
         TeamHelper $teamHelper
     )
     {
         $this->view = $view;
+        $this->userHelper = $userHelper;
         $this->teamHelper = $teamHelper;
     }
 

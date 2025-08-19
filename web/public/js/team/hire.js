@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
 
             const treasury = document.querySelector('#treasury');
-            if (parseInt(treasury.value, 10) <= 0) {
+            if (parseInt(treasury.value, 10) < 0) {
                 alert('You cannot afford to do that.');
                 return;
             }
