@@ -132,7 +132,7 @@ table tr:nth-child(even) {
         text-overflow: ellipsis;
     }
 
-    .stacked .cell-group {
+    .stacked .cell-wrap {
         display: flex;
         flex-wrap: wrap; /* allow multiple lines */
         gap: 0.25em;

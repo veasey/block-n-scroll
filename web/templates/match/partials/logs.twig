@@ -1,0 +1,36 @@
+{% if logs|length == 0 %}
+    <p><strong>No relevant logs written, yet.</strong></p>
+{% else %}
+    <table id="positions-table" class="stacked">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Event Type</th>
+                <th>Event Info</th>
+                <th>Team</th>
+                <th>Player</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs %}
+                <tr>
+                    <td data-label="Date">{{ log.created_at | date("m/d/Y h:i:s") }}</td>
+                    <td data-label="Type">{{log.event_type}}</td>
+                    <td data-label="Key">{{ log.event_value }} {{ log.event_key }}</td>
+                    <td data-label="Team"><a href="/team/view/{{log.team.id}}">{{ log.team.name }}</a></td>
+                    <td data-label="Player">
+                        {% if log.player.id %}
+                            <a href="/player/view/{{log.player.id}}">{{ log.player.name }} (#{{ log.player.number }})</a>
+                        {% endif %}
+                    </td>
+                    <td data-label="Notes"><div class="cell-wrap">{{ log.notes }}</div></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if totalPages > 1 %}
+        {% include 'partials/pagination.twig' with {'page': page, 'totalPages': totalPages} %}
+    {% endif %}
+{% endif %}

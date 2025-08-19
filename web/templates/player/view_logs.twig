@@ -12,7 +12,7 @@
     <a href="/team/view/all">All Teams</a> -
     <a href="/team/view/{{ player.team.id }}">{{ player.team.name }}</a> -
     <a href="/player/view/{{player.id}}">{{ player.name }} (#{{ player.number }})</a> -
-    Injury Log {% if totalPages > 1 %} - Page {{ page }} of {{ totalPages }} {% endif %}
+    Player  {{log_type}} Log {% if totalPages > 1 %} - Page {{ page }} of {{ totalPages }} {% endif %}
 </p>
 
 <h2>{{ player.name }} {{log_type}} Log</h2>
@@ -20,7 +20,7 @@
 {% if logs|length == 0 %}
     <p><strong>No relevant logs written, yet.</strong></p>
 {% else %}
-    <table id="positions-table">
+    <table id="positions-table" class="stacked">
         <thead>
             <tr>
                 <th>Time</th>
@@ -33,11 +33,11 @@
         <tbody>
             {% for log in logs %}
                 <tr>
-                    <td>{{ log.created_at | date("m/d/Y h:i:s") }}</td>
-                    <td>{{ log.event_value }}</td>
-                    <td>{% if log.match_id %}<a href="/match/view/{{ log.match_id }}">View Match</a>{% endif %}</td>
-                    <td>{{ log.notes }}</td>
-                    <td>{{ log.event_key }}</td>
+                    <td data-label="Data">{{ log.created_at | date("m/d/Y h:i:s") }}</td>
+                    <td data-label="Event">{{ log.event_value }}</td>
+                    <td data-label="Match">{% if log.match_id %}<a href="/match/view/{{ log.match_id }}">View Match</a>{% endif %}</td>
+                    <td data-label="Notes">{{ log.notes }}</td>
+                    <td data-label="Log Type">{{ log.event_key }}</td>
                 </tr>
             {% endfor %}
         </tbody>

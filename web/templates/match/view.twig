@@ -88,42 +88,7 @@
         {% endif %}
     </table>
 
-    {% if logs|length == 0 %}
-        <p><strong>No relevant logs written, yet.</strong></p>
-    {% else %}
-        <table id="positions-table">
-            <thead>
-                <tr>
-                    <th>Time</th>
-                    <th>Event Type</th>
-                    <th>Event Info</th>
-                    <th>Team</th>
-                    <th>Player</th>
-                    <th>Notes</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for log in logs %}
-                    <tr>
-                        <td>{{ log.created_at | date("m/d/Y h:i:s") }}</td>
-                        <td>{{log.event_type}}</td>
-                        <td>{{ log.event_value }} {{ log.event_key }}</td>
-                        <td><a href="/team/view/{{log.team.id}}">{{ log.team.name }}</a></td>
-                        <td>
-                            {% if log.player.id %}
-                                <a href="/player/view/{{log.player.id}}">{{ log.player.name }} (#{{ log.player.number }})</a>
-                            {% endif %}
-                        </td>
-                        <td>{{ log.notes }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-
-        {% if totalPages > 1 %}
-            {% include 'partials/pagination.twig' with {'page': page, 'totalPages': totalPages} %}
-        {% endif %}
-    {% endif %}
+    {% include 'match/partials/logs.twig' with {'logs': logs, 'page': page, 'totalPages': totalPages} %}
 
     <p style="margin-top: 1.5em;">
         <a href="/match/view/all">← Back to all matches</a>
