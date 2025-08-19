@@ -5,6 +5,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 use App\Enums\TeamStatus;
+use App\Helpers\UserHelper;
 use App\Controllers\TeamManager\Shared\AccessController;
 
 use Slim\Views\Twig;
@@ -14,8 +15,12 @@ class DeleteTeamController extends AccessController
 
     protected $view;
 
-    public function __construct(Twig $view)
+    public function __construct(
+        UserHelper $userHelper,
+        Twig $view
+    )
     {
+        $this->userHelper = $userHelper;
         $this->view = $view;
     }
 

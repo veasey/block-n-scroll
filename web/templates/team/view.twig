@@ -122,9 +122,13 @@
 
     {% if showManagementButtons == true %}
         <div class="primary-nav">
-            <a href="/team/edit/{{ team.id }}" class="primary-nav-link">Edit Team Details</a>
-            <a href="/team/hire/{{ team.id }}" class="primary-nav-link">Hire / Fire Staff</a>
-            <a href="/team/retire/{{ team.id }}" class="primary-nav-link">Retire</a>
+            {% if team.status != 'retired' %}
+                <a href="/team/edit/{{ team.id }}" class="primary-nav-link">Edit Team Details</a>
+                <a href="/team/hire/{{ team.id }}" class="primary-nav-link">Hire / Fire Staff</a>
+                <a href="/team/retire/{{ team.id }}/confirm" class="primary-nav-link">Retire</a>
+            {% else %}
+                <a href="/team/unretire/{{ team.id }}" class="primary-nav-link">Bring out of retirement</a>
+            {% endif %}
         </div>
     {% endif %}
 

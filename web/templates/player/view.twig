@@ -65,15 +65,13 @@
     {% endif %}
 
     {% if canManagePlayer == true %}
-        <p>
-            <center>
-                <button onclick="window.location.href='/player/edit/{{ player.id }}'">Edit Player Details</button>
-                {% if player.status != 'retired' %}
-                <button onclick="window.location.href='/player/spp/{{ player.id }}'">Spend SPP</button>
-                <button onclick="window.location.href='/player/retire/{{ player.id }}'">Fire</button>
-                {% endif %}
-            </center>
-        </p>
+        <div class="primary-nav">
+            <a href="/player/edit/{{ player.id }}" class="primary-nav-link">Edit Player Details</a>
+            {% if player.status != 'retired' %}
+                <a href="/player/spp/{{ player.id }}" class="primary-nav-link">Spend SPP</a>
+                <a href="/player/retire/{{ player.id }}" class="primary-nav-link">Fire</a>
+            {% endif %}
+        </div>
     {% endif %}
 
     {% include 'partials/special_rules.twig' with {'special_rules': team.race.special_rules, 'regional_rules': team.race.regional_rules} %}

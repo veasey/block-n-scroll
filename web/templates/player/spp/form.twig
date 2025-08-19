@@ -24,6 +24,7 @@
         <p><i>Not enough SPP to purchase anything.</i></p>
     {% endif %}
 
+    <div class="primary-nav">
     {% if upgrade_cost.random_primary <= player.spp %}
         <div>
             <button onclick="window.location.href='/player/spp/{{ player.id }}/random_primary'">

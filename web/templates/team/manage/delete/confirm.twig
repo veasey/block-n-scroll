@@ -14,11 +14,10 @@
 
     <h2>Delete {{ team.name }}?</h2>
     <p>Are you sure?</p>
-    <p>
-        <center>
-            <button onclick="window.location.href='/team/delete/{{ team.id }}'">Yes</button>
-            <button onclick="window.location.href='/team/view/{{ team.id }}'">No</button>
-        </center>
-    </p>
+
+    <div class="primary-nav">
+        <a href="/team/delete/{{ team.id }}" class="primary-nav-link">Yes</a>
+        <a href="/team/view/{{ team.id }}" class="primary-nav-link">No</a>
+    </div>
 
 {% endblock %}
