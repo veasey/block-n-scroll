@@ -7,6 +7,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Controllers\Players\Shared\AccessController;
 use App\Constants\SPP\Award as SPPAward;
 use App\Enums\TeamStatus;
+use App\Helpers\UserHelper;
 use App\Helpers\TeamHelper;
 use App\Helpers\MatchHelper;
 use App\Repositories\MatchGameRepository;
@@ -29,6 +30,7 @@ class UpdateController extends AccessController
     protected $view;
 
     public function __construct(
+        UserHelper $userHelper,
         MatchHelper $matchHelper,
         TeamHelper $teamHelper,
         MatchGameRepository $matchGameRepo,
@@ -37,6 +39,7 @@ class UpdateController extends AccessController
         Twig $view
     )
     {
+        $this->userHelper = $userHelper;
         $this->teamHelper = $teamHelper;
         $this->matchHelper = $matchHelper;
         $this->matchGameRepo = $matchGameRepo;
