@@ -86,54 +86,115 @@
 
 .team-quick-buttons {
     display: flex;
-    width: fit-content;
-    gap: 0.5rem;
     flex-wrap: wrap;
-    align-items: center;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    margin-right: auto;
-    margin-left: auto;
+    gap: 0.75rem;
+    justify-content: center;
+    margin: 1rem auto;
+    border: 1px solid gray; 
+    border-radius: 8px; 
+    padding: 0.5em;
 }
 
 .quick-btn {
-    display: inline-block;
-    padding: 0.25em 0.5em;
-    background: #f2f2f2;
+    appearance: none;      /* neutralize button defaults */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+
+    padding: 0.6em 1em;
+    min-height: 44px; /* accessibility standard */
+
+    background: #f9f9f9;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    text-decoration: none;
+    border-radius: 8px;
+
     font-size: 1rem;
-    color: inherit;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
+    font-weight: 500;
     font-family: inherit;
+    color: #333;
     line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    box-sizing: border-box; /* force consistent width calc */
 }
 
 .quick-btn:hover {
-    background: #e6e6e6;
-    transform: scale(1.05);
+    background: #eee;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .quick-btn:active {
     background: #ddd;
-    transform: scale(0.95);
+    transform: scale(0.97);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
 }
 
-/* Remove browser-specific button styles */
+/* Make both <a> and <button> inherit same look */
+a.quick-btn,
 button.quick-btn {
-    all: unset;
-    display: inline-block;
-    padding: 0.25em 0.5em;
-    background: #f2f2f2;
+    all: unset; /* strip defaults */
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 0.6em 1em;
+    min-height: 44px;
+    background: #f9f9f9;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    text-decoration: none;
+    border-radius: 8px;
     font-size: 1rem;
-    color: inherit;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
+    font-weight: 500;
     font-family: inherit;
+    color: #333;
     line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+/* On small screens, two per row */
+@media (max-width: 500px) {
+    .quick-btn {
+        flex: 1 1 calc(50% - 0.75rem);
+        max-width: none;
+    }
+}
+
+/* match card styles */
+
+.match-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem auto;
+    max-width: 500px;
+    background: #fafafa;
+    text-align: center;
+    font-family: inherit;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.match-card-header {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.match-card-teams {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.match-card a.quick-btn {
+    margin-top: 0.5rem;
 }

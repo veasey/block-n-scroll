@@ -1,9 +1,7 @@
 
 # TODO & Bugs: 
 
-## Global
-- Mobile Styling
- - Quick View buttons 5/10 make it a 7/10+ style
+# Brief Update / Stream
 
 ## Team Management Screen
 - Compare relative team value with another team [Start Match]
