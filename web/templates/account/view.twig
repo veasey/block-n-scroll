@@ -1,0 +1,23 @@
+{# filepath: c:\Users\Clint\Documents\Repos\block-n-scroll\web\templates\auth\login.twig #}
+{% extends "base.twig" %}
+
+{% block title %}Block &amp; Scroll - {{coach.name}}'s Profile{% endblock %}
+
+{% block content %}
+
+    <h1>{{coach.name}}</h1>
+
+    <div class="team-header-grid">
+        <div class="team-meta">
+            <p><strong>Role:</strong> {{ coach.role }}</p>
+            <p><strong>User Since:</strong> {{ coach.created_at|date("l j F Y \\a\\t H:i") }}</p>       
+        </div>
+    </div>
+
+    <div class="team-header-grid">
+        <div class="team-meta">
+            <p><strong>Teams:</strong> <a href="/team/view/user/{{coach.id}}">{{ coach.teams|length }}</a></p>    
+        </div>
+    </div>
+
+{% endblock %}

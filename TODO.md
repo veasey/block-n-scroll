@@ -21,6 +21,12 @@
 - Roll 16 of Characteristic Increase, has duplicate Attributes in dropdown
 - Swapping numbers does now work in player rename screen.
 
+## Footer
+- Donation button
+- Link to Project
+- Link to Local league
+- Contact
+
 ## Inducements
 - allow view and calculate (add up) inducements
 - if not able to calculate limit, allow user to enter

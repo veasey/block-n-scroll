@@ -6,7 +6,8 @@
         </div>
         <div class="bns-header-login">
             {% if session.user %}
-                Signed in as <strong>{{ session.user.name }}</strong>&nbsp;
+                Signed in as <strong><a href="/account/{{ session.user.id }}/view">{{ session.user.name }}</a>
+                </strong>&nbsp;
                 <form method="post" action="/account/logout" style="display:inline;">
                     <button type="submit" class="bns-login-btn">Sign Out</button>
                 </form>

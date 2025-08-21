@@ -46,7 +46,7 @@ class ViewController extends AccessController
             return $response->withHeader('Content-Type', 'application/json');
         }
         
-        return $this->view->render($response, 'team/list.twig', [
+        return $this->view->render($response, 'leagues/list.twig', [
             'leagues' => $leagues,
             'page' => $params['page'],
             'totalPages' => $totalPages,
