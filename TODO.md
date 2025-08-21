@@ -3,17 +3,18 @@
 
 # Brief Update / Stream
 
-## Team Management Screen
-- Compare relative team value with another team [Start Match]
-- View Skills (original and additional)
-- View Total Touchdowns, Casualties, Times Injured, Completions
-  - When   clicking above: Show log with each event with time logged next to it and other details.
-
 ## Leagues
 - Creating / Running Etc.
 
+## Inducements
+- allow view and calculate (add up) inducements
+- if not able to calculate limit, allow user to enter
+
 ## Logging in
 - Success Message / Welcome Template
+
+## Team Management Screen
+- Compare relative team value with another team [Start Match]
 
 ## Match View
 - Quick Button

@@ -52,7 +52,7 @@ class PreGameController extends AccessController
         [$team, $errorResponse] = $this->getRecognisedTeamOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
 
-        return $this->view->render($response, 'match/start/start_match.twig', [
+        return $this->view->render($response, 'match/start/1_start_match.twig', [
             'team' => $team, 
             'eligibleTeams' => $this->teamRepo->getEligableTeams($team)
         ]);
@@ -69,7 +69,7 @@ class PreGameController extends AccessController
 
         // has opponent already started the match?
         if ($match = $this->matchHelper->getCurrentMatchTeamPlayingIn($team)) {
-            return $this->view->render($response, 'match/start/duplicate_start_match.twig', ['match' => $match, 'team' => $team]);
+            return $this->view->render($response, 'match/start/2_duplicate_start_match.twig', ['match' => $match, 'team' => $team]);
         }
 
         if (!$awayTeamId && empty($awayTeamName)) {
@@ -90,7 +90,7 @@ class PreGameController extends AccessController
     {
         [$match, $errorResponse] = $this->getAuthorisedMatchOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
-        return $this->view->render($response, 'match/start/gate.twig', ['match' => $match]);
+        return $this->view->render($response, 'match/start/3_gate.twig', ['match' => $match]);
     }
 
     public function submitGate(Request $request, Response $response, array $args)
@@ -120,7 +120,7 @@ class PreGameController extends AccessController
     {
         [$match, $errorResponse] = $this->getAuthorisedMatchOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
-        return $this->view->render($response, 'match/start/weather.twig', ['match' => $match]);
+        return $this->view->render($response, 'match/start/4_weather.twig', ['match' => $match]);
     }
 
     public function submitWeather(Request $request, Response $response, array $args)
@@ -160,7 +160,7 @@ class PreGameController extends AccessController
         $match->status = MatchStatus::IN_PROGRESS;
         $match->save();
 
-        return $this->view->render($response, 'match/start/kickoff.twig', [
+        return $this->view->render($response, 'match/start/5_kickoff.twig', [
             'match' => $match,
             'user_team_id' => $team->id,
             'match_info' => $matchInfo
