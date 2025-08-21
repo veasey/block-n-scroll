@@ -4,7 +4,17 @@
 # Brief Update / Stream
 
 ## Leagues
-- Creating / Running Etc.
+- Creating
+- Request to Join
+- Allow requested teams to join.
+
+- view league page
+  - match list
+  - team list
+
+- Standing Page
+  - Generate Standings by quering match results from current league.
+
 
 ## Inducements
 - allow view and calculate (add up) inducements
@@ -15,6 +25,9 @@
 
 ## Team Management Screen
 - Compare relative team value with another team [Start Match]
+
+## Teams List
+- Add pagination
 
 ## Match View
 - Quick Button

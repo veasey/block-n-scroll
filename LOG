@@ -65,3 +65,4 @@ P4 - Match tracking + team sync
 18 Aug - Began tweaking mobile styles. Player Tables, primary navigation buttons and team view.
 19 Aug - Continued work on mobile styles. Fixed some bugs I had missed during previous refactors.
 20 Aug - General Styling for Team's in play and Quick View buttons
+21 Aug - Added League View Template. Minor tweaks and fixes.
