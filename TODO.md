@@ -16,6 +16,11 @@
   - Generate Standings by quering match results from current league.
 
 
+### Bugs
+- SPP screen, back button should be underneath.
+- Roll 16 of Characteristic Increase, has duplicate Attributes in dropdown
+- Swapping numbers does now work in player rename screen.
+
 ## Inducements
 - allow view and calculate (add up) inducements
 - if not able to calculate limit, allow user to enter

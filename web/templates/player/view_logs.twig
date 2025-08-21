@@ -33,7 +33,10 @@
         <tbody>
             {% for log in logs %}
                 <tr>
-                    <td data-label="Data">{{ log.created_at | date("m/d/Y h:i:s") }}</td>
+                    <td data-label="Data">
+                        <div class="
+                        {{ log.created_at | date("m/d/Y h:i:s") }}
+                    </td>
                     <td data-label="Event">{{ log.event_value }}</td>
                     <td data-label="Match">{% if log.match_id %}<a href="/match/view/{{ log.match_id }}">View Match</a>{% endif %}</td>
                     <td data-label="Notes">{{ log.notes }}</td>
