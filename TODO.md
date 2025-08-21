@@ -4,7 +4,6 @@
 # Brief Update / Stream
 
 ## Leagues
-- Creating
 - Request to Join
 - Allow requested teams to join.
 
