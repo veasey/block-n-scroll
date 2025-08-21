@@ -14,16 +14,35 @@ class Coach extends Model
 
     public function isAdmin():bool
     {
-        return $this->role === UserRole::ADMIN;
+        return UserRole::tryFrom($this->role) === UserRole::ADMIN;
     }
 
     public function isModerator():bool
     {
-        return $this->role === UserRole::MODERATOR;
+        return UserRole::tryFrom($this->role) === UserRole::MODERATOR;
     }
 
     public function teams(): HasMany
     {
         return $this->hasMany(Team::class, 'coach_id');
+    }
+
+    public function moderatedLeagues()
+    {
+        return $this->belongsToMany(League::class, 'league_coach')
+                    ->withTimestamps();
+    }
+
+    // Playing leagues (via teams.league_id)
+    public function playingLeagues()
+    {
+        return $this->hasManyThrough(
+            League::class,
+            Team::class,
+            'coach_id',   // Foreign key on Team table
+            'id',         // Foreign key on League table
+            'id',         // Local key on Coach
+            'league_id'   // Local key on Team
+        )->distinct();
     }
 }

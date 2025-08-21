@@ -1,0 +1,35 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - Create League{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/leagues">Leagues</a> - 
+        Create New league
+    </p>
+
+    <form method="post" action="/leagues/create" id="create-league-form" class="form-horizontal">
+
+        <h2>Create new league</h2>
+        
+        <div class="form-section">
+            <div class="form-group">
+                <label for="league_name"><strong>Team Name:</strong></label>
+                <input type="text" id="league_name" name="league_name" value="{{ league.name }}" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="league_desc"><strong>Team Bio:</strong></label>
+                <textarea id="league_desc" name="league_desc" rows="3" class="form-control">{{ league.description }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="league_season"><strong>Season:</strong></label>
+                <input type="number" id="league_season" name="league_season">
+            </div>
+        </div>
+
+        <p><center><button type="submit">{{ league ? 'Save Changes' : 'Create League'}}</button></center></p>
+    </form>
+
+{% endblock %}
