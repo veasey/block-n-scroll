@@ -14,4 +14,9 @@ class Coach extends Model
     {
         return $this->role === UserRole::ADMIN;
     }
+
+    public function isModerator():bool
+    {
+        return $this->role === UserRole::MODERATOR;
+    }
 }

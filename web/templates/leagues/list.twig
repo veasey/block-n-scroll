@@ -1,0 +1,47 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - Leagues{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/leagues">Leagues</a>
+    </p>
+
+    <h1>Leagues</h1>
+
+    {% if leagues|length == 0 %}
+        <p><strong>⚠️ No Teams Found!</strong></p>
+    {% else %}
+        <table id="positions-table" class="stacked">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Season</th>
+                    <th>Established</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for league in leagues %}
+                <tr>
+                    <td data-label="League"><a href="/league/view/{{ league.id }}">{{ league.name }}</a></td>
+                    <td data-label="Season">{{league.season}}</td>
+                    <td data-label="Established">{{ league.create_at|date|date("l j F Y") }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% if totalPages > 1 %}
+            {% include 'partials/pagination.twig' with {'page': page, 'totalPages': totalPages} %}
+        {% endif %}
+    {% endif %}
+
+    {% if isAuthorizeToCreateLeagues %}
+        <div class="primary-nav">
+            <a href="/leagues/create" class="primary-nav-link">Create New League</a>
+        </div>
+    {% endif %}
+
+{% endblock %}

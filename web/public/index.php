@@ -32,7 +32,7 @@ $app->add(TwigMiddleware::create($app, $container->get(Twig::class)));
 require __DIR__ . '/../src/bootstrap.php';
 
 // Load all routes
-foreach (['account', 'web', 'rules', 'teams', 'players', 'matchgames'] as $routeFile) {
+foreach (['account', 'web', 'rules', 'teams', 'players', 'matchgames', 'leagues'] as $routeFile) {
     require __DIR__ . "/../src/Routes/{$routeFile}.php";
 }
 
