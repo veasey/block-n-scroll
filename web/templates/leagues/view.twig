@@ -1,0 +1,30 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - {{league.name}}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/leagues">Leagues</a> -
+        <a href="/league/view/{{ league.id }}">{{league.name}}</a>
+    </p>
+
+    <h1>{{league.name}}</h1>
+
+    <p><strong>Season:</strong> {{league.season}}</p>
+    <p><strong>Established:</strong> {{ league.create_at|date|date("l j F Y") }}</p>
+    <p><strong>Managed By:</strong> 
+        {% for manager in league.coaches %}
+            {% if not loop.first %}, {% endif %}
+            <a href="/account/{{manager.id}}/view">{{manager.name}}</a>
+        {% endfor %}  
+    </p>
+
+    {% if session.user %}
+        <div class="primary-nav">
+            <a href="/leagues/request/{{league.id}}" class="primary-nav-link">Request Entry of your team</a>
+        </div>
+    {% endif %}
+
+{% endblock %}

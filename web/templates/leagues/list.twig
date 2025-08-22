@@ -26,7 +26,7 @@
             <tbody>
                 {% for league in leagues %}
                 <tr>
-                    <td data-label="League"><a href="/league/view/{{ league.id }}">{{ league.name }}</a></td>
+                    <td data-label="League"><a href="/leagues/view/{{ league.id }}">{{ league.name }}</a></td>
                     <td data-label="Season">{{league.season}}</td>
                     <td data-label="Established">{{ league.create_at|date|date("l j F Y") }}</td>
                 </tr>

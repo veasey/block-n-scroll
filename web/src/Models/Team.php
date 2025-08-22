@@ -6,13 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-use App\Enums\TeamStatus;
-
 use App\Models\Base\BaseTeam;
 use App\Models\Coach;
 use App\Models\League;
 use App\Models\Player;
 use App\Models\MatchGame;
+use App\Models\TeamLeagueRequest;
 
 class Team extends Model
 {
@@ -36,6 +35,11 @@ class Team extends Model
     public function players(): HasMany
     {
         return $this->hasMany(Player::class, 'team_id');
+    }
+
+    public function leagueRequests()
+    {
+        return $this->hasMany(TeamLeagueRequest::class);
     }
 
     public function homeMatches(): HasMany

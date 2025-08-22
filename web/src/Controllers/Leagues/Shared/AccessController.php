@@ -2,8 +2,10 @@
 
 namespace App\Controllers\Leagues\Shared;
 
-use App\Helpers\UserHelper;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
+use App\Helpers\UserHelper;
 use App\Models\League;
 
 abstract class AccessController
@@ -35,5 +37,22 @@ abstract class AccessController
         }
 
         return $user->isAdmin() || $user->isModerator();
+    }
+
+    protected function doesLeagueExist(Request $request, Response $response, array $args)
+    {
+        $leagueId = $args['league_id'] ?? null;
+        if (empty($leagueId)) {
+            $response->getBody()->write('League ID required');
+            return [null, $response->withStatus(404)];
+        }
+
+        $league = League::find($leagueId);
+        if (!$league) {
+            $response->getBody()->write('League not found');
+            return [null, $response->withStatus(404)];
+        }
+
+        return [$league, null];
     }
 }

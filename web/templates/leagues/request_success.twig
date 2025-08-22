@@ -1,0 +1,36 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - {{league.name}}{% endblock %}
+
+{% block content %}
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/leagues">Leagues</a> -
+        <a href="/league/view/{{ league.id }}">{{league.name}}</a> -
+        Request Entry of your team
+    </p>
+
+    <h2>You have submitted a request to enter {{team.name}}</h2>
+
+    {% set messages = [
+        "Your request has been sent. Now it sits on the mighty mod's desk… under a pile of takeaway menus.",
+        "Pending approval! The league mods are probably rolling dice to decide your fate.",
+        "Your team is waiting… the mods are still arguing over whose turn it is to click 'Approve'.",
+        "Application submitted. Expect a decision once the mods stop rerolling double skulls.",
+        "Mods alerted! They'll get to it right after their tea break (and the one after that).",
+        "The mods have been notified. They'll pretend to think really hard about it.",
+        "Your request is in the queue! It's right behind 'Feed the Dog' and 'Watch One More Episode'.",
+        "Pending… because the mods love suspense more than fair gameplay.",
+        "Your team has entered bureaucratic limbo. The mods hold the keys… and they've misplaced them.",
+        "The League moderators have had their head's inflated by the tiny amount of power they wield. Your request is now in their hands.",
+    ] %}
+
+    <p class="pending">
+        {{ random(messages) }}
+    </p>
+    
+    <div class="primary-nav">
+        <a href="/leagues/view/{{league.id}}" class="secondary-nav-link">🔙 Back to League</a>
+    </div>
+
+{% endblock %}

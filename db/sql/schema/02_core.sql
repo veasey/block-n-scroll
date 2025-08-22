@@ -49,6 +49,17 @@ CREATE TABLE team (
     FOREIGN KEY (league_id) REFERENCES league(id)
 );
 
+CREATE TABLE team_league_request (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    team_id INT,
+    league_id INT,
+    status ENUM('pending', 'approved', 'rejected') DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (team_id) REFERENCES team(id),
+    FOREIGN KEY (league_id) REFERENCES league(id)
+);
+
 CREATE TABLE side_staff (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,

@@ -86,4 +86,15 @@ class ViewController extends AccessController
         $query = $coach->playingLeagues();
         return $this->renderLeagueList($response, $args, $query, $coach);
     }
+
+    public function view(Request $request, Response $response, array $args): Response
+    {
+        [$league, $errorResponse] = $this->doesLeagueExist($request, $response, $args);
+        if ($errorResponse) return $errorResponse;
+
+        return $this->view->render($response, 'leagues/view.twig', [
+            'league' => $league,
+            'coach' => $this->userHelper->getCurrentUser()
+        ]);
+    }
 }

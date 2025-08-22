@@ -1,0 +1,43 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - {{league.name}}{% endblock %}
+
+{% block content %}
+<p class="breadcrumbs">
+    <a href="/">Home</a> -
+    <a href="/leagues">Leagues</a> -
+    <a href="/league/view/{{ league.id }}">{{league.name}}</a> -
+    Request Entry of your team
+</p>
+
+<h2>Enter Team</h2>
+
+<form method="post" action="/leagues/request/{{league.id}}" class="form-horizontal" id="start_match_form">
+        <div class="form-section">       
+        <div class="form-group">
+            <label for="team_id">Select Team:</label>
+            <select name="team_id" id="team_id">
+                <option value="">-- No registered team --</option>
+                {% for t in teams %}
+                    <option value="{{ t.id }}">{{ t.name }} - {{ t.race.name }} - CTV {{t.current_team_value}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="form-section">
+        <button type="submit">Enter Team</button>
+    </div>
+</form>
+
+<script>
+function filterTeams(query) {
+    const select = document.getElementById('opponent_team_id');
+    const options = select.querySelectorAll('option');
+
+    options.forEach(option => {
+        if (option.value === "") return;
+        option.hidden = !option.textContent.toLowerCase().includes(query.toLowerCase());
+    });
+}
+</script>
+{% endblock %}

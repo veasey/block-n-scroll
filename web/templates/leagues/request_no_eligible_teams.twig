@@ -1,0 +1,20 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - No Eligible Teams{% endblock %}
+
+{% block content %}
+
+     <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/leagues">Leagues</a> -
+        <a href="/league/view/{{ league.id }}">{{league.name}}</a> -
+        Request Entry of your team
+    </p>
+
+    <p>Sorry, you don't have any teams eligible to request entry to this league.</p>
+    <p>You might need to create one, retire a team from an existing league or wait for your pending requests to be approved.</p>
+
+    <div class="primary-nav">
+        <a href="/leagues/view/{{league.id}}" class="secondary-nav-link">🔙 Back to League</a>
+    </div>
+{% endblock %}
