@@ -4,8 +4,7 @@
 # Brief Update / Stream
 
 ## Leagues
-- Request to Join
-- Allow requested teams to join.
+- Allow requested teams to join / moderator review page
 
 - view league page
   - match list
