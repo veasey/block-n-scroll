@@ -1,0 +1,81 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - Manage {{league.name}}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/leagues">Leagues</a> -
+        <a href="/league/view/{{ league.id }}">{{league.name}}</a> -
+        <a href="/league/manage/{{ league.id }}">Manage</a>
+    </p>
+
+    <h1>Manage {{league.name}}</h1>
+
+    <p><strong>Established:</strong> {{ league.create_at|date|date("l j F Y") }}</p>
+    <p><strong>Managed By:</strong> 
+        {% for manager in league.coaches %}
+            {% if not loop.first %}, {% endif %}
+            <a href="/account/{{manager.id}}/view">{{manager.name}}</a>
+        {% endfor %}  
+    </p>
+
+    <h2>Pending Team Requests</h2>
+
+    {% if requests is empty %}
+        <p>No pending requests.</p>
+    {% else %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Team</th>
+                    <th>Requested By</th>
+                    <th>Requested At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in requests %}
+                    <tr>
+                        <td>{{ request.team.name }} - {{ request.team.current_team_value }} </td>
+                        <td><a href="/account/{{ request.coach.id }}/view">{{ request.coach.name }}</a></td>
+                        <td>{{ request.created_at|date("l j F Y H:i") }}</td
+                        <td>
+                            <form method="post" action="/league/{{ league.id }}/requests/{{ request.id }}/approve" style="display:inline;">
+                                <button type="submit">Approve</button>
+                            </form>
+                            <form method="post" action="/league/{{ league.id }}/requests/{{ request.id }}/reject" style="display:inline;">
+                                <button type="submit">Reject</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% if totalPages > 1 %}
+            <div class="pagination">
+                {% for p in 1..totalPages %}
+                    {% if p == page %}
+                        <span class="current-page">{{ p }}</span>
+                    {% else %}
+                        <a href="/league/{{ league.id }}/manage?page={{ p }}">{{ p }}</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endif %}
+
+    <h2>Update Season</h2>
+
+    <form method="post" action="/league/manage/{{ league.id }}/update_season" class="inline-form">
+        <label for="season">Season:</label>
+        <input type="number" name="season" value="{{ league.season }}" />
+        <button type="submit">Update</button>
+    </form>
+
+    <div class="primary-nav">
+        <a href="/leagues/view/{{league.id}}" class="secondary-nav-link">🔙 Back to League</a>
+    </div>
+
+{% endblock %}

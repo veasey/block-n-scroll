@@ -24,6 +24,9 @@
     {% if session.user %}
         <div class="primary-nav">
             <a href="/leagues/request/{{league.id}}" class="primary-nav-link">Request Entry of your team</a>
+            {% if isAuthorizeToManageLeague %}
+                <a href="/league/manage/{{league.id}}" class="primary-nav-link">Manage League</a>
+            {% endif %}
         </div>
     {% endif %}
 

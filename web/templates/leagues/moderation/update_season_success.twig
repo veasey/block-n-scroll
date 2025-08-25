@@ -1,0 +1,38 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - Season Updated{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/leagues">Leagues</a> -
+        <a href="/league/view/{{ league.id }}">{{league.name}}</a> -
+        <a href="/league/manage/{{ league.id }}">Manage</a> -
+        Season Updated
+    </p>
+
+     <h2>Season Updated</h2>
+
+     {{seasonChangeType}}
+
+    {% if seasonChangeType == 'increment' %}
+        <p>The league has successfully moved forward to the next season. 🚀</p>
+        <p>New challenges await! Try not to trip over the trophy this time. 🏆</p>
+    {% elseif seasonChangeType == 'decrement' %}
+        <p>The league has been moved back to the previous season. ⏪</p>
+        <p>Don't worry, it's just a slight time-travel hiccup—history will forgive you. 📜</p>
+    {% elseif seasonChangeType == 'skip' %}
+        <p>The season was skipped. 🏃‍♂️💨</p>
+        <p>Sometimes life moves faster than the league. Take a coffee break. ☕</p>
+    {% else %}
+        <p>The season has been updated. ✨</p>
+        <p>Change is the only constant… and apparently so is your league. 😉</p>
+    {% endif %}
+    
+    <div class="primary-nav">
+        <a href="/league/manage/{{ league.id }}" class="primary-nav-link">🔙 Back to Manage League {{ league.name }}</a>
+        <a href="/leagues/view/{{ league.id }}" class="secondary-nav-link">🔙 Back to League</a>
+    </div>
+
+{% endblock %}

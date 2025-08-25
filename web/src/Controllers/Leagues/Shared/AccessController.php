@@ -29,14 +29,16 @@ abstract class AccessController
         return $user->isAdmin() || $user->isModerator();
     }
 
-    protected function isAuthorizeToManageLeague(): bool
+    protected function isAuthorizeToManageLeague(League $league): bool
     {
         $user = $this->userHelper->getCurrentUser();
-        if (empty($user)) {
-            return false;
-        }
+        if (empty($user)) return false;
+        
+        if ($user->isAdmin()) return true;
+        
+        if ($user->isModerator() && $user->moderatedLeagues->contains('id', $league->id)) return true;
 
-        return $user->isAdmin() || $user->isModerator();
+        return false;
     }
 
     protected function doesLeagueExist(Request $request, Response $response, array $args)
