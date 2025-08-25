@@ -5,6 +5,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 use App\Controllers\Leagues\Shared\AccessController;
+use App\Services\EventLogging\LeagueManagementEventLoggingService;
 use App\Helpers\UserHelper;
 use App\Models\League;
 
@@ -12,13 +13,16 @@ use Slim\Views\Twig;
 
 class CreateController extends AccessController
 {
+    protected $eventLogger;
     protected $view;
 
     public function __construct(
+        LeagueManagementEventLoggingService $eventLogger,
         UserHelper $userHelper,
         Twig $view
     )
     {
+        $this->eventLogger = $eventLogger;
         $this->userHelper = $userHelper;
         $this->view = $view;
     }
@@ -53,6 +57,9 @@ class CreateController extends AccessController
         $newLeague->season = $leagueSeason;
         $newLeague->coaches()->attach($this->userHelper->getCurrentUser()->id);
         $newLeague->save();
+
+        // Log Creation        
+        $this->eventLogger->logLeagueCreation($this->userHelper->getCurrentUser(), $newLeague);
 
         return $this->view->render($response, 'leagues/creation_success.twig');
     }

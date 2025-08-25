@@ -13,7 +13,8 @@ class EventLoggerService
         $coach = null,
         $team = null,
         $player = null,
-        $match = null
+        $match = null,
+        $league = null
     ): void {
         EventLog::create([
             'event_type' => $eventType,
@@ -24,6 +25,7 @@ class EventLoggerService
             'team_id' => $team?->id,
             'player_id' => $player?->id,
             'match_id' => $match?->id,
+            'league_id' => $league?->id,
         ]);
     }
 }

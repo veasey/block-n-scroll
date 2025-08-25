@@ -8,23 +8,27 @@ use App\Controllers\Leagues\Shared\AccessController;
 use App\Helpers\PaginationHelper;
 use App\Helpers\UserHelper;
 use App\Repositories\TeamLeagueRequestRepository;
+use App\Services\EventLogging\LeagueManagementEventLoggingService;
 use Slim\Views\Twig;
 
 class ManageController extends AccessController
 {
     protected $teamLeagueRequestRepository;
     protected $paginationHelper;
+    protected $eventLogger;
     protected $view;
 
     public function __construct(
         TeamLeagueRequestRepository $teamLeagueRequestRepository,
         PaginationHelper $paginationHelper,
         UserHelper $userHelper,
+        LeagueManagementEventLoggingService $eventLogger,
         Twig $view
     ) {
         $this->teamLeagueRequestRepository = $teamLeagueRequestRepository;
         $this->paginationHelper = $paginationHelper;
         $this->userHelper = $userHelper;
+        $this->eventLogger = $eventLogger;
         $this->view = $view;
     }
 
@@ -81,9 +85,14 @@ class ManageController extends AccessController
             }
         }
 
+        // Log Update
+        $eventValue = $seasonChangeType ? $seasonChangeType : 'no_change';
+        $note = "Season changed to $season";
+        $this->eventLogger->logLeagueUpdate($this->userHelper->getCurrentUser(), $league, $eventValue, $note);
+
         // Update season
         $league->season = $season;
-        $league->save();
+        $league->save();        
 
         return $this->view->render($response, 'leagues/moderation/update_season_success.twig', [
             'seasonChangeType' => $seasonChangeType,
