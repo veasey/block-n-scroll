@@ -26,7 +26,7 @@
     {% if requests is empty %}
         <p>No pending requests.</p>
     {% else %}
-        <table>
+        <table class="stacked">
             <thead>
                 <tr>
                     <th>Team</th>
@@ -38,16 +38,22 @@
             <tbody>
                 {% for request in requests %}
                     <tr>
-                        <td>{{ request.team.name }} - {{ request.team.current_team_value }} </td>
-                        <td><a href="/account/{{ request.coach.id }}/view">{{ request.coach.name }}</a></td>
-                        <td>{{ request.created_at|date("l j F Y H:i") }}</td
-                        <td>
-                            <form method="post" action="/league/{{ league.id }}/requests/{{ request.id }}/approve" style="display:inline;">
-                                <button type="submit">Approve</button>
-                            </form>
-                            <form method="post" action="/league/{{ league.id }}/requests/{{ request.id }}/reject" style="display:inline;">
-                                <button type="submit">Reject</button>
-                            </form>
+                        <td data-label="Team">
+                            <div class="cell-wrap">
+                                {{ request.team.name }} - {{ request.team.current_team_value }}
+                            </div>
+                        </td>
+                        <td data-label="Coach"><a href="/account/{{ request.coach.id }}/view">{{ request.team.coach.name }}</a></td>
+                        <td data-label="Date">{{ request.created_at|date("j M Y H:i") }}</td>
+                        <td data-label="Actions">
+                            <div class="cell-wrap">
+                                <form method="post" action="/league/{{ league.id }}/requests/{{ request.id }}/approve" style="display:inline;">
+                                    <button type="submit">Approve</button>
+                                </form>
+                                <form method="post" action="/league/{{ league.id }}/requests/{{ request.id }}/reject" style="display:inline;">
+                                    <button type="submit">Reject</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 {% endfor %}

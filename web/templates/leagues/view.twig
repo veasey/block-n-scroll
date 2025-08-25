@@ -21,6 +21,31 @@
         {% endfor %}  
     </p>
 
+    {% if teams|length == 0 %}
+        <p><strong>⚠️ No Teams Found!</strong></p>
+    {% else %}
+        <table id="positions-table" class="stacked">
+            <thead>
+                <tr>
+                    <th>Team Name</th>
+                    <th>Status</th>
+                    <th>Race</th>
+                    <th>Coach</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for team in teams %}
+                <tr>
+                    <td data-label="Team"><a href="/team/view/{{ team.id }}">{{ team.name }}</a></td>
+                    <td data-label="Status">{{team.status}}</td>
+                    <td data-label="Race">{{ team.race.name }}</td>
+                    <td data-label="Coach">{{ team.coach.name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    
     {% if session.user %}
         <div class="primary-nav">
             <a href="/leagues/request/{{league.id}}" class="primary-nav-link">Request Entry of your team</a>

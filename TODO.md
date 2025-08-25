@@ -3,15 +3,13 @@
 
 # Brief Update / Stream
 
-## Leagues
-- Allow requested teams to join / moderator review page
-
 - view league page
   - match list
-  - team list
 
 - Standing Page
   - Generate Standings by quering match results from current league.
+
+- Delete Leagues
 
 ### Bugs
 - SPP screen, back button should be underneath.
@@ -29,6 +27,19 @@
 ## Inducements
 - allow view and calculate (add up) inducements
 - if not able to calculate limit, allow user to enter
+
+- schema
+- seed data
+- show what is available
+- link record to match and team so can see what is available and what is spent.
+
+### Star Player
+- link to inducment
+
+- Mercenery (just giants)
+
+- If short of players, prompt team to add journeymen.
+
 
 ## Logging in
 - Success Message / Welcome Template

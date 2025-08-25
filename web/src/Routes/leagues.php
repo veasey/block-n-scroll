@@ -1,6 +1,7 @@
 <?php
 use App\Controllers\Leagues\CreateController;
 use App\Controllers\Leagues\ManageController;
+use App\Controllers\Leagues\ManageRequestController;
 use App\Controllers\Leagues\RegistrationController;
 use App\Controllers\Leagues\ViewController;
 
@@ -17,3 +18,6 @@ $app->get('/leagues/view/user/playing/{user_id}', ViewController::class . ':list
 
 $app->get('/league/manage/{league_id}', ManageController::class . ':view');
 $app->post('/league/manage/{league_id}/update_season', ManageController::class . ':submitSeason');
+
+$app->post('/league/{league_id}/requests/{request_id}/approve', ManageRequestController::class . ':approveRequest');
+$app->post('/league/{league_id}/requests/{request_id}/reject', ManageRequestController::class . ':rejectRequest');

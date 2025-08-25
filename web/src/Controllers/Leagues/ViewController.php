@@ -7,6 +7,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Controllers\Leagues\Shared\AccessController;
 use App\Helpers\PaginationHelper;
 use App\Helpers\UserHelper;
+use App\Repositories\TeamRepository;
 use App\Models\Coach;
 use App\Models\League;
 use Slim\Views\Twig;
@@ -14,14 +15,17 @@ use Slim\Views\Twig;
 class ViewController extends AccessController
 {
     protected $paginationHelper;
+    protected $teamRepository;
     protected $view;
 
     public function __construct(
         PaginationHelper $paginationHelper,
+        TeamRepository $teamRepository,
         UserHelper $userHelper,
         Twig $view
     ) {
         $this->paginationHelper = $paginationHelper;
+        $this->teamRepository = $teamRepository;
         $this->userHelper = $userHelper;
         $this->view = $view;
     }
@@ -92,10 +96,27 @@ class ViewController extends AccessController
         [$league, $errorResponse] = $this->doesLeagueExist($request, $response, $args);
         if ($errorResponse) return $errorResponse;
 
+        $params = $this->paginationHelper->getPaginationParams();
+        $total = $this->teamRepository->getTeamsInLeagueCount($league->id);
+        $teams = $this->teamRepository->getTeamsInLeague($league->id, $params);
+        $totalPages = ceil($total / $params['perPage']);
+
+        $format = $args['format'] ?? 'html';
+        if ($format === 'json') {
+            $response->getBody()->write(json_encode([
+                'league' => $league,
+                'teams' => $teams
+            ]));
+            return $response->withHeader('Content-Type', 'application/json');
+        }
+
         return $this->view->render($response, 'leagues/view.twig', [
+            'teams' => $teams,
             'league' => $league,
             'coach' => $this->userHelper->getCurrentUser(),
-            'isAuthorizeToManageLeague' => $this->isAuthorizeToManageLeague($league)
+            'isAuthorizeToManageLeague' => $this->isAuthorizeToManageLeague($league),
+            'page' => $params['page'],
+            'totalPages' => $totalPages
         ]);
     }
 }

@@ -38,4 +38,25 @@ class TeamRepository
 
         return null;
     }
+
+    public function getTeamsInLeague(int $leagueId, array $params = []): mixed
+    {
+        $baseQuery = Team::where('league_id', $leagueId);
+
+        if (isset($params['offset'])) {
+            $baseQuery = $baseQuery->skip($params['offset']);
+        }
+        
+        if (isset($params['perPage'])) {
+            $baseQuery = $baseQuery->take($params['perPage']);
+        }
+
+        return $baseQuery->get();
+    }
+
+    public function getTeamsInLeagueCount(int $leagueId): int
+    {
+        return Team::where('league_id', $leagueId)
+            ->count();
+    }
 }

@@ -23,4 +23,9 @@ class TeamLeagueRequestRepository
             ->where('status', TeamLeagueRequestStatus::PENDING->value)
             ->count();
     }
+
+    public function findById(int $id): ?TeamLeagueRequest
+    {
+        return TeamLeagueRequest::find($id);
+    }
 }
