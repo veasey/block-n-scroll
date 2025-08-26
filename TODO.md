@@ -82,3 +82,8 @@
 
 ## Mobile Styling
 - Stacked tables to have a top and bottom border. To seperate table content from rest of content, as the table no longer looks like a traditional table.
+
+## Leauges
+- news bulletings
+- status. 'archive', 'pause', 'hide' (secret tourneys) etc
+- trash talk comments
