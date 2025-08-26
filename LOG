@@ -68,3 +68,4 @@ P4 - Match tracking + team sync
 21 Aug - Added League View Template. Minor tweaks and fixes.
 22 Aug - Submit requests to enter a team into a league
 25 Aug - Can Approve and Deny requests to join league. Can see what teams have joined a league.
+26 Aug - Add view matches for leagues

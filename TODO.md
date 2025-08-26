@@ -3,9 +3,6 @@
 
 # Brief Update / Stream
 
-- view league page
-  - match list
-
 - Standing Page
   - Generate Standings by quering match results from current league.
 
