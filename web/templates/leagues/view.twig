@@ -52,7 +52,7 @@
                     <td data-label="Team"><a href="/team/view/{{ team.id }}">{{ team.name }}</a></td>
                     <td data-label="Status">{{team.status}}</td>
                     <td data-label="Race">{{ team.race.name }}</td>
-                    <td data-label="Coach">{{ team.coach.name }}</td>
+                    <td data-label="Coach"><a href="/account/{{coach.id}}/view">{{ team.coach.name }}</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
