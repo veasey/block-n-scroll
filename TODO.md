@@ -3,8 +3,6 @@
 
 # Brief Update / Stream
 
-- Delete Leagues
-
 ### Bugs
 - SPP screen, back button should be underneath.
 - SPP mobile view
