@@ -1,0 +1,23 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - Manage {{league.name}}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/leagues">Leagues</a> -
+        <a href="/leagues/view/{{ league.id }}">{{league.name}}</a> -
+        <a href="/leagues/manage/{{ league.id }}">Manage</a> -
+        Delete
+    </p>
+
+    <h2>Delete {{ league.name }}?</h2>
+    <p>Are you sure?</p>
+
+    <div class="primary-nav">
+        <a href="/leagues/manage/{{ league.id }}/delete" class="primary-nav-link">Yes</a>
+        <a href="/leagues/view/{{ league.id }}" class="primary-nav-link">No</a>
+    </div>
+
+{% endblock %}

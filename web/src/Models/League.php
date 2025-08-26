@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\MatchGame;
+use App\Models\Coach;
+use App\Models\TeamLeagueRequest;
 
 class League extends Model
 {
@@ -18,5 +20,10 @@ class League extends Model
     public function matches()
     {
         return $this->hasMany(MatchGame::class, 'league_id');
+    }
+
+    public function requests()
+    {
+        return $this->hasMany(TeamLeagueRequest::class, 'league_id');
     }
 }

@@ -16,8 +16,11 @@ $app->get('/leagues/view/{league_id}', ViewController::class . ':view');
 $app->get('/leagues/view/user/managed/{user_id}', ViewController::class . ':listManaged');
 $app->get('/leagues/view/user/playing/{user_id}', ViewController::class . ':listPlaying');
 
-$app->get('/league/manage/{league_id}', ManageController::class . ':view');
-$app->post('/league/manage/{league_id}/update_season', ManageController::class . ':submitSeason');
+$app->get('/leagues/manage/{league_id}', ManageController::class . ':view');
+$app->post('/leagues/manage/{league_id}/update_season', ManageController::class . ':submitSeason');
 
-$app->post('/league/{league_id}/requests/{request_id}/approve', ManageRequestController::class . ':approveRequest');
-$app->post('/league/{league_id}/requests/{request_id}/reject', ManageRequestController::class . ':rejectRequest');
+$app->get('/leagues/manage/{league_id}/delete_confirm', ManageController::class . ':getConfirmDelete');
+$app->get('/leagues/manage/{league_id}/delete', ManageController::class . ':delete');
+
+$app->post('/leagues/{league_id}/requests/{request_id}/approve', ManageRequestController::class . ':approveRequest');
+$app->post('/leagues/{league_id}/requests/{request_id}/reject', ManageRequestController::class . ':rejectRequest');

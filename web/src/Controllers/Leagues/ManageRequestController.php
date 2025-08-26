@@ -74,7 +74,7 @@ class ManageRequestController extends AccessController
 
         // Redirect back to manage page
         return $response
-            ->withHeader('Location', "/league/manage/{$league->id}")
+            ->withHeader('Location', "/leagues/manage/{$league->id}")
             ->withStatus(302);
     }
 

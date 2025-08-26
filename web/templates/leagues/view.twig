@@ -7,7 +7,7 @@
     <p class="breadcrumbs">
         <a href="/">Home</a> -
         <a href="/leagues">Leagues</a> -
-        <a href="/league/view/{{ league.id }}">{{league.name}}</a>
+        <a href="/leagues/view/{{ league.id }}">{{league.name}}</a>
     </p>
 
     <h1>{{league.name}}</h1>
@@ -28,7 +28,7 @@
         <h2>Latest Matches</h2>
         <p>Below is a list of the latest matches played in this league.</p>
         {% include 'match/partials/match_list_table.twig' with {'matches': matches} %}
-        <p>View all matches in this league <a href="/match/view/league/{{league.id}}">here</a>.</p>
+        <p>View all matches in this league <a href="/match/view/leagues/{{league.id}}">here</a>.</p>
     {% endif %}
 
     <h2>Teams in this League</h2>
@@ -66,7 +66,7 @@
         <div class="primary-nav">
             <a href="/leagues/request/{{league.id}}" class="primary-nav-link">Request Entry of your team</a>
             {% if isAuthorizeToManageLeague %}
-                <a href="/league/manage/{{league.id}}" class="primary-nav-link">Manage League</a>
+                <a href="/leagues/manage/{{league.id}}" class="primary-nav-link">Manage League</a>
             {% endif %}
         </div>
     {% endif %}

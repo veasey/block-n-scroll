@@ -9,6 +9,7 @@ use App\Helpers\PaginationHelper;
 use App\Helpers\UserHelper;
 use App\Repositories\TeamLeagueRequestRepository;
 use App\Services\EventLogging\LeagueManagementEventLoggingService;
+use App\Models\Team;
 use Slim\Views\Twig;
 
 class ManageController extends AccessController
@@ -96,6 +97,48 @@ class ManageController extends AccessController
 
         return $this->view->render($response, 'leagues/moderation/update_season_success.twig', [
             'seasonChangeType' => $seasonChangeType,
+            'league' => $league
+        ]);
+    }
+
+    public function getConfirmDelete(Request $request, Response $response, array $args): Response
+    {
+        [$league, $errorResponse] = $this->doesLeagueExist($request, $response, $args);
+        if ($errorResponse) return $errorResponse;
+
+        if (!$this->isAuthorizeToManageLeague($league)) {
+            $response->getBody()->write('Unauthorized');
+            return $response->withStatus(403);
+        }
+
+        return $this->view->render($response, 'leagues/moderation/delete/confirm.twig', [
+            'league' => $league
+        ]);
+    }
+
+    public function delete(Request $request, Response $response, array $args): Response
+    {
+        [$league, $errorResponse] = $this->doesLeagueExist($request, $response, $args);
+        if ($errorResponse) return $errorResponse;
+
+        if (!$this->isAuthorizeToManageLeague($league)) {
+            $response->getBody()->write('Unauthorized');
+            return $response->withStatus(403);
+        }
+
+        // Log Deletion
+        $this->eventLogger->logLeagueUpdate($this->userHelper->getCurrentUser(), $league, 'delete', 'League deleted');
+
+        Team::where('league_id', $league->id)->update(['league_id' => null]);
+        
+        // Delete related records
+        $league->matches()->delete();
+        $league->requests()->delete();
+        
+        // Delete league
+        $league->delete();
+
+        return $this->view->render($response, 'leagues/moderation/delete/success.twig', [
             'league' => $league
         ]);
     }

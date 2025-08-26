@@ -1,0 +1,32 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - Manage {{league.name}}{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> -
+        <a href="/leagues">Leagues</a> -
+        <a href="/leagues/view/{{ league.id }}">{{league.name}}</a> -
+        <a href="/leagues/manage/{{ league.id }}">Manage</a> -
+        Delete
+    </p>
+
+    <h2>{{ leagueName }} Deleted!</h2>
+
+    {% set messages = [
+        "The stands are silent. The league is no more.",
+        "History books close on this league, unread and forgotten.",
+        "The commissioner blows the final whistle — forever.",
+        "All fixtures canceled, all rivalries dissolved.",
+        "The league table has been wiped clean. Permanently.",
+        "One last echo of cheering fades into nothingness.",
+        "The trophies gather dust for contests that will never be.",
+        "The league banner is torn down and burned.",
+        "Legends retire unchallenged; challengers never arrive.",
+        "Even Nuffle has struck this league from the records."
+    ] %}
+
+    <p class="deletion-message"><strong>{{ random(messages) }}</strong></p>
+
+{% endblock %}
