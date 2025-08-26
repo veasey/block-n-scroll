@@ -48,9 +48,37 @@ class TeamRepository
         return null;
     }
 
-    public function getTeamsInLeague(int $leagueId, array $params = []): mixed
+    public function getTeamsInLeague(int $leagueId, array $params = [], bool $standing = true): mixed
     {
-        $baseQuery = Team::where('league_id', $leagueId);
+        $baseQuery = Team::where('team.league_id', $leagueId);
+
+        if ($standing) {
+            $baseQuery->selectRaw("
+                COALESCE(SUM(
+                    CASE 
+                        WHEN matches.status = 'finished' 
+                        AND ((matches.home_team_id = team.id AND matches.home_score > matches.away_score) 
+                        OR (matches.away_team_id = team.id AND matches.away_score > matches.home_score)) 
+                        THEN 1 ELSE 0 END
+                ), 0) as wins,
+                COALESCE(SUM(
+                    CASE 
+                        WHEN matches.status = 'finished' 
+                        AND matches.home_score = matches.away_score 
+                        THEN 1 ELSE 0 END
+                ), 0) as draws,
+                COALESCE(SUM(
+                    CASE 
+                        WHEN matches.status = 'finished' 
+                        AND ((matches.home_team_id = team.id AND matches.home_score < matches.away_score) 
+                        OR (matches.away_team_id = team.id AND matches.away_score < matches.home_score)) 
+                        THEN 1 ELSE 0 END
+                ), 0) as losses
+            ")->leftJoin('match as matches', function ($join) {
+                $join->on('team.id', '=', 'matches.home_team_id')
+                ->orOn('team.id', '=', 'matches.away_team_id');
+            });
+        }
 
         if (isset($params['offset'])) {
             $baseQuery = $baseQuery->skip($params['offset']);
@@ -58,6 +86,13 @@ class TeamRepository
         
         if (isset($params['perPage'])) {
             $baseQuery = $baseQuery->take($params['perPage']);
+        }
+
+        if ($standing) {
+            $baseQuery->groupBy('team.id')
+            ->orderByDesc('wins')
+            ->orderByDesc('draws')
+            ->orderBy('losses');
         }
 
         return $baseQuery->get();

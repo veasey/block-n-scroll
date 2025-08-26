@@ -53,6 +53,9 @@
                     <td data-label="Status">{{team.status}}</td>
                     <td data-label="Race">{{ team.race.name }}</td>
                     <td data-label="Coach"><a href="/account/{{coach.id}}/view">{{ team.coach.name }}</a></td>
+                    <td data-label="Wins">{{ team.wins }}</td>
+                    <td data-label="Draws">{{ team.draws }}</td>
+                    <td data-label="Losses">{{ team.losses }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

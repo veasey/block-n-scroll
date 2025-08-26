@@ -3,9 +3,6 @@
 
 # Brief Update / Stream
 
-- Standing Page
-  - Generate Standings by quering match results from current league.
-
 - Delete Leagues
 
 ### Bugs
