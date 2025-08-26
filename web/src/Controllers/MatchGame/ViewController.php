@@ -12,6 +12,7 @@ use App\Helpers\UserHelper;
 use App\Repositories\EventLogRepository;
 use App\Models\MatchGame;
 use App\Models\Team;
+use App\Models\League;
 
 use Slim\Views\Twig;
 
@@ -111,6 +112,30 @@ class ViewController
             'totalPages' => $totalPages,
             'page' => $params['page'],
             'team' => Team::find($teamId)
+        ]);
+    }
+
+    public function listLeagueMatches(Request $request, Response $response, array $args): mixed
+    {
+        $params = $this->paginationHelper->getPaginationParams();
+        
+        $leagueId = $args['league_id'] ?? null;
+
+        $totalCount = MatchGame::where('league_id', $leagueId)->count();
+
+        $matches = MatchGame::where('league_id', $leagueId)
+            ->skip($params['offset'])
+            ->take($params['perPage'])
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $totalPages = ceil($totalCount / $params['perPage']);
+
+        return $this->view->render($response, 'match/list_league.twig', [
+            'matches' => $matches,
+            'totalPages' => $totalPages,
+            'page' => $params['page'],
+            'league' => League::find($leagueId)
         ]);
     }
 }

@@ -21,6 +21,19 @@
         {% endfor %}  
     </p>
 
+    <h2>League Description</h2>
+    <p>{{ league.description|nl2br }}</p>
+
+    {% if league.matches|length > 0 %}
+        <h2>Latest Matches</h2>
+        <p>Below is a list of the latest matches played in this league.</p>
+        {% include 'match/partials/match_list_table.twig' with {'matches': matches} %}
+        <p>View all matches in this league <a href="/match/view/league/{{league.id}}">here</a>.</p>
+    {% endif %}
+
+    <h2>Teams in this League</h2>
+    <p>Below is a list of teams that are currently registered in this league.</p>
+
     {% if teams|length == 0 %}
         <p><strong>⚠️ No Teams Found!</strong></p>
     {% else %}

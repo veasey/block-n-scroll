@@ -20,5 +20,6 @@ $app->post('/match/{match_id}/update_popularity', PostGameController::class . ':
 $app->get('/match/view/all', ViewController::class . ':listAll');
 $app->get('/match/view/{match_id}', ViewController::class . ':view');
 $app->get('/match/view/team/{team_id}', ViewController::class . ':listTeamMatches');
+$app->get('/match/view/league/{league_id}', ViewController::class . ':listLeagueMatches');
 
 $app->post('/match/{match_id}/note', NoteController::class . ':addNote');

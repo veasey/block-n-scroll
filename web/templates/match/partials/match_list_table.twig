@@ -1,0 +1,32 @@
+<table id="positions-table" class="stacked">
+    <thead>
+        <tr>
+            <th>Match Start</th>
+            <th>Status</th>
+            <th>Home Team</th>
+            <th>Away Team</th>
+            <th>Home TD</th>
+            <th>Away TD</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for match in matches %}
+        <tr>
+            <td data-label="Date">{{ match.created_at|date("j F Y \\a\\t H:i") }}</td>
+            <td data-label="Status">{{ match.status }}</td>
+            <td data-label="Home Team"><a href="/team/view/{{ match.home_team_id }}">{{ match.homeTeam.name }}</a></td>
+            <td data-label="Away Team">
+                {% if match.awayTeam.id %}
+                    <a href="/team/view/{{ match.away_team_id }}">{{ match.awayTeam.name }}</a>
+                {% else %}
+                    {{ match.away_team_name }}
+                {% endif %}
+            </td>
+            <td data-label="Home Score">{{ match.home_score|number_format }}</td>
+            <td data-label="Away Score">{{ match.away_score|number_format }}</td>
+            <td data-label=""><a href="/match/view/{{match.id}}">View</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

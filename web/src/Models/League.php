@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\MatchGame;
 
 class League extends Model
 {
@@ -12,5 +13,10 @@ class League extends Model
     {
         return $this->belongsToMany(Coach::class, 'league_coach')
                     ->withTimestamps();
+    }
+
+    public function matches()
+    {
+        return $this->hasMany(MatchGame::class, 'league_id');
     }
 }

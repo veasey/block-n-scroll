@@ -6,20 +6,12 @@
 
     <p class="breadcrumbs">
         <a href="/">Home</a> -
-        <a href="/match/view/all">Matches</a>
-        {% if team %}
-            - <a href="/match/view/team/{{team.id}}"> {{ team.name }} </a>
-        {% endif %}
+        <a href="/leagues">Leagues</a> -
+        <a href="/league/view/{{ league.id }}">{{ league.name }}</a> -
+        Matches
     </p>
 
-    <h1>
-        {% if team %}
-            {{ team.name }}'s
-        {% else %}
-            All
-        {% endif %}
-            Matches
-    </h1>
+    <h1>{{ league.name }} Matches</h1>
 
     {% if matches|length == 0 %}
         <p><strong>No matches found!</strong></p>
@@ -31,5 +23,9 @@
             {% include 'partials/pagination.twig' with {'page': page, 'totalPages': totalPages} %}
         {% endif %}
     {% endif %}
+
+    <div class="primary-nav">
+        <a href="/leagues/view/{{ league.id }}" class="secondary-nav-link">🔙 Back to League</a>
+    </div>
 
 {% endblock %}

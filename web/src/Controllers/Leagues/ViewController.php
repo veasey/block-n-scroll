@@ -112,6 +112,7 @@ class ViewController extends AccessController
 
         return $this->view->render($response, 'leagues/view.twig', [
             'teams' => $teams,
+            'matches' => $league->matches()->latest()->take(5)->get(),
             'league' => $league,
             'coach' => $this->userHelper->getCurrentUser(),
             'isAuthorizeToManageLeague' => $this->isAuthorizeToManageLeague($league),
