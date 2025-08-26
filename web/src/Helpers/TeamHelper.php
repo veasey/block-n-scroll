@@ -10,6 +10,7 @@ use App\Enums\TeamStatus;
 use App\Models\Base\BaseTeam as Race;
 use App\Models\Base\BaseTeamPlayer as RacePositional;
 use App\Helpers\SkillHelper;
+use App\Helpers\UserHelper;
 use App\Models\Team;
 use App\Models\Base\SideStaff as SideStaffModel;
 use App\Models\Coach;
@@ -18,9 +19,14 @@ use Exception;
 class TeamHelper
 {
     protected $skillHelper;
+    protected $userHelper;
 
-    public function __construct(SkillHelper $skillHelper) {
+    public function __construct(
+        SkillHelper $skillHelper,
+        UserHelper $userHelper
+    ) {
         $this->skillHelper = $skillHelper;
+        $this->userHelper = $userHelper;
     }
 
     /**
@@ -30,11 +36,10 @@ class TeamHelper
      */
     public function getCurrentPlayingTeam()
     {
-        if (!isset($_SESSION['user']) || !isset($_SESSION['user']['id'])) {
-            return null;
+        $user = $this->userHelper->getCurrentUser();
+        if (!$user) {
+            throw new Exception("User not logged in.");
         }
-
-        $user = Coach::find($_SESSION['user']['id']);
         
         $team = TEAM::where('coach_id', $user->id)
                     ->where('status', TeamStatus::PLAYING)

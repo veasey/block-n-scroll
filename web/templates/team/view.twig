@@ -58,7 +58,13 @@
             <dt>Race:</dt><dd>{{ team.race.name }} <i>(Tier: {{ team.race.tier }})</i></dd>
 
             <dt>Coach:</dt><dd>{{ team.coach.name }}</dd>
-            <dt>League:</dt><dd>{{ team.league.name }}</dd>
+            <dt>League:</dt><dd>
+                {% if team.league is null %}
+                    None
+                {% else %}
+                    <a href="/leagues/view/{{ team.league.id }}">{{ team.league.name }}</a>
+                {% endif %}
+            </dd>
 
             <dt>Treasury:</dt><dd>{{ team.treasury|number_format }} Gold</dd>
             <dt>Rerolls:</dt><dd>{{ team.rerolls|number_format }}</dd>

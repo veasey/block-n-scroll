@@ -62,11 +62,6 @@ class ViewController
             'isAdmin' => $this->userHelper->isCurrentUserAdmin()
         ];
 
-        $currentTeam  = $this->teamHelper->getCurrentPlayingTeam();
-        if ($this->matchHelper->isParticipant($currentTeam, $match)) {
-            $data['team'] = $currentTeam;
-        }
-
         return $this->view->render($response, 'match/view.twig', $data);
     }
 

@@ -13,13 +13,22 @@ class TeamRepository
      */
     public function getEligableTeams(Team $team): mixed     
     {
-        return Team::where('id', '!=', $team->id)
-            ->where(function ($q) use ($team) {
-                $q->whereNull('league_id')
-                ->orWhere('league_id', $team->league_id);
-            })
-            ->whereNot('status', TeamStatus::PLAYING->value)
-            ->get();
+        $baseQuery =  Team::where('id', '!=', $team->id)
+             ->whereNot('status', TeamStatus::PLAYING->value);
+
+        // if team is in league
+        if ($team->league_id) {
+            $baseQuery = $baseQuery->where(function ($q) use ($team) {
+                $q->where('league_id', $team->league_id);
+            });
+        } 
+        
+        // If not in league, can only join other teams not in leagues
+        else {
+            $baseQuery = $baseQuery->whereNull('league_id');
+        }
+        
+        return $baseQuery->get();
     }
 
     public function findTeamByIdOrName(int $teamId, string $teamName): mixed
