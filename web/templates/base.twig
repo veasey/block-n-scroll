@@ -16,5 +16,18 @@
        {% block content %}{% endblock %}
     </div>
     {% block scripts %}{% endblock %}
+    <div class="footer">
+        <div class="container">
+            <p>
+                {% include 'partials/email.twig' %} |
+                <a href="https://github.com/veasey/block-n-scroll" target="_blank">GitHub Project</a>
+            </p>
+            <form action="https://www.paypal.com/donate" method="post" target="_blank">
+                <!-- Replace with your PayPal button or donation service -->
+                <input type="hidden" name="hosted_button_id" value="PNSHM8R9R45YU" />
+                <input type="submit" value="Donate" class="donate-btn" />
+            </form>
+        </div>
+    </div>
 </body>
 </html>

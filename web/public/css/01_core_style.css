@@ -1,11 +1,25 @@
-body { font-family: Arial, sans-serif; margin: 2em; background: #f8f8f8; }
-.container { max-width: 800px; margin: auto; background: #fff; padding: 2em; border-radius: 8px; box-shadow: 0 2px 8px #ccc; }
-h1 { color: #333; }
+body { 
+    font-family: Arial, 
+    sans-serif; background: #f8f8f8; 
+}
+.container { 
+    max-width: 800px; 
+    margin: auto; 
+    background: #fff; 
+    padding: 2em;
+    box-shadow: 0 2px 8px #ccc; 
+    box-sizing: border-box;
+}
+h1 {
+    color: #333; 
+}
 
 /* HEADER STYLES */
 .bns-header {
     background: #222;
     color: #fff;
+    max-width: 800px;
+    margin: auto;
 }
 .bns-header a {
     color: #fff;
@@ -316,4 +330,35 @@ button:hover {
 .primary-nav a.secondary-nav-link:hover {
     background-color: #ffffff;
     text-decoration: none;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  font-size: 14px;
+}
+.footer .container {
+    background-color: #222;
+    color: #fff;
+}
+.footer a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 8px;
+}
+.footer a:hover {
+  text-decoration: underline;
+}
+.donate-btn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #0070ba;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+.donate-btn:hover {
+  background-color: #005c95;
 }

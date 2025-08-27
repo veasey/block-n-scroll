@@ -1,0 +1,27 @@
+<!-- In your HTML footer -->
+<span class="email-slot"
+      data-user="clint"
+      data-domain="gmail.com"
+      data-label="Email Me"></span>
+<noscript>yourname [at] example [dot] com</noscript>
+
+<script>
+  // Render any .email-slot into a clickable mailto link
+  (function () {
+    var slots = document.querySelectorAll('.email-slot');
+    for (var i = 0; i < slots.length; i++) {
+      var el = slots[i];
+      var user = el.getAttribute('data-user') || '';
+      var domain = el.getAttribute('data-domain') || '';
+      var label = el.getAttribute('data-label'); // optional custom text
+      var email = user + '@' + domain;
+
+      var a = document.createElement('a');
+      a.href = 'mailto:' + email;
+      a.textContent = label || email;
+      a.rel = 'noopener';
+
+      el.replaceWith(a);
+    }
+  })();
+</script>
