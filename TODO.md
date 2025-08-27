@@ -4,10 +4,7 @@
 # Brief Update / Stream
 
 ## Footer
-- Donation button
-- Link to Project
 - Link to Local league
-- Contact
 
 ## Inducements
 - allow view and calculate (add up) inducements
