@@ -15,7 +15,6 @@
        {% include 'partials/messages.twig' %}
        {% block content %}{% endblock %}
     </div>
-    {% block scripts %}{% endblock %}
     <div class="footer">
         <div class="container">
             <p>
@@ -29,5 +28,8 @@
             </form>
         </div>
     </div>
+    {% block scripts %}
+        <script src="/js/sortable-table.js"></script>
+    {% endblock %}
 </body>
 </html>

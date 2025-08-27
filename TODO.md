@@ -4,7 +4,6 @@
 # Brief Update / Stream
 
 ## Bugs
-- sortable table columns broken
 ? matches left in postgame?
   - could it be when deleting a league??
 
