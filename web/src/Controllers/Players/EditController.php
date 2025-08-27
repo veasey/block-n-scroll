@@ -34,7 +34,7 @@ class EditController extends AccessController
     {
         return $this->view->render($response, 'player/edit/validation_fail.twig', [
             'player' => $player, 
-            'error' => 'Invalid Name'
+            'error' => $message
         ]);
     }
 
@@ -72,7 +72,9 @@ class EditController extends AccessController
         if ($player->number != $newNumber) {
 
             // if number is another player, swap them.
-            $playerWithNumberAlready = Player::where('number', $newNumber)->first();
+            $playerWithNumberAlready = Player::where('number', $newNumber)
+                ->where('team_id', $player->team_id)
+                ->first();
 
             if ($playerWithNumberAlready) {
                 $playerWithNumberAlready->number = $player->number;

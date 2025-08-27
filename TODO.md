@@ -3,9 +3,6 @@
 
 # Brief Update / Stream
 
-### Bugs
-- Swapping numbers does now work in player rename screen.
-
 ## Footer
 - Donation button
 - Link to Project
