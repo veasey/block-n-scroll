@@ -4,9 +4,6 @@
 # Brief Update / Stream
 
 ### Bugs
-- SPP screen, back button should be underneath.
-- SPP mobile view
-- Cannot create match now?
 - Roll 16 of Characteristic Increase, has duplicate Attributes in dropdown
 - Swapping numbers does now work in player rename screen.
 
