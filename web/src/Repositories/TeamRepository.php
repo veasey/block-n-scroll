@@ -53,31 +53,43 @@ class TeamRepository
         $baseQuery = Team::where('team.league_id', $leagueId);
 
         if ($standing) {
-            $baseQuery->selectRaw("
-                COALESCE(SUM(
-                    CASE 
-                        WHEN matches.status = 'finished' 
-                        AND ((matches.home_team_id = team.id AND matches.home_score > matches.away_score) 
-                        OR (matches.away_team_id = team.id AND matches.away_score > matches.home_score)) 
-                        THEN 1 ELSE 0 END
-                ), 0) as wins,
-                COALESCE(SUM(
-                    CASE 
-                        WHEN matches.status = 'finished' 
-                        AND matches.home_score = matches.away_score 
-                        THEN 1 ELSE 0 END
-                ), 0) as draws,
-                COALESCE(SUM(
-                    CASE 
-                        WHEN matches.status = 'finished' 
-                        AND ((matches.home_team_id = team.id AND matches.home_score < matches.away_score) 
-                        OR (matches.away_team_id = team.id AND matches.away_score < matches.home_score)) 
-                        THEN 1 ELSE 0 END
-                ), 0) as losses
-            ")->leftJoin('match as matches', function ($join) {
-                $join->on('team.id', '=', 'matches.home_team_id')
-                ->orOn('team.id', '=', 'matches.away_team_id');
-            });
+            $baseQuery
+                ->selectRaw("
+                    team.*,
+                    COALESCE(SUM(
+                        CASE 
+                            WHEN g.status = 'finished' 
+                            AND (
+                                (g.home_team_id = team.id AND g.home_score > g.away_score) 
+                                OR 
+                                (g.away_team_id = team.id AND g.away_score > g.home_score)
+                            ) 
+                            THEN 1 ELSE 0 END
+                    ), 0) as wins,
+                    COALESCE(SUM(
+                        CASE 
+                            WHEN g.status = 'finished' 
+                            AND g.home_score = g.away_score 
+                            THEN 1 ELSE 0 END
+                    ), 0) as draws,
+                    COALESCE(SUM(
+                        CASE 
+                            WHEN g.status = 'finished' 
+                            AND (
+                                (g.home_team_id = team.id AND g.home_score < g.away_score) 
+                                OR 
+                                (g.away_team_id = team.id AND g.away_score < g.home_score)
+                            ) 
+                            THEN 1 ELSE 0 END
+                    ), 0) as losses
+                ")
+                ->leftJoin('game as g', function ($join) use ($leagueId) {
+                    $join->on(function ($q) {
+                        $q->on('team.id', '=', 'g.home_team_id')
+                        ->orOn('team.id', '=', 'g.away_team_id');
+                    })
+                    ->where('g.league_id', '=', $leagueId);
+                });
         }
 
         if (isset($params['offset'])) {

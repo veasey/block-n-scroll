@@ -8,7 +8,7 @@ use App\Models\Team;
 
 class MatchGame  extends Model
 {
-    protected $table = 'match';
+    protected $table = 'game';
 
     public function homeTeam() 
     {
