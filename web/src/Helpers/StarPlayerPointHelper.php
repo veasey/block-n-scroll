@@ -25,32 +25,32 @@ class StarPlayerPointHelper
         $characteristic = [];
 
         // 1‑7 Improve either MA or AV by 1 (or choose a Secondary skill).
-        if ($improvementRoll >= 1 || $improvementRoll <= 7) {
+        if ($improvementRoll >= 1 && $improvementRoll <= 7) {
             if ($player->ma < $player->position->ma + 2) $characteristic[] = 'MA';
             if ($player->av < $player->position->av + 2) $characteristic[] = 'AV';
         }
 
         // 8‑13 Improve either MA, PA, or AV by 1 (or choose a Secondary skill).
-        if ($improvementRoll >= 8 || $improvementRoll <= 13) {
+        else if ($improvementRoll >= 8 && $improvementRoll <= 13) {
             if ($player->ma < $player->position->ma + 2) $characteristic[] = 'MA';
             if ($player->av < $player->position->av + 2) $characteristic[] = 'AV';
             if ($player->pa > $player->position->pa - 2) $characteristic[] = 'PA';
         }
 
         // 14 Improve either AG or PA by 1 (or choose a Secondary skill).
-        if ($improvementRoll == 14) {
+        else if ($improvementRoll == 14) {
             if ($player->ag > $player->position->ag - 2) $characteristic[] = 'AG';
             if ($player->ma > $player->position->pa - 2) $characteristic[] = 'PA';
         }
 
         // 15 Improve either ST or AG by 1 (or choose a Secondary skill).
-        if ($improvementRoll == 15) {
+        else if ($improvementRoll == 15) {
             if ($player->ag > $player->position->ag - 2) $characteristic[] = 'AG';
             if ($player->st > $player->position->st + 2) $characteristic[] = 'ST';
         }
 
         // 16 Improve a characteristic of your choice by 1.
-        if ($improvementRoll == 16) {
+        else if ($improvementRoll == 16) {
             if ($player->ma < $player->position->ma + 2) $characteristic[] = 'MA';
             if ($player->av < $player->position->av + 2) $characteristic[] = 'AV';
             if ($player->pa > $player->position->pa - 2) $characteristic[] = 'PA';

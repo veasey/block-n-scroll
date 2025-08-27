@@ -4,7 +4,6 @@
 # Brief Update / Stream
 
 ### Bugs
-- Roll 16 of Characteristic Increase, has duplicate Attributes in dropdown
 - Swapping numbers does now work in player rename screen.
 
 ## Footer
