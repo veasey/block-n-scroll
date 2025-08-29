@@ -22,5 +22,5 @@ CREATE TABLE event_log (
     FOREIGN KEY (coach_id) REFERENCES coach(id) ON DELETE SET NULL,
     FOREIGN KEY (team_id) REFERENCES team(id) ON DELETE SET NULL,
     FOREIGN KEY (player_id) REFERENCES player(id) ON DELETE SET NULL,
-    FOREIGN KEY (match_id) REFERENCES `match`(id) ON DELETE SET NULL
+    FOREIGN KEY (match_id) REFERENCES game(id) ON DELETE SET NULL
 );
