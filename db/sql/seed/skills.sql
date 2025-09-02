@@ -90,7 +90,7 @@ INSERT INTO skill (id, name, category_id, description) VALUES
 (67, 'Always Hungry', '6', 'Roll D6 when attempting Throw Team-mate; on 1, player attempst to eat Team-mate.'),
 (68, 'Animal Savagery', '6', 'On activation, roll D6; on 1-3, must Block adjacent team-mate or lose activation.'),
 (69, 'Animosity', '6', 'Refuse handover or Pass to teammate if rolls 1 on D6.'),
-(70, 'Ball & Chain', '6', 'When this player is activated, the only action they may perform is a “Ball and Chain Move” special action.'),
+(70, 'Ball & Chain', '6', 'When this player is activated, the only action they may perform is a "Ball and Chain Move" special action.'),
 (71, 'Bloodlust', '6', 'Roll a D6 each activation, and if they fail, they must bite a nearby Thrall by the end of their turn or cause a Turnover, lose their Tackle Zone, and drop the ball.'),
 (72, 'Bombardier', '6', 'May throw bombs instead of moving.'),
 (73, 'Bone Head', '6', 'Roll D6 on activation; on 1, lose Tackle Zones and end activation.'),
