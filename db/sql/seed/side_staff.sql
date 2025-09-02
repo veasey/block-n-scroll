@@ -1,3 +1,5 @@
+DELETE FROM side_staff;
+
 INSERT INTO side_staff (id, name, description, cost, max_count) VALUES
  (1, 'ReRolls', 'Re-rolls allow teams to re-roll a dice roll during a game.', 70000, 8),
  (2, 'Apothecary', 'A skilled healer who can save a player from death or serious injury.', 50000, 1),

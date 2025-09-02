@@ -1,3 +1,6 @@
+DELETE FROM skill_category;
+DELETE FROM skill;
+
 INSERT INTO skill_category (id, name, description) VALUES
 (1, 'General', 'General skills and intelligence-based actions.'),
 (2, 'Agility', 'Skills that improve dodging, catching, and movement agility.'),

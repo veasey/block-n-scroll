@@ -12,6 +12,7 @@ Things this will do that others do not:
 
 ### Run Up (Locally)
 
-Bring Up: `docker-compose -f docker-compose.yml up --build -d`
-Bring Down / Restart: `docker compose down -v` (as schema only builds on initial build of container)
-Make appear online (temp measure): `cloudflared tunnel --url http://localhost:8000`
+Bring Up:                           `docker-compose -f docker-compose.yml up --build -d`
+Bring Down / Restart:               `docker compose down -v` (as schema only builds on initial build of container)
+Make appear online (temp measure):  `cloudflared tunnel --url http://localhost:8000`
+Re-seed base data:                  `bash reseed.sh` (from within DB Container)

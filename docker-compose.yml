@@ -13,7 +13,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD:-password1}
       MYSQL_DATABASE: ${MYSQL_DATABASE:-blocknscroll}
     volumes:
-      - ./db/sql:/docker-entrypoint-initdb.d/sql
+      - ./db/sql:/docker-entrypoint-initdb.d/sql      
   web:
     container_name: block-n-scroll-web
     build:
