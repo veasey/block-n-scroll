@@ -14,3 +14,4 @@ Things this will do that others do not:
 
 Bring Up: `docker-compose -f docker-compose.yml up --build -d`
 Bring Down / Restart: `docker compose down -v` (as schema only builds on initial build of container)
+Make appear online (temp measure): `cloudflared tunnel --url http://localhost:8000`
