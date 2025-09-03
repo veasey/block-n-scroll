@@ -1,4 +1,5 @@
 DELETE FROM base_team;
+DELETE FROM base_team_player_exclusive_group;
 
 INSERT INTO base_team (id, name, description, tier) VALUES
 (1, 'Amazons', 'Strong female warriors.', 1),
