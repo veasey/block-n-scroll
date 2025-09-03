@@ -73,3 +73,15 @@ section h2 {
 .faq p strong {
   color: #000;
 }
+
+/* inline layout */
+.inline-container {
+    display: flex;
+    justify-content: space-between;
+}
+.hidden {
+  display: none;
+}
+.hidden-team {
+  font-style: italic;
+}

@@ -27,7 +27,7 @@ class TeamController
 
         $team = BaseTeam::find($args['team_id']);
 
-        if (!$team || $team->is_hidden) {
+        if (!$team) {
             return $response->withStatus(404)->write('Team not found');
         }
 

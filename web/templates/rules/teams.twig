@@ -1,6 +1,10 @@
 {% extends "base.twig" %}
 
 {% block title %}Block &amp; Scroll - Rules - Teams{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/css/02_rules_styles.css">
+{% endblock %}
 
 {% block content %}
 
@@ -10,7 +14,20 @@
             <a href="/rules/teams">Teams</a>
         </p>
 
-        <p class="rules-intro">All teams currently playable:</p>
+        <div class="inline-container">
+            <p class="rules-intro">All teams currently playable:</p>
+
+            <div class="form-section">       
+                <div class="form-group">
+                    <label for="hide_team_selector">Show Hidden Teams:</label>
+                    <select name="hide_team_selector" id="hide_team_selector" class="form-control">
+                        <option value="n">No</option>
+                        <option value="y">Yes</option>
+                        <option value="x">Exclusively</option>
+                    </select>
+                </div>
+            </div>
+        </div>
 
         <table id="sortable-table">
             <thead>
@@ -22,7 +39,7 @@
             </thead>
             <tbody>
                 {% for team in teams %}
-                <tr>
+                <tr data-hidden="{{ team.is_hidden ? 'true' : 'false' }}" class="{{ team.is_hidden ? 'hidden-team hidden' : '' }}">
                     <td>
                         <a href="/rules/teams/{{ team.id }}">
                             {{ team.name }}
@@ -34,4 +51,14 @@
                 {% endfor %}
             </tbody>
         </table>
+
+        <p>
+            <b>Note:</b> Some teams may be marked as hidden. You can choose to display them using the selector above.
+            Most leagues may choose to not use hidden teams, but they are available for custom games or special scenarios.
+        </p>
+
+        {% block scripts %}
+            {{ parent() }}
+            <script src="/js/rules/hide-team.js"></script>
+        {% endblock %}
 {% endblock %}
