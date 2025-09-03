@@ -97,6 +97,7 @@ h1 {
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 1em;
 }
 table th {
     background: #f0f4fa;
