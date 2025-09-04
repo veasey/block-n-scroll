@@ -20,28 +20,28 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (171, 1, 1, 0), -- General
 (171, 5, 1, 0), -- Mutations
-(171, 3, 0, 1), -- Strength
+(171, 3, 1, 0), -- Strength
 (171, 2, 0, 1), -- Agility
 (171, 4, 0, 1); -- Passing
 
 /* Chaos Minotaur - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (172, 3, 1, 0), -- Strength
-(172, 5, 0, 1), -- Mutations
+(172, 5, 1, 0), -- Mutations
 (172, 2, 0, 1), -- Agility
 (172, 1, 0, 1); -- General
 
 /* Chaos Troll - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (173, 3, 1, 0), -- Strength
-(173, 5, 0, 1), -- Mutations
+(173, 5, 1, 0), -- Mutations
 (173, 2, 0, 1), -- Agility
 (173, 1, 0, 1); -- General
 
 /* Chaos Ogre - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (174, 3, 1, 0), -- Strength
-(174, 5, 0, 1), -- Mutations
+(174, 5, 1, 0), -- Mutations
 (174, 2, 0, 1), -- Agility
 (174, 1, 0, 1); -- General
 
