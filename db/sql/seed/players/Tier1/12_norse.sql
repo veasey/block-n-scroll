@@ -9,40 +9,40 @@ INSERT INTO base_team_player
 
 /* Norse Raider Linemen - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(120, 3, 1, 1), -- General
-(120, 4, 0, 1), -- Agility
-(120, 1, 0, 1), -- Passing
-(120, 2, 0, 1); -- Strength
+(120, 1, 1, 1), -- General
+(120, 2, 0, 1), -- Agility
+(120, 4, 0, 1), -- Passing
+(120, 3, 0, 1); -- Strength
 
 /* Beer Boars - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(121, 4, 0, 1); -- Agility
+(121, 2, 0, 1); -- Agility
 
 /* 	Norse Berserker - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
-(122, 3, 1, 0), -- General
-(122, 2, 1, 0), -- Strength
-(122, 4, 0, 1), -- Agility
-(122, 1, 0, 1); -- Passing
+(122, 1, 1, 0), -- General
+(122, 3, 1, 0), -- Strength
+(122, 2, 0, 1), -- Agility
+(122, 4, 0, 1); -- Passing
 
 /* Valkyrie - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(123, 4, 1, 0), -- Agility
-(123, 3, 1, 0), -- General
-(123, 1, 1, 0), -- Passing
-(123, 2, 0, 1); -- Strength
+(123, 2, 1, 0), -- Agility
+(123, 1, 1, 0), -- General
+(123, 4, 1, 0), -- Passing
+(123, 3, 0, 1); -- Strength
 
 /* Ulfwerener - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
-(124, 3, 1, 0), -- General
-(124, 2, 1, 0), -- Strength
-(124, 1, 0, 1); -- Agility
+(124, 1, 1, 0), -- General
+(124, 3, 1, 0), -- Strength
+(124, 2, 0, 1); -- Agility
 
 /* 	Yhetee / Snow Troll - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
-(125, 2, 1, 0), -- Strength
-(125, 1, 0, 1), -- Agility
-(125, 3, 0, 1); -- General
+(125, 3, 1, 0), -- Strength
+(125, 2, 0, 1), -- Agility
+(125, 1, 0, 1); -- General
 
 /* Norse Raider Linemen - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES

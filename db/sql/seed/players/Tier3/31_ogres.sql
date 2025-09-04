@@ -9,21 +9,21 @@ INSERT INTO base_team_player
 
 /* Gnoblar - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(310, 1, 1, 0), -- Agility
-(310, 3, 0, 1); -- General
+(310, 2, 1, 0), -- Agility
+(310, 1, 0, 1); -- General
 
 /* Runt Punter - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (311, 4, 1, 0), -- Passing
-(311, 2, 1, 0), -- Strength
-(311, 1, 0, 1), -- Agility
-(311, 3, 0, 1); -- General
+(311, 3, 1, 0), -- Strength
+(311, 2, 0, 1), -- Agility
+(311, 1, 0, 1); -- General
 
 /* Ogre - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(312, 2, 1, 0), -- Strength
-(312, 1, 0, 1), -- Agility
-(312, 3, 0, 1), -- General
+(312, 3, 1, 0), -- Strength
+(312, 2, 0, 1), -- Agility
+(312, 1, 0, 1), -- General
 (312, 4, 0, 1); -- Passing
 
 /* Gnoblar - Starting Skills */

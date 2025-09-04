@@ -14,27 +14,27 @@ INSERT INTO base_team_player
 /* Lineman - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (250, 1, 1, 0), -- General
-(250, 3, 0, 1), -- Agility
-(250, 2, 0, 1); -- Strength
+(250, 2, 0, 1), -- Agility
+(250, 3, 0, 1); -- Strength
 
 /* Catcher - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
-(251, 3, 1, 0), -- Agility
+(251, 2, 1, 0), -- Agility
 (251, 1, 1, 0), -- General
-(251, 2, 0, 1), -- Strength
+(251, 3, 0, 1), -- Strength
 (251, 4, 0, 1); -- Passing
 
 /* Blitzer - Starting Skills */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
-(252, 3, 1, 0), -- Agility
+(252, 2, 1, 0), -- Agility
 (252, 1, 1, 0), -- General
-(252, 2, 1, 0), -- Strength
+(252, 3, 1, 0), -- Strength
 (252, 4, 0, 1); -- Passing
 
 /* Kroxigor - Starting Skills */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
-(253, 2, 1, 0), -- Strength
-(253, 3, 0, 1), -- Agility
+(253, 3, 1, 0), -- Strength
+(253, 2, 0, 1), -- Agility
 (253, 1, 0, 1); -- General
 
 /* Lineman - Starting Skills */

@@ -11,36 +11,36 @@ INSERT INTO base_team_player
 
 /* Wood Elf Lineman - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(160, 4, 1, 0), -- Agility
-(160, 3, 1, 0), -- General
-(160, 2, 0, 1); -- Strength
+(160, 2, 1, 0), -- Agility
+(160, 1, 1, 0), -- General
+(160, 3, 0, 1); -- Strength
 
 /* Wood Elf Thrower - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(161, 4, 1, 0), -- Agility
-(161, 3, 1, 0), -- General
-(161, 1, 1, 0), -- Passing
-(161, 2, 0, 1); -- Strength
+(161, 2, 1, 0), -- Agility
+(161, 1, 1, 0), -- General
+(161, 4, 1, 0), -- Passing
+(161, 3, 0, 1); -- Strength
 
 /* Wood Elf Catcher - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(162, 4, 1, 0), -- Agility
-(162, 3, 1, 0), -- General
-(162, 1, 0, 1), -- Passing
-(162, 2, 0, 1); -- Strength
+(162, 2, 1, 0), -- Agility
+(162, 1, 1, 0), -- General
+(162, 4, 0, 1), -- Passing
+(162, 3, 0, 1); -- Strength
 
 /* Wardancer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
-(163, 4, 1, 0), -- Agility
-(163, 3, 1, 0), -- General
-(163, 1, 0, 1), -- Passing
-(163, 2, 0, 1); -- Strength
+(163, 2, 1, 0), -- Agility
+(163, 1, 1, 0), -- General
+(163, 4, 0, 1), -- Passing
+(163, 3, 0, 1); -- Strength
 
 /* Treeman - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
-(164, 2, 1, 0), -- Strength
-(164, 1, 0, 1), -- Agility
-(164, 3, 0, 1); -- General
+(164, 3, 1, 0), -- Strength
+(164, 2, 0, 1), -- Agility
+(164, 1, 0, 1); -- General
 
 /* Wood Elf Thrower - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES

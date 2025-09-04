@@ -17,21 +17,21 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 /* Chaos Dwarf Blocker - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (31, 1, 1, 0), -- General
-(31, 2, 1, 0), -- Strength
-(31, 3, 0, 1), -- Agility
+(31, 3, 1, 0), -- Strength
+(31, 2, 0, 1), -- Agility
 (31, 5, 0, 1); -- Mutations
 
 /* Bull Centaur - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (32, 1, 1, 0), -- General
-(32, 2, 1, 0), -- Strength
-(32, 3, 0, 1); -- Agility
+(32, 3, 1, 0), -- Strength
+(32, 2, 0, 1); -- Agility
 
 /* Enslaved Minotaur - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(33, 2, 1, 0), -- Strength
+(33, 3, 1, 0), -- Strength
 (33, 1, 0, 1), -- General
-(33, 3, 0, 1), -- Agility
+(33, 2, 0, 1), -- Agility
 (33, 5, 0, 1); -- Mutations
 
 /* Chaos Dwarf Blocker - Starting Skills */

@@ -14,35 +14,35 @@ INSERT INTO base_team_player
 
 /* Zombie - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(110, 3, 1, 0), -- General
-(110, 4, 0, 1), -- Agility
-(110, 2, 0, 1); -- Strength
+(110, 1, 1, 0), -- General
+(110, 2, 0, 1), -- Agility
+(110, 3, 0, 1); -- Strength
 
 /* Ghoul Runners - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(111, 4, 1, 0), -- Agility
-(111, 3, 0, 1), -- General
-(111, 1, 0, 1), -- Passing
-(111, 2, 0, 1); -- Strength
+(111, 2, 1, 0), -- Agility
+(111, 1, 0, 1), -- General
+(111, 4, 0, 1), -- Passing
+(111, 3, 0, 1); -- Strength
 
 /* Wraith - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
-(112, 3, 1, 0), -- General
-(112, 2, 1, 0), -- Strength
-(112, 1, 0, 1); -- Agility
+(112, 1, 1, 0), -- General
+(112, 3, 1, 0), -- Strength
+(112, 2, 0, 1); -- Agility
 
 /* Werewolf - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(113, 4, 1, 0), -- Agility
-(113, 3, 1, 0), -- General
-(113, 1, 0, 1), -- Passing
-(113, 2, 0, 1); -- Strength
+(113, 2, 1, 0), -- Agility
+(113, 1, 1, 0), -- General
+(113, 4, 0, 1), -- Passing
+(113, 3, 0, 1); -- Strength
 
 /* Flesh Goldem - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
-(114, 3, 1, 0), -- General
-(114, 2, 1, 0), -- Strength
-(114, 1, 0, 1); -- Agility
+(114, 1, 1, 0), -- General
+(114, 3, 1, 0), -- Strength
+(114, 2, 0, 1); -- Agility
 
 /* Zombie - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES

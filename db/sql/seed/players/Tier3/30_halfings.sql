@@ -7,28 +7,28 @@ INSERT INTO base_team_player
 
 /* Hopeful - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(300, 1, 1, 0), -- Agility
-(300, 3, 0, 1), -- General
-(300, 2, 0, 1); -- Strength
+(300, 2, 1, 0), -- Agility
+(300, 1, 0, 1), -- General
+(300, 3, 0, 1); -- Strength
 
 /* Hefty - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(301, 1, 1, 0), -- Agility
+(301, 2, 1, 0), -- Agility
 (301, 4, 1, 0), -- Passing
-(301, 3, 0, 1), -- General
-(301, 2, 0, 1); -- Strength
+(301, 1, 0, 1), -- General
+(301, 3, 0, 1); -- Strength
 
 /* Catcher - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(302, 1, 1, 0), -- Agility
-(302, 3, 0, 1), -- General
-(302, 2, 0, 1); -- Strength
+(302, 2, 1, 0), -- Agility
+(302, 1, 0, 1), -- General
+(302, 3, 0, 1); -- Strength
 
 /* Altern Forest Treeman - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(303, 2, 1, 0), -- Strength
-(303, 1, 0, 1), -- Agility
-(303, 3, 0, 1), -- General
+(303, 3, 1, 0), -- Strength
+(303, 2, 0, 1), -- Agility
+(303, 1, 0, 1), -- General
 (303, 4, 0, 1); -- Passing
 
 /* Hopeful - Starting Skills */

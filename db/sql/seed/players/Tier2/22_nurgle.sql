@@ -14,8 +14,8 @@ INSERT INTO base_team_player
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (220, 1, 1, 0), -- General
 (220, 5, 1, 0), -- Mutations
-(220, 3, 0, 1), -- Agility
-(220, 2, 0, 1); -- Strength
+(220, 2, 0, 1), -- Agility
+(220, 3, 0, 1); -- Strength
 
 /* Chaos Bloater - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
@@ -28,14 +28,14 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (222, 1, 1, 0), -- General
 (222, 5, 1, 0), -- Mutations
-(222, 2, 1, 0), -- Strength
-(222, 3, 0, 1), -- Agility
+(222, 3, 1, 0), -- Strength
+(222, 2, 0, 1), -- Agility
 (222, 4, 0, 1); -- Passing
 
 /* Rotspawn- Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(223, 2, 1, 0), -- Strength
-(223, 3, 0, 1), -- Agility
+(223, 3, 1, 0), -- Strength
+(223, 2, 0, 1), -- Agility
 (223, 1, 0, 1), -- General
 (223, 5, 0, 1); -- Mutations
 

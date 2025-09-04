@@ -14,27 +14,27 @@ INSERT INTO base_team_player
 /* Pit Fighters - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (190, 1, 1, 0), -- General
-(190, 3, 0, 1), -- Agility
-(190, 2, 0, 1); -- Strength
+(190, 2, 0, 1), -- Agility
+(190, 3, 0, 1); -- Strength
 
 /* Bloodletter - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
-(191, 3, 1, 0), -- Agility
+(191, 2, 1, 0), -- Agility
 (191, 1, 1, 0), -- General
-(191, 2, 1, 0), -- Strength
+(191, 3, 1, 0), -- Strength
 (191, 4, 0, 1); -- Passing
 
 /* Khorne Herald - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(192, 3, 1, 0), -- Agility
+(192, 2, 1, 0), -- Agility
 (192, 1, 1, 0), -- General
 (192, 5, 0, 1), -- Mutations
-(192, 2, 0, 1), -- Strength
+(192, 3, 0, 1), -- Strength
 (192, 4, 0, 1); -- Passing
 
 /* Bloodthirster - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(193, 2, 1, 0), -- Strength
+(193, 3, 1, 0), -- Strength
 (193, 5, 0, 1), -- Mutation
 (193, 1, 0, 1); -- General
 

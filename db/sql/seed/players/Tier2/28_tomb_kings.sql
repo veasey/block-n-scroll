@@ -13,28 +13,28 @@ INSERT INTO base_team_player
 
 /* Skeleton Linemen - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(280, 3, 1, 0), -- General
-(280, 4, 0, 1), -- Agility
-(280, 2, 0, 1); -- Strength
+(280, 1, 1, 0), -- General
+(280, 2, 0, 1), -- Agility
+(280, 3, 0, 1); -- Strength
 
 /* Anointed Thrower - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(281, 3, 1, 0), -- General
-(281, 1, 1, 0), -- Passing
-(281, 4, 0, 1); -- Agility
+(281, 1, 1, 0), -- General
+(281, 4, 1, 0), -- Passing
+(281, 2, 0, 1); -- Agility
 
 /* Anointed Blitzer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(282, 3, 1, 0), -- General
-(282, 2, 1, 0), -- Strength
-(282, 4, 0, 1), -- Agility
-(282, 1, 0, 1); -- Passing
+(282, 1, 1, 0), -- General
+(282, 3, 1, 0), -- Strength
+(282, 2, 0, 1), -- Agility
+(282, 4, 0, 1); -- Passing
 
 /* Tomb Guardian - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
-(283, 2, 1, 0), -- Strength
-(283, 4, 0, 1), -- Agility
-(283, 3, 1, 0); -- General
+(283, 3, 1, 0), -- Strength
+(283, 2, 0, 1), -- Agility
+(283, 1, 1, 0); -- General
 
 /* Skeleton Linemen - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES

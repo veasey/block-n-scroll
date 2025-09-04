@@ -11,40 +11,40 @@ INSERT INTO base_team_player
 
 /* Skaven Linemen - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(150, 3, 1, 0), -- General
-(150, 4, 0, 1), -- Agility
+(150, 1, 1, 0), -- General
+(150, 2, 0, 1), -- Agility
 (150, 5, 0, 1), -- Mutation
-(150, 2, 0, 1); -- Strength
+(150, 3, 0, 1); -- Strength
 
 /* Skaven Thrower - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(151, 3, 1, 0), -- General
-(151, 1, 1, 0), -- Passing
-(151, 4, 0, 1), -- Agility
+(151, 1, 1, 0), -- General
+(151, 4, 1, 0), -- Passing
+(151, 2, 0, 1), -- Agility
 (151, 5, 0, 1), -- Mutation
-(151, 2, 0, 1); -- Strength
+(151, 3, 0, 1); -- Strength
 
 /* Skaven Gutter Runner - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(152, 4, 1, 0), -- Agility
-(152, 3, 1, 0), -- General
-(152, 1, 0, 1), -- Passing
+(152, 2, 1, 0), -- Agility
+(152, 1, 1, 0), -- General
+(152, 4, 0, 1), -- Passing
 (152, 5, 0, 1), -- Mutation
-(152, 2, 0, 1); -- Strength
+(152, 3, 0, 1); -- Strength
 
 /* 	Skaven Blitzer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
-(153, 3, 1, 0), -- General
-(153, 2, 1, 0), -- Strength
-(153, 4, 0, 1), -- Agility
+(153, 1, 1, 0), -- General
+(153, 3, 1, 0), -- Strength
+(153, 2, 0, 1), -- Agility
 (153, 5, 0, 1), -- Mutation
-(153, 1, 0, 1); -- Passing
+(153, 4, 0, 1); -- Passing
 
 /*	Rat Ogre - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
-(154, 2, 1, 0), -- Strength
-(154, 1, 0, 1), -- Agility
-(154, 3, 0, 1), -- General
+(154, 3, 1, 0), -- Strength
+(154, 2, 0, 1), -- Agility
+(154, 1, 0, 1), -- General
 (154, 5, 0, 1); -- Mutation
 
 /* Skaven Thrower - Starting Skills */

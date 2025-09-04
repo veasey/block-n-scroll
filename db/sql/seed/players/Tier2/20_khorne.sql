@@ -9,29 +9,29 @@ INSERT INTO base_team_player
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (200, 1, 1, 0), -- General
 (200, 5, 1, 0), -- Mutations
-(200, 3, 0, 1), -- Agility
-(200, 2, 0, 1); -- Strength
+(200, 2, 0, 1), -- Agility
+(200, 3, 0, 1); -- Strength
 
 /* Khorngor - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (201, 1, 1, 0), -- General
 (201, 5, 1, 0), -- Mutations
-(201, 2, 1, 0), -- Strength
-(201, 3, 1, 0), -- Agility
+(201, 3, 1, 0), -- Strength
+(201, 2, 1, 0), -- Agility
 (201, 4, 0, 1); -- Passing
 
 /* Bloodseeker - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (202, 1, 1, 0), -- General
 (202, 5, 1, 0), -- Mutations
-(202, 2, 1, 0), -- Strength
-(202, 3, 0, 1); -- Agility
+(202, 3, 1, 0), -- Strength
+(202, 2, 0, 1); -- Agility
 
 /* Bloodspawn - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (203, 5, 1, 0), -- Mutation
-(203, 2, 1, 0), -- Strength
-(203, 3, 0, 1), -- Agility
+(203, 3, 1, 0), -- Strength
+(203, 2, 0, 1), -- Agility
 (203, 1, 0, 1); -- General
 
 /* Bloodborn Marauder Linemen - Starting Skills */

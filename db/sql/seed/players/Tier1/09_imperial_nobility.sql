@@ -12,34 +12,34 @@ VALUES
 
 /* Imperial Retainer Lineman (G primary, AS secondary) */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(90, 3, 1, 0), -- General
-(90, 2, 0, 1), -- Strength
-(90, 4, 0, 1); -- Agility
+(90, 1, 1, 0), -- General
+(90, 3, 0, 1), -- Strength
+(90, 2, 0, 1); -- Agility
 
 /* Imperial Thrower (GP primary, AS secondary) */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(91, 3, 1, 0), -- General
-(91, 1, 1, 0), -- Passing
-(91, 2, 0, 1), -- Strength
-(91, 4, 0, 1); -- Agility
+(91, 1, 1, 0), -- General
+(91, 4, 1, 0), -- Passing
+(91, 3, 0, 1), -- Strength
+(91, 2, 0, 1); -- Agility
 
 /* Imperial Noble Blitzer (AG primary, PS secondary) */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
-(92, 4, 1, 0), -- Agility
-(92, 3, 1, 0), -- General
-(92, 2, 0, 1), -- Strength
-(92, 1, 0, 1); -- Passing
+(92, 2, 1, 0), -- Agility
+(92, 1, 1, 0), -- General
+(92, 3, 0, 1), -- Strength
+(92, 4, 0, 1); -- Passing
 
 /* Imperial Bodyguard (GS primary, A secondary) */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(93, 3, 1, 0), -- General
-(93, 2, 1, 0), -- Strength
-(93, 4, 0, 1); -- Agility
+(93, 1, 1, 0), -- General
+(93, 3, 1, 0), -- Strength
+(93, 2, 0, 1); -- Agility
 
 /* Ogre (S primary, A secondary) */
 INSERT INTO base_team_player_skill_category  (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(94, 2, 1, 0), -- Strength
-(94, 4, 0, 1); -- Agility
+(94, 3, 1, 0), -- Strength
+(94, 2, 0, 1); -- Agility
 
 /* Imperial Retainer Lineman (Fend) */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES

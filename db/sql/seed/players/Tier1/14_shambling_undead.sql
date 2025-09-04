@@ -14,35 +14,35 @@ INSERT INTO base_team_player
 
 /* Skeleton Linemen - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(140, 3, 1, 0), -- General
-(140, 4, 0, 1), -- Agility
-(140, 2, 0, 1); -- Strenth
+(140, 1, 1, 0), -- General
+(140, 2, 0, 1), -- Agility
+(140, 3, 0, 1); -- Strenth
 
 /* Zombie Linemen - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(141, 3, 1, 0), -- General
-(141, 4, 0, 1), -- Agility
-(141, 2, 0, 1); -- Strength
+(141, 1, 1, 0), -- General
+(141, 2, 0, 1), -- Agility
+(141, 3, 0, 1); -- Strength
 
 /* Ghoul Runner - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(142, 4, 1, 0), -- Agility
-(142, 3, 1, 0), -- General
-(142, 1, 0, 1), -- Passing
-(142, 2, 0, 1); -- Strength
+(142, 2, 1, 0), -- Agility
+(142, 1, 1, 0), -- General
+(142, 4, 0, 1), -- Passing
+(142, 3, 0, 1); -- Strength
 
 /* 	Weight Blitzer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
-(143, 3, 1, 0), -- General
-(143, 2, 1, 0), -- Strength
-(143, 4, 0, 1), -- Agility
-(143, 1, 0, 1); -- Passing
+(143, 1, 1, 0), -- General
+(143, 3, 1, 0), -- Strength
+(143, 2, 0, 1), -- Agility
+(143, 4, 0, 1); -- Passing
 
 /*	Mummies - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
-(144, 2, 1, 0), -- Strength
-(144, 1, 0, 1), -- Agility
-(144, 3, 0, 1); -- General
+(144, 3, 1, 0), -- Strength
+(144, 2, 0, 1), -- Agility
+(144, 1, 0, 1); -- General
 
 /* Skeleton Linemen - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES

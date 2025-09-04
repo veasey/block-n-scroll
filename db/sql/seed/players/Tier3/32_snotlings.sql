@@ -9,36 +9,36 @@ INSERT INTO base_team_player
 
 /* Snotling - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(320, 1, 1, 0), -- Agility
-(320, 3, 0, 1); -- General
+(320, 2, 1, 0), -- Agility
+(320, 1, 0, 1); -- General
 
 /* Fungus Flinga - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(321, 1, 1, 0), -- Agility
+(321, 2, 1, 0), -- Agility
 (321, 4, 1, 0), -- Passing
-(321, 3, 0, 1); -- General
+(321, 1, 0, 1); -- General
 
 /* Fun-hoppa - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(322, 1, 1, 0), -- Agility
-(322, 3, 0, 1); -- General
+(322, 2, 1, 0), -- Agility
+(322, 1, 0, 1); -- General
 
 /* Stilty Runna - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(323, 1, 1, 0), -- Agility
-(323, 3, 0, 1); -- General
+(323, 2, 1, 0), -- Agility
+(323, 1, 0, 1); -- General
 
 /* Pump Wagon - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(324, 2, 1, 0), -- Strength
-(324, 1, 0, 1), -- Agility
-(324, 3, 0, 1); -- General
+(324, 3, 1, 0), -- Strength
+(324, 2, 0, 1), -- Agility
+(324, 1, 0, 1); -- General
 
 /* Trained Troll - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(325, 2, 1, 0), -- Strength
-(325, 1, 0, 1), -- Agility
-(325, 3, 0, 1), -- General
+(325, 3, 1, 0), -- Strength
+(325, 2, 0, 1), -- Agility
+(325, 1, 0, 1), -- General
 (325, 4, 0, 1); -- Passing
 
 /* Snotling - Starting Skills */

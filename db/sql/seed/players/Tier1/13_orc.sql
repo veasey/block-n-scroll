@@ -9,41 +9,41 @@ INSERT INTO base_team_player
 
 /* Orc Linemen - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(130, 3, 1, 0), -- General
-(130, 4, 0, 1), -- Agility
-(130, 2, 0, 1); -- Strength
+(130, 1, 1, 0), -- General
+(130, 2, 0, 1), -- Agility
+(130, 3, 0, 1); -- Strength
 
 /* Orc Thrower - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(131, 3, 1, 0), -- General
-(131, 1, 1, 0), -- Passing
-(131, 4, 0, 1), -- Agility
-(131, 2, 0, 1); -- Strength
+(131, 1, 1, 0), -- General
+(131, 4, 1, 0), -- Passing
+(131, 2, 0, 1), -- Agility
+(131, 3, 0, 1); -- Strength
 
 /* 	Orc Blitzer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
-(132, 3, 1, 0), -- General
-(132, 2, 1, 0), -- Strength
-(132, 4, 0, 1), -- Agility
-(132, 1, 0, 1); -- Passing
+(132, 1, 1, 0), -- General
+(132, 3, 1, 0), -- Strength
+(132, 2, 0, 1), -- Agility
+(132, 4, 0, 1); -- Passing
 
 /* Orc Big Un - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(133, 3, 1, 0), -- General
-(133, 2, 1, 0), -- Strength
-(133, 1, 0, 1); -- Agility
+(133, 1, 1, 0), -- General
+(133, 3, 1, 0), -- Strength
+(133, 2, 0, 1); -- Agility
 
 /* Goblin - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
-(134, 1, 0, 1), -- Agility
-(134, 3, 1, 0), -- General
-(134, 2, 1, 0); -- Strength
+(134, 2, 0, 1), -- Agility
+(134, 1, 1, 0), -- General
+(134, 3, 1, 0); -- Strength
 
 /*	Untrained Troll - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
-(135, 2, 1, 0), -- Strength
-(135, 1, 0, 1), -- Agility
-(135, 3, 0, 1), -- General
+(135, 3, 1, 0), -- Strength
+(135, 2, 0, 1), -- Agility
+(135, 1, 0, 1), -- General
 (135, 4, 0, 1); -- Passing
 
 /* Orc Linemen - Starting Skills */

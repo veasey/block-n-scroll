@@ -13,36 +13,36 @@ INSERT INTO base_team_player_exclusive_group (id, name, description) VALUES
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (170, 1, 1, 0), -- General
 (170, 5, 1, 0), -- Mutations
-(170, 2, 1, 0), -- Strength
-(170, 3, 0, 1); -- Agility
+(170, 3, 1, 0), -- Strength
+(170, 2, 0, 1); -- Agility
 
 /* Chaos Beastman - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (171, 1, 1, 0), -- General
 (171, 5, 1, 0), -- Mutations
-(171, 2, 0, 1), -- Strength
-(171, 3, 0, 1), -- Agility
+(171, 3, 0, 1), -- Strength
+(171, 2, 0, 1), -- Agility
 (171, 4, 0, 1); -- Passing
 
 /* Chaos Minotaur - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
-(172, 2, 1, 0), -- Strength
+(172, 3, 1, 0), -- Strength
 (172, 5, 0, 1), -- Mutations
-(172, 3, 0, 1), -- Agility
+(172, 2, 0, 1), -- Agility
 (172, 1, 0, 1); -- General
 
 /* Chaos Troll - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
-(173, 2, 1, 0), -- Strength
+(173, 3, 1, 0), -- Strength
 (173, 5, 0, 1), -- Mutations
-(173, 3, 0, 1), -- Agility
+(173, 2, 0, 1), -- Agility
 (173, 1, 0, 1); -- General
 
 /* Chaos Ogre - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
-(174, 2, 1, 0),  -- Strength
+(174, 3, 1, 0), -- Strength
 (174, 5, 0, 1), -- Mutations
-(174, 3, 0, 1), -- Agility
+(174, 2, 0, 1), -- Agility
 (174, 1, 0, 1); -- General
 
 /* Chaos Beastman - Starting Skills */

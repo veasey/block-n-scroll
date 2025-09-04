@@ -9,34 +9,34 @@ INSERT INTO base_team_player
 /* Thrall Linemen - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (270, 1, 1, 0), -- General
-(270, 3, 0, 1), -- Agility
-(270, 2, 0, 1); -- Strength
+(270, 2, 0, 1), -- Agility
+(270, 3, 0, 1); -- Strength
 
 /* Vampire Thrower - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (271, 1, 1, 0), -- General
-(271, 3, 1, 0), -- Agility
+(271, 2, 1, 0), -- Agility
 (271, 4, 1, 0), -- Passing
-(271, 2, 0, 1); -- Strengths
+(271, 3, 0, 1); -- Strengths
 
 /* Vampire Blitzer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (272, 1, 1, 0), -- General
-(272, 3, 1, 0), -- Agility
-(272, 2, 1, 0); -- Strengths
+(272, 2, 1, 0), -- Agility
+(272, 3, 1, 0); -- Strengths
 
 /* Vampire Runner - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (273, 1, 1, 0), -- General
-(273, 3, 1, 0), -- Agility
+(273, 2, 1, 0), -- Agility
 (273, 4, 0, 1), -- Passing
-(273, 2, 0, 1); -- Strengths
+(273, 3, 0, 1); -- Strengths
 
 /* Vargheist - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
-(274, 2, 1, 0), -- Strengths
+(274, 3, 1, 0), -- Strengths
 (274, 1, 0, 1), -- General
-(274, 3, 0, 1); -- Agility
+(274, 2, 0, 1); -- Agility
 
 /* Vampire Thrower - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES

@@ -21,69 +21,69 @@ INSERT INTO base_team_player_exclusive_group (id, name, description) VALUES
 /* Old World Human Linemen - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (230, 1, 1, 0), -- General
-(230, 3, 0, 1), -- Agility
-(230, 2, 0, 1); -- Strength
+(230, 2, 0, 1), -- Agility
+(230, 3, 0, 1); -- Strength
 
 /* Old World Human Thrower - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (231, 1, 1, 0), -- General
 (231, 4, 1, 0), -- Passing
-(231, 3, 0, 1), -- Agility
-(231, 2, 0, 1); -- Strength
+(231, 2, 0, 1), -- Agility
+(231, 3, 0, 1); -- Strength
 
 /* Old World Human Catcher - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
-(232, 3, 0, 1), -- Agility
+(232, 2, 0, 1), -- Agility
 (232, 1, 1, 0), -- General
-(232, 2, 1, 0); -- Strength
+(232, 3, 1, 0); -- Strength
 
 /* Old World Human Blitzer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (233, 1, 1, 0), -- General
-(233, 2, 1, 0), -- Strength
-(233, 3, 0, 1); -- Agility
+(233, 3, 1, 0), -- Strength
+(233, 2, 0, 1); -- Agility
 
 /* Old World Dwarf Blocker - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (234, 1, 1, 0), -- General
-(234, 2, 1, 0), -- Strength
-(234, 3, 0, 1); -- Agility
+(234, 3, 1, 0), -- Strength
+(234, 2, 0, 1); -- Agility
 
 /* Old World Dwarf Runner - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (235, 1, 1, 0), -- General
 (235, 4, 1, 0), -- Passing
-(235, 3, 0, 1), -- Agility
-(235, 2, 0, 1); -- Strength
+(235, 2, 0, 1), -- Agility
+(235, 3, 0, 1); -- Strength
 
 /* Old World Dwarf Blitzer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (236, 1, 1, 0), -- General
-(236, 2, 1, 0), -- Strength
-(236, 3, 0, 1); -- Agility
+(236, 3, 1, 0), -- Strength
+(236, 2, 0, 1); -- Agility
 
 /* Old World Dwarf Troll Slayer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (237, 1, 1, 0), -- General
-(237, 2, 1, 0), -- Strength
-(237, 3, 0, 1); -- Agility
+(237, 3, 1, 0), -- Strength
+(237, 2, 0, 1); -- Agility
 
 /* Old World Halfing - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
-(238, 3, 1, 0), -- Agility
+(238, 2, 1, 0), -- Agility
 (238, 1, 0, 1), -- General
-(238, 2, 0, 1); -- Strength
+(238, 3, 0, 1); -- Strength
 
 /* Ogre - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
-(239, 2, 1, 0), -- Strength
-(239, 3, 0, 1), -- Agility
+(239, 3, 1, 0), -- Strength
+(239, 2, 0, 1), -- Agility
 (239, 1, 0, 1); -- General
 
 /* Altern Forest Treeman - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
-(240, 2, 1, 0), -- Strength
-(240, 3, 0, 1), -- Agility
+(240, 3, 1, 0), -- Strength
+(240, 2, 0, 1), -- Agility
 (240, 1, 0, 1), -- General
 (240, 4, 0, 1); -- Passing
 
