@@ -15,31 +15,33 @@ INSERT INTO base_team_player
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (50, 3, 1, 0), -- Strength
 (50, 4, 1, 0), -- General
-(50, 1, 0, 1); -- Passing
+(50, 2, 0, 1); -- Agility
 
 /* Runner - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(51, 2, 1, 0), -- Agility
 (51, 4, 1, 0), -- General
-(51, 1, 0, 1); -- Passing
+(51, 1, 1, 0), -- Passing
+(51, 2, 0, 1), -- Agility
+(51, 3, 0, 1); -- Strength
 
 /* Blitzer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(52, 3, 1, 0), -- Strength
 (52, 4, 1, 0), -- General
+(52, 3, 1, 0), -- Strength
+(52, 2, 0, 1), -- Agility
 (52, 1, 0, 1); -- Passing
 
 /* Troll Slayer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(53, 3, 1, 0), -- Strength
 (53, 4, 1, 0), -- General
-(53, 1, 0, 1); -- Passing
+(53, 3, 1, 0), -- Strength
+(53, 2, 0, 1); -- Agility
 
 /* Deathroller - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(54, 4, 1, 0), -- General
+(54, 3, 1, 0), -- Strength
 (54, 2, 0, 1), -- Agility
-(54, 1, 0, 1); -- Passing
+(54, 1, 0, 1); -- General
 
 /* Lineman - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES

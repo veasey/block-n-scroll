@@ -13,18 +13,25 @@ INSERT INTO base_team_player
 /* Daemonettes - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (241, 1, 1, 0), -- General
-(241, 3, 1, 0), -- Agility
+(241, 2, 1, 0), -- Agility
 (241, 5, 1, 0), -- Mutations
-(241, 2, 0, 1), -- Strength
+(241, 3, 0, 1), -- Strength
 (241, 4, 0, 1); -- Passing
 
 /* Slaangors - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (242, 1, 1, 0), -- General
-(242, 3, 1, 0), -- Agility
+(242, 2, 1, 0), -- Agility
 (242, 5, 1, 0), -- Mutations
-(242, 2, 0, 1), -- Strength
+(242, 3, 0, 1), -- Strength
 (242, 4, 0, 1); -- Passing
+
+/* Slaanesh Warriors - Skill Access */
+INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
+(243, 2, 1, 0), -- Agility
+(243, 1, 1, 0), -- General
+(243, 4, 0, 1), -- Passing
+(243, 3, 0, 1); -- Strength
 
 /* Slaangors - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES

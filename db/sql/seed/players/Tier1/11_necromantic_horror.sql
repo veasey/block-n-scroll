@@ -21,7 +21,7 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 /* Ghoul Runners - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (111, 2, 1, 0), -- Agility
-(111, 1, 0, 1), -- General
+(111, 1, 1, 0), -- General
 (111, 4, 0, 1), -- Passing
 (111, 3, 0, 1); -- Strength
 

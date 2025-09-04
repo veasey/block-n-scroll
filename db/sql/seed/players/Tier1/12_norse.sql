@@ -9,7 +9,7 @@ INSERT INTO base_team_player
 
 /* Norse Raider Linemen - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(120, 1, 1, 1), -- General
+(120, 1, 1, 0), -- General
 (120, 2, 0, 1), -- Agility
 (120, 4, 0, 1), -- Passing
 (120, 3, 0, 1); -- Strength

@@ -35,9 +35,9 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 
 /* Goblin - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
-(134, 2, 0, 1), -- Agility
-(134, 1, 1, 0), -- General
-(134, 3, 1, 0); -- Strength
+(134, 2, 1, 0), -- Agility
+(134, 1, 0, 1), -- General
+(134, 3, 0, 1); -- Strength
 
 /*	Untrained Troll - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES

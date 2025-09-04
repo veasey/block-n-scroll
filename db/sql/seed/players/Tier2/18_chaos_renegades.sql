@@ -64,30 +64,30 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 /* Renegade Troll - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (186, 3, 1, 0), -- Strength
-(186, 2, 1, 0), -- Agility
-(186, 1, 1, 0), -- General
-(186, 5, 1, 0); -- Mutations
+(186, 2, 0, 1), -- Agility
+(186, 1, 0, 1), -- General
+(186, 5, 0, 1); -- Mutations
 
 /* Renegade Ogre - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (187, 3, 1, 0), -- Strength
-(187, 2, 1, 0), -- Agility
-(187, 1, 1, 0), -- General
-(187, 5, 1, 0); -- Mutations
+(187, 2, 0, 1), -- Agility
+(187, 1, 0, 1), -- General
+(187, 5, 0, 1); -- Mutations
 
 /* Renegade Minotaur - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (188, 3, 1, 0), -- Strength
-(188, 2, 1, 0), -- Agility
-(188, 1, 1, 0), -- General
-(188, 5, 1, 0); -- Mutations
+(188, 2, 0, 1), -- Agility
+(188, 1, 0, 1), -- General
+(188, 5, 0, 1); -- Mutations
 
 /* Renegade Rat Ogre - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
 (189, 3, 1, 0), -- Strength
-(189, 2, 1, 0), -- Agility
-(189, 1, 1, 0), -- General
-(189, 5, 1, 0); -- Mutations
+(189, 2, 0, 1), -- Agility
+(189, 1, 0, 1), -- General
+(189, 5, 0, 1); -- Mutations
 
 /* Renegade Human Thrower - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES

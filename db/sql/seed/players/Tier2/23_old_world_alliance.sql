@@ -33,9 +33,9 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 
 /* Old World Human Catcher - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
-(232, 2, 0, 1), -- Agility
+(232, 2, 1, 0), -- Agility
 (232, 1, 1, 0), -- General
-(232, 3, 1, 0); -- Strength
+(232, 3, 0, 1); -- Strength
 
 /* Old World Human Blitzer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 

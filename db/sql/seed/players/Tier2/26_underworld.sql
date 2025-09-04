@@ -18,16 +18,16 @@ INSERT INTO base_team_player_exclusive_group (id, name, description) VALUES
 
 /* Underworld Goblin Linemen - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(260, 2, 0, 1), -- Agility
+(260, 2, 1, 0), -- Agility
 (260, 5, 1, 0), -- Mutations
-(260, 1, 1, 0), -- General
-(260, 3, 1, 0); -- Strength
+(260, 1, 0, 1), -- General
+(260, 3, 0, 1); -- Strength
 
 /* Underworld Snotling - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(261, 2, 0, 1), -- Agility
+(261, 2, 1, 0), -- Agility
 (261, 5, 1, 0), -- Mutations
-(261, 1, 1, 0); -- General
+(261, 1, 0, 1); -- General
 
 /* Skaven Clanrat - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES

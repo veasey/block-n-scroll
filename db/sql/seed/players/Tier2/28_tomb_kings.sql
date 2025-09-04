@@ -34,7 +34,7 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary)  VALUES
 (283, 3, 1, 0), -- Strength
 (283, 2, 0, 1), -- Agility
-(283, 1, 1, 0); -- General
+(283, 1, 0, 1); -- General
 
 /* Skeleton Linemen - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
