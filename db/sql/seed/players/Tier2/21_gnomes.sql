@@ -11,30 +11,30 @@ INSERT INTO base_team_player
 
 /* Gnome linemen - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
-(210, 3, 0, 1), -- Agility
-(210, 1, 1, 0), -- General
-(210, 2, 0, 1); -- Strength
+(210, 2, 1, 0), -- Agility
+(210, 1, 0, 1), -- General
+(210, 3, 0, 1); -- Strength
 
 /* Gnome Illusionist - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(211, 3, 1, 0), -- Agility
+(211, 2, 1, 0), -- Agility
 (211, 4, 1, 0), -- Passing
 (211, 1, 0, 1); -- General
 
 /* Woodland Fox - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
-(212, 3, 0, 1); -- Agility
+(212, 2, 0, 1); -- Agility
 
 /* Gnome Beastmaster - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
-(213, 3, 0, 1), -- Agility
-(213, 1, 1, 0), -- General
-(213, 2, 1, 0); -- Strength
+(213, 2, 1, 0), -- Agility
+(213, 1, 0, 1), -- General
+(213, 3, 0, 1); -- Strength
 
 /* Altern Treeman - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES 
-(214, 2, 1, 0), -- Strength
-(214, 3, 0, 1), -- Agility
+(214, 3, 1, 0), -- Strength
+(214, 2, 0, 1), -- Agility
 (214, 1, 0, 1), -- General
 (214, 4, 0, 1); -- Passing
 
