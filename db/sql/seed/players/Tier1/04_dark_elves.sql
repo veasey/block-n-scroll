@@ -27,21 +27,21 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 (42, 2, 1, 0), -- Agility
 (42, 1, 1, 0), -- General
 (42, 3, 0, 1), -- Strength
-(42, 1, 0, 1); -- Passing
+(42, 4, 0, 1); -- Passing
 
 /* Assassin - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (43, 2, 1, 0), -- Agility
 (43, 1, 1, 0), -- General
 (43, 3, 0, 1), -- Strength
-(43, 1, 0, 1); -- Passing
+(43, 4, 0, 1); -- Passing
 
 /* Witch Elf - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (44, 2, 1, 0), -- Agility
 (44, 1, 1, 0), -- General
 (44, 3, 0, 1), -- Strength
-(44, 1, 0, 1); -- Passing
+(44, 4, 0, 1); -- Passing
 
 /* Runner - Starting Skills */
 INSERT INTO base_team_player_skill (base_team_player_id, skill_id) VALUES
