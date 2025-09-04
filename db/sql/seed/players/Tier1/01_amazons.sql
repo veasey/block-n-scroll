@@ -18,7 +18,7 @@ INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category
 /* Amazon Thrower - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (2, 1, 1, 0), -- General
-(2, 4, 0, 1), -- Passing
+(2, 4, 1, 0), -- Passing
 (2, 2, 0, 1), -- Agility
 (2, 3, 0, 1); -- Strength
 

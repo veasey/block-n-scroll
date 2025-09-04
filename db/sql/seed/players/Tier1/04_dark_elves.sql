@@ -12,30 +12,35 @@ INSERT INTO base_team_player
 /* Lineman - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (40, 2, 1, 0), -- Agility
+(40, 1, 1, 0), -- General
 (40, 3, 0, 1); -- Strength
 
 /* Runner - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (41, 2, 1, 0), -- Agility
-(41, 1, 1, 0), -- Passing
+(41, 1, 1, 0), -- General
+(41, 4, 1, 0), -- Passing
 (41, 3, 0, 1); -- Strength
 
 /* Blitzer - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (42, 2, 1, 0), -- Agility
-(42, 3, 1, 0), -- Strength
+(42, 1, 1, 0), -- General
+(42, 3, 0, 1), -- Strength
 (42, 1, 0, 1); -- Passing
 
 /* Assassin - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (43, 2, 1, 0), -- Agility
-(43, 3, 1, 0), -- Strength
+(43, 1, 1, 0), -- General
+(43, 3, 0, 1), -- Strength
 (43, 1, 0, 1); -- Passing
 
 /* Witch Elf - Skill Access */
 INSERT INTO base_team_player_skill_category (base_team_player_id, skill_category_id, is_primary, is_secondary) VALUES
 (44, 2, 1, 0), -- Agility
-(44, 3, 1, 0), -- Strength
+(44, 1, 1, 0), -- General
+(44, 3, 0, 1), -- Strength
 (44, 1, 0, 1); -- Passing
 
 /* Runner - Starting Skills */
