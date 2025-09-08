@@ -8,6 +8,7 @@ use InvalidArgumentException;
 use Slim\Views\Twig;
 
 use App\Enums\Match\Status as MatchStatus;
+use App\Enums\Match\PreGameStatus;
 use App\Enums\Match\WeatherTable;
 use App\Controllers\MatchGame\Shared\AccessController;
 use App\Helpers\TeamHelper;
@@ -105,6 +106,7 @@ class PreGameController extends AccessController
 
         $match->home_fans = $homeFanRoll;
         $match->away_fans = $awayFanRoll;
+        $match->pregame_status = PreGameStatus::WEATHER;
         $match->save();
 
         $this->eventLoggerService->logMatchFanAttendance($match, $awayDedicatedFans);
@@ -141,8 +143,11 @@ class PreGameController extends AccessController
         // Log the weather (you can store the enum name or value)
         $this->eventLoggerService->logMatchWeather($match, $weather);
 
+        $match->pregame_status = PreGameStatus::JOURNEYMEN;
+        $match->save();
+
         // Redirect to next step
-        $url = "/match/{$match->id}/kickoff";
+        $url = "/match/{$match->id}/journeymen";
         return $response
             ->withHeader('Location', $url)
             ->withStatus(302);
@@ -160,10 +165,27 @@ class PreGameController extends AccessController
         $match->status = MatchStatus::IN_PROGRESS;
         $match->save();
 
-        return $this->view->render($response, 'match/start/5_kickoff.twig', [
+        return $this->view->render($response, 'match/start/7_kickoff.twig', [
             'match' => $match,
             'user_team_id' => $team->id,
             'match_info' => $matchInfo
         ]);
+    }
+
+    public function showJourneymenForm(Request $request, Response $response, array $args)
+    {
+        [$match, $errorResponse] = $this->getAuthorisedMatchOrFail($request, $response, $args);
+        if ($errorResponse) return $errorResponse;
+
+        // check any team is short of players
+        if (!$this->matchService->isEitherTeamShortOfPlayers($match)) {
+            // Redirect to kickoff if both teams have enough players
+            $url = "/match/{$match->id}/inducements";
+            return $response
+                ->withHeader('Location', $url)
+                ->withStatus(302);
+        }
+
+        return $this->view->render($response, 'match/start/5_journeymen.twig', ['match' => $match]);
     }
 }

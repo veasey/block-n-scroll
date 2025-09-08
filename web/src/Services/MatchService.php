@@ -77,6 +77,12 @@ class MatchService
         })->values();    
     }
 
+    private function filterOutTheIndisposed(Collection $players) {
+        return $players->filter(function ($player) {
+            return !in_array($player->status, [PlayerStatus::DEAD, PlayerStatus::RETIRED, PlayerStatus::INJURED]);
+        })->values();    
+    }
+
     public function restorePlayersFromMissNextGame(MatchGame $matchGame): array
     {
         $homePlayers = $matchGame->homeTeam->players;
@@ -226,5 +232,13 @@ class MatchService
         }
 
         return $adjustment;
+    }
+
+    public function isEitherTeamShortOfPlayers(MatchGame $match): bool
+    {
+        $homePlayers = $this->filterOutTheIndisposed($match->homeTeam->players);
+        $awayPlayers = $this->filterOutTheIndisposed($match->awayTeam?->players ?? collect());
+
+        return ($homePlayers->count() < 11) || ($awayPlayers->count() < 11);
     }
 }

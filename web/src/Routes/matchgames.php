@@ -13,6 +13,9 @@ $app->post('/match/{match_id}/gate', PreGameController::class . ':submitGate');
 $app->get('/match/{match_id}/weather', PreGameController::class . ':showWeatherForm');
 $app->post('/match/{match_id}/weather', PreGameController::class . ':submitWeather');
 
+$app->get('/match/{match_id}/journeymen', PreGameController::class . ':showJourneymenForm');
+$app->post('/match/{match_id}/journeymen', PreGameController::class . ':submitJourneymen');
+
 $app->get('/match/{match_id}/kickoff', PreGameController::class . ':kickOff');
 $app->post('/match/end', PostGameController::class . ':endMatch');
 $app->post('/match/{match_id}/update_popularity', PostGameController::class . ':updatePopularity');
