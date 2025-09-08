@@ -1,0 +1,18 @@
+{% extends "team/team_base.twig" %}
+
+{% block title %}Block &amp; Scroll - Team - {{ team.name }} - Start Match - PreMatch Sequence{% endblock %}
+
+{% block content %}
+
+    <p class="breadcrumbs">
+        <a href="/">Home</a> - 
+        Pre Match - 
+        {% include 'partials/home_team_name.twig' with {'match': match} %} vs 
+        {% include 'partials/away_team_name.twig' with {'match': match} %}
+        - Weather
+    </p>
+
+    <h2>Take on Journeymen</h2>
+
+    
+{% endblock %}
