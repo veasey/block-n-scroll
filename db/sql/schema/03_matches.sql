@@ -12,6 +12,7 @@ CREATE TABLE game (
     away_fans INT,
     notes TEXT,
     status ENUM('pregame', 'in_progress', 'postgame', 'finished', 'paused') DEFAULT 'pregame',
+    pregame_status ENUM('fans', 'weather', 'journeymen', 'inducements') DEFAULT 'fans',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (home_team_id) REFERENCES team(id),
