@@ -179,7 +179,12 @@ class PreGameController extends AccessController
 
         // check any team is short of players
         if (!$this->matchService->isEitherTeamShortOfPlayers($match)) {
-            // Redirect to kickoff if both teams have enough players
+
+            // update match status
+            $match->pregame_status = PreGameStatus::INDUCEMENTS;
+            $match->save();
+
+            // Redirect to inducements form
             $url = "/match/{$match->id}/inducements";
             return $response
                 ->withHeader('Location', $url)
@@ -187,5 +192,45 @@ class PreGameController extends AccessController
         }
 
         return $this->view->render($response, 'match/start/5_journeymen.twig', ['match' => $match]);
+    }
+
+    public function submitJourneymen(Request $request, Response $response, array $args)
+    {
+        [$match, $errorResponse] = $this->getAuthorisedMatchOrFail($request, $response, $args);
+        if ($errorResponse) return $errorResponse;
+
+        $data = $request->getParsedBody();
+        $homeJourneymen = isset($data['home_journeymen']) ? (int)$data['home_journeymen'] : 0;
+        $awayJourneymen = isset($data['away_journeymen']) ? (int)$data['away_journeymen'] : 0;
+
+        // Validate journeymen counts
+        if ($homeJourneymen < 0 || $awayJourneymen < 0) {
+            return $response->withStatus(400)->write("Invalid number of journeymen.");
+        }
+
+        // Add journeymen to teams
+        if ($homeJourneymen > 0) {
+            $this->matchService->addJourneymenToTeam($match->homeTeam, $homeJourneymen);
+        }
+        if ($awayJourneymen > 0) {
+            $this->matchService->addJourneymenToTeam($match->awayTeam, $awayJourneymen);
+        }
+
+        $match->pregame_status = PreGameStatus::INDUCEMENTS;
+        $match->save();
+
+        // Redirect to inducements form
+        $url = "/match/{$match->id}/inducements";
+        return $response
+            ->withHeader('Location', $url)
+            ->withStatus(302);
+    }
+
+    public function showInducementsForm(Request $request, Response $response, array $args)
+    {
+        [$match, $errorResponse] = $this->getAuthorisedMatchOrFail($request, $response, $args);
+        if ($errorResponse) return $errorResponse;
+
+        return $this->view->render($response, 'match/start/6_inducements.twig', ['match' => $match]);
     }
 }
