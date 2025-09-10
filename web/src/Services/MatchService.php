@@ -11,16 +11,27 @@ use App\Repositories\TeamRepository;
 use App\Enums\TeamStatus;
 use App\Enums\Player\CasualtyTable;
 use App\Enums\Player\PlayerStatus;
+use App\Services\PlayerService;
 use App\Models\EventLog;
 use App\Models\Team;
 use App\Models\MatchGame;
 
 class MatchService
 {
+    protected $matchRepo;
+    protected $teamRepo;
+    protected $playerService;
+
+
     public function __construct(
-        private MatchGameRepository $matchRepo,
-        private TeamRepository $teamRepo
-    ) {}
+        MatchGameRepository $matchRepo,
+        TeamRepository $teamRepo,
+        PlayerService $playerService
+    ) {
+        $this->matchRepo = $matchRepo;
+        $this->teamRepo = $teamRepo;
+        $this->playerService = $playerService;
+    }
 
     public function startOrJoinMatch(Team $team, ?int $awayTeamId, ?string $awayTeamName): MatchGame
     {
@@ -240,5 +251,13 @@ class MatchService
         $awayPlayers = $this->filterOutTheIndisposed($match->awayTeam?->players ?? collect());
 
         return ($homePlayers->count() < 11) || ($awayPlayers->count() < 11);
+    }
+
+    public function addJourneymenToTeam(Team $team, int $count): void
+    {
+        for ($i = 0; $i < $count; $i++) {
+            $journeyman = $this->playerService->generateJourneyman($team);
+            $journeyman->save();
+        }
     }
 }

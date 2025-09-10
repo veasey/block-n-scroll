@@ -7,8 +7,7 @@ use App\Enums\SideStaff;
 use App\Enums\TeamStatus;
 use App\Helpers\UserHelper;
 use App\Models\Base\BaseTeamPlayer;
-use App\Models\DefaultPlayerName;
-use App\Models\Player;
+use App\Services\PlayerService;
 use App\Models\Base\SideStaff as SideStaffModel;
 use App\Models\Team;
 
@@ -18,11 +17,14 @@ use App\Models\Team;
 class StaffController extends AccessController
 {
     protected $userHelper;
+    protected PlayerService $playerService;
 
     public function __construct(
-        UserHelper $userHelper
+        UserHelper $userHelper,
+        PlayerService $playerService
     ) {
         $this->userHelper = $userHelper;
+        $this->playerService = $playerService;
     }
 
     protected function getSideStaff(Team $team, array $data): Team
@@ -66,26 +68,9 @@ class StaffController extends AccessController
                 $nextNumber++;
             }
 
-            $player = new Player();
-            $player->team_id = (int) $team->id;
-            $player->base_team_id = (int) $baseTeamPlayer->base_team_id;
-            $player->base_team_player_id = (int) $positionId;
-            $player->cost = (int) $baseTeamPlayer->cost;
-
-            $player->number = $nextNumber;
             $existingNumbers[] = $nextNumber; // Mark this number as used
 
-            // fill in default names
-            $player->name = DefaultPlayerName::getRandomFor($baseTeamPlayer->base_team_id, $baseTeamPlayer->name);
-
-            $player->ma = (int) $baseTeamPlayer->ma;
-            $player->st = (int) $baseTeamPlayer->st;
-            $player->ag = (int) $baseTeamPlayer->ag;
-            $player->av = (int) $baseTeamPlayer->av;
-            $player->pa = (int) $baseTeamPlayer->pa;
-
-            $player->original_coach_id = (int) $this->userHelper->getCurrentUser()->id ?? 0;
-
+            $player = $this->playerService->generateTeamPlayer($team, $baseTeamPlayer, $nextNumber);
             $player->save();
 
             $totalCost += $baseTeamPlayer->cost;

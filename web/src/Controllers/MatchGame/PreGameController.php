@@ -199,15 +199,6 @@ class PreGameController extends AccessController
         [$match, $errorResponse] = $this->getAuthorisedMatchOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
 
-        $data = $request->getParsedBody();
-        $homeJourneymen = isset($data['home_journeymen']) ? (int)$data['home_journeymen'] : 0;
-        $awayJourneymen = isset($data['away_journeymen']) ? (int)$data['away_journeymen'] : 0;
-
-        // Validate journeymen counts
-        if ($homeJourneymen < 0 || $awayJourneymen < 0) {
-            return $response->withStatus(400)->write("Invalid number of journeymen.");
-        }
-
         // Add journeymen to teams
         if ($homeJourneymen > 0) {
             $this->matchService->addJourneymenToTeam($match->homeTeam, $homeJourneymen);
