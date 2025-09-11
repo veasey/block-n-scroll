@@ -68,6 +68,9 @@ class PostGameController extends AccessController
         $currentMatch->status = MatchStatus::POSTGAME;
         $currentMatch->save();
 
+        // remove any journeymen added for the match
+        $this->matchService->removeAllJourneymenFromMatch($currentMatch);
+
         return $this->view->render($response, 'match/end/end_match.twig', [
             'match' => $currentMatch,
             'recovered_players' => $recoveredPlayers,

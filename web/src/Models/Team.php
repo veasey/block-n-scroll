@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+use App\Enums\SideStaff;
 use App\Models\Base\BaseTeam;
 use App\Models\Coach;
 use App\Models\League;
@@ -62,5 +63,18 @@ class Team extends Model
     public function getPositionalCount(int $postionalId): int
     {
         return $this->players->where('base_team_player_id', $postionalId)->count();
+    }
+
+    public function calculateTeamValue(): int
+    {
+        $playerValues = $this->players->sum('cost');
+        
+        $staffValues = ($this->cheerleaders * SideStaff::CHEERLEADER->cost()) +
+                       ($this->apothecary * SideStaff::APOTHECARY->cost()) +
+                       ($this->assistants * SideStaff::ASSISTANT_COACH->cost());
+
+        $rerollsValue = ($this->rerolls ?? 0) * $this->reroll_cost;
+
+        return $playerValues + $staffValues + $rerollsValue;
     }
 }

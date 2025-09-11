@@ -191,7 +191,13 @@ class PreGameController extends AccessController
                 ->withStatus(302);
         }
 
-        return $this->view->render($response, 'match/start/5_journeymen.twig', ['match' => $match]);
+        $team = $this->teamHelper->getCurrentPlayingTeam();
+        $howManyJourneymenNeeded = $this->matchService->howManyJourneymenNeeded($team);
+        return $this->view->render($response, 'match/start/5_journeymen.twig', [
+            'match' => $match,
+            'how_many_journeymen_needed' => $howManyJourneymenNeeded,
+            'team' => $team
+        ]);
     }
 
     public function submitJourneymen(Request $request, Response $response, array $args)
@@ -199,11 +205,13 @@ class PreGameController extends AccessController
         [$match, $errorResponse] = $this->getAuthorisedMatchOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
 
-        // Add journeymen to teams
-        if ($homeJourneymen > 0) {
+        if ($this->matchService->howManyJourneymenNeeded($match->homeTeam) > 0) {
+            $homeJourneymen = $this->matchService->howManyJourneymenNeeded($match->homeTeam);
             $this->matchService->addJourneymenToTeam($match->homeTeam, $homeJourneymen);
         }
-        if ($awayJourneymen > 0) {
+
+        if ($this->matchService->howManyJourneymenNeeded($match->awayTeam) > 0) {
+            $awayJourneymen = $this->matchService->howManyJourneymenNeeded($match->awayTeam);
             $this->matchService->addJourneymenToTeam($match->awayTeam, $awayJourneymen);
         }
 
@@ -222,6 +230,13 @@ class PreGameController extends AccessController
         [$match, $errorResponse] = $this->getAuthorisedMatchOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
 
-        return $this->view->render($response, 'match/start/6_inducements.twig', ['match' => $match]);
+        $team = $this->teamHelper->getCurrentPlayingTeam();
+        $inducementBudget = $this->matchService->calculateInducementBudget($match, $team);
+
+        return $this->view->render($response, 'match/start/6_inducements.twig', [
+            'match' => $match, 
+            'inducement_budget' => $inducementBudget, 
+            'team' => $team]
+        );
     }
 }

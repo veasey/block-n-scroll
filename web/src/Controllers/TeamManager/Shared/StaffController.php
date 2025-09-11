@@ -17,7 +17,7 @@ use App\Models\Team;
 class StaffController extends AccessController
 {
     protected $userHelper;
-    protected PlayerService $playerService;
+    protected $playerService;
 
     public function __construct(
         UserHelper $userHelper,

@@ -10,6 +10,7 @@ use App\Repositories\TeamRepository;
 
 use App\Enums\TeamStatus;
 use App\Enums\Player\CasualtyTable;
+use App\Enums\Player\PlayerLevel;
 use App\Enums\Player\PlayerStatus;
 use App\Services\PlayerService;
 use App\Models\EventLog;
@@ -90,8 +91,14 @@ class MatchService
 
     private function filterOutTheIndisposed(Collection $players) {
         return $players->filter(function ($player) {
-            return !in_array($player->status, [PlayerStatus::DEAD, PlayerStatus::RETIRED, PlayerStatus::INJURED]);
+            return !in_array(PlayerStatus::tryFrom($player->status), [PlayerStatus::DEAD, PlayerStatus::RETIRED, PlayerStatus::INJURED]);
         })->values();    
+    }
+
+    public function howManyJourneymenNeeded(Team $team): int
+    {
+        $players = $this->filterOutTheIndisposed($team->players);
+        return max(0, 11 - $players->count());
     }
 
     public function restorePlayersFromMissNextGame(MatchGame $matchGame): array
@@ -258,6 +265,35 @@ class MatchService
         for ($i = 0; $i < $count; $i++) {
             $journeyman = $this->playerService->generateJourneyman($team);
             $journeyman->save();
+        }
+    }
+
+    public function calculateInducementBudget(MatchGame $match, Team $team): int  
+    {
+        $team = $match->homeTeam->id === $team->id ? $match->homeTeam : $match->awayTeam;
+        $opponent = $match->homeTeam->id === $team->id ? $match->awayTeam : $match->homeTeam;
+
+        $teamValue = $team->calculateTeamValue();
+        $opponentValue = $opponent ? $opponent->calculateTeamValue() : 0;
+
+        return $teamValue < $opponentValue ? ($opponentValue - $teamValue) : 0;
+    }
+
+    public function removeAllJourneymenFromMatch(MatchGame $match): void
+    {
+        $teams = [$match->homeTeam];
+        if ($match->awayTeam) {
+            $teams[] = $match->awayTeam;
+        }
+
+        foreach ($teams as $team) {
+            $journeymen = $team->players->filter(function ($player) {
+                return $player->level == PlayerLevel::JOURNEYMAN->value;
+            });
+
+            foreach ($journeymen as $journeyman) {
+                $journeyman->forceDelete();
+            }
         }
     }
 }

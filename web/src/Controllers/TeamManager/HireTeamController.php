@@ -6,6 +6,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 use App\Controllers\TeamManager\Shared\StaffController;
 use App\Constants\ColumnMaps;
+use App\Services\PlayerService;
 use App\Helpers\UserHelper;
 use App\Helpers\TeamHelper;
 use App\Models\Team;
@@ -17,19 +18,19 @@ use Slim\Views\Twig;
  */
 class HireTeamController extends StaffController
 {
-
     protected $view;
     protected $teamHelper;
 
     public function __construct(
-        Twig $view,
         UserHelper $userHelper,
-        TeamHelper $teamHelper
-    )
-    {
-        $this->view = $view;
-        $this->userHelper = $userHelper;
+        TeamHelper $teamHelper,
+        Twig $view,
+        PlayerService $playerService
+    ) {
+        parent::__construct($userHelper, $playerService); // initialize parent
+
         $this->teamHelper = $teamHelper;
+        $this->view = $view;
     }
 
     /**

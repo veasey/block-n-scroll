@@ -14,11 +14,10 @@
 
     <h2>Take on Journeymen</h2>
 
-    <p>You are {{ 11 - team.players|length}} players short.</p>
+    <p>Your team {{team.name}} are {{ how_many_journeymen_needed }} players short.</p>
 
-    <form action="" method="post">
-        <button type="submit">Add {{ 11 - team.players|length}} Journeymen</button>
+    <form action="/match/{{match.id}}/journeymen" method="post">
+        <button type="submit">Add {{ how_many_journeymen_needed }} Journeymen</button>
     </form>
-
     
 {% endblock %}

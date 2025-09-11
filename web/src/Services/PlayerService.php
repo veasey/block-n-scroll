@@ -1,31 +1,32 @@
 <?php
 namespace App\Services;
 
-use App\Enums\LogType;
-use App\Enums\Match\EventType;
-use Illuminate\Database\Eloquent\Collection;
-
-use App\Repositories\MatchGameRepository;
-use App\Repositories\TeamRepository;
-
-use App\Enums\TeamStatus;
-use App\Enums\Player\CasualtyTable;
-use App\Enums\Player\PlayerStatus;
-use App\Models\EventLog;
+use App\Enums\Player\PlayerLevel;
+use App\Helpers\UserHelper;
+use App\Models\Base\BaseTeamPlayer;
+use App\Models\DefaultPlayerName;
 use App\Models\Team;
 use App\Models\Player;
 
 class PlayerService
 {
-    public function generateTeamPlayer(Team $team, BaseTeamPlayer $baseTeamPlayer, int $number): void
+    protected $userHelper;
+
+    public function __construct(
+        UserHelper $userHelper
+    ) {
+        $this->userHelper = $userHelper;
+    }
+
+    public function generateTeamPlayer(Team $team, BaseTeamPlayer $baseTeamPlayer, int $number): Player
     {
         $player = new Player();
         $player->team_id = (int) $team->id;
         $player->base_team_id = (int) $baseTeamPlayer->base_team_id;
-        $player->base_team_player_id = (int) $positionId;
+        $player->base_team_player_id = (int) $baseTeamPlayer->id;
         $player->cost = (int) $baseTeamPlayer->cost;
 
-        $player->number = $nextNumber;
+        $player->number = $number;
 
         // fill in default names
         $player->name = DefaultPlayerName::getRandomFor($baseTeamPlayer->base_team_id, $baseTeamPlayer->name);
@@ -57,7 +58,7 @@ class PlayerService
         }
 
         $player = $this->generateTeamPlayer($team, $linemanBasePlayer, $playerNumber);
-        $player->status = PlayerStatus::JOURNEYMAN->value;
+        $player->level = PlayerLevel::JOURNEYMAN->value;
         return $player;
     }    
 }

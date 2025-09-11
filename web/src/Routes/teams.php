@@ -26,7 +26,7 @@ $app->get('/team/view/{team_id}', ViewTeamController::class . ':viewTeam');
 
 $app->get('/team/delete/{team_id}/confirm', DeleteTeamController::class . ':getConfirmView');
 $app->get('/team/delete/{team_id}', DeleteTeamController::class . ':delete');
-$app->get('/team/retire/{team_id}', DeleteTeamController::class . ':retire');
+$app->get('/team/retire/{team_id}/confirm', DeleteTeamController::class . ':retire');
 $app->get('/team/unretire/{team_id}', DeleteTeamController::class . ':unretire');
 
 $app->get('/team/edit/{team_id}', EditTeamController::class . ':getForm');

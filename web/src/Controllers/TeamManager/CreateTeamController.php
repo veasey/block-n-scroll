@@ -5,10 +5,12 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 use App\Controllers\TeamManager\Shared\StaffController;
+use App\Services\PlayerService;
 use App\Enums\TeamStatus;
 use App\Helpers\UserHelper;
 use App\Helpers\TeamHelper;
 use App\Models\Base\BaseTeam;
+use App\Models\Player;
 use App\Models\Team;
 use Slim\Views\Twig;
 
@@ -20,11 +22,13 @@ class CreateTeamController extends StaffController
     protected $view;
 
     public function __construct(
+        PlayerService $playerService,
         UserHelper $userHelper,
         TeamHelper $teamHelper,
         Twig $view
     )
     {
+        $this->playerService = $playerService;
         $this->userHelper = $userHelper;
         $this->teamHelper = $teamHelper;
         $this->view = $view;
