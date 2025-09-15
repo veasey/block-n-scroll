@@ -4,14 +4,14 @@ namespace App\Enums\Player;
 
 enum Level: string
 {
-    case Journeyman    = 'Journeyman';
-    case Rookie        = 'Rookie';
-    case Experienced   = 'Experienced';
-    case Veteran       = 'Veteran';
-    case EmergingStar  = 'Emerging Star';
-    case Star          = 'Star';
-    case Superstar     = 'Superstar';
-    case Legend        = 'Legend';
+    case JOURNEYMAN    = 'Journeyman';
+    case ROOKIE        = 'Rookie';
+    case EXPERIENCED   = 'Experienced';
+    case VETERAN       = 'Veteran';
+    case EMERGINGSTAR  = 'Emerging Star';
+    case STAR          = 'Star';
+    case SUPERSTAR     = 'Superstar';
+    case LEGEND        = 'Legend';
 
     public static function ordered(): array
     {
@@ -35,5 +35,10 @@ enum Level: string
         return ($index !== false && isset($order[$index + 1]))
             ? $order[$index + 1]
             : null;
+    }
+
+    public static function default(): self
+    {
+        return self::ROOKIE;
     }
 }

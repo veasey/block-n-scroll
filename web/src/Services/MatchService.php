@@ -10,7 +10,7 @@ use App\Repositories\TeamRepository;
 
 use App\Enums\TeamStatus;
 use App\Enums\Player\CasualtyTable;
-use App\Enums\Player\PlayerLevel;
+use App\Enums\Player\Level as PlayerLevel;
 use App\Enums\Player\PlayerStatus;
 use App\Services\PlayerService;
 use App\Models\EventLog;
@@ -288,11 +288,11 @@ class MatchService
 
         foreach ($teams as $team) {
             $journeymen = $team->players->filter(function ($player) {
-                return $player->level == PlayerLevel::JOURNEYMAN->value;
+                return $player->level === PlayerLevel::JOURNEYMAN;
             });
 
             foreach ($journeymen as $journeyman) {
-                $journeyman->forceDelete();
+                $journeyman->delete();
             }
         }
     }

@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-use App\Enums\Player\PlayerLevel;
+use App\Enums\Player\Level;
 use App\Helpers\UserHelper;
 use App\Models\Base\BaseTeamPlayer;
 use App\Models\DefaultPlayerName;
@@ -58,7 +58,7 @@ class PlayerService
         }
 
         $player = $this->generateTeamPlayer($team, $linemanBasePlayer, $playerNumber);
-        $player->level = PlayerLevel::JOURNEYMAN->value;
+        $player->level = Level::JOURNEYMAN;
         return $player;
     }    
 }
