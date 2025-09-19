@@ -162,12 +162,12 @@ class PreGameController extends AccessController
         [$match, $errorResponse] = $this->getAuthorisedMatchOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
 
+        // log kickoff event
         $this->eventLoggerService->logKickOff($match);
-        $team = $this->teamHelper->getCurrentPlayingTeam();
-
+        $this->matchService->kickOff($match);
+    
         $matchInfo = $this->matchService->getMatchSetupInfo($match);
-        $match->status = MatchStatus::IN_PROGRESS;
-        $match->save();
+        $team = $this->teamHelper->getCurrentPlayingTeam();
 
         return $this->view->render($response, 'match/start/7_kickoff.twig', [
             'match' => $match,
@@ -241,5 +241,65 @@ class PreGameController extends AccessController
             'inducement_budget' => $inducementBudget, 
             'team' => $team]
         );
+    }
+
+    public function submitInducements(Request $request, Response $response, array $args)
+    {
+        [$match, $errorResponse] = $this->getAuthorisedMatchOrFail($request, $response, $args);
+        if ($errorResponse) return $errorResponse;
+
+        // For now, we are not processing inducement purchases.
+        // In a real application, you would handle the inducement logic here.
+
+        $match->pregame_status = PreGameStatus::KICKOFF;
+        $match->save();
+
+        // Redirect to kickoff
+        $url = "/match/{$match->id}/kickoff";
+        return $response
+            ->withHeader('Location', $url)
+            ->withStatus(302);
+    }
+
+    public function continuePregameSetup(Request $request, Response $response, array $args)
+    {
+        $currentPlayingTeam = $this->teamHelper->getCurrentPlayingTeam();
+        if (!$currentPlayingTeam) {
+            $response->getBody()->write("You do not have a team in pregame status.");
+            return $response->withStatus(403);
+        }
+
+        $match = $this->matchHelper->getCurrentMatchTeamPlayingIn($currentPlayingTeam);
+        if (!$match) {
+            $response->getBody()->write("No match found for your team.");
+            return $response->withStatus(404);
+        }
+
+        // determine next step
+        switch (PreGameStatus::tryFrom($match->pregame_status)) {
+            case PreGameStatus::FANS:
+                $url = "/match/{$match->id}/gate";
+                break;
+            case PreGameStatus::WEATHER:
+                $url = "/match/{$match->id}/weather";
+                break;
+            case PreGameStatus::JOURNEYMEN:
+                $url = "/match/{$match->id}/journeymen";
+                break;
+            case PreGameStatus::INDUCEMENTS:
+                $url = "/match/{$match->id}/inducements";
+                break;
+            case PreGameStatus::KICKOFF:
+                $url = "/match/{$match->id}/kickoff";
+                break;
+            default:
+                // something went wrong
+                $response->getBody()->write("Match in invalid pregame status.");
+                return $response->withStatus(500);
+        }
+
+        return $response
+            ->withHeader('Location', $url)
+            ->withStatus(302);
     }
 }

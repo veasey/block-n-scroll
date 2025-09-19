@@ -28,4 +28,6 @@ $app->get('/match/view/{match_id}', ViewController::class . ':view');
 $app->get('/match/view/team/{team_id}', ViewController::class . ':listTeamMatches');
 $app->get('/match/view/leagues/{league_id}', ViewController::class . ':listLeagueMatches');
 
+$app->get('/match/continue-pregame-setup', PreGameController::class . ':continuePregameSetup');
+
 $app->post('/match/{match_id}/note', NoteController::class . ':addNote');

@@ -14,4 +14,6 @@ enum PregameStatus: string
 
     // buy inducements
     case  INDUCEMENTS = 'inducements';
+
+    case KICKOFF = 'kickoff';
 }

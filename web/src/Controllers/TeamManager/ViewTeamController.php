@@ -74,7 +74,8 @@ class ViewTeamController extends AccessController
         }
 
         $match = null;
-        if (TeamStatus::tryFrom($team->status) == TeamStatus::PLAYING) {
+        $teamStatus = TeamStatus::tryFrom($team->status);
+        if ($teamStatus == TeamStatus::PLAYING || $teamStatus == TeamStatus::PREGAME) {
             $match = MatchGame::where(function ($query) use ($team) {
                 $query->where('home_team_id', $team->id)
                     ->orWhere('away_team_id', $team->id);

@@ -43,6 +43,8 @@ class TeamHelper
         
         $team = TEAM::where('coach_id', $user->id)
                     ->where('status', TeamStatus::PLAYING)
+                    ->orWhere('status', TeamStatus::PREGAME)
+                    ->orWhere('status', TeamStatus::POST_SEQUENCE)
                     ->orderBy('updated_at', 'desc')
                     ->first();
 

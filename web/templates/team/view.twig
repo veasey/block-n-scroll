@@ -24,6 +24,11 @@
                     <input type="hidden" id="team_id" name="team_id" value="{{team.id}}" />
                     <button class="quick-btn" title="Start Match">🏁 End Match</button>
                 </form>
+            {% elseif team.status == 'pregame' %}
+                <form action="/match/continue-pregame-setup" method="get">
+                    <input type="hidden" id="team_id" name="team_id" value="{{team.id}}" />
+                    <button class="quick-btn" title="Start Match">⏩ Continue Pregame SetUp</button>
+                </form>
             {% else %}
                 <form action="/match/start" method="post">
                     <input type="hidden" id="team_id" name="team_id" value="{{team.id}}" />
@@ -33,7 +38,7 @@
         </div>
     {% endif %}
 
-    {% if team.status == 'playing' %}
+    {% if team.status == 'playing' or team.status == 'pregame' %}
         <div class="match-card">
             <div class="match-card-header">Ongoing Match</div>
             <div class="match-card-teams">

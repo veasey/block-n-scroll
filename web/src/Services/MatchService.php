@@ -11,6 +11,7 @@ use App\Enums\TeamStatus;
 use App\Enums\Player\CasualtyTable;
 use App\Enums\Player\Level as PlayerLevel;
 use App\Enums\Player\PlayerStatus;
+use App\Enums\Match\Status as MatchStatus;
 use App\Helpers\PlayerFilterHelper;
 use App\Services\PlayerService;
 use App\Models\EventLog;
@@ -62,10 +63,10 @@ class MatchService
         $match->save();
 
         if ($opponent) {
-            $opponent->status = TeamStatus::PLAYING;
+            $opponent->status = TeamStatus::PREGAME;
             $opponent->save();
         }
-        $team->status = TeamStatus::PLAYING;
+        $team->status = TeamStatus::PREGAME;
         $team->save();
 
         return $match;
@@ -73,15 +74,14 @@ class MatchService
 
     public function setStatus(MatchGame $matchGame, TeamStatus $status): MatchGame
     {
-        if ($matchGame->homeTeam) {
-            $matchGame->homeTeam->status = $status;
+        foreach(['home', 'away'] as $side) {
+            $team = $matchGame->{"{$side}Team"};
+            if ($team) {
+                $team->status = $status;
+                $team->save();
+            }
         }
 
-        if ($matchGame->awayTeam) {
-            $matchGame->awayTeam->status = $status;
-        }
-
-        $matchGame->save();
         return $matchGame;
     }
 
@@ -167,6 +167,14 @@ class MatchService
             'weather' => $events->where('event_key', EventType::WEATHER->value)->first() ?? null,
             'fan_factor' => $events->where('event_key', EventType::FAN_ATTENDANCE->value)->first() ?? null
         ];
+    }
+
+    public function kickOff(MatchGame $matchGame): MatchGame
+    {
+        $matchGame->status = MatchStatus::IN_PROGRESS;
+        $matchGame->save();
+
+        return $this->setStatus($matchGame, TeamStatus::PLAYING);
     }
 
     public function calculateWinnings(MatchGame $matchGame): array
