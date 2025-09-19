@@ -16,6 +16,7 @@ use App\Helpers\MatchHelper;
 use App\Repositories\EventLogRepository;
 use App\Repositories\TeamRepository;
 use App\Services\EventLogging\MatchEventLoggingService;
+use App\Services\PlayerService;
 use App\Services\MatchService;
 
 class PreGameController extends AccessController
@@ -26,6 +27,7 @@ class PreGameController extends AccessController
     protected $teamHelper;
     protected $teamRepo;
     protected $eventLoggerService;
+    protected $playerService;
     protected $matchService;
     protected $view;
 
@@ -35,6 +37,7 @@ class PreGameController extends AccessController
         EventLogRepository $logRepo,
         TeamRepository $teamRepo,
         MatchEventLoggingService $eventLoggerService,
+        PlayerService $playerService,
         MatchService $matchService,
         Twig $view
     )    
@@ -44,6 +47,7 @@ class PreGameController extends AccessController
         $this->logRepo = $logRepo;
         $this->teamRepo = $teamRepo;
         $this->eventLoggerService = $eventLoggerService;
+        $this->playerService = $playerService;
         $this->matchService = $matchService;
         $this->view = $view;
     }
@@ -205,14 +209,13 @@ class PreGameController extends AccessController
         [$match, $errorResponse] = $this->getAuthorisedMatchOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
 
-        if ($this->matchService->howManyJourneymenNeeded($match->homeTeam) > 0) {
-            $homeJourneymen = $this->matchService->howManyJourneymenNeeded($match->homeTeam);
-            $this->matchService->addJourneymenToTeam($match->homeTeam, $homeJourneymen);
-        }
-
-        if ($this->matchService->howManyJourneymenNeeded($match->awayTeam) > 0) {
-            $awayJourneymen = $this->matchService->howManyJourneymenNeeded($match->awayTeam);
-            $this->matchService->addJourneymenToTeam($match->awayTeam, $awayJourneymen);
+        foreach ([$match->homeTeam, $match->awayTeam] as $team) {
+            if ($team) {
+                $amount = $this->matchService->howManyJourneymenNeeded($team);
+                if ($amount > 0) {
+                    $this->playerService->generateJourneymen($team, $amount);
+                }
+            }
         }
 
         $match->pregame_status = PreGameStatus::INDUCEMENTS;

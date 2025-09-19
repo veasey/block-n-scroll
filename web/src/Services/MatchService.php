@@ -3,7 +3,6 @@ namespace App\Services;
 
 use App\Enums\LogType;
 use App\Enums\Match\EventType;
-use Illuminate\Database\Eloquent\Collection;
 
 use App\Repositories\MatchGameRepository;
 use App\Repositories\TeamRepository;
@@ -12,6 +11,7 @@ use App\Enums\TeamStatus;
 use App\Enums\Player\CasualtyTable;
 use App\Enums\Player\Level as PlayerLevel;
 use App\Enums\Player\PlayerStatus;
+use App\Helpers\PlayerFilterHelper;
 use App\Services\PlayerService;
 use App\Models\EventLog;
 use App\Models\Team;
@@ -22,16 +22,18 @@ class MatchService
     protected $matchRepo;
     protected $teamRepo;
     protected $playerService;
-
+    protected $playerFilterHelper;
 
     public function __construct(
         MatchGameRepository $matchRepo,
         TeamRepository $teamRepo,
-        PlayerService $playerService
+        PlayerService $playerService,
+        PlayerFilterHelper $playerFilterHelper
     ) {
         $this->matchRepo = $matchRepo;
         $this->teamRepo = $teamRepo;
         $this->playerService = $playerService;
+        $this->playerFilterHelper = $playerFilterHelper;
     }
 
     public function startOrJoinMatch(Team $team, ?int $awayTeamId, ?string $awayTeamName): MatchGame
@@ -83,21 +85,9 @@ class MatchService
         return $matchGame;
     }
 
-    private function filterOutTheDead(Collection $players) {
-        return $players->filter(function ($player) {
-            return !in_array($player->status, [PlayerStatus::DEAD, PlayerStatus::RETIRED]);
-        })->values();    
-    }
-
-    private function filterOutTheIndisposed(Collection $players) {
-        return $players->filter(function ($player) {
-            return !in_array(PlayerStatus::tryFrom($player->status), [PlayerStatus::DEAD, PlayerStatus::RETIRED, PlayerStatus::INJURED]);
-        })->values();    
-    }
-
     public function howManyJourneymenNeeded(Team $team): int
     {
-        $players = $this->filterOutTheIndisposed($team->players);
+        $players = $this->playerFilterHelper->notIndisposed($team->players);
         return max(0, 11 - $players->count());
     }
 
@@ -106,7 +96,7 @@ class MatchService
         $homePlayers = $matchGame->homeTeam->players;
         $awayPlayers = $matchGame->awayTeam?->players ?? collect();
         $allPlayers = $homePlayers->merge($awayPlayers);
-        $allPlayers = $this->filterOutTheDead($allPlayers);  
+        $allPlayers = $this->playerFilterHelper->notDead($allPlayers);  
 
         $recoveredPlayers = [];
 
@@ -150,7 +140,7 @@ class MatchService
                 continue;
             }
 
-            $players = $this->filterOutTheDead($team->players);
+            $players = $this->playerFilterHelper->notDead($team->players);
 
             if ($players->isEmpty()) {
                 continue;
@@ -254,18 +244,10 @@ class MatchService
 
     public function isEitherTeamShortOfPlayers(MatchGame $match): bool
     {
-        $homePlayers = $this->filterOutTheIndisposed($match->homeTeam->players);
-        $awayPlayers = $this->filterOutTheIndisposed($match->awayTeam?->players ?? collect());
+        $homePlayers = $this->playerFilterHelper->notIndisposed($match->homeTeam->players);
+        $awayPlayers = $this->playerFilterHelper->notIndisposed($match->awayTeam?->players ?? collect());
 
         return ($homePlayers->count() < 11) || ($awayPlayers->count() < 11);
-    }
-
-    public function addJourneymenToTeam(Team $team, int $count): void
-    {
-        for ($i = 0; $i < $count; $i++) {
-            $journeyman = $this->playerService->generateJourneyman($team);
-            $journeyman->save();
-        }
     }
 
     public function calculateInducementBudget(MatchGame $match, Team $team): int  
