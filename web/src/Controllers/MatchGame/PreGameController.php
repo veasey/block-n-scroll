@@ -3,31 +3,26 @@ namespace App\Controllers\MatchGame;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use InvalidArgumentException;
 
-use Slim\Views\Twig;
-
-use App\Enums\Match\Status as MatchStatus;
 use App\Enums\Match\PreGameStatus;
-use App\Enums\Match\WeatherTable;
 use App\Controllers\MatchGame\Shared\AccessController;
 use App\Helpers\TeamHelper;
 use App\Helpers\MatchHelper;
 use App\Repositories\EventLogRepository;
 use App\Repositories\TeamRepository;
 use App\Services\EventLogging\MatchEventLoggingService;
-use App\Services\PlayerService;
 use App\Services\MatchService;
+
+
+use Slim\Views\Twig;
 
 class PreGameController extends AccessController
 {
     protected $logRepo;
-
     protected $matchHelper;
     protected $teamHelper;
     protected $teamRepo;
     protected $eventLoggerService;
-    protected $playerService;
     protected $matchService;
     protected $view;
 
@@ -37,7 +32,6 @@ class PreGameController extends AccessController
         EventLogRepository $logRepo,
         TeamRepository $teamRepo,
         MatchEventLoggingService $eventLoggerService,
-        PlayerService $playerService,
         MatchService $matchService,
         Twig $view
     )    
@@ -47,7 +41,6 @@ class PreGameController extends AccessController
         $this->logRepo = $logRepo;
         $this->teamRepo = $teamRepo;
         $this->eventLoggerService = $eventLoggerService;
-        $this->playerService = $playerService;
         $this->matchService = $matchService;
         $this->view = $view;
     }
@@ -91,72 +84,6 @@ class PreGameController extends AccessController
         ->withStatus(302);
     }
 
-    public function showGateForm(Request $request, Response $response, array $args)
-    {
-        [$match, $errorResponse] = $this->getAuthorisedMatchOrFail($request, $response, $args);
-        if ($errorResponse) return $errorResponse;
-        return $this->view->render($response, 'match/start/3_gate.twig', ['match' => $match]);
-    }
-
-    public function submitGate(Request $request, Response $response, array $args)
-    {
-        [$match, $errorResponse] = $this->getAuthorisedMatchOrFail($request, $response, $args);
-        if ($errorResponse) return $errorResponse;
-        
-        $data = $request->getParsedBody();
-        $homeFanRoll = $data['home_fan_roll'] ?? 1;
-        $awayFanRoll = $data['away_fan_roll'] ?? 1;
-        $awayDedicatedFans = $data['away_dedicated_fans'] ?? 1;
-
-        $match->home_fans = $homeFanRoll;
-        $match->away_fans = $awayFanRoll;
-        $match->pregame_status = PreGameStatus::WEATHER;
-        $match->save();
-
-        $this->eventLoggerService->logMatchFanAttendance($match, $awayDedicatedFans);
-
-        // Redirect to weather form
-        $url = "/match/{$match->id}/weather"; // adjust as needed
-        return $response
-            ->withHeader('Location', $url)
-            ->withStatus(302);
-    }
-
-    public function showWeatherForm(Request $request, Response $response, array $args)
-    {
-        [$match, $errorResponse] = $this->getAuthorisedMatchOrFail($request, $response, $args);
-        if ($errorResponse) return $errorResponse;
-        return $this->view->render($response, 'match/start/4_weather.twig', ['match' => $match]);
-    }
-
-    public function submitWeather(Request $request, Response $response, array $args)
-    {
-        [$match, $errorResponse] = $this->getAuthorisedMatchOrFail($request, $response, $args);
-        if ($errorResponse) return $errorResponse;
-        
-        $data = $request->getParsedBody();
-        $weatherRoll = (int)($data['weather_roll'] ?? 2);
-
-        try {
-            $weather = WeatherTable::fromRoll($weatherRoll);
-        } catch (InvalidArgumentException $e) {
-            // Handle invalid roll (e.g., redirect back with error)
-            return $response->withStatus(400)->write("Invalid weather roll: $weatherRoll");
-        }
-
-        // Log the weather (you can store the enum name or value)
-        $this->eventLoggerService->logMatchWeather($match, $weather);
-
-        $match->pregame_status = PreGameStatus::JOURNEYMEN;
-        $match->save();
-
-        // Redirect to next step
-        $url = "/match/{$match->id}/journeymen";
-        return $response
-            ->withHeader('Location', $url)
-            ->withStatus(302);
-    }
-
     public function kickoff(Request $request, Response $response, array $args)
     {
         [$match, $errorResponse] = $this->getAuthorisedMatchOrFail($request, $response, $args);
@@ -174,91 +101,6 @@ class PreGameController extends AccessController
             'user_team_id' => $team->id,
             'match_info' => $matchInfo
         ]);
-    }
-
-    public function showJourneymenForm(Request $request, Response $response, array $args)
-    {
-        [$match, $errorResponse] = $this->getAuthorisedMatchOrFail($request, $response, $args);
-        if ($errorResponse) return $errorResponse;
-
-        // check any team is short of players
-        if (!$this->matchService->isEitherTeamShortOfPlayers($match)) {
-
-            // update match status
-            $match->pregame_status = PreGameStatus::INDUCEMENTS;
-            $match->save();
-
-            // Redirect to inducements form
-            $url = "/match/{$match->id}/inducements";
-            return $response
-                ->withHeader('Location', $url)
-                ->withStatus(302);
-        }
-
-        $team = $this->teamHelper->getCurrentPlayingTeam();
-        $howManyJourneymenNeeded = $this->matchService->howManyJourneymenNeeded($team);
-        return $this->view->render($response, 'match/start/5_journeymen.twig', [
-            'match' => $match,
-            'how_many_journeymen_needed' => $howManyJourneymenNeeded,
-            'team' => $team
-        ]);
-    }
-
-    public function submitJourneymen(Request $request, Response $response, array $args)
-    {
-        [$match, $errorResponse] = $this->getAuthorisedMatchOrFail($request, $response, $args);
-        if ($errorResponse) return $errorResponse;
-
-        foreach ([$match->homeTeam, $match->awayTeam] as $team) {
-            if ($team) {
-                $amount = $this->matchService->howManyJourneymenNeeded($team);
-                if ($amount > 0) {
-                    $this->playerService->generateJourneymen($team, $amount);
-                }
-            }
-        }
-
-        $match->pregame_status = PreGameStatus::INDUCEMENTS;
-        $match->save();
-
-        // Redirect to inducements form
-        $url = "/match/{$match->id}/inducements";
-        return $response
-            ->withHeader('Location', $url)
-            ->withStatus(302);
-    }
-
-    public function showInducementsForm(Request $request, Response $response, array $args)
-    {
-        [$match, $errorResponse] = $this->getAuthorisedMatchOrFail($request, $response, $args);
-        if ($errorResponse) return $errorResponse;
-
-        $team = $this->teamHelper->getCurrentPlayingTeam();
-        $inducementBudget = $this->matchService->calculateInducementBudget($match, $team);
-
-        return $this->view->render($response, 'match/start/6_inducements.twig', [
-            'match' => $match, 
-            'inducement_budget' => $inducementBudget, 
-            'team' => $team]
-        );
-    }
-
-    public function submitInducements(Request $request, Response $response, array $args)
-    {
-        [$match, $errorResponse] = $this->getAuthorisedMatchOrFail($request, $response, $args);
-        if ($errorResponse) return $errorResponse;
-
-        // For now, we are not processing inducement purchases.
-        // In a real application, you would handle the inducement logic here.
-
-        $match->pregame_status = PreGameStatus::KICKOFF;
-        $match->save();
-
-        // Redirect to kickoff
-        $url = "/match/{$match->id}/kickoff";
-        return $response
-            ->withHeader('Location', $url)
-            ->withStatus(302);
     }
 
     public function continuePregameSetup(Request $request, Response $response, array $args)
@@ -297,7 +139,7 @@ class PreGameController extends AccessController
                 $response->getBody()->write("Match in invalid pregame status.");
                 return $response->withStatus(500);
         }
-
+        
         return $response
             ->withHeader('Location', $url)
             ->withStatus(302);

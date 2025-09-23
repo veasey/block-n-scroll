@@ -25,10 +25,7 @@
                     <button class="quick-btn" title="Start Match">🏁 End Match</button>
                 </form>
             {% elseif team.status == 'pregame' %}
-                <form action="/match/continue-pregame-setup" method="get">
-                    <input type="hidden" id="team_id" name="team_id" value="{{team.id}}" />
-                    <button class="quick-btn" title="Start Match">⏩ Continue Pregame SetUp</button>
-                </form>
+                <a href='/match/continue-pregame-setup' class="quick-btn" title="Add Completion">⏩ Continue Pregame SetUp</a>
             {% else %}
                 <form action="/match/start" method="post">
                     <input type="hidden" id="team_id" name="team_id" value="{{team.id}}" />
