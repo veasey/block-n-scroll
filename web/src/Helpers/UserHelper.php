@@ -29,6 +29,11 @@ class UserHelper
     public function isCurrentUserAdmin(): bool 
     {
         $currentUser = $this->getCurrentUser();
+
+        if (!$currentUser) {
+            return false;
+        }
+
         $userRole = UserRole::tryFrom($currentUser->role);
         return $userRole === UserRole::ADMIN;
     }

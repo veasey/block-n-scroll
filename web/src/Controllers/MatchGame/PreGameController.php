@@ -13,7 +13,6 @@ use App\Repositories\TeamRepository;
 use App\Services\EventLogging\MatchEventLoggingService;
 use App\Services\MatchService;
 
-
 use Slim\Views\Twig;
 
 class PreGameController extends AccessController

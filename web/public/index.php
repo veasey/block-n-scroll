@@ -4,6 +4,7 @@ use Slim\Factory\AppFactory;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 use DI\Container;
+use Illuminate\Database\Capsule\Manager as Capsule;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -31,8 +32,8 @@ $app->add(TwigMiddleware::create($app, $container->get(Twig::class)));
 require __DIR__ . '/../src/bootstrap.php';
 
 // Load all routes
-foreach (['account', 'web', 'rules', 'teams', 'players', 'matchgames', 'matchgames_pregame', 'leagues'] as $routeFile) {
-    require __DIR__ . "/../src/Routes/{$routeFile}.php";
+foreach (glob(__DIR__ . '/../src/Routes/*.php') as $routeFile) {
+    require $routeFile;
 }
 
 $app->run();
