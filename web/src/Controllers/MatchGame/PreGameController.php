@@ -55,7 +55,7 @@ class PreGameController extends AccessController
         ]);
     }
 
-    public function startMatch(Request $request, Response $response, array $args)
+    public function createMatch(Request $request, Response $response, array $args)
     {
         [$team, $errorResponse] = $this->getRecognisedTeamOrFail($request, $response, $args);
         if ($errorResponse) return $errorResponse;
