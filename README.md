@@ -1,5 +1,7 @@
 # BLOCK N SCROLL 🏉🐦
-A free alternative to the other bloodbowl tracker. 
+A free league management and statistics platform for Blood Bowl tabletop leagues.
+
+It is designed to manage long-running, multi-season leagues with persistent history, match tracking, and flexible administrative control over league data.
 
 Things this will do that others do not:
 - allow a single league to have "seasons" baked in, without having to create a new league each time.
