@@ -1,28 +1,29 @@
 services:
   db:
-    container_name: block-n-scroll-db
+    container_name: db
     build:
       context: ./db
       dockerfile: docker/Dockerfile
     ports:
       - "4306:3306"
     environment:
-      MYSQL_ROOT_USER: ${MYSQL_ROOT_USER:-root}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-defaultrootpass}
-      MYSQL_USER: ${MYSQL_USER:-bnsuser}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-password1}
-      MYSQL_DATABASE: ${MYSQL_DATABASE:-blocknscroll}
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: defaultrootpass
+      MYSQL_USER: ${DB_USERNAME:-blockuser}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-secret}
+      MYSQL_DATABASE: ${DB_DATABASE:-blockdb}
     volumes:
       - ./db/sql:/docker-entrypoint-initdb.d/sql      
   web:
-    container_name: block-n-scroll-web
+    container_name: web
     build:
       context: .
       dockerfile: ./web/docker/Dockerfile
     ports:
       - "8000:80"
     environment:
-      DATABASE_URL: mysql+pymysql://${MYSQL_USER:-bnsuser}:${MYSQL_PASSWORD:-password1}@db/${MYSQL_DATABASE:-blocknscroll}
+      DB_HOST: db
+      DATABASE_URL: mysql+pymysql://${DB_USERNAME:-blockuser}:${DB_PASSWORD:-secret}@db/${DB_DATABASE:-blockdb}
     env_file:
       - .env
     depends_on:
